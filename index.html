@@ -28,13 +28,97 @@
     @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
     .fade-in { animation: fadeIn 0.15s ease; }
     @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+    #login-screen { animation: fadeIn 0.3s ease; }
+    #login-screen.hidden { display: none; }
+    #app.locked { display: none; }
   </style>
 </head>
 <body class="bg-slate-50 min-h-screen">
 
-<div id="app"></div>
+<!-- LOGIN SCREEN -->
+<div id="login-screen" class="fixed inset-0 z-[9999] flex items-center justify-center bg-gradient-to-br from-blip-900 via-blip-700 to-blip-500">
+  <div class="w-full max-w-sm mx-4">
+    <!-- Card -->
+    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
+      <!-- Header -->
+      <div class="bg-gradient-to-r from-blip-900 to-blip-500 px-8 py-8 text-center">
+        <div class="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+          <span class="text-white text-2xl font-bold">B</span>
+        </div>
+        <h1 class="text-white font-bold text-xl">Jornada 360°</h1>
+        <p class="text-white/70 text-sm mt-1">Portal interno · Revenue Enablement</p>
+      </div>
+      <!-- Form -->
+      <div class="px-8 py-8">
+        <p class="text-slate-600 text-sm mb-5 text-center">Digite a senha para acessar o portal</p>
+        <form id="login-form" onsubmit="handleLogin(event)">
+          <div class="relative mb-4">
+            <input
+              id="login-password"
+              type="password"
+              placeholder="Senha"
+              autocomplete="current-password"
+              class="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blip-500 focus:border-transparent pr-10"
+            />
+            <button type="button" onclick="toggleLoginPwd()" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 text-xs select-none">👁</button>
+          </div>
+          <div id="login-error" class="hidden text-xs text-red-600 bg-red-50 rounded-lg px-3 py-2 mb-4">
+            Senha incorreta. Tente novamente.
+          </div>
+          <button type="submit" class="w-full bg-blip-500 hover:bg-blip-600 text-white font-semibold py-3 rounded-xl transition-colors text-sm">
+            Entrar →
+          </button>
+        </form>
+      </div>
+    </div>
+    <p class="text-center text-white/40 text-xs mt-6">Blip 2.0 · Acesso restrito ao time interno</p>
+  </div>
+</div>
+
+<div id="app" class="locked"></div>
 
 <script>
+// ─── AUTH ────────────────────────────────────────────────────────────────────
+
+const AUTH_KEY   = 'blip_jornada_auth';
+const AUTH_TOKEN = 'granted_v1';
+const SENHA      = 'enablementblip*';
+
+function checkAuth() {
+  if (localStorage.getItem(AUTH_KEY) === AUTH_TOKEN) {
+    document.getElementById('login-screen').classList.add('hidden');
+    document.getElementById('app').classList.remove('locked');
+    return true;
+  }
+  return false;
+}
+
+function handleLogin(e) {
+  e.preventDefault();
+  const pwd = document.getElementById('login-password').value;
+  const err = document.getElementById('login-error');
+  if (pwd === SENHA) {
+    localStorage.setItem(AUTH_KEY, AUTH_TOKEN);
+    document.getElementById('login-screen').classList.add('hidden');
+    document.getElementById('app').classList.remove('locked');
+    render();
+  } else {
+    err.classList.remove('hidden');
+    document.getElementById('login-password').value = '';
+    document.getElementById('login-password').focus();
+  }
+}
+
+function toggleLoginPwd() {
+  const input = document.getElementById('login-password');
+  input.type = input.type === 'password' ? 'text' : 'password';
+}
+
+function logout() {
+  localStorage.removeItem(AUTH_KEY);
+  location.reload();
+}
+
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
 const SEGMENTS = [
@@ -709,7 +793,10 @@ function renderFooter() {
   <footer class="bg-white border-t border-slate-200 py-6 px-6">
     <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
       <p class="text-xs text-slate-500">Construído por <span class="font-semibold text-slate-700">Victória Jurquet</span> · Revenue Enablement</p>
-      <p class="text-xs text-slate-400">Blip 2.0 · Jornada 360° · ${new Date().getFullYear()}</p>
+      <div class="flex items-center gap-4">
+        <p class="text-xs text-slate-400">Blip 2.0 · Jornada 360° · ${new Date().getFullYear()}</p>
+        <button onclick="logout()" class="text-xs text-slate-300 hover:text-slate-500 transition-colors">Sair</button>
+      </div>
     </div>
   </footer>`;
 }
@@ -949,7 +1036,7 @@ function render() {
 
 // ─── INIT ────────────────────────────────────────────────────────────────────
 
-render();
+if (checkAuth()) render();
 </script>
 </body>
 </html>
