@@ -1,0 +1,13 @@
+# Node.js (scaffold não está em uso ainda)
+node_modules/
+.next/
+out/
+.env
+.env.local
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+*.swp

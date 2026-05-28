@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jornada 360° · Blip</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            blip: { 50:'#f0eeff',100:'#e2ddff',200:'#c8bfff',500:'#5B2DE5',600:'#4918d4',700:'#3c10b8',900:'#1E1B4B' }
+          },
+          fontFamily: { sans: ['Inter','system-ui','sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .scrollbar-thin { scrollbar-width: thin; scrollbar-color: #CBD5E1 transparent; }
+    .scrollbar-thin::-webkit-scrollbar { height:6px; }
+    .scrollbar-thin::-webkit-scrollbar-thumb { background:#CBD5E1; border-radius:3px; }
+    .drawer-slide { animation: slideIn 0.2s ease; }
+    @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+    .fade-in { animation: fadeIn 0.15s ease; }
+    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+  </style>
+</head>
+<body class="bg-slate-50 min-h-screen">
+
+<div id="app"></div>
+
+<script>
+// ─── DATA ────────────────────────────────────────────────────────────────────
+
+const SEGMENTS = [
+  {
+    id: 'smb', name: 'SMB', fullName: 'Small & Medium Business',
+    description: 'Atende contas Whales, Sharks e Mid Almost · Plataforma Blip 2.0',
+    icon: '🏢', audience: 'BDRs, Inside Sales, ISMs, CSMs, AMs',
+    notionUrl: 'https://www.notion.so/blip-ai/Jornada-SMB-360-36cdcfddcf4a816486a5d783f9f16da8',
+    color: { gradient:'from-blue-700 to-blue-500', badge:'bg-blue-100 text-blue-700', dot:'bg-blue-500', btn:'bg-blue-600 hover:bg-blue-700', border:'border-blue-300', light:'bg-blue-50', text:'text-blue-600' },
+    phases: [
+      {
+        id:'land', name:'Funil Land', icon:'📘',
+        description:'Aquisição de novos clientes · Do primeiro contato ao TOS assinado',
+        lead:'BDR + Inside Sales', stageCount:12, hubspotObject:'Contato → Negócio',
+        completeness:'complete',
+        color:{ bg:'bg-blue-500', text:'text-blue-600', border:'border-blue-200', badge:'bg-blue-100 text-blue-700', line:'bg-blue-200' },
+        stages:[
+          { id:'s1', name:'Start Contact', hubspotStage:'Start Contact', sentiment:'Inquietude', need:'Identificar que tem um problema', clientAction:'Inbound: levantada de mão · Outbound: sem ação do cliente', passTrigger:'—', responsible:'BDR', sellerRole:'Validar SLA (tamanho empresa, SLA BU e SLA dono da oportunidade). Validar requisitos do site. Validar contato: email, wpp e linkedin. Estudar informações públicas do contato.', hubspotObject:'Contato', hubspotFields:'—', methodologies:['Social Selling'] },
+          { id:'s2', name:'Tentativa', hubspotStage:'Tentativa', sentiment:'Inquietude', need:'Entender que a Blip é relevante e que o tempo dele vai ser bem investido', clientAction:'Inbound e Outbound: Responder tentativa de contato', passTrigger:'SLA válido', responsible:'BDR', sellerRole:'Estudar informações públicas do contato. Personalizar o contato. Conquistar a primeira resposta do lead.', hubspotObject:'Contato', hubspotFields:'Segmento (obrigatório) · Frente atendida · Site (obrigatório) · LinkedIn (obrigatório) · Modelo de negócio do cliente', methodologies:['Social Selling'] },
+          { id:'s3', name:'Conectado', hubspotStage:'Conectado', sentiment:'Interesse · Dor', need:'Reconhecer que precisa da Blip', clientAction:'Compartilhar a dor · Responder contato', passTrigger:'Prospect respondeu', responsible:'BDR', sellerRole:'Aplicar metodologias de vendas para extrair informações importantes. Utilizar Use Cases.', hubspotObject:'Contato', hubspotFields:'Frente prospectada (obrigatório) · Instagram · Facebook', methodologies:['Sandler','SPIN','GPCTBA/C&I'] },
+          { id:'s4', name:'Evaluation', hubspotStage:'Evaluation', sentiment:'Alívio · Curiosidade', need:'Ver a Blip como relevante', clientAction:'Reconhecer Blip como parceiro estratégico', passTrigger:'Dor compartilhada · SLA Opp validado', responsible:'BDR', sellerRole:'Diagnóstico completo do lead. Coletar as principais dores e necessidades.', hubspotObject:'Contato', hubspotFields:'Outros sistemas que a empresa usa · Ferramenta atual · Concorrente mapeado · Potencial total do cliente · Dor', methodologies:['Challenger Sale','Solution Selling','SPIN'] },
+          { id:'s5', name:'Qualificado / Opps', hubspotStage:'Qualificado / Opps', sentiment:'Clareza', need:'Ver o gap atual vs ideal', clientAction:'Identificar pontos essenciais · Validar', passTrigger:'Campos HubSpot OK · SLA Opp validado', responsible:'Inside Sales', sellerRole:'Estudar briefing do BDR. Pesquisar sobre prospect no LinkedIn. Preparar casos de sucesso. Preparar apresentação.', hubspotObject:'Contato → Negócio', hubspotFields:'Caso de uso (obrigatório) · Ferramenta atual (obrigatório) · Etapa de Jornada (obrigatório) · Data de fechamento (obrigatório) · Score de Qualificação (obrigatório)', manualActions:'Preenchimento manual de atividades — Briefing / Passagem de bastão BDR→IS', autoActions:'Criação do negócio automática · Roleta automática', methodologies:['Demo 2 Win','Value-Based Selling','SPIN'] },
+          { id:'s6', name:'Apresentação', hubspotStage:'Apresentação', sentiment:'Segurança', need:'Entender como funciona na prática', clientAction:'Validar funcionalidades e critérios de decisão', passTrigger:'Reunião de diagnóstico realizada · Fit com a Blip', responsible:'Inside Sales', sellerRole:'Educação sobre modelos de WhatsApp (material oficial!). Discovery para coletar dores. Apresentação dos Use Cases. Entender como o Blip pode ser usado em toda a jornada do cliente.', hubspotObject:'Negócio', hubspotFields:'Ferramenta conversacional atual (obrigatório) · Áreas atendidas no projeto (obrigatório) · Score de Qualificação (obrigatório)', methodologies:['MEDDPICC','Value-Based Selling'] },
+          { id:'s7', name:'Design de Projeto', hubspotStage:'Design de Projeto', sentiment:'Ambição', need:'ROI para vender internamente', clientAction:'Validar ROI · Confirmar investimento', passTrigger:'Apresentação do projeto construído feita', responsible:'Inside Sales', sellerRole:'Demonstrar a solução aplicada ao problema. Preparar esboço (Mockup/Miro). Validar aderência, stakeholders e critérios de decisão. Explorar parte técnica.', hubspotObject:'Negócio', hubspotFields:'Produtos Add-Ons · Objetivos da contratação (obrigatório) · Novas frentes para prospecção do BDR?', manualActions:'Acionar Parceiro (se necessário) · Acionar VD (se necessário) · Cadastro Item de Linha', methodologies:['MEDDPICC','Value-Based Selling'] },
+          { id:'s8', name:'Proposta Apresentada', hubspotStage:'Proposta Apresentada', sentiment:'Conforto', need:'Eliminar atritos financeiros', clientAction:'Validar investimento · Escolher Blip', passTrigger:'Proposta comercial apresentada', responsible:'Inside Sales', sellerRole:'Validação com cliente do desenho proposto. Apresentação da proposta comercial. Validar critérios de decisão e processo de compra. Alinhar condições comerciais.', hubspotObject:'Negócio', hubspotFields:'Data de fechamento · Critério de decisão (obrigatório) · Principais desafios (obrigatório) · Existe processo de compra', methodologies:['MEDDPICC','MAP'] },
+          { id:'s9', name:'Negociação', hubspotStage:'Negociação', sentiment:'Conforto', need:'Eliminar atritos · Negociar condições', clientAction:'Envolver stakeholders · Validar decisão', passTrigger:'Negociação iniciada', responsible:'Inside Sales', sellerRole:'Alinhar condições comerciais com prazo para assinatura. Validação de Governança e Compliance. Alinhar data para OK Formal.', hubspotObject:'Negócio', hubspotFields:'Data de fechamento (obrigatório) · Times envolvidos', methodologies:['Principled Negotiation (Harvard)','MEDDPICC','MAP'] },
+          { id:'s10', name:'OK Formal', hubspotStage:'OK Formal', sentiment:'Respaldo', need:'Segurança jurídica e SLA', clientAction:'Validar juridicamente · Alinhar data de assinatura', passTrigger:'Negociação aprovada', responsible:'Inside Sales', sellerRole:'Governança e Compliance · Alinhar data para OK Formal', hubspotObject:'Negócio', hubspotFields:'—', methodologies:['MEDDPICC'] },
+          { id:'s11', name:'Rev. Contrato', hubspotStage:'Rev. Contrato', sentiment:'Respaldo', need:'Segurança jurídica total', clientAction:'Validar juridicamente · Organizar próximos passos', passTrigger:'Dados da minuta enviados', responsible:'Inside Sales', sellerRole:'Solicitar dados jurídicos · Validar trâmites com SI · Assegurar celeridade', hubspotObject:'Negócio', hubspotFields:'Potencial de audiência desta empresa (obrigatório)', methodologies:['MEDDPICC'] },
+          { id:'s12', name:'Ganho', hubspotStage:'Ganho', sentiment:'Herói', need:'Clareza da jornada com a Blip', clientAction:'Organizar próximos passos · Passagem de bastão', passTrigger:'TOS assinado', responsible:'Inside Sales', sellerRole:'Revisar HubSpot · Manual de passagem de bastão · Ativar time de implementação', hubspotObject:'Negócio', hubspotFields:'Resultados esperados com a contratação (obrigatório)', methodologies:['MEDDPICC'] },
+        ]
+      },
+      {
+        id:'implementacao', name:'Implementação', icon:'⚙️',
+        description:'Do TOS assinado ao cliente no ar — onboarding consultivo',
+        lead:'ISM + Parceiro', stageCount:8, hubspotObject:'Ticket', completeness:'empty',
+        transitionNote:'Após o Ganho no Land, o time de implementação é ativado via passagem de bastão.',
+        color:{ bg:'bg-amber-500', text:'text-amber-600', border:'border-amber-200', badge:'bg-amber-100 text-amber-700', line:'bg-amber-200' }, stages:[]
+      },
+      {
+        id:'full-adoption', name:'Full Adoption', icon:'🌱',
+        description:'Da homologação à entrada no Funil Expand — adoção plena da plataforma',
+        lead:'CSM', stageCount:3, hubspotObject:'Ticket', completeness:'empty',
+        transitionNote:'Após o Ganho no Land, o vendedor acompanha o cliente por 6 meses. Somente após este período o cliente é transferido para o Account Manager (AM).',
+        color:{ bg:'bg-green-500', text:'text-green-600', border:'border-green-200', badge:'bg-green-100 text-green-700', line:'bg-green-200' }, stages:[]
+      },
+      {
+        id:'expand', name:'Funil Expand', icon:'📈',
+        description:'Expansão de clientes ativos — do mapeamento ao aditivo assinado',
+        lead:'Account Manager', stageCount:9, hubspotObject:'Negócio', completeness:'complete',
+        color:{ bg:'bg-purple-500', text:'text-purple-600', border:'border-purple-200', badge:'bg-purple-100 text-purple-700', line:'bg-purple-200' },
+        stages:[
+          { id:'e1', name:'Mapeamento', hubspotStage:'Mapeamento', sentiment:'—', need:'—', clientAction:'—', passTrigger:'Deal criado no pipeline SMB Expand', responsible:'AM', sellerRole:'Revisar tickets de suporte e histórico do cliente · Analisar inadimplência e parceria · Identificar oportunidades de expansão · Registrar análise no CRM', hubspotObject:'Negócio', hubspotFields:'Nome do negócio · Pipeline ([SMB] Expand) · Proprietário · [Expand] Origem do deal · Data de fechamento · Moeda · País · Contato · Empresa' },
+          { id:'e2', name:'Prospecção', hubspotStage:'Prospecção', sentiment:'Indiferença · Desconhecimento', need:'Reconhecer o valor de retomar contato com a Blip', clientAction:'Responder ao primeiro contato', passTrigger:'Primeira tentativa de contato realizada (CI ou e-mail)', responsible:'AM', sellerRole:'Enviar mensagem via CI ou e-mail · Usar múltiplos canais (LinkedIn, telefone) · Oferecer conteúdos de valor · Registrar todas as tentativas no CRM', hubspotObject:'Negócio', hubspotFields:'Categoria da negociação · [Expand] Origem do deal' },
+          { id:'e3', name:'Conexão', hubspotStage:'Conexão', sentiment:'Curiosidade · Abertura', need:'Entender o que a Blip pode oferecer de novo', clientAction:'Aceitar reunião de diagnóstico · Confirmar stakeholders', passTrigger:'Primeira resposta do cliente obtida', responsible:'AM', sellerRole:'Responder prontamente · Apresentar proposta de valor · Agendar reunião de qualificação · Confirmar participação dos stakeholders', hubspotObject:'Negócio' },
+          { id:'e4', name:'Qualificação', hubspotStage:'Qualificação', sentiment:'Confiança · Interesse', need:'Se sentir ouvido e entender que a Blip é uma parceira de negócio', clientAction:'Compartilhar dores · Validar necessidades e timing', passTrigger:'Reunião de qualificação agendada com todos os stakeholders', responsible:'AM', sellerRole:'Conduzir reunião de diagnóstico (DBA) · Gravar e transcrever com Gemini · Validar timing e urgência · Identificar todos os stakeholders · Registrar DBA no CRM', hubspotObject:'Negócio' },
+          { id:'e5', name:'Design da Solução', hubspotStage:'Design da Solução', sentiment:'Expectativa · Antecipação', need:'Ver uma solução personalizada para suas necessidades', clientAction:'Validar o design da solução · Alinhar escopo', passTrigger:'Mapeamento completo de dores e necessidades · DBA realizado', responsible:'AM', sellerRole:'Elaborar proposta de solução personalizada · Colaborar com times internos · Preparar materiais de apresentação', hubspotObject:'Negócio' },
+          { id:'e6', name:'Apresentação da Oferta', hubspotStage:'Apresentação da Oferta', sentiment:'Atenção · Avaliação', need:'Entender o valor total da oferta além do aspecto financeiro', clientAction:'Avaliar proposta · Fornecer feedback inicial', passTrigger:'Design de solução finalizado · Call de apresentação agendada', responsible:'AM', sellerRole:'Apresentar proposta destacando o valor além do financeiro · Endereçar objeções · Obter feedback inicial · Formalizar e enviar proposta', hubspotObject:'Negócio' },
+          { id:'e7', name:'Negociação de Proposta', hubspotStage:'Negociação de Proposta', sentiment:'Conforto · Tensão', need:'Condições justas para aprovação interna da expansão', clientAction:'Negociar condições · Aprovar proposta final', passTrigger:'Proposta de evolução apresentada e formalizada', responsible:'AM', sellerRole:'Conduzir negociações · Gerenciar objeções e alterações · Documentar acordos no CRM · Obter aprovação final verbal', hubspotObject:'Negócio' },
+          { id:'e8', name:'Revisão de Contrato', hubspotStage:'Revisão de Contrato', sentiment:'Respaldo · Segurança', need:'Segurança jurídica para o aditivo contratual', clientAction:'Revisar e assinar aditivo contratual', passTrigger:'Aprovação formal da proposta · Início dos trâmites no Netlex', responsible:'AM', sellerRole:'Iniciar trâmites no Netlex · Acompanhar revisão da minuta ou aditivo · Coordenar assinatura de todas as partes', hubspotObject:'Negócio' },
+          { id:'e9', name:'Ganho', hubspotStage:'Ganho', sentiment:'Orgulho · Crescimento', need:'Expansão ativada com sucesso · Novo ciclo de crescimento', clientAction:'Iniciar nova fase de uso ou implementação', passTrigger:'Assinatura de todas as partes obtida', responsible:'AM', sellerRole:'Confirmar assinaturas · Atualizar CRM para Ganho · Atualizar status do deal anterior (Upsell/Downgrade) · Comunicar ganho às equipes internas', hubspotObject:'Negócio', hubspotFields:'Data de ganho (automação) · Status do deal anterior (Upsell/Downgrade)' },
+        ]
+      }
+    ]
+  },
+  {
+    id: 'macc', name: 'MAcc', fullName: 'Mid-Market Accounts',
+    description: 'Atende contas Whales e Sharks · Plataforma Blip 2.0',
+    icon: '🏛️', audience: 'BDRs, Closers, CSMs, KAMs',
+    notionUrl: 'https://www.notion.so/blip-ai/Jornada-MAcc-360-36ddcfddcf4a810fa25af53d7a751d54',
+    color: { gradient:'from-purple-700 to-purple-500', badge:'bg-purple-100 text-purple-700', dot:'bg-purple-500', btn:'bg-purple-600 hover:bg-purple-700', border:'border-purple-300', light:'bg-purple-50', text:'text-purple-600' },
+    phases: [
+      {
+        id:'land', name:'Funil Land', icon:'📘',
+        description:'Aquisição de novos clientes · Do primeiro contato ao TOS assinado',
+        lead:'BDR + Closer', stageCount:12, hubspotObject:'Contato → Negócio', completeness:'complete',
+        color:{ bg:'bg-blue-500', text:'text-blue-600', border:'border-blue-200', badge:'bg-blue-100 text-blue-700', line:'bg-blue-200' },
+        stages:[
+          { id:'m1', name:'Start Contact', hubspotStage:'Start Contact', sentiment:'Inquietude', need:'Identificar que tem um problema', clientAction:'Inbound: levantada de mão · Outbound: sem ação do cliente', passTrigger:'—', responsible:'BDR', sellerRole:'Validar contato: email, wpp e linkedin. Estudar informações públicas do contato. Pesquisar sobre prospect no LinkedIn.', hubspotObject:'Contato', hubspotFields:'—', methodologies:['Social Selling'] },
+          { id:'m2', name:'Tentativa', hubspotStage:'Tentativa', sentiment:'Inquietude', need:'Entender que a Blip é relevante e que o tempo dele vai ser bem investido', clientAction:'Responder tentativa de contato', passTrigger:'—', responsible:'BDR', sellerRole:'Estudar informações públicas do contato. Personalizar o contato. Conquistar a primeira resposta do lead.', hubspotObject:'Contato', hubspotFields:'Segmento (obrigatório) · Frente atendida · Site (obrigatório) · LinkedIn (obrigatório) · Modelo de negócio do cliente', methodologies:['Social Selling'] },
+          { id:'m3', name:'Conectado', hubspotStage:'Conectado', sentiment:'Interesse · Dor', need:'Reconhecer que precisa da Blip', clientAction:'Compartilhar a dor · Responder contato', passTrigger:'Prospect respondeu', responsible:'BDR', sellerRole:'Aplicar metodologias de vendas para extrair informações importantes. Utilizar Use Cases.', hubspotObject:'Contato', hubspotFields:'Frente prospectada (obrigatório) · Instagram · Facebook', methodologies:['Sandler','SPIN','GPCTBA/C&I'] },
+          { id:'m4', name:'Evaluation', hubspotStage:'Evaluation', sentiment:'Alívio · Curiosidade', need:'Ver a Blip como relevante', clientAction:'Reconhecer Blip como parceiro estratégico', passTrigger:'Dor compartilhada · SLA Opp validado', responsible:'BDR', sellerRole:'Diagnóstico completo do lead. Coletar as principais dores e necessidades.', hubspotObject:'Contato', hubspotFields:'Outros sistemas que a empresa usa · Ferramenta atual · Concorrente mapeado · Potencial total do cliente · Dor', methodologies:['Challenger Sale','Solution Selling','SPIN'] },
+          { id:'m5', name:'Qualificado / Opps', hubspotStage:'Qualificado / Opps', sentiment:'Clareza', need:'Ver o gap atual vs ideal', clientAction:'Identificar pontos essenciais · Validar', passTrigger:'Campos HubSpot OK · SLA Opp validado', responsible:'Closer', sellerRole:'Estudar briefing do BDR. Pesquisar sobre prospect no LinkedIn. Preparar casos de sucesso. Preparar apresentação.', hubspotObject:'Contato → Negócio', hubspotFields:'Caso de uso (obrigatório) · Ferramenta atual (obrigatório) · Etapa de Jornada (obrigatório) · Data de fechamento (obrigatório) · Score de Qualificação (obrigatório)', manualActions:'Preenchimento Manual de atividades — Briefing / Passagem de bastão Qualificação→Aquisição', autoActions:'Criação do negócio automática · Roleta automática', methodologies:['Demo 2 Win','Value-Based Selling','SPIN'] },
+          { id:'m6', name:'Apresentação', hubspotStage:'Apresentação', sentiment:'Segurança', need:'Entender como funciona na prática', clientAction:'Validar funcionalidades e critérios de decisão', passTrigger:'Reunião de diagnóstico realizada · Fit com a Blip', responsible:'Closer', sellerRole:'Educação sobre modelos de WhatsApp (material oficial!). Discovery. Apresentação dos Use Cases. Entender como o Blip pode ser usado em toda a jornada do cliente.', hubspotObject:'Negócio', methodologies:['MEDDPICC','Value-Based Selling'] },
+          { id:'m7', name:'Design de Projeto', hubspotStage:'Design de Projeto', sentiment:'Ambição', need:'ROI para vender internamente', clientAction:'Validar ROI · Confirmar investimento', passTrigger:'Apresentação do projeto construído feita', responsible:'Closer', sellerRole:'Demonstrar a solução aplicada ao problema. Preparar esboço (Mockup/Miro). Validar aderência, stakeholders e critérios de decisão.', hubspotObject:'Negócio', hubspotFields:'Produtos Add-Ons · Objetivos da contratação (obrigatório) · Novas frentes para prospecção do BDR?', manualActions:'Acionar Parceiro (se necessário) · Acionar VD (se necessário) · Cadastro Item de Linha', methodologies:['MEDDPICC','Value-Based Selling'] },
+          { id:'m8', name:'Proposta Apresentada', hubspotStage:'Proposta Apresentada', sentiment:'Conforto', need:'Eliminar atritos financeiros', clientAction:'Validar investimento · Escolher Blip', passTrigger:'Proposta comercial apresentada', responsible:'Closer', sellerRole:'Validação com cliente do desenho proposto. Apresentação da proposta comercial. Validar critérios de decisão e processo de compra. Alinhar condições comerciais.', hubspotObject:'Negócio', methodologies:['MAP','MEDDPICC'] },
+          { id:'m9', name:'Negociação', hubspotStage:'Negociação', sentiment:'Conforto', need:'Eliminar atritos · Negociar condições', clientAction:'Envolver stakeholders · Validar decisão', passTrigger:'Negociação iniciada', responsible:'Closer', sellerRole:'Alinhar condições comerciais com prazo para assinatura. Validação de Governança e Compliance. Alinhar data para OK Formal.', hubspotObject:'Negócio', hubspotFields:'Data de fechamento (obrigatório) · Times envolvidos', methodologies:['Principled Negotiation (Harvard)','MEDDPICC','MAP'] },
+          { id:'m10', name:'OK Formal', hubspotStage:'OK Formal', sentiment:'Respaldo', need:'Segurança jurídica e SLA', clientAction:'Validar juridicamente · Alinhar data de assinatura', passTrigger:'Negociação aprovada', responsible:'Closer', sellerRole:'Governança e Compliance · Alinhar data para OK Formal', hubspotObject:'Negócio', methodologies:['MEDDPICC'] },
+          { id:'m11', name:'Rev. Contrato', hubspotStage:'Rev. Contrato', sentiment:'Respaldo', need:'Segurança jurídica total', clientAction:'Validar juridicamente · Organizar próximos passos', passTrigger:'Dados da minuta enviados', responsible:'Closer', sellerRole:'Solicitar dados jurídicos · Validar trâmites com SI · Assegurar celeridade', hubspotObject:'Negócio', hubspotFields:'Potencial de audiência desta empresa (obrigatório)', methodologies:['MEDDPICC'] },
+          { id:'m12', name:'Ganho', hubspotStage:'Ganho', sentiment:'Herói', need:'Clareza da jornada com a Blip', clientAction:'Organizar próximos passos · Passagem de bastão', passTrigger:'TOS assinado', responsible:'Closer', sellerRole:'Revisar HubSpot · Manual de passagem de bastão · Ativar time de implementação', hubspotObject:'Negócio', hubspotFields:'Resultados esperados com a contratação (obrigatório)', methodologies:['MEDDPICC'] },
+        ]
+      },
+      { id:'implementacao', name:'Implementação', icon:'⚙️', description:'Do TOS assinado ao cliente no ar — onboarding consultivo', lead:'Time de Implementação', stageCount:0, hubspotObject:'Ticket', completeness:'empty', transitionNote:'Após o Ganho no Land, o time de implementação é ativado via passagem de bastão.', color:{ bg:'bg-amber-500', text:'text-amber-600', border:'border-amber-200', badge:'bg-amber-100 text-amber-700', line:'bg-amber-200' }, stages:[] },
+      { id:'full-adoption', name:'Full Adoption', icon:'🌱', description:'Da homologação à entrada no Funil Expand', lead:'CSM', stageCount:0, hubspotObject:'Ticket', completeness:'empty', transitionNote:'Após o Ganho no Land, o vendedor acompanha o cliente por 6 meses antes da transferência ao KAM.', color:{ bg:'bg-green-500', text:'text-green-600', border:'border-green-200', badge:'bg-green-100 text-green-700', line:'bg-green-200' }, stages:[] },
+      {
+        id:'expand', name:'Funil Expand', icon:'📈',
+        description:'Expansão de clientes ativos — do mapeamento ao aditivo assinado',
+        lead:'Key Account Manager', stageCount:6, hubspotObject:'Negócio', completeness:'partial',
+        color:{ bg:'bg-purple-500', text:'text-purple-600', border:'border-purple-200', badge:'bg-purple-100 text-purple-700', line:'bg-purple-200' },
+        stages:[
+          { id:'me1', name:'Prospecção', hubspotStage:'Prospecção', sentiment:'Curiosidade · Abertura', need:'Entender o que a Blip pode oferecer de novo · Reconhecer o valor de retomar contato', clientAction:'Responder ao primeiro contato · Aceitar reunião · Confirmar stakeholders', passTrigger:'Reunião agendada', responsible:'KAM', sellerRole:'1) Mapear business do cliente 2) Mapear estrutura do cliente 3) Fazer link com cases internos 4) Preparar material de apresentação 5) Agendar reunião', hubspotObject:'Negócio', hubspotFields:'Nome do negócio · Pipeline · [Expand] Origem do deal · Tipo de Contrato · Data de fechamento' },
+          { id:'me2', name:'Opps', hubspotStage:'Opps', sentiment:'Confiança · Interesse', need:'Se sentir ouvido e entender que a Blip é uma parceira de negócio', clientAction:'Compartilhar dores · Validar necessidades e timing', passTrigger:'Reunião Realizada e Próximos passos bem definidos', responsible:'KAM', sellerRole:'1) Apresentar a Blip (overview) 2) Apresentar eventuais outras frentes 3) Mapear a(s) dor(es) do stakeholder 4) Definir quick win 5) Mapear potencial de retorno 6) Definir próximos passos', hubspotObject:'Negócio' },
+          { id:'me3', name:'Apresentação', hubspotStage:'Apresentação', sentiment:'Expectativa · Antecipação', need:'Ver uma solução personalizada', clientAction:'Validar o design da solução · Alinhar escopo', passTrigger:'Apresentação formal da solução enviada por e-mail', responsible:'KAM', sellerRole:'Articular com áreas necessárias para esboço da solução atrelada à dor mapeada', hubspotObject:'Negócio' },
+          { id:'me4', name:'Negociação', hubspotStage:'Negociação', sentiment:'Atenção · Avaliação', need:'Entender o valor total da oferta além do aspecto financeiro', clientAction:'Avaliar proposta · Fornecer feedback · Negociar condições · Aprovar', passTrigger:'Aceite na proposta de solução', responsible:'KAM', sellerRole:'Acompanhamento da oportunidade. Follow-up da proposta enviada.', hubspotObject:'Negócio' },
+          { id:'me5', name:'Formalização', hubspotStage:'Formalização', sentiment:'Conforto · Tensão · Respaldo · Segurança', need:'Condições justas para aprovação interna · Segurança jurídica para o aditivo', clientAction:'Revisar e assinar aditivo contratual', passTrigger:'Formalização Realizada', responsible:'KAM', sellerRole:'1) Articular com o cliente para que a formalização seja feita (via e-mail) 2) Iniciar trâmites burocráticos (aditivo contratual, articulação com áreas internas)', hubspotObject:'Negócio' },
+          { id:'me6', name:'Ganho', hubspotStage:'Ganho', sentiment:'Orgulho · Crescimento', need:'Novo ciclo de crescimento', clientAction:'Iniciar nova fase de uso ou implementação', passTrigger:'—', responsible:'KAM', sellerRole:'Acompanhar o andamento da nova frente/oportunidade desdobrada e envolver CSM', hubspotObject:'Negócio' },
+        ]
+      }
+    ]
+  },
+  {
+    id: 'stacc', name: 'StAcc', fullName: 'Strategic Accounts',
+    description: 'Atende exclusivamente contas Whales · Plataforma Blip 2.0',
+    icon: '🌟', audience: 'BDRs, AEs, CSMs, KAEs',
+    notionUrl: 'https://www.notion.so/blip-ai/Jornada-StAcc-360-36ddcfddcf4a8109ae91c7d736b0401c',
+    color: { gradient:'from-teal-700 to-teal-500', badge:'bg-teal-100 text-teal-700', dot:'bg-teal-500', btn:'bg-teal-600 hover:bg-teal-700', border:'border-teal-300', light:'bg-teal-50', text:'text-teal-600' },
+    phases: [
+      {
+        id:'land', name:'Funil Land', icon:'📘',
+        description:'Aquisição de novos clientes estratégicos · Do primeiro contato ao TOS assinado',
+        lead:'BDR + AEs', stageCount:12, hubspotObject:'Contato → Negócio', completeness:'complete',
+        color:{ bg:'bg-blue-500', text:'text-blue-600', border:'border-blue-200', badge:'bg-blue-100 text-blue-700', line:'bg-blue-200' },
+        stages:[
+          { id:'t1', name:'Start Contact', hubspotStage:'Start Contact', sentiment:'Inquietude', need:'Identificar que tem um problema', clientAction:'Inbound: levantada de mão · Outbound: sem ação do cliente', passTrigger:'Empresa mapeada no território de StAcc', responsible:'BDR', sellerRole:'Validar requisitos do site. Validar contato: email, wpp e linkedin. Estudar informações públicas. Pesquisar sobre prospect no LinkedIn.', hubspotObject:'Contato', hubspotFields:'—', methodologies:['Social Selling'] },
+          { id:'t2', name:'Tentativa', hubspotStage:'Tentativa', sentiment:'Inquietude', need:'Entender que a Blip é relevante e que o tempo dele vai ser bem investido', clientAction:'Responder tentativa de contato', passTrigger:'Prospect respondeu', responsible:'BDR', sellerRole:'Estudar informações públicas. Personalizar o contato. Conquistar a primeira resposta do lead.', hubspotObject:'Contato', hubspotFields:'Segmento (obrigatório) · Frente atendida · Site (obrigatório) · LinkedIn (obrigatório) · Modelo de negócio do cliente', methodologies:['Social Selling'] },
+          { id:'t3', name:'Conectado', hubspotStage:'Conectado', sentiment:'Interesse · Dor', need:'Reconhecer que precisa da Blip', clientAction:'Compartilhar a dor · Responder contato', passTrigger:'Dor compartilhada · SLA Opp validado', responsible:'BDR', sellerRole:'Aplicar metodologias de vendas. Utilizar Use Cases.', hubspotObject:'Contato', hubspotFields:'Frente prospectada (obrigatório) · Instagram · Facebook', methodologies:['Sandler','SPIN','GPCTBA/C&I'] },
+          { id:'t4', name:'Evaluation', hubspotStage:'Evaluation', sentiment:'Alívio · Curiosidade', need:'Ver a Blip como relevante', clientAction:'Reconhecer Blip como parceiro estratégico', passTrigger:'Campos HubSpot OK · SLA Opp validado', responsible:'BDR', sellerRole:'Diagnóstico completo do lead. Coletar as principais dores e necessidades.', hubspotObject:'Contato', hubspotFields:'Outros sistemas que a empresa usa · Ferramenta atual · Concorrente mapeado · Potencial total do cliente · Dor', methodologies:['Challenger Sale','Solution Selling','SPIN'] },
+          { id:'t5', name:'Qualificado / Opps', hubspotStage:'Qualificado / Opps', sentiment:'Clareza', need:'Ver o gap atual vs ideal', clientAction:'Identificar pontos essenciais · Validar', passTrigger:'Reunião de diagnóstico realizada · Fit com a Blip', responsible:'AE', sellerRole:'Estudar briefing do BDR. Pesquisar sobre prospect no LinkedIn. Preparar casos de sucesso. Preparar apresentação.', hubspotObject:'Contato → Negócio', manualActions:'Preenchimento Manual de atividades — Briefing / Passagem de bastão Qualificação→Aquisição', autoActions:'Criação do negócio feita de forma automática', methodologies:['Demo 2 Win','Value-Based Selling','SPIN'] },
+          { id:'t6', name:'Apresentação', hubspotStage:'Apresentação', sentiment:'Segurança', need:'Entender como funciona na prática', clientAction:'Validar funcionalidades e critérios de decisão', passTrigger:'Apresentação do projeto construído feita', responsible:'AE', sellerRole:'Educação sobre modelos de WhatsApp (material oficial!). Discovery. Apresentação dos Use Cases. Entender como o Blip pode ser usado em toda a jornada do cliente.', hubspotObject:'Negócio', methodologies:['MEDDPICC','Value-Based Selling'] },
+          { id:'t7', name:'Design de Projeto', hubspotStage:'Design de Projeto', sentiment:'Ambição', need:'ROI para vender internamente', clientAction:'Validar ROI · Confirmar investimento', passTrigger:'Proposta comercial apresentada', responsible:'AE', sellerRole:'Demonstrar a solução aplicada ao problema. Preparar esboço (Mockup/Miro). Validar aderência, stakeholders e critérios de decisão.', hubspotObject:'Negócio', hubspotFields:'Produtos Add-Ons · Objetivos da contratação (obrigatório)', methodologies:['MEDDPICC','Value-Based Selling'] },
+          { id:'t8', name:'Proposta Apresentada', hubspotStage:'Proposta Apresentada', sentiment:'Conforto', need:'Eliminar atritos financeiros', clientAction:'Validar investimento · Escolher Blip', passTrigger:'Negociação iniciada', responsible:'AE', sellerRole:'Validação com cliente do desenho proposto. Apresentação da proposta comercial. Validar critérios de decisão e processo de compra.', hubspotObject:'Negócio', methodologies:['MAP','MEDDPICC'] },
+          { id:'t9', name:'Negociação', hubspotStage:'Negociação', sentiment:'Conforto', need:'Eliminar atritos · Negociar condições', clientAction:'Envolver stakeholders · Validar decisão', passTrigger:'Negociação aprovada', responsible:'AE', sellerRole:'Alinhar condições comerciais. Validação de Governança e Compliance. Alinhar data para OK Formal.', hubspotObject:'Negócio', hubspotFields:'Data de fechamento (obrigatório) · Times envolvidos', methodologies:['Principled Negotiation (Harvard)','MEDDPICC','MAP'] },
+          { id:'t10', name:'OK Formal', hubspotStage:'OK Formal', sentiment:'Respaldo', need:'Segurança jurídica e SLA', clientAction:'Validar juridicamente · Alinhar data de assinatura', passTrigger:'Dados da minuta enviados', responsible:'AE', sellerRole:'Governança e Compliance · Alinhar data para OK Formal', hubspotObject:'Negócio', methodologies:['MEDDPICC'] },
+          { id:'t11', name:'Rev. Contrato', hubspotStage:'Rev. Contrato', sentiment:'Respaldo', need:'Segurança jurídica total', clientAction:'Validar juridicamente · Organizar próximos passos', passTrigger:'TOS assinado', responsible:'AE', sellerRole:'Solicitar dados jurídicos · Validar trâmites com SI · Assegurar celeridade', hubspotObject:'Negócio', hubspotFields:'Potencial de audiência desta empresa (obrigatório)', manualActions:'Manual "Novos Clientes [SAP]" · E-mail formalização do projeto · Manual de atividades para ativação', methodologies:['MEDDPICC'] },
+          { id:'t12', name:'Ganho', hubspotStage:'Ganho', sentiment:'Herói', need:'Clareza da jornada com a Blip', clientAction:'Organizar próximos passos · Passagem de bastão', passTrigger:'—', responsible:'AE', sellerRole:'Revisar HubSpot · Manual de passagem de bastão · Ativar time de implementação', hubspotObject:'Negócio', hubspotFields:'Resultados esperados com a contratação (obrigatório)', methodologies:['MEDDPICC'] },
+        ]
+      },
+      { id:'implementacao', name:'Implementação', icon:'⚙️', description:'Do TOS assinado ao cliente no ar — onboarding consultivo', lead:'Time de Implementação', stageCount:0, hubspotObject:'Ticket', completeness:'empty', transitionNote:'Após o Ganho no Land, o time de implementação é ativado via passagem de bastão.', color:{ bg:'bg-amber-500', text:'text-amber-600', border:'border-amber-200', badge:'bg-amber-100 text-amber-700', line:'bg-amber-200' }, stages:[] },
+      { id:'full-adoption', name:'Full Adoption', icon:'🌱', description:'Da homologação à entrada no Funil Expand', lead:'CSM', stageCount:3, hubspotObject:'Ticket', completeness:'empty', transitionNote:'Após o Ganho no Land, o vendedor acompanha o cliente por 6 meses antes da transferência ao Account Manager.', color:{ bg:'bg-green-500', text:'text-green-600', border:'border-green-200', badge:'bg-green-100 text-green-700', line:'bg-green-200' }, stages:[] },
+      { id:'expand', name:'Funil Expand', icon:'📈', description:'Expansão de clientes ativos — do mapeamento ao aditivo assinado', lead:'Account Manager', stageCount:9, hubspotObject:'Negócio', completeness:'empty', color:{ bg:'bg-purple-500', text:'text-purple-600', border:'border-purple-200', badge:'bg-purple-100 text-purple-700', line:'bg-purple-200' }, stages:[] }
+    ]
+  }
+];
+
+// ─── HUBSPOT DATA ────────────────────────────────────────────────────────────
+
+const HUBSPOT_PIPELINES = [
+  {
+    id: 'land',
+    name: 'Pipeline Land',
+    icon: '📘',
+    description: 'Do primeiro contato ao TOS assinado · Referência: todas as BUs',
+    stageCount: 12,
+    stages: [
+      { name:'Start Contact',         object:'Contato',           fields:'—',                                                                                                                               manualActions:'',  autoActions:'' },
+      { name:'Tentativa',             object:'Contato',           fields:'Segmento (obrigatório) · Frente atendida · Site (obrigatório) · LinkedIn (obrigatório) · Modelo de negócio do cliente',           manualActions:'Pesquisa web · Cadência', autoActions:'' },
+      { name:'Conectado',             object:'Contato',           fields:'Frente prospectada (obrigatório) · Instagram · Facebook',                                                                         manualActions:'',  autoActions:'' },
+      { name:'Evaluation',            object:'Contato',           fields:'Outros sistemas que a empresa usa · Qual ferramenta utiliza atualmente? · Concorrente mapeado · Potencial total do cliente · Potencial frente prospectada · Dor', manualActions:'', autoActions:'' },
+      { name:'Qualificado / Opps',    object:'Contato → Negócio', fields:'Caso de uso (obrigatório) · Ferramenta atual (obrigatório) · Etapa de Jornada - Caso de uso (obrigatório) · Data de fechamento (obrigatório) · Canal de Qualificação da OP (obrigatório) · Score de Qualificação (obrigatório) · Temperatura do deal', manualActions:'Preenchimento manual — Briefing / Passagem de bastão Qualificação→Aquisição', autoActions:'Criação do negócio automática · Roleta automática' },
+      { name:'Apresentação',          object:'Negócio',           fields:'Ferramenta conversacional atual (obrigatório) · Quais áreas serão atendidas no projeto com a Blip? (obrigatório) · Etapa de Jornada - Caso de uso (obrigatório) · Data de fechamento (obrigatório) · Score de Qualificação (obrigatório) · Temperatura do deal', manualActions:'Roleta para aquisição', autoActions:'' },
+      { name:'Design de Projeto',     object:'Negócio',           fields:'Produtos Add-Ons · Objetivos da contratação (obrigatório) · Novas frentes para prospecção do SDR/BDR?',                           manualActions:'Acionar Parceiro (se necessário) · Acionar VD (se necessário) · Cadastro Item de Linha', autoActions:'' },
+      { name:'Proposta Apresentada',  object:'Negócio',           fields:'Data de fechamento · Critério de decisão da contratação (obrigatório) · Principais desafios que deseja resolver com o Blip (obrigatório) · Existe processo de compra', manualActions:'Personalizar Item de linha (se necessário)', autoActions:'' },
+      { name:'Negociação',            object:'Negócio',           fields:'Data de fechamento (obrigatório) · Times envolvidos',                                                                              manualActions:'Manual "Novos Clientes [SAP]" · E-mail formalização do projeto · Manual de atividades para ativação', autoActions:'' },
+      { name:'OK Formal',             object:'Negócio',           fields:'—',                                                                                                                               manualActions:'',  autoActions:'' },
+      { name:'Rev. Contrato',         object:'Negócio',           fields:'Potencial de audiência desta empresa (obrigatório)',                                                                               manualActions:'',  autoActions:'' },
+      { name:'Ganho',                 object:'Negócio',           fields:'Resultados esperados com a contratação (obrigatório)',                                                                             manualActions:'',  autoActions:'' },
+    ]
+  },
+  {
+    id: 'expand',
+    name: 'Pipeline Expand',
+    icon: '📈',
+    description: 'Do mapeamento interno ao aditivo assinado · Referência: SMB',
+    stageCount: 9,
+    stages: [
+      { name:'Mapeamento',              object:'Negócio', fields:'Nome do negócio · Pipeline ([SMB] Expand) · Proprietário do negócio · [Expand] Origem do deal · Data de fechamento (automação) · Moeda · País · Contato · Empresa', manualActions:'', autoActions:'' },
+      { name:'Prospecção',              object:'Negócio', fields:'Categoria da negociação · [Expand] Origem do deal',   manualActions:'', autoActions:'' },
+      { name:'Conexão',                 object:'Negócio', fields:'Proprietário do negócio · [Expand] Origem do deal',   manualActions:'', autoActions:'' },
+      { name:'Qualificação',            object:'Negócio', fields:'—',                                                   manualActions:'', autoActions:'' },
+      { name:'Design da Solução',       object:'Negócio', fields:'—',                                                   manualActions:'', autoActions:'' },
+      { name:'Apresentação da Oferta',  object:'Negócio', fields:'—',                                                   manualActions:'', autoActions:'' },
+      { name:'Negociação de Proposta',  object:'Negócio', fields:'—',                                                   manualActions:'', autoActions:'' },
+      { name:'Revisão de Contrato',     object:'Negócio', fields:'—',                                                   manualActions:'', autoActions:'' },
+      { name:'Ganho',                   object:'Negócio', fields:'Data de ganho (automação) · Status do deal anterior (Upsell/Downgrade)', manualActions:'', autoActions:'' },
+    ]
+  }
+];
+
+// ─── SEARCH ──────────────────────────────────────────────────────────────────
+
+function searchAll(query) {
+  const q = query.toLowerCase();
+  const results = [];
+  for (const seg of SEGMENTS) {
+    for (const phase of seg.phases) {
+      for (const stage of phase.stages) {
+        const fields = [stage.name, stage.sentiment, stage.need, stage.clientAction, stage.passTrigger, stage.responsible, stage.sellerRole, stage.hubspotStage, stage.hubspotFields, stage.manualActions, stage.autoActions, ...(stage.methodologies||[])];
+        const match = fields.find(f => f && f.toLowerCase().includes(q));
+        if (match) results.push({ seg, phase, stage, match });
+      }
+      if (phase.name.toLowerCase().includes(q) || phase.description.toLowerCase().includes(q) || phase.lead.toLowerCase().includes(q)) {
+        if (!results.find(r => r.seg.id === seg.id && r.phase.id === phase.id)) {
+          results.push({ seg, phase, stage: null, match: phase.description });
+        }
+      }
+    }
+  }
+  return results.slice(0, 12);
+}
+
+// ─── STATE ───────────────────────────────────────────────────────────────────
+
+let state = {
+  page: 'home',         // 'home' | 'segment'
+  segmentId: null,
+  activeStage: null,
+  showModal: false,
+  modalSegment: '',
+  modalPhase: '',
+  searchQuery: '',
+  searchOpen: false,
+};
+
+function setState(updates) {
+  state = { ...state, ...updates };
+  render();
+}
+
+// ─── COMPONENTS ──────────────────────────────────────────────────────────────
+
+function completenessChip(c) {
+  if (c === 'complete') return '<span class="text-xs px-2 py-0.5 rounded-full font-medium bg-green-100 text-green-700">✓ Completo</span>';
+  if (c === 'partial')  return '<span class="text-xs px-2 py-0.5 rounded-full font-medium bg-amber-100 text-amber-700">~ Parcial</span>';
+  return '<span class="text-xs px-2 py-0.5 rounded-full font-medium bg-slate-100 text-slate-500">· Em breve</span>';
+}
+
+function renderHome() {
+  const results = state.searchQuery.length >= 2 ? searchAll(state.searchQuery) : [];
+  const showResults = state.searchQuery.length >= 2;
+
+  return `
+  <div class="min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-40">
+      <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 bg-blip-500 rounded-lg flex items-center justify-center">
+            <span class="text-white text-sm font-bold">B</span>
+          </div>
+          <span class="font-semibold text-slate-800">Jornada 360°</span>
+        </div>
+        <button onclick="setState({showModal:true})" class="flex items-center gap-2 bg-blip-500 hover:bg-blip-600 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors">
+          <span>⚡</span> Acionar
+        </button>
+      </div>
+    </header>
+
+    <main class="flex-1">
+      <!-- Hero -->
+      <section class="bg-gradient-to-br from-blip-900 via-blip-700 to-blip-500 text-white py-16 px-6">
+        <div class="max-w-3xl mx-auto text-center">
+          <div class="inline-flex items-center gap-2 bg-white/10 rounded-full px-4 py-1.5 text-sm mb-6">
+            <span>🗺️</span><span>Guia completo da jornada do cliente Blip 2.0</span>
+          </div>
+          <h1 class="text-4xl font-bold mb-4 leading-tight">Jornada do Cliente 360°</h1>
+          <p class="text-white/80 text-lg mb-8 max-w-xl mx-auto">
+            Da prospecção ao upsell — processos, gatilhos, metodologias e ferramentas para cada etapa, por unidade de negócio.
+          </p>
+          <!-- Search -->
+          <div class="relative max-w-xl mx-auto">
+            <div class="flex items-center bg-white rounded-xl shadow-lg overflow-hidden">
+              <span class="pl-4 text-slate-400">🔍</span>
+              <input id="search-input" type="text" value="${escHtml(state.searchQuery)}"
+                placeholder="Buscar por etapa, metodologia, papel, campo HubSpot..."
+                oninput="setState({searchQuery:this.value})"
+                class="flex-1 px-4 py-3.5 text-slate-800 text-sm focus:outline-none placeholder:text-slate-400" />
+              ${state.searchQuery ? `<button onclick="setState({searchQuery:''})" class="pr-4 text-slate-400 hover:text-slate-600 text-lg">&times;</button>` : ''}
+            </div>
+            ${showResults ? renderSearchDropdown(results) : ''}
+          </div>
+        </div>
+      </section>
+
+      <!-- Segment cards -->
+      <section class="max-w-6xl mx-auto px-6 py-12">
+        <h2 class="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-6">Escolha a unidade de negócio</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          ${SEGMENTS.map(seg => renderSegmentCard(seg)).join('')}
+        </div>
+      </section>
+
+      <!-- HubSpot + SAP cards -->
+      <section class="max-w-6xl mx-auto px-6 pb-12">
+        <h2 class="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-6">Ferramentas &amp; Processos</h2>
+        <div class="flex flex-col gap-4">
+          <!-- HubSpot card -->
+          <button onclick="navigateTo('hubspot')" class="group w-full bg-white rounded-2xl border-2 border-orange-200 hover:border-orange-400 hover:shadow-md transition-all duration-200 overflow-hidden text-left">
+            <div class="bg-gradient-to-r from-orange-600 to-orange-400 p-6 text-white flex items-center justify-between">
+              <div class="flex items-center gap-4">
+                <span class="text-4xl">🟠</span>
+                <div>
+                  <h3 class="text-2xl font-bold">HubSpot CRM</h3>
+                  <p class="text-white/80 text-sm mt-0.5">Pipelines e campos obrigatórios — referência para todas as BUs</p>
+                </div>
+              </div>
+              <span class="bg-white/20 rounded-lg px-3 py-1.5 text-sm font-medium group-hover:bg-white/30 transition-colors">Ver pipelines →</span>
+            </div>
+            <div class="p-5 flex gap-8">
+              ${HUBSPOT_PIPELINES.map(p => `
+              <div class="flex items-center gap-3">
+                <span class="text-xl">${p.icon}</span>
+                <div>
+                  <p class="text-sm font-semibold text-slate-700">${p.name}</p>
+                  <p class="text-xs text-slate-500">${p.stageCount} etapas · Objeto: Negócio</p>
+                </div>
+              </div>`).join('<div class="w-px bg-slate-200 self-stretch"></div>')}
+              <div class="ml-auto self-center text-xs text-slate-400">Válido para SMB · MAcc · StAcc</div>
+            </div>
+          </button>
+
+          <!-- SAP card -->
+          <button onclick="window.open('sap.html','_blank')" class="group w-full bg-white rounded-2xl border-2 border-blue-200 hover:border-blue-400 hover:shadow-md transition-all duration-200 overflow-hidden text-left">
+            <div class="bg-gradient-to-r from-[#0C2F5A] to-[#1968F0] p-6 text-white flex items-center justify-between">
+              <div class="flex items-center gap-4">
+                <span class="text-4xl">📋</span>
+                <div>
+                  <h3 class="text-2xl font-bold">Processos SAP</h3>
+                  <p class="text-white/80 text-sm mt-0.5">Integração SAP × HubSpot — passo a passo para todas as BUs</p>
+                </div>
+              </div>
+              <span class="bg-white/20 rounded-lg px-3 py-1.5 text-sm font-medium group-hover:bg-white/30 transition-colors">Ver processos ↗</span>
+            </div>
+            <div class="p-5 flex flex-wrap gap-6 items-center">
+              <div class="flex items-center gap-3">
+                <span class="text-xl">🏁</span>
+                <div>
+                  <p class="text-sm font-semibold text-slate-700">Land — Novos Clientes</p>
+                  <p class="text-xs text-slate-500">Item de linha · Criação no SAP</p>
+                </div>
+              </div>
+              <div class="w-px bg-slate-200 self-stretch"></div>
+              <div class="flex items-center gap-3">
+                <span class="text-xl">🚀</span>
+                <div>
+                  <p class="text-sm font-semibold text-slate-700">Expand — Clientes Ativos</p>
+                  <p class="text-xs text-slate-500">Aditivos · Upsell · Renovação</p>
+                </div>
+              </div>
+              <div class="w-px bg-slate-200 self-stretch"></div>
+              <div class="flex items-center gap-3">
+                <span class="text-xl">🛑</span>
+                <div>
+                  <p class="text-sm font-semibold text-slate-700">Cancelamento</p>
+                  <p class="text-xs text-slate-500">Churn · Baixa no SAP</p>
+                </div>
+              </div>
+              <div class="ml-auto self-center text-xs text-slate-400">Válido para SMB · MAcc · StAcc</div>
+            </div>
+          </button>
+        </div>
+      </section>
+
+      <!-- How to use -->
+      <section class="max-w-6xl mx-auto px-6 pb-12">
+        <div class="bg-white rounded-2xl border border-slate-200 p-6">
+          <h3 class="text-sm font-semibold text-slate-700 mb-4">🧭 Como usar este portal</h3>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            ${[
+              {i:'🔍',t:'Busca global',d:'Encontre qualquer etapa, metodologia, campo HubSpot ou papel do vendedor em segundos'},
+              {i:'📍',t:'Jornada visual',d:'Explore as 4 fases de cada BU com todas as dimensões: CRM, ações e customer centric'},
+              {i:'💡',t:'Dicas por etapa',d:'Cada etapa tem informações de sentimento do cliente, necessidade e gatilho de passagem'},
+              {i:'⚡',t:'Acionar',d:'Contribua com conteúdo ou peça ajuda ao time de Revenue Enablement via Slack'},
+            ].map(x=>`<div class="flex gap-3"><span class="text-2xl flex-shrink-0">${x.i}</span><div><p class="text-sm font-medium text-slate-800">${x.t}</p><p class="text-xs text-slate-500 mt-0.5">${x.d}</p></div></div>`).join('')}
+          </div>
+        </div>
+      </section>
+    </main>
+
+    ${renderFooter()}
+    ${state.showModal ? renderModal() : ''}
+  </div>`;
+}
+
+function renderSearchDropdown(results) {
+  if (results.length === 0) return `<div class="absolute top-full left-0 right-0 mt-2 bg-white rounded-xl shadow-xl border border-slate-100 z-50 fade-in"><div class="px-4 py-6 text-center text-slate-500 text-sm">Nenhum resultado</div></div>`;
+  return `
+  <div class="absolute top-full left-0 right-0 mt-2 bg-white rounded-xl shadow-xl border border-slate-100 overflow-hidden text-left z-50 max-h-80 overflow-y-auto scrollbar-thin fade-in">
+    <div class="px-4 py-2 border-b border-slate-100 text-xs font-medium text-slate-500">${results.length} resultado${results.length!==1?'s':''}</div>
+    ${results.map(r => {
+      const dot = r.seg.color.dot;
+      return `<button onclick="navigateTo('${r.seg.id}','${r.phase.id}')" class="flex items-start gap-3 px-4 py-3 hover:bg-slate-50 border-b border-slate-50 w-full text-left">
+        <span class="mt-1.5 w-2 h-2 rounded-full flex-shrink-0 ${dot}"></span>
+        <div class="min-w-0">
+          <div class="flex items-center gap-2"><span class="text-xs font-semibold text-slate-800">${r.seg.name}</span><span class="text-slate-300">·</span><span class="text-xs text-slate-600">${r.stage ? r.stage.hubspotStage||r.stage.name : r.phase.name}</span></div>
+          <p class="text-xs text-slate-500 mt-0.5 truncate">${escHtml(r.match||'').substring(0,80)}${r.match&&r.match.length>80?'...':''}</p>
+        </div>
+      </button>`;
+    }).join('')}
+  </div>`;
+}
+
+function renderSegmentCard(seg) {
+  const completeFases = seg.phases.filter(p => p.completeness === 'complete').length;
+  const partialFases = seg.phases.filter(p => p.completeness === 'partial').length;
+  return `
+  <button onclick="navigateTo('${seg.id}')" class="group bg-white rounded-2xl border-2 ${seg.color.border} hover:shadow-md transition-all duration-200 overflow-hidden text-left w-full">
+    <div class="bg-gradient-to-r ${seg.color.gradient} p-6 text-white">
+      <div class="flex items-start justify-between">
+        <div>
+          <div class="text-3xl mb-2">${seg.icon}</div>
+          <h3 class="text-2xl font-bold">${seg.name}</h3>
+        </div>
+        <span class="bg-white/20 rounded-lg px-2 py-1 text-xs font-medium">Blip 2.0</span>
+      </div>
+    </div>
+    <div class="p-5">
+      <p class="text-xs text-slate-500 mb-4">${seg.description}</p>
+      <div class="space-y-2 mb-4">
+        ${seg.phases.map(p => `
+        <div class="flex items-center gap-2.5">
+          <span class="text-base">${p.icon}</span>
+          <span class="text-xs text-slate-700 flex-1">${p.name}</span>
+          ${completenessChip(p.completeness)}
+        </div>`).join('')}
+      </div>
+      <div class="rounded-lg px-3 py-2 ${seg.color.light}">
+        <p class="text-xs text-slate-600"><span class="font-medium">Times:</span> ${seg.audience}</p>
+      </div>
+      <div class="mt-4 flex items-center justify-between">
+        <span class="text-xs text-slate-400">${completeFases+partialFases}/${seg.phases.length} fases com conteúdo</span>
+        <span class="text-xs font-semibold text-slate-600 group-hover:translate-x-1 transition-transform">Ver jornada →</span>
+      </div>
+    </div>
+  </button>`;
+}
+
+function renderSegmentPage(seg) {
+  return `
+  <div class="min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-30">
+      <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <button onclick="navigateTo('home')" class="text-slate-400 hover:text-slate-600 text-sm flex items-center gap-1">← Início</button>
+          <span class="text-slate-300">/</span>
+          <span class="font-semibold text-slate-800">${seg.name}</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <button onclick="setState({showModal:true,modalSegment:'${seg.name}'})" class="flex items-center gap-2 ${seg.color.btn} text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors">
+            <span>⚡</span> Acionar
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Segment hero -->
+    <div class="bg-gradient-to-r ${seg.color.gradient} text-white px-6 py-10">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div>
+            <p class="text-white/70 text-sm mb-1">Jornada 360°</p>
+            <h1 class="text-3xl font-bold">${seg.name} · ${seg.fullName}</h1>
+            <p class="text-white/80 mt-2 text-sm">${seg.description}</p>
+            <p class="text-white/60 text-xs mt-2">Times: ${seg.audience}</p>
+          </div>
+          <div class="flex gap-2 flex-wrap">
+            ${seg.phases.map(p => `<button onclick="scrollToPhase('phase-${p.id}')" class="text-xs px-3 py-1.5 rounded-lg font-medium bg-white/20 text-white hover:bg-white/30 transition-colors">${p.icon} ${p.name}</button>`).join('')}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flow nav -->
+    <div class="max-w-6xl mx-auto w-full px-6 pt-8">
+      <div class="flex items-center gap-2 overflow-x-auto scrollbar-thin pb-2">
+        ${seg.phases.map((p,i) => `
+        <div class="flex items-center gap-2 flex-shrink-0">
+          <button onclick="scrollToPhase('phase-${p.id}')" class="flex items-center gap-2 px-4 py-2 rounded-full border text-sm font-medium transition-all ${p.color.badge} hover:opacity-80">
+            <span>${p.icon}</span><span>${p.name}</span><span class="opacity-60 text-xs">(${p.stageCount||'?'})</span>
+          </button>
+          ${i < seg.phases.length-1 ? '<span class="text-slate-300 text-lg">→</span>' : ''}
+        </div>`).join('')}
+      </div>
+    </div>
+
+    <!-- Phases -->
+    <main class="flex-1 max-w-6xl mx-auto w-full px-6 py-8 space-y-8">
+      ${seg.phases.map(phase => renderPhase(phase, seg.id)).join('')}
+    </main>
+
+    ${renderFooter()}
+    ${state.showModal ? renderModal() : ''}
+    ${state.activeStage ? renderDrawer(state.activeStage) : ''}
+  </div>`;
+}
+
+function renderPhase(phase, segId) {
+  return `
+  <div id="phase-${phase.id}" class="scroll-mt-20">
+    <div class="rounded-2xl border ${phase.color.border} bg-white overflow-hidden">
+      <div class="px-6 py-4 border-b border-slate-100">
+        <div class="flex items-start justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">${phase.icon}</span>
+            <div>
+              <h3 class="font-bold text-slate-800 text-lg">${phase.name}</h3>
+              <p class="text-sm text-slate-500">${phase.description}</p>
+            </div>
+          </div>
+          <div class="flex flex-col items-end gap-1 flex-shrink-0">
+            ${completenessChip(phase.completeness)}
+            <span class="text-xs text-slate-400">${phase.lead}</span>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-3 mt-3">
+          ${phase.hubspotObject ? `<span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg">🟣 HubSpot: ${phase.hubspotObject}</span>` : ''}
+          ${phase.stageCount ? `<span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg">📊 ${phase.stageCount} etapa${phase.stageCount!==1?'s':''}</span>` : ''}
+        </div>
+      </div>
+      ${phase.stages.length > 0 ? renderStagesTimeline(phase) : renderEmptyPhase(phase)}
+    </div>
+  </div>`;
+}
+
+function renderStagesTimeline(phase) {
+  return `
+  <div class="p-4 overflow-x-auto scrollbar-thin">
+    <div class="flex gap-3 min-w-max pb-2">
+      ${phase.stages.map((stage, idx) => `
+      <div class="flex items-center gap-3">
+        <button onclick='openStage(${JSON.stringify(stage).replace(/'/g,"&#39;")})' class="group flex flex-col items-center w-32 text-center">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white mb-2 transition-transform group-hover:scale-110 ${phase.color.bg}">${idx+1}</div>
+          <span class="text-xs font-medium ${phase.color.text} group-hover:underline leading-tight">${stage.hubspotStage||stage.name}</span>
+          ${stage.responsible ? `<span class="mt-1 text-xs text-slate-400">${stage.responsible}</span>` : ''}
+          ${stage.sentiment && stage.sentiment !== '—' ? `<span class="mt-2 text-xs px-2 py-0.5 rounded-full ${phase.color.badge} max-w-[120px] truncate">${stage.sentiment}</span>` : ''}
+        </button>
+        ${idx < phase.stages.length-1 ? `<div class="w-6 h-0.5 flex-shrink-0 ${phase.color.line}"></div>` : ''}
+      </div>`).join('')}
+    </div>
+  </div>`;
+}
+
+function renderEmptyPhase(phase) {
+  return `
+  <div class="px-6 py-8 text-center">
+    <p class="text-slate-400 text-sm">${phase.transitionNote || 'Conteúdo em desenvolvimento. Use o botão Acionar para contribuir!'}</p>
+    <p class="text-slate-400 text-xs mt-2">Quer ajudar a preencher? Clique em <strong>⚡ Acionar</strong></p>
+  </div>`;
+}
+
+function renderDrawer(stage) {
+  const fields = [
+    { l:'💭 Sentimento do cliente', v:stage.sentiment },
+    { l:'🎯 Necessidade', v:stage.need },
+    { l:'✋ Ação do cliente', v:stage.clientAction },
+    { l:'🔑 Gatilho de passagem', v:stage.passTrigger },
+    { l:'👤 Responsável', v:stage.responsible },
+    { l:'📋 Papel do vendedor', v:stage.sellerRole },
+    { l:'🟣 Objeto HubSpot', v:stage.hubspotObject },
+    { l:'🔵 Etapa CRM', v:stage.hubspotStage },
+    { l:'📝 Campos HubSpot', v:stage.hubspotFields },
+    { l:'🤝 Ações Manuais', v:stage.manualActions },
+    { l:'⚡ Ações Automáticas', v:stage.autoActions },
+  ].filter(f => f.v && f.v !== '—');
+
+  return `
+  <div class="fixed inset-0 bg-black/40 z-40 flex justify-end" onclick="setState({activeStage:null})">
+    <div class="bg-white w-full max-w-xl h-full overflow-y-auto shadow-2xl drawer-slide" onclick="event.stopPropagation()">
+      <div class="sticky top-0 bg-white border-b border-slate-100 px-6 py-4 flex items-center justify-between z-10">
+        <div>
+          <h3 class="font-bold text-slate-800 text-lg">${escHtml(stage.hubspotStage||stage.name)}</h3>
+          ${stage.responsible ? `<span class="text-xs text-slate-500">Responsável: ${stage.responsible}</span>` : ''}
+        </div>
+        <button onclick="setState({activeStage:null})" class="text-slate-400 hover:text-slate-600 text-2xl leading-none">&times;</button>
+      </div>
+      <div class="p-6 space-y-4">
+        ${fields.map(f => `
+        <div class="bg-slate-50 rounded-xl p-4">
+          <p class="text-xs font-semibold text-slate-500 mb-1.5">${f.l}</p>
+          <p class="text-sm text-slate-800 leading-relaxed whitespace-pre-line">${escHtml(f.v)}</p>
+        </div>`).join('')}
+        ${stage.methodologies && stage.methodologies.length > 0 ? `
+        <div class="bg-slate-50 rounded-xl p-4">
+          <p class="text-xs font-semibold text-slate-500 mb-2">📚 Metodologias</p>
+          <div class="flex flex-wrap gap-2">
+            ${stage.methodologies.map(m => `<span class="bg-blue-100 text-blue-700 text-xs font-medium px-2.5 py-1 rounded-full">${escHtml(m)}</span>`).join('')}
+          </div>
+        </div>` : ''}
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderModal() {
+  const seg = state.modalSegment || '';
+  const phase = state.modalPhase || '';
+  return `
+  <div class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 fade-in" onclick="setState({showModal:false})">
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
+      <div class="p-6 border-b border-slate-100">
+        <div class="flex items-center justify-between">
+          <h2 class="text-xl font-bold text-slate-800">Acionar Revenue Enablement</h2>
+          <button onclick="setState({showModal:false})" class="text-slate-400 hover:text-slate-600 text-2xl leading-none">&times;</button>
+        </div>
+        <p class="text-sm text-slate-500 mt-1">Contribua com conteúdo ou peça ajuda sobre a jornada</p>
+      </div>
+      <div class="p-6">
+        <div class="flex gap-3 mb-6" id="modal-type-btns">
+          <button id="btn-type-conteudo" onclick="setModalType('conteudo')" class="flex-1 py-3 px-4 rounded-xl border-2 text-sm font-medium transition-all border-blip-500 bg-blue-50 text-blue-700">📝 Adicionar / melhorar conteúdo</button>
+          <button id="btn-type-ajuda" onclick="setModalType('ajuda')" class="flex-1 py-3 px-4 rounded-xl border-2 text-sm font-medium transition-all border-slate-200 text-slate-600 hover:border-slate-300">🆘 Pedir ajuda</button>
+        </div>
+        <form id="modal-form" onsubmit="submitModal(event)" class="space-y-4">
+          <input type="hidden" id="modal-type" value="conteudo" />
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1">Seu nome *</label>
+              <input name="name" required placeholder="Victória Jurquet" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1">Área / Cargo *</label>
+              <input name="role" required placeholder="Revenue Enablement" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1">Unidade de Negócio</label>
+              <select name="segment" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="" ${!seg?'selected':''}>Todas / Geral</option>
+                <option value="SMB" ${seg==='SMB'?'selected':''}>SMB</option>
+                <option value="MAcc" ${seg==='MAcc'?'selected':''}>MAcc</option>
+                <option value="StAcc" ${seg==='StAcc'?'selected':''}>StAcc</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1">Fase</label>
+              <select name="phase" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="" ${!phase?'selected':''}>Todas / Geral</option>
+                <option value="Funil Land">Funil Land</option>
+                <option value="Implementação">Implementação</option>
+                <option value="Full Adoption">Full Adoption</option>
+                <option value="Funil Expand">Funil Expand</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1">Assunto *</label>
+            <input name="subject" required placeholder="Ex: Adicionar metodologias do Expand no SMB" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+          <div id="priority-row" class="hidden">
+            <label class="block text-sm font-medium text-slate-700 mb-1">Prioridade</label>
+            <select name="priority" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <option value="baixa">Baixa — sem urgência</option>
+              <option value="normal" selected>Normal — dentro da semana</option>
+              <option value="alta">Alta — preciso hoje/amanhã</option>
+              <option value="urgente">Urgente — bloqueando processo</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1">Descrição *</label>
+            <textarea name="description" required rows="4" placeholder="Descreva o conteúdo que falta, a correção necessária ou a melhoria sugerida..." class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"></textarea>
+          </div>
+          <button type="submit" id="modal-submit-btn" class="w-full py-3 rounded-xl font-semibold text-white transition-colors bg-blue-600 hover:bg-blue-700">
+            📝 Enviar contribuição
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderFooter() {
+  return `
+  <footer class="bg-white border-t border-slate-200 py-6 px-6">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="text-xs text-slate-500">Construído por <span class="font-semibold text-slate-700">Victória Jurquet</span> · Revenue Enablement</p>
+      <p class="text-xs text-slate-400">Blip 2.0 · Jornada 360° · ${new Date().getFullYear()}</p>
+    </div>
+  </footer>`;
+}
+
+// ─── HELPERS ─────────────────────────────────────────────────────────────────
+
+function renderHubSpotPage() {
+  return `
+  <div class="min-h-screen flex flex-col">
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-30">
+      <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <button onclick="navigateTo('home')" class="text-slate-400 hover:text-slate-600 text-sm flex items-center gap-1">← Início</button>
+          <span class="text-slate-300">/</span>
+          <span class="font-semibold text-slate-800">HubSpot CRM</span>
+        </div>
+        <button onclick="setState({showModal:true})" class="flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors">
+          <span>⚡</span> Acionar
+        </button>
+      </div>
+    </header>
+
+    <div class="bg-gradient-to-r from-orange-600 to-orange-400 text-white px-6 py-10">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div>
+            <p class="text-white/70 text-sm mb-1">CRM · Referência</p>
+            <h1 class="text-3xl font-bold">HubSpot CRM · Pipelines</h1>
+            <p class="text-white/80 mt-2 text-sm">Etapas, objetos e campos obrigatórios — mesmos para SMB, MAcc e StAcc</p>
+          </div>
+          <div class="flex gap-2">
+            ${HUBSPOT_PIPELINES.map(p => `
+            <button onclick="document.getElementById('hs-${p.id}').scrollIntoView({behavior:'smooth',block:'start'})"
+              class="text-xs px-3 py-1.5 rounded-lg font-medium bg-white/20 text-white hover:bg-white/30 transition-colors">
+              ${p.icon} ${p.name}
+            </button>`).join('')}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main class="flex-1 max-w-6xl mx-auto w-full px-6 py-10 space-y-10">
+      <div class="bg-white border border-orange-200 rounded-2xl overflow-hidden">
+        <div class="bg-orange-50 px-6 py-4 flex items-start gap-4">
+          <span class="text-2xl flex-shrink-0 mt-0.5">🗺️</span>
+          <div>
+            <p class="text-sm font-semibold text-orange-900 mb-1">As etapas são as mesmas — os campos, não.</p>
+            <p class="text-sm text-orange-800 leading-relaxed">
+              Os pipelines de <strong>Funil Land</strong> e <strong>Funil Expand</strong> têm as mesmas etapas para todas as unidades de negócio.
+              No entanto, cada BU tem sua própria metodologia, formato de trabalho e necessidades de qualificação — por isso
+              <strong>os campos obrigatórios variam</strong> de acordo com o contexto de cada time.
+            </p>
+          </div>
+        </div>
+        <div class="px-6 py-3 border-t border-orange-100 flex flex-wrap items-center gap-3">
+          <span class="text-xs text-slate-500 font-medium">Consulte os campos específicos de cada BU:</span>
+          ${SEGMENTS.map(seg => `
+          <button onclick="navigateTo('${seg.id}')" class="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg border transition-colors ${
+            seg.id==='smb'  ? 'border-blue-200 text-blue-700 bg-blue-50 hover:bg-blue-100' :
+            seg.id==='macc' ? 'border-purple-200 text-purple-700 bg-purple-50 hover:bg-purple-100' :
+                              'border-teal-200 text-teal-700 bg-teal-50 hover:bg-teal-100'
+          }">
+            ${seg.icon} ${seg.name} →
+          </button>`).join('')}
+        </div>
+      </div>
+
+      ${HUBSPOT_PIPELINES.map(pipeline => `
+      <div id="hs-${pipeline.id}" class="scroll-mt-20">
+        <div class="bg-white rounded-2xl border border-orange-200 overflow-hidden">
+          <div class="px-6 py-4 border-b border-slate-100">
+            <div class="flex items-center gap-3">
+              <span class="text-2xl">${pipeline.icon}</span>
+              <div>
+                <h2 class="font-bold text-slate-800 text-xl">${pipeline.name}</h2>
+                <p class="text-sm text-slate-500">${pipeline.description}</p>
+              </div>
+            </div>
+            <div class="flex gap-3 mt-3">
+              <span class="text-xs bg-orange-100 text-orange-700 px-2.5 py-1 rounded-lg font-medium">📊 ${pipeline.stageCount} etapas</span>
+              <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg">Válido para SMB · MAcc · StAcc</span>
+            </div>
+          </div>
+
+          <!-- Stages table -->
+          <div class="overflow-x-auto scrollbar-thin">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-slate-100 bg-slate-50">
+                  <th class="text-left px-4 py-3 text-xs font-semibold text-slate-500 w-8">#</th>
+                  <th class="text-left px-4 py-3 text-xs font-semibold text-slate-500">Etapa CRM</th>
+                  <th class="text-left px-4 py-3 text-xs font-semibold text-slate-500 w-44">Objeto HubSpot</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${pipeline.stages.map((s, i) => `
+                <tr class="border-b border-slate-50 hover:bg-slate-50 transition-colors">
+                  <td class="px-4 py-3">
+                    <span class="w-6 h-6 rounded-full bg-orange-500 text-white text-xs font-bold flex items-center justify-center">${i+1}</span>
+                  </td>
+                  <td class="px-4 py-3 font-semibold text-slate-800">${s.name}</td>
+                  <td class="px-4 py-3">
+                    <span class="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full font-medium">🟣 ${s.object}</span>
+                  </td>
+                </tr>`).join('')}
+              </tbody>
+            </table>
+          </div>
+
+          <!-- CTA: campos por BU -->
+          <div class="px-6 py-4 border-t border-orange-100 bg-orange-50 flex flex-wrap items-center gap-3">
+            <span class="text-xs text-orange-800 font-medium">📝 Conheça os campos obrigatórios por BU:</span>
+            ${SEGMENTS.map(seg => `
+            <button onclick="navigateTo('${seg.id}')" class="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg border transition-colors ${
+              seg.id==='smb'  ? 'border-blue-200 text-blue-700 bg-white hover:bg-blue-50' :
+              seg.id==='macc' ? 'border-purple-200 text-purple-700 bg-white hover:bg-purple-50' :
+                                'border-teal-200 text-teal-700 bg-white hover:bg-teal-50'
+            }">
+              ${seg.icon} ${seg.name} →
+            </button>`).join('')}
+          </div>
+        </div>
+      </div>`).join('')}
+    </main>
+
+    ${renderFooter()}
+    ${state.showModal ? renderModal() : ''}
+  </div>`;
+}
+
+function escHtml(str) {
+  if (!str) return '';
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function navigateTo(segId, phaseId) {
+  if (segId === 'home') {
+    setState({ page:'home', segmentId:null, activeStage:null, searchQuery:'' });
+  } else if (segId === 'hubspot') {
+    setState({ page:'hubspot', segmentId:null, activeStage:null, searchQuery:'' });
+  } else {
+    setState({ page:'segment', segmentId:segId, activeStage:null, searchQuery:'' });
+    if (phaseId) {
+      setTimeout(() => scrollToPhase('phase-'+phaseId), 100);
+    }
+  }
+}
+
+function scrollToPhase(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
+function openStage(stage) {
+  setState({ activeStage: stage });
+}
+
+function setModalType(type) {
+  const typeInput = document.getElementById('modal-type');
+  if (typeInput) typeInput.value = type;
+  const btnC = document.getElementById('btn-type-conteudo');
+  const btnA = document.getElementById('btn-type-ajuda');
+  const priorityRow = document.getElementById('priority-row');
+  const submitBtn = document.getElementById('modal-submit-btn');
+  const textarea = document.querySelector('#modal-form textarea[name="description"]');
+  const subjectInput = document.querySelector('#modal-form input[name="subject"]');
+  if (type === 'conteudo') {
+    btnC.className = 'flex-1 py-3 px-4 rounded-xl border-2 text-sm font-medium transition-all border-blue-500 bg-blue-50 text-blue-700';
+    btnA.className = 'flex-1 py-3 px-4 rounded-xl border-2 text-sm font-medium transition-all border-slate-200 text-slate-600 hover:border-slate-300';
+    if (priorityRow) priorityRow.classList.add('hidden');
+    if (submitBtn) { submitBtn.textContent = '📝 Enviar contribuição'; submitBtn.className = 'w-full py-3 rounded-xl font-semibold text-white transition-colors bg-blue-600 hover:bg-blue-700'; }
+    if (textarea) textarea.placeholder = 'Descreva o conteúdo que falta, a correção necessária ou a melhoria sugerida...';
+    if (subjectInput) subjectInput.placeholder = 'Ex: Adicionar metodologias do Expand no SMB';
+  } else {
+    btnA.className = 'flex-1 py-3 px-4 rounded-xl border-2 text-sm font-medium transition-all border-orange-500 bg-orange-50 text-orange-700';
+    btnC.className = 'flex-1 py-3 px-4 rounded-xl border-2 text-sm font-medium transition-all border-slate-200 text-slate-600 hover:border-slate-300';
+    if (priorityRow) priorityRow.classList.remove('hidden');
+    if (submitBtn) { submitBtn.textContent = '🆘 Pedir ajuda'; submitBtn.className = 'w-full py-3 rounded-xl font-semibold text-white transition-colors bg-orange-500 hover:bg-orange-600'; }
+    if (textarea) textarea.placeholder = 'Explique o contexto, o que você já tentou e o que precisa...';
+    if (subjectInput) subjectInput.placeholder = 'Ex: Dúvida sobre gatilho de passagem em Negociação';
+  }
+}
+
+function submitModal(e) {
+  e.preventDefault();
+  const form = e.target;
+  const type = document.getElementById('modal-type').value;
+  const name = form.name.value;
+  const role = form.role.value;
+  const segment = form.segment.value;
+  const phase = form.phase.value;
+  const subject = form.subject.value;
+  const description = form.description.value;
+  const priority = form.priority ? form.priority.value : '';
+
+  const typeLabel = type === 'conteudo' ? '📝 Contribuição de Conteúdo' : '🆘 Pedido de Ajuda';
+  const priorityLine = type === 'ajuda' ? `\n• Prioridade: ${priority}` : '';
+  const message = `${typeLabel}\n• Quem: ${name} (${role})\n• Unidade de Negócio: ${segment||'Geral'}\n• Fase: ${phase||'Geral'}\n• Assunto: ${subject}${priorityLine}\n• Descrição: ${description}`;
+
+  navigator.clipboard && navigator.clipboard.writeText(message).catch(()=>{});
+  window.open('https://slack.com/intl/pt-br/', '_blank');
+
+  const modal = document.querySelector('.fixed.inset-0.bg-black\\/50 > div');
+  if (modal) {
+    modal.innerHTML = `
+    <div class="p-8 text-center">
+      <div class="text-5xl mb-4">✅</div>
+      <h3 class="text-xl font-bold text-slate-800 mb-2">Mensagem preparada!</h3>
+      <p class="text-slate-600 mb-2">O Slack foi aberto e a mensagem foi copiada para sua área de transferência.</p>
+      <p class="text-sm text-slate-500 mb-6">Cole no canal <strong>#revenue-enablement</strong> ou envie diretamente.</p>
+      <button onclick="setState({showModal:false})" class="bg-blue-600 text-white px-6 py-2.5 rounded-lg font-medium hover:bg-blue-700 transition-colors">Fechar</button>
+    </div>`;
+  }
+}
+
+// ─── RENDER ──────────────────────────────────────────────────────────────────
+
+function render() {
+  const app = document.getElementById('app');
+  if (!app) return;
+
+  if (state.page === 'home') {
+    app.innerHTML = renderHome();
+    // Restore search focus if query is active
+    if (state.searchQuery) {
+      const input = document.getElementById('search-input');
+      if (input) { input.focus(); input.setSelectionRange(input.value.length, input.value.length); }
+    }
+  } else if (state.page === 'segment') {
+    const seg = SEGMENTS.find(s => s.id === state.segmentId);
+    if (seg) app.innerHTML = renderSegmentPage(seg);
+    else app.innerHTML = '<div class="p-8 text-center text-slate-500">Segmento não encontrado</div>';
+  } else if (state.page === 'hubspot') {
+    app.innerHTML = renderHubSpotPage();
+  }
+}
+
+// ─── INIT ────────────────────────────────────────────────────────────────────
+
+render();
+</script>
+</body>
+</html>
