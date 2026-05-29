@@ -215,7 +215,7 @@ const SEGMENTS = [
       {
         id:'implementacao', name:'Implementação', icon:'⚙️',
         description:'Do TOS assinado ao cliente no ar — onboarding consultivo',
-        lead:'ISM + Parceiro', stageCount:8, hubspotObject:'Ticket', completeness:'empty',
+        lead:'ISM + Parceiro', stageCount:10, hubspotObject:'Ticket', completeness:'in_progress',
         transitionNote:'Após o Ganho no Land, o time de implementação é ativado via passagem de bastão.',
         color:{ bg:'bg-amber-500', text:'text-amber-600', border:'border-amber-200', badge:'bg-amber-100 text-amber-700', line:'bg-amber-200' }, stages:[]
       },
@@ -324,6 +324,413 @@ const SEGMENTS = [
   }
 ];
 
+// ─── IMPLEMENTAÇÃO SMB DATA ──────────────────────────────────────────────────
+
+const IMP_STAGES_SMB = [
+  {
+    id:"A", nome:"A — Novo", fase:"Recepção & Mobilização", responsavel_display:"ISM Onboarding",
+    sentimento:{ todos:"Ansioso / Expectante — acabou de fechar e aguarda início", clusterA:"Expectativa elevada — projeto complexo (parceiro + V0 + cronograma)" },
+    necessidade:{ todos:"Entender o que acontece agora e quando será o primeiro contato", clusterA:"ISM agenda call interna IS→ISM em até 2 dias úteis do ganho" },
+    acao_cliente:{ todos:"Aguardar contato, agendar call via link do e-mail de boas-vindas", clusterA:"Participar de call interna IS→ISM de passagem de bastão (obrigatória)" },
+    gatilho:{ todos:"Ganho dado em vendas → ticket criado automaticamente no pipe 5.1", clusterA:"ISM agenda call IS→ISM em até 2 dias úteis; obrigatória antes do Kickoff" },
+    headcount:{ todos:"ISM Onboarding", clusterA:"IS (Inside Sales / Closer) participa da call IS→ISM" },
+    papel_headcount:{ todos:"Conferir propriedades do ticket; disparar boas-vindas; aguardar agendamento", clusterA:"Agendar e conduzir call IS→ISM: revisar briefing, entender expectativa de V0, verificar plataforma atual; criar esboço de fluxo antes do Kickoff" },
+    papel_vendedor:{ todos:"Preencher briefing completo no Deal (HubSpot); garantir passagem de bastão com todas as propriedades obrigatórias", clusterA:"Participar obrigatoriamente da call IS→ISM (inegociável); repassar estratégia do negócio, projeto e questões mapeadas na venda" },
+    objeto_hubspot:"Ticket — Pipeline 5.1 [ISM] Onboarding Consultivo",
+    etapa_crm:"Col. A · A - NOVO",
+    campos_hubspot:{ todos:"Nomenclatura com Plano · Proprietário do ticket · Trilha de Onboarding · Contatos do cliente · Negócio associado · Briefing de vendas (Observações) · Site da empresa · Parceiro associado · Cópia do briefing do Deal → ticket · Reunião registrada na aba Reuniões", clusterA:"Propriedade 'Negociação de quais novos produtos?' preenchida · Snippet #passagemdebastãoIS>ISM · Registro da call IS→ISM na aba Reuniões" },
+    acoes_manuais:{ todos:"Conferir propriedades obrigatórias · Copiar briefing de vendas para o ticket · Registrar reunião na aba Reuniões · Após 48h sem movimentação: novo e-mail + acionar vendedor", clusterA:"Agendar call IS→ISM em até 2 dias úteis · Conduzir call com script estratégico · Criar esboço de V0 para o Kickoff · Contato prévio com cliente via WA para coletar expectativas" },
+    acoes_automaticas:{ todos:"Criação automática do ticket no pipe 5.1 ao ganho · E-mail de boas-vindas com link de agenda · Disparo ativo de boas-vindas com link da primeira call", clusterA:"Tarefa criada via HubSpot no pipe de Vendas para o IS agendar call de passagem de bastão" },
+    metodologias:{ todos:"Passagem de bastão estruturada (Briefing + propriedades obrigatórias) · Checklist de conferência", clusterA:"Call IS→ISM obrigatória com script de perguntas estratégicas · Análise prévia de fluxo atual do cliente antes do Kickoff" },
+    ferramentas_externas:{ todos:"HubSpot (ticket + propriedades) · E-mail (boas-vindas automático) · WhatsApp Business (disparo ativo)", clusterA:"WhatsApp Business corporativo (canal exclusivo proativo para Cluster A)" },
+    ferramentas_internas:{ todos:"Blip (chatbot onboarding — disparo ativo de boas-vindas) · Pipeline 5.1 [ISM] Onboarding Consultivo", clusterA:"Snippet #passagemdebastãoIS>ISM · Script da call IS→ISM · Planilha de integrações e parceiros capacitados" }
+  },
+  {
+    id:"B", nome:"B — Alinhamentos Iniciais", fase:"Alinhamento de Escopo", responsavel_display:"ISM Onboarding",
+    sentimento:{ todos:"Curioso / Receptivo — primeiro contato síncrono com ISM", clusterA:"Motivado — quer entender escopo completo, V0 e papel do parceiro" },
+    necessidade:{ todos:"Saber o que será feito, quem é responsável e qual o cronograma", clusterA:"Entender o papel do parceiro, da V0 (Kickstart) e das FUPs quinzenais" },
+    acao_cliente:{ todos:"Participar do Kickoff, fornecer informações do caso de uso, inserir-se nos treinamentos", clusterA:"Alinhar expectativas para V0; confirmar FUPs quinzenais; receber acesso à plataforma" },
+    gatilho:{ todos:"Call de alinhamentos iniciais agendada pelo cliente" },
+    headcount:{ todos:"ISM Onboarding", clusterA:"Se cliente contratou Blip Go Personal: incluir responsável pela implementação do produto (Ana Laura ou Lídia)" },
+    papel_headcount:{ todos:"Conduzir Kickoff; levantar caso de uso; inserir cliente nos treinamentos; preencher ATA", clusterA:"Apresentar V0 (se pronta) ou coletar expectativas; marcar datas de V0, treinamentos e ativação; criar grupo WA com cliente (+ parceiro); repassar checklist de ativação" },
+    papel_vendedor:{ todos:"Apoiar ISM em caso de no-show (acionar cliente e compartilhar link de agenda)" },
+    objeto_hubspot:"Ticket",
+    etapa_crm:"Col. B · B - ALINHAMENTOS INICIAIS",
+    campos_hubspot:{ todos:"Pasta no Drive do cliente · Resultado da call (No Show / Remarcada / Concluída) · ATA (#ism-alinhamentosinicias) · Maturidade digital do cliente (Premium) · Vai precisar de verificação? (Canais) · Ticket movido para Col. D (consultivo) ou Col. E (parceiro)", clusterA:"Função no Projeto → [BLIP] Responsável pela Implementação · Acesso à plataforma criado para o cliente · Snippet #AIata registrado nas observações" },
+    acoes_manuais:{ todos:"Criar pasta do cliente no Drive · Registrar resultado da call · Preencher ATA · Disparo de e-mail pós-call com documentos · Preencher propriedades de canais · Mover ticket: consultivo → Col. D / parceiro → Col. E", clusterA:"Criar acesso à plataforma para o cliente · Criar grupo WA com cliente (+ parceiro) com ISM como admin · Enviar boas-vindas no grupo WA · Marcar datas: V0, treinamentos, ativação · Repassar checklist de ativação · Alinhar FUPs quinzenais (inegociáveis)" },
+    acoes_automaticas:{ parceiro_clusterA:"Cliente entra em régua de comunicação automatizada ao ter maturidade digital registrada", clusterA:"Disparo ativo de pesquisa de termômetro dos primeiros dias do onboarding (durante Kickstart)" },
+    metodologias:{ todos:"Discovery / Levantamento de caso de uso (Mural) · Consultoria de solução (template vs. construção) · Gestão de expectativas (cronograma e pré-requisitos)", clusterA:"Kickstart + Go Live (duas fases com termos de aceite formais) · FUPs quinzenais inegociáveis · WhatsApp Business proativo como canal de relacionamento (SLA: 2h úteis)" },
+    ferramentas_externas:{ todos:"HubSpot · Google Meet (call de Kickoff) · Google Drive (pasta do cliente) · E-mail (pós-call)", clusterA:"WhatsApp Business corporativo (grupo de projeto pós-Kickoff) · LP Cluster A: digital.blip.ai/clientes/onboarding-cluster-a/ · Apresentação de Kick Start" },
+    ferramentas_internas:{ todos:"Landing Page de alinhamentos iniciais · Mural (caso de uso) · Plano de treinamentos · Snippet ATA: #ism-alinhamentosinicias", clusterA:"LP Cluster A · Script da call de Alinhamentos Iniciais (3 versões) · Playbook para criação de grupos WA para clientes em Onboarding" }
+  },
+  {
+    id:"D", nome:"D — Desenvolvimento Bot", fase:"Construção + Validação (Blip)", responsavel_display:"ISM Onboarding",
+    sentimento:{ bc:"Confiante — bot sendo construído pela Blip", parceiro:"Observador / Dependente — aguarda o parceiro entregar", clusterA:"Engajado — V0 sendo entregue pelo time Blip; parceiro avança em paralelo" },
+    necessidade:{ bc:"Ter o fluxo construído conforme levantado no Kickoff", parceiro:"Acompanhamento de cronograma e aprovação do desenho", clusterA:"Receber a V0 em até 10 dias; dar aceite formal no cronograma do parceiro" },
+    acao_cliente:{ bc:"Revisar e fornecer insumos para customização; confirmar call de validação", parceiro:"Aprovar desenho do parceiro; validar entrega final", clusterA:"Dar aceite formal na V0 e no cronograma do parceiro (Termo de Aceite 1)" },
+    gatilho:{ bc:"Saída do Kickoff: caso de uso levantado + call de validação agendada", parceiro:"Saída do Kickoff: cliente inserido nos treinamentos", clusterA:"Aceite do cliente para Kickstart + call de AI realizada → move para Col. E" },
+    headcount:{ bc:"ISM Onboarding (Implementador Blip)", parceiro:"Parceiro (dev) + ISM monitora", clusterA:"ISM constrói V0 (apoio de Ricardo/Rondiney para impedimentos técnicos)" },
+    papel_headcount:{ bc:"Construir/customizar fluxo; agendar e conduzir call de validação", parceiro:"Monitorar status; presenciar calls de desenho e entrega final", clusterA:"Construir V0 (fluxo básico sem integração); usar Demos Value Design e biblioteca de skills; enviar Termo de Aceite 1 ao finalizar; registrar #kickstart_clustera_linhadotempo" },
+    papel_vendedor:{ todos:"Sem papel ativo — disponível para suporte em caso de risco de churn identificado pelo ISM" },
+    objeto_hubspot:"Ticket",
+    etapa_crm:"Col. D · D - [PLAT] DESENVOLVIMENTO DO BOT (+ Kickstart para Cluster A)",
+    campos_hubspot:{ bc:"Mural / JSON do fluxo na pasta do cliente · [ISM] Encaminhar para ativação → aciona ticket em canais · Move para Col. F quando fluxo pronto", clusterA:"Snippet #kickstart_clustera_linhadotempo · V0 construída + JSON salvo na pasta · Termo de Aceite 1 enviado e registrado · Pesquisa de termômetro disparada" },
+    acoes_manuais:{ bc:"Construir/customizar fluxo no Builder · Baixar JSON e salvar na pasta · Agendar call de validação · Mover ticket para Col. F", clusterA:"Construir V0 em até 10 dias · Usar Demos Value Design e biblioteca de skills · Acionar Ricardo/Rondiney para impedimentos · Enviar Termo de Aceite 1 · Mover ticket para Col. E após aceite · Registrar #kickstart_clustera_linhadotempo" },
+    acoes_automaticas:{ bc:"Geração de ticket em Canais via propriedade 'Encaminhar para ativação'", clusterA:"Nenhuma automação específica — movimentações são manuais pelo ISM" },
+    metodologias:{ bc:"Construção ágil assíncrona · Documentação contínua (JSON + mural)", parceiro:"Gestão de parceiros · Checkpoint de projeto", clusterA:"Entrega de V0 em até 10 dias · Uso de Demos Value Design e biblioteca de skills · Aceite formal documentado (Termo de Aceite 1)" },
+    ferramentas_externas:{ bc:"Mural · HubSpot", parceiro:"Ferramenta do parceiro (desenvolvimento) · E-mail / WA (follow-up)", clusterA:"Blip Builder · Demos de Value Design + Biblioteca de Skills · HubSpot (Termo de Aceite 1)" },
+    ferramentas_internas:{ bc:"Blip Builder · Mural · JSON do projeto", parceiro:"Disparo ativo automatizado de follow-up · Régua de comunicação (e-mail + WA)", clusterA:"Delimitação de escopo para projetos de V0 · Snippet #kickstart_clustera_linhadotempo · Modelo de e-mail Termo de Aceite 1" }
+  },
+  {
+    id:"E", nome:"E — [Partner] Dev. Projeto", fase:"Desenvolvimento pelo Parceiro", responsavel_display:"Parceiro + ISM monitora",
+    sentimento:{ todos:"Dependente / Ansioso — parceiro desenvolvendo, Blip monitora" },
+    necessidade:{ todos:"Visibilidade do andamento do projeto com o parceiro" },
+    acao_cliente:{ todos:"Acompanhar status via parceiro; responder comunicações automatizadas" },
+    gatilho:{ todos:"Parceiro iniciou o projeto; ticket movido para Col. E", clusterA:"Após entrega da V0 + Termo de Aceite 1 assinado → início da Fase Go Live" },
+    headcount:{ todos:"Parceiro (responsável pelo desenvolvimento) + ISM Onboarding (monitoramento)" },
+    papel_headcount:{ todos:"Follow-up semanal via disparo ativo; presença nas calls-chave; acompanhar SLA do parceiro", clusterA:"Enviar cronograma ao parceiro após Kickoff; cobrar preenchimento em até 3 dias úteis; registrar #golive_clustera_linhadotempo; reportar atrasos à liderança" },
+    papel_vendedor:{ todos:"Sem papel ativo no desenvolvimento — pode ser acionado se parceiro apresentar problemas" },
+    objeto_hubspot:"Ticket",
+    etapa_crm:"Col. E · E - [PARTNER] DESENVOLVIMENTO DO BOT (Go Live para Cluster A)",
+    campos_hubspot:{ todos:"Status do projeto (Tested and Validated / Go Live & Handover / Warranty Ended) · Follow-up via régua automatizada · 'Número pronto para ativar' → move para Col. H (manual)", clusterA:"Snippet #golive_clustera_linhadotempo · Cronograma do parceiro anexado no ticket · #FUPsincronaata inserido ao longo das observações" },
+    acoes_manuais:{ todos:"Monitorar status do projeto semanalmente · Participar da call de apresentação do desenho · Participar da call de entrega final · Mover ticket para Col. H via 'Número pronto para ativar'", clusterA:"Enviar cronograma ao parceiro após o Kickoff · Cobrar preenchimento em até 3 dias úteis · FUPs síncronas e assíncronas nos marcos de construção · Registrar #golive_clustera_linhadotempo · Reportar atrasos à liderança" },
+    acoes_automaticas:{ todos:"Régua de comunicação automatizada por e-mail e disparo ativo conforme status do projeto" },
+    metodologias:{ todos:"Monitoramento de SLA de parceiro · Gestão de riscos e escalação · Follow-up automatizado com human touchpoint nas calls-chave", clusterA:"Cronograma formal enviado ao parceiro pós-Kickoff · ISM responsável pela governança (não o parceiro) · Alterações de escopo formalizadas com Termo de Aceite 2" },
+    ferramentas_externas:{ todos:"Planilha Checkpoint for Partner & Onboarding · Google Meet · HubSpot · Slack (grupo de checkpoint por PDM)", clusterA:"Modelo de Cronograma (cliente e parceiro) · Modelo de Cronograma INTERNO · Lista de parceiros de serviço certificados — PAAS" },
+    ferramentas_internas:{ todos:"Régua automatizada de comunicação · Pipeline 5.1 Col. E · Snippet ATA: #ism-validaçãoB", clusterA:"Snippet #golive_clustera_linhadotempo · Snippet #FUPsincronaata · Modelo de e-mail Termo de Aceite 2 — Alterações de Escopo" }
+  },
+  {
+    id:"F", nome:"F — Validação do Bot", fase:"Validação do Fluxo", responsavel_display:"ISM Onboarding",
+    sentimento:{ todos:"Crítico / Avaliador — revisando o que foi construído" },
+    necessidade:{ todos:"Validar e aprovar o fluxo antes da ativação" },
+    acao_cliente:{ todos:"Participar da call de validação e aprovar o fluxo 100%" },
+    gatilho:{ bc:"Fluxo pronto → ISM move ticket para Col. F", parceiro_clusterA:"Status 'tested and validated by the client' → ISM notificado" },
+    headcount:{ todos:"ISM Onboarding", parceiro_clusterA:"ISM presente nas calls do parceiro" },
+    papel_headcount:{ todos:"Apresentar fluxo; coletar aprovação; registrar ATA; acionar 'Encaminhar para ativação'" },
+    papel_vendedor:{ todos:"Sem papel ativo — acionado em caso de no-show ou impasse na validação" },
+    objeto_hubspot:"Ticket",
+    etapa_crm:"Col. F · F - VALIDAÇÃO DO BOT",
+    campos_hubspot:{ todos:"ATA de validação (#ism-validaçãoB) · [ISM] Encaminhar para ativação = Sim · Move para Col. H após validação", clusterA:"Termo de Aceite 2 (se houve alteração de escopo)" },
+    acoes_manuais:{ todos:"Conduzir call de validação do fluxo · Preencher ATA de validação · Preencher propriedade 'Encaminhar para ativação' · Mover ticket para Col. H", clusterA:"Se alteração de escopo solicitada: enviar Termo de Aceite 2 antes de prosseguir" },
+    acoes_automaticas:{ todos:"Geração de ticket em Canais (pipe 7.1) via propriedade 'Encaminhar para ativação = Sim'" },
+    metodologias:{ todos:"Validação estruturada (call com critérios de saída claros) · Gestão de impedimentos (fluxo de re-validação)" },
+    ferramentas_externas:{ todos:"Blip Builder (fluxo a validar) · Google Meet · HubSpot (ATA #ism-validaçãoB)", clusterA:"HubSpot (Termo de Aceite 2 — Alterações de Escopo)" },
+    ferramentas_internas:{ todos:"Blip Builder · Snippet ATA: #ism-validaçãoB · Propriedade 'Encaminhar para ativação' (HubSpot)" }
+  },
+  {
+    id:"G", nome:"G — Treinamento do Bot", fase:"Capacitação", responsavel_display:"ISM Facilitador + Apresentador",
+    sentimento:{ todos:"Aprendiz — absorvendo conhecimento da plataforma", clusterA:"Também treinado sobre a V0 entregue e limites de autonomia" },
+    necessidade:{ todos:"Capacitação para operar a plataforma com autonomia", clusterA:"Treinamento obrigatório sobre a V0 entregue (o que pode / não pode alterar)" },
+    acao_cliente:{ todos:"Participar dos treinamentos; obter certificação no Academy", clusterA:"Treinamentos essenciais obrigatórios antes da ativação (lista completa no playbook)" },
+    gatilho:{ todos:"Fluxo validado + 'Número pronto para ativar' preenchida → move para Col. G", clusterA:"Treinamento da V0 obrigatório antes de mover para ativação" },
+    headcount:{ bc:"ISM Facilitador + ISM Apresentador", clusterA:"ISM responsável conduz treinamentos (lista essencial obrigatória); alinhamento com parceiro sobre divisão de temas" },
+    papel_headcount:{ bc:"Facilitador: conduzir dinâmica; Apresentador: aplicar conteúdo técnico; registrar presença", clusterA:"Mesmo papel + treinamento específico da V0 (o que alterar / não alterar); verificar todos os treinamentos essenciais antes da ativação; registrar checklists no HubSpot" },
+    papel_vendedor:{ todos:"Reforçar junto ao cliente a obrigatoriedade dos treinamentos (pré-requisito para ativação)" },
+    objeto_hubspot:"Ticket",
+    etapa_crm:"Col. G · G - TREINAMENTO DO BOT",
+    campos_hubspot:{ todos:"[ISM] Treinamentos realizados (multi-select) · Propriedade de presença por cliente preenchida", clusterA:"Checklist de treinamentos essenciais todos concluídos antes da ativação · Treinamento da V0 registrado separadamente" },
+    acoes_manuais:{ todos:"Facilitador: conduzir dinâmica de cada treinamento · Emitir lista de presença no Academy · Registrar participação no HubSpot", clusterA:"Alinhar com parceiro divisão dos temas · Realizar treinamento específico da V0 · Verificar conclusão de todos os treinamentos essenciais antes da ativação · Montar checklist de treinamentos para Ongoing" },
+    acoes_automaticas:{ todos:"E-mail automático de lembrete 24h antes do treinamento · Disparo ativo de convite 24h antes" },
+    metodologias:{ todos:"Educação em grupo (treinamentos coletivos) · Aprendizagem ativa (dinâmica facilitador + apresentador) · Certificação (Academy Blip)", clusterA:"Treinamento orientado ao caso de uso (V0 entregue) · Divisão de responsabilidade Blip / parceiro sobre temas" },
+    ferramentas_externas:{ todos:"Vimeo (gravação) · Google Meet (sessão) · Slido (dúvidas) · E-mail (lembrete automático)", clusterA:"Blip Academy — academy.blip.ai · Tabuleiro de possíveis treinamentos estratégicos" },
+    ferramentas_internas:{ todos:"Blip Academy · Landing page de inscrição · Chatbot onboarding (disparo manual 24h antes) · Slides de treinamento por tema", clusterA:"Tabuleiro de possíveis treinamentos estratégicos (essenciais + opcionais) · Treinamentos essenciais: Visão geral da plataforma + V0, Atendimento, Disparo Ativo, Gestão de Qualidade WA, Novos Produtos" }
+  },
+  {
+    id:"H", nome:"H — Ativação do Canal", fase:"Ativação de Canal", responsavel_display:"ISM Onboarding + ISM Canais",
+    sentimento:{ todos:"Motivado / Urgente — quer ativar o número logo", clusterA:"Verificação obrigatória da empresa (Meta) gera ansiedade extra" },
+    necessidade:{ todos:"Ativar o canal WhatsApp com segurança e dentro das regras da Meta", clusterA:"Verificação obrigatória da empresa (Partner Led Business Verification)" },
+    acao_cliente:{ todos:"Agendar call de ativação; seguir checklist de pré-requisitos Meta/WABA", clusterA:"Fornecer dados para verificação da empresa (CNPJ); aceitar processo de Business Verification" },
+    gatilho:{ todos:"Pelo menos 1 treinamento realizado → move para Col. H + ticket criado no pipe 7.1", clusterA:"Ativação pode ser acionada em qualquer etapa a partir da Col. B" },
+    headcount:{ todos:"ISM Onboarding + ISM Canais", clusterA:"Ativações simples: ISM; necessidades técnicas robustas → ISM ponto focal de Canais" },
+    papel_headcount:{ todos:"Conduzir call de ativação; criar WABA; ativar número; informar políticas Meta", clusterA:"Solicitar verificação da empresa (Partner Led Business Verification); emitir cartão CNPJ; encaminhar para selo de conta oficial se aplicável" },
+    papel_vendedor:{ todos:"Apoiar se cliente não agendar call de ativação em 48h", clusterA:"Se ativação em caráter prioritário: alinhar com cliente que o onboarding continua (treinamentos, suporte, educação)" },
+    objeto_hubspot:"Ticket",
+    etapa_crm:"Col. H · H - ATIVAÇÃO DO CANAL",
+    campos_hubspot:{ todos:"Tipo de número · Portfólio empresarial (Sim/Não/Agência Mkt) · Site pronto para ativar · Pronto para ativar = Sim → gatilho pipe 7.1 · [BV] Canal Contratado · [ISM] Encaminhar para ativação = Sim · Tipo de onboarding", clusterA:"Verificação da empresa iniciada (Partner Led Business Verification) · Ata de reunião com checklist de ativação" },
+    acoes_manuais:{ todos:"Agendar call de ativação · Criar portfólio empresarial e WABA (se necessário) · Ativar número e verificar empresa · Informar políticas, saúde do número e limites · Preencher checklist de canais", clusterA:"Solicitar verificação (Partner Led Business Verification) após a call · Emitir cartão CNPJ e submeter na página de envio · Solicitar selo de conta oficial quando aplicável" },
+    acoes_automaticas:{ todos:"Ticket criado automaticamente no pipe 7.1 ao mover para Col. H · E-mail automático para agendamento · Se sem resposta em 24h: novo e-mail automático", clusterA:"Automação de criação de ticket ativa para todas as colunas a partir da B" },
+    metodologias:{ todos:"Checklist de ativação (pré-requisitos Meta) · Consultoria de canal (boas práticas, saúde do número)", clusterA:"Partner Led Business Verification (obrigatório) · Ativação flexível (pode ocorrer em qualquer etapa a partir da Col. B)" },
+    ferramentas_externas:{ todos:"Meta Business Manager · WhatsApp Business API (WABA) · HubSpot (checklist de canais, pipe 7.1) · Blip Help (links úteis pós-ativação)", clusterA:"Página de envio da verificação (Partner Led Business Verification) · Emissor de cartão CNPJ" },
+    ferramentas_internas:{ todos:"Pipeline 7.1 [ISM] - Canais · Playbook de ativação de canais · Checklist de ativação", clusterA:"Playbooks de ativação dos canais · Documento centralizado de links úteis dos canais · E-mail pós ativação com links úteis" }
+  },
+  {
+    id:"I", nome:"I — Homologação", fase:"Homologação & Encerramento", responsavel_display:"ISM Onboarding",
+    sentimento:{ todos:"Aliviado / Avaliador final — encerrando pendências" },
+    necessidade:{ todos:"Confirmar que tudo foi entregue e que tem onde buscar suporte" },
+    acao_cliente:{ todos:"Confirmar pendências resolvidas; responder e-mail de pré-encerramento" },
+    gatilho:{ todos:"Ativação concluída → ticket movido automaticamente para Col. I" },
+    headcount:{ todos:"ISM Onboarding" },
+    papel_headcount:{ todos:"Verificar pendências; enviar e-mail de pré-encerramento; compartilhar documentação" },
+    papel_vendedor:{ todos:"Sem papel ativo" },
+    objeto_hubspot:"Ticket",
+    etapa_crm:"Col. I · I - PROJETO EM HOMOLOGAÇÃO",
+    campos_hubspot:{ todos:"Ticket movido automaticamente após finalização em canais · E-mail de pré-encerramento enviado · Verificação de pendências (treinamentos, dúvidas)", clusterA:"Checklist de encerramento (canal ativo + uso + % volumetria) verificado · Pasta do Drive completa (gravações, cronograma, JSON)" },
+    acoes_manuais:{ todos:"Último follow-up de pendências com cliente · Enviar e-mail de pré-encerramento · Compartilhar documentação completa na pasta · Mover para Col. K se tudo OK", clusterA:"Verificar checklist: canal ativo + cliente utilizando + % volumetria · Se projeto faseado/V0: alinhar internamente o que falta nas próximas fases · Informar parceiro sobre encerramento e novos pontos focais de Ongoing" },
+    acoes_automaticas:{ todos:"Ticket movido automaticamente para Col. I após finalização em canais" },
+    metodologias:{ todos:"Documentação de handover · Verificação de critérios de conclusão", clusterA:"Checklist específico de encerramento (3 perguntas: canal ativo, uso, % volumetria)" },
+    ferramentas_externas:{ todos:"E-mail (pré-encerramento) · Google Drive (pasta com documentação completa)" },
+    ferramentas_internas:{ todos:"Pipeline 5.1 Col. I (automaticamente gerada) · Pasta no Drive com JSON, mural e calls gravadas", clusterA:"Checklist de encerramento (canal ativo + uso + % volumetria)" }
+  },
+  {
+    id:"K", nome:"K — Finalizado", fase:"Onboarding Concluído", responsavel_display:"ISM Onboarding → CSM",
+    sentimento:{ todos:"Realizado — onboarding concluído", clusterA:"Passagem para CSM com reunião síncrona (MACC/SMB Cluster A)" },
+    necessidade:{ todos:"Passagem de bastão clara para o time de Ongoing", clusterA:"Reunião síncrona ISM + CSM + Cliente; apresentação do novo ponto focal" },
+    acao_cliente:{ todos:"Receber acesso às documentações; transicionar para Ongoing", clusterA:"Participar de reunião síncrona de offboarding (MACC/SMB); responder pesquisa de satisfação" },
+    gatilho:{ todos:"Todas pendências resolvidas + e-mail de pré-encerramento respondido → move para Col. K", clusterA:"Checklist: canal ativo + cliente utilizando + X% volumetria contratada" },
+    headcount:{ bc:"ISM Onboarding → passagem para CSM (assíncrona via e-mail; Cluster C sem CSM)", clusterA:"ISM Onboarding → reunião síncrona com CSM + cliente (MACC e SMB Cluster A)" },
+    papel_headcount:{ bc:"Documentar; encerrar ticket; passar para CSM (e-mail assíncrono)", clusterA:"Agendar reunião ISM + CSM + cliente (mín. 3 dias úteis; 15-30 min); ensinar cliente a acionar CSM via contato inteligente; montar dossiê de crise se houve atrito; exportar histórico do grupo WA; sair do grupo após 2 semanas" },
+    papel_vendedor:{ todos:"Dispensa do onboarding formalizada por e-mail com vendedor + AM + ISM", clusterA:"IS acompanha passagem para Ongoing nos primeiros 6 meses (SMB criados após fev/2025; MACC após mai/2025)" },
+    objeto_hubspot:"Ticket",
+    etapa_crm:"Col. K · K - ONBOARDING FINALIZADO",
+    campos_hubspot:{ todos:"Projetos 100% concluídos · [ISM] Dispensado do Onboarding? = Sim (quando recusa continuar)", clusterA:"Termo de Aceite 3 (Conclusão do Projeto) enviado · Dossiê de crise montado e enviado ao CSM (se houve atrito) · Invite de offboarding com: nome, parceiro, caso de uso, status WA, link do ticket" },
+    acoes_manuais:{ todos:"Documentar e fechar ticket · Passar acesso de documentação ao CSM", clusterA:"Agendar reunião síncrona ISM + CSM + Cliente (mín. 3 dias úteis; 15-30 min) · Se houve atrito: montar dossiê de crise antes da reunião · Ensinar cliente a acionar CSM via contato inteligente · Pasta do Drive completa: gravações, cronograma, JSON, atas · E-mail manual formalizando encerramento · Exportar histórico do grupo WA; sair do grupo 2 semanas após offboarding · Arquivar grupo WA por 6 meses" },
+    acoes_automaticas:{ clusterA:"E-mail manual enviado pelo ISM quando ticket chega na Col. K (não automático) · Pesquisa de satisfação disparada automaticamente ao fim do onboarding", bc:"Propriedade 'Churn Revertido = NÃO' preenchida automaticamente se AM encerrar churn" },
+    metodologias:{ todos:"Gestão de knowledge transfer para Ongoing/CSM", clusterA:"Reunião síncrona de offboarding com CSM (script e ATA exclusivos) · Dossiê de crise obrigatório se houve atrito · Gestão do grupo WA (saída formal após 2 semanas) · Termo de Aceite 3 obrigatório" },
+    ferramentas_externas:{ todos:"HubSpot (ticket encerrado, passagem ao CSM) · E-mail (formalização de dispensa, se aplicável)", clusterA:"Google Meet (call de offboarding ISM + CSM + Cliente) · HubSpot (Termo de Aceite 3) · Modelo de dossiê — Clientes em crise · E-mail manual: [Consultivo] ou [Parceiro] Coluna J — Passagem de bastão para Ongoing" },
+    ferramentas_internas:{ todos:"Templates do onboarding disponíveis", clusterA:"Script e ATA da call de offboarding (exclusivos Cluster A) · Checklist completo de etapas e realizações · Modelo de dossiê — Clientes em crise · Snippet #infos_reuniaochurn_ismon (se houve churn revertido)" }
+  },
+  {
+    id:"L", nome:"L — Stand By", fase:"Exceção / Pausa", responsavel_display:"ISM Onboarding + AM",
+    sentimento:{ todos:"Desengajado / Em risco — pausa ou sinalização de churn" },
+    necessidade:{ todos:"Retomada do projeto ou clareza sobre encerramento", clusterA:"Contexto do ToS (contrato 12 ou 24 meses) orienta toda tratativa de churn" },
+    acao_cliente:{ todos:"Responder tentativas de contato ou solicitar pausa formal", clusterA:"Se churn explícito: não há cancelamento imediato — contrato segue até fim da vigência" },
+    gatilho:{ todos:"Desengajamento (+10 dias sem resposta) ou solicitação de pausa / churn" },
+    headcount:{ todos:"ISM Onboarding + AM + (PDM / Parceiro em casos Premium)", clusterA:"ISM lidera tratativa de churn; IS envolvido quando passa ao escopo comercial" },
+    papel_headcount:{ todos:"Executar régua de desengajamento; acionar AM; mover para abandono ou churn conforme desfecho", clusterA:"Call imediata (15 min) com cliente → call IS/Closer + PDM → plano de ação → reforçar ToS (cláusulas 8.1 e 8.4); criar ticket no Pipeline de Gestão de Cancelamento" },
+    papel_vendedor:{ todos:"Coresponsável na tratativa de churn", clusterA:"IS obrigatoriamente envolvido quando churn passa ao escopo comercial; participa da call IS/Closer + PDM para plano de ação" },
+    objeto_hubspot:"Ticket",
+    etapa_crm:"Col. L · L - STAND BY",
+    campos_hubspot:{ todos:"Motivo de inatividade · Transferir tíquete = Solicitação de Churn (se aplicável) · Churn Revertido? (preenchido automaticamente)", clusterA:"Ticket criado no Pipeline de Gestão de Cancelamento · Motivo do cancelamento (percepção do cliente e análise ISM) · Verificação do ToS (12 ou 24 meses) · Registro cadastrado na planilha do jurídico (se insistência no cancelamento)" },
+    acoes_manuais:{ todos:"Acionar AM para verificar adimplência · Executar régua de desengajamento (3 rodadas) · Avisar AM, Parceiro/PDM e Canais · Mover para abandono ou churn conforme desfecho", clusterA:"ISM conduz call imediata de 15 min · Agendar call IS/Closer + PDM → construir plano de ação · Preparar dossiê de crise · Verificar se cliente assinou ToS · Criar ticket no Pipeline Gestão de Cancelamento · Reforçar cláusulas 8.1 e 8.4 por escrito · Se insistência: cadastrar na planilha do jurídico" },
+    acoes_automaticas:{ todos:"Ticket criado automaticamente no pipeline de AM em caso de solicitação de churn", clusterA:"Ao preencher 'Formalização': automação gera ticket para Financeiro + Garantia de Receita + move para Aviso Prévio" },
+    metodologias:{ todos:"Régua de reengajamento (3 touchpoints) · Encerramento por abandono documentado", clusterA:"Tratativa de churn centralizada no ISM · Processo formal de ToS: reforço das cláusulas 8.1 e 8.4 · Pipeline de Gestão de Cancelamento (etapas: Novo Pedido → Trabalho de Reversão → Desfecho → Desfecho Jurídico → Formalização → Aviso Prévio → Churn Concluído)" },
+    ferramentas_externas:{ todos:"HubSpot (registro de ATA de churn, pipeline AM) · E-mail (comercial.bb@blip.ai para churn formal)", clusterA:"Pipeline de Gestão de Cancelamento (HubSpot) · Planilha do Jurídico · Calculadora de prazo (data fim do ToS) · Netlex (distrato do contrato) · Snippet #solicitou_churn_tos" },
+    ferramentas_internas:{ todos:"Régua de desengajamento (3 disparos ativos + 3 e-mails) · ATA de churn: #infos_reuniaochurn_ismon · Pipeline de AM (criado automaticamente)", clusterA:"[FAQ] Nova Estrutura para Gestão de Churn · Figma do processo de churn · Templates de e-mail de churn (4 modelos) · Snippet #solicitou_churn_tos · Snippet ATA de churn: #infos_reuniaochurn_ismon" }
+  }
+];
+
+// ─── IMPLEMENTAÇÃO RENDER ────────────────────────────────────────────────────
+
+function openImplStage(id) {
+  var stage = IMP_STAGES_SMB.find(function(s){ return s.id === id; });
+  if (stage) setState({ activeImplStage: stage });
+}
+
+function setImplCluster(c) {
+  setState({ implCluster: c });
+}
+
+function renderVariantField(fieldObj, clusterFilter) {
+  if (!fieldObj) return '';
+  if (typeof fieldObj === 'string') return '<p class="text-sm text-slate-800 leading-relaxed">' + escHtml(fieldObj) + '</p>';
+  var keys = Object.keys(fieldObj);
+  if (keys.length === 0) return '';
+
+  // When filter is active, select only relevant keys
+  var filtered = keys;
+  if (clusterFilter === 'clusterA') {
+    filtered = keys.filter(function(k){ return k === 'todos' || k === 'clusterA' || k === 'parceiro_clusterA'; });
+  } else if (clusterFilter === 'bc') {
+    filtered = keys.filter(function(k){ return k === 'todos' || k === 'bc' || k === 'parceiro'; });
+  }
+  if (filtered.length === 0) return '<p class="text-xs text-slate-400 italic">— Não se aplica a este cluster —</p>';
+
+  if (filtered.length === 1 && (filtered[0] === 'todos' || clusterFilter !== 'all')) {
+    return '<p class="text-sm text-slate-800 leading-relaxed">' + escHtml(fieldObj[filtered[0]]) + '</p>';
+  }
+
+  var labelMap = {
+    todos:             null,
+    clusterA:          'Cluster A',
+    bc:                'B e C',
+    parceiro:          'Parceiro',
+    parceiro_clusterA: 'Parceiro · A',
+  };
+  return filtered.map(function(k) {
+    var label = labelMap[k] !== undefined ? labelMap[k] : k;
+    // When filtered, only show sub-label if there are multiple entries
+    var showLabel = filtered.length > 1 && label !== null;
+    var prefix = showLabel
+      ? '<span class="text-xs text-slate-400 italic mr-1.5">' + label + ' —</span>'
+      : '';
+    return '<div class="mb-2 last:mb-0">' + prefix + '<span class="text-sm text-slate-800 leading-relaxed">' + escHtml(fieldObj[k]) + '</span></div>';
+  }).join('');
+}
+
+function renderImplPhase(phase) {
+  var color = phase.color;
+  var callout = '<div class="mx-4 mt-4 mb-3 rounded-xl overflow-hidden" style="border:1px solid #BFDBFE;">' +
+
+    '<button onclick="toggleImplInfo()" class="w-full flex items-center justify-between px-5 py-3.5 text-left transition-colors hover:opacity-90" style="background:#EFF6FF;">' +
+    '<div>' +
+    '<p class="font-bold text-slate-800 text-sm">Como funciona a Implementação Blip?</p>' +
+    '<p class="text-xs text-slate-500 mt-0.5">Todo o onboarding roda na mesma estrutura: <strong>Pipeline 5.1 [ISM] Onboarding Consultivo</strong></p>' +
+    '</div>' +
+    '<span id="impl-info-chevron" class="text-slate-400 text-xs ml-4 flex-shrink-0">▼ expandir</span>' +
+    '</button>' +
+
+    '<div id="impl-info-body" class="hidden">' +
+
+    '<div class="px-5 py-4 border-t" style="background:white;border-color:#DBEAFE;">' +
+    '<p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">1 · Modelos de Onboarding</p>' +
+    '<div class="overflow-x-auto scrollbar-thin">' +
+    '<table class="w-full text-xs" style="border-collapse:collapse;">' +
+    '<thead><tr style="background:#F8FAFC;">' +
+    '<th class="text-left px-3 py-2 font-semibold text-slate-500" style="border:1px solid #E2E8F0;min-width:100px;">Modelo</th>' +
+    '<th class="text-left px-3 py-2 font-semibold text-slate-500" style="border:1px solid #E2E8F0;">Quem desenvolve?</th>' +
+    '<th class="text-left px-3 py-2 font-semibold text-slate-500" style="border:1px solid #E2E8F0;">Papel do ISM Blip</th>' +
+    '<th class="text-left px-3 py-2 font-semibold text-slate-500" style="border:1px solid #E2E8F0;">Acompanhamento</th>' +
+    '</tr></thead>' +
+    '<tbody>' +
+    '<tr>' +
+    '<td class="px-3 py-2.5 font-semibold text-slate-700" style="border:1px solid #E2E8F0;">Consultivo<br><span class="font-normal text-slate-400">(Time Interno)</span></td>' +
+    '<td class="px-3 py-2.5 text-slate-600" style="border:1px solid #E2E8F0;">ISM Blip guia a construção e facilita o desenvolvimento do cliente.</td>' +
+    '<td class="px-3 py-2.5 text-slate-600" style="border:1px solid #E2E8F0;">Atuação direta no desenvolvimento.</td>' +
+    '<td class="px-3 py-2.5 text-slate-600" style="border:1px solid #E2E8F0;">Fluxo padrão na Pipeline 5.1.</td>' +
+    '</tr>' +
+    '<tr style="background:#FAFAFA;">' +
+    '<td class="px-3 py-2.5 font-semibold text-slate-700" style="border:1px solid #E2E8F0;">Via Parceiro</td>' +
+    '<td class="px-3 py-2.5 text-slate-600" style="border:1px solid #E2E8F0;">O Parceiro desenvolve.</td>' +
+    '<td class="px-3 py-2.5 text-slate-600" style="border:1px solid #E2E8F0;">Apenas monitora o processo.</td>' +
+    '<td class="px-3 py-2.5 text-slate-600" style="border:1px solid #E2E8F0;">CPM do parceiro usa pipeline própria de tickets — paralela e integrada à 5.1.</td>' +
+    '</tr>' +
+    '</tbody></table>' +
+    '</div>' +
+    '</div>' +
+
+    '<div class="px-5 py-4 border-t" style="background:white;border-color:#DBEAFE;">' +
+    '<p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">2 · Modelos de Atendimento (Clusters)</p>' +
+    '<div class="grid grid-cols-1 gap-3 sm:grid-cols-2">' +
+
+    '<div class="rounded-lg p-3" style="background:#DDEEFF;border:1px solid #BFDBFE;">' +
+    '<p class="text-xs font-bold mb-2" style="color:#0036BD;">Cluster A — Jornada Premium</p>' +
+    '<p class="text-xs font-semibold text-slate-500 mb-1.5 uppercase tracking-wider" style="font-size:9px;">O que entrega</p>' +
+    '<ul class="space-y-1 mb-3">' +
+    '<li class="flex items-start gap-1.5 text-xs text-slate-700"><span style="color:#0096FA;margin-top:1px;">●</span><span>Alinhamento inicial (V0/Kickstart)</span></li>' +
+    '<li class="flex items-start gap-1.5 text-xs text-slate-700"><span style="color:#0096FA;margin-top:1px;">●</span><span>Follow-ups (FUPs) quinzenais</span></li>' +
+    '<li class="flex items-start gap-1.5 text-xs text-slate-700"><span style="color:#0096FA;margin-top:1px;">●</span><span>Grupo de WhatsApp dedicado</span></li>' +
+    '<li class="flex items-start gap-1.5 text-xs text-slate-700"><span style="color:#0096FA;margin-top:1px;">●</span><span>Termos de Aceite formais</span></li>' +
+    '<li class="flex items-start gap-1.5 text-xs text-slate-700"><span style="color:#0096FA;margin-top:1px;">●</span><span>Passagem síncrona (reunião) para o CSM</span></li>' +
+    '</ul>' +
+    '<p class="text-xs font-semibold text-slate-500 mb-1.5 uppercase tracking-wider" style="font-size:9px;">Quem é Cluster A</p>' +
+    '<ul class="space-y-1">' +
+    '<li class="flex items-start gap-1.5 text-xs text-slate-700"><span style="color:#0096FA;margin-top:1px;">●</span><span>Clientes com plano: Super, Blip Enterprise, Blip Enterprise Lite, Blip Enterprise Lite + IA, DEU Outcomes, DEU Blip Expert, DEU Blip Executive, Smart DEU Blip Advanced, Smart DEU Blip Expert ou Smart DEU Blip Executive</span></li>' +
+    '<li class="flex items-start gap-1.5 text-xs text-slate-700"><span style="color:#0096FA;margin-top:1px;">●</span><span>Clientes de qualquer outro plano com tipo de conta <strong>MAcc</strong></span></li>' +
+    '<li class="flex items-start gap-1.5 text-xs text-slate-700"><span style="color:#0096FA;margin-top:1px;">●</span><span>Clientes com projeto de escopo G contratado com parceiro (R$15k, R$17k, R$20k, R$22k ou Outro)</span></li>' +
+    '</ul>' +
+    '</div>' +
+
+    '<div class="rounded-lg p-3" style="background:#F8FAFC;border:1px solid #E2E8F0;">' +
+    '<p class="text-xs font-bold text-slate-600 mb-2">Clusters B e C — Jornada Padrão</p>' +
+    '<p class="text-xs font-semibold text-slate-500 mb-1.5 uppercase tracking-wider" style="font-size:9px;">O que entrega</p>' +
+    '<ul class="space-y-1 mb-3">' +
+    '<li class="flex items-start gap-1.5 text-xs text-slate-700"><span style="color:#64748B;margin-top:1px;">●</span><span><strong>Kickoff síncrono (45 min):</strong> Alinhamento de escopo, cronograma de educação e checklist de ativação.</span></li>' +
+    '<li class="flex items-start gap-1.5 text-xs text-slate-700"><span style="color:#64748B;margin-top:1px;">●</span><span><strong>Construção assíncrona:</strong> Fluxo do bot desenvolvido internamente (do zero ou por templates), sem reuniões intermediárias.</span></li>' +
+    '<li class="flex items-start gap-1.5 text-xs text-slate-700"><span style="color:#64748B;margin-top:1px;">●</span><span><strong>FUPs automatizados:</strong> Comunicação via réguas de e-mail e disparos ativos estruturados.</span></li>' +
+    '<li class="flex items-start gap-1.5 text-xs text-slate-700"><span style="color:#64748B;margin-top:1px;">●</span><span><strong>Treinamentos coletivos (1h30):</strong> Capacitações em turmas compartilhadas — sem aplicação individual.</span></li>' +
+    '<li class="flex items-start gap-1.5 text-xs text-slate-700"><span style="color:#64748B;margin-top:1px;">●</span><span><strong>Validação e Ativação síncronas:</strong> Calls dedicadas para validar o fluxo 100% pronto e ativar os canais.</span></li>' +
+    '<li class="flex items-start gap-1.5 text-xs text-slate-700"><span style="color:#64748B;margin-top:1px;">●</span><span><strong>Passagem assíncrona para o CSM:</strong> Encerramento via Drive (relatórios, atas, docs) — sem call de offboarding.</span></li>' +
+    '</ul>' +
+    '<p class="text-xs font-semibold text-slate-500 mb-1.5 uppercase tracking-wider" style="font-size:9px;">Quem é B e C</p>' +
+    '<ul class="space-y-1">' +
+    '<li class="flex items-start gap-1.5 text-xs text-slate-700"><span style="color:#64748B;margin-top:1px;">●</span><span>Clientes com plano <strong>Blip Business</strong> ou <strong>Plus</strong></span></li>' +
+    '<li class="flex items-start gap-1.5 text-xs text-slate-700"><span style="color:#64748B;margin-top:1px;">●</span><span>Modalidade de <strong>Onboarding padrão</strong> (consultivo)</span></li>' +
+    '<li class="flex items-start gap-1.5 text-xs text-slate-700"><span style="color:#64748B;margin-top:1px;">●</span><span>Trilhas: <strong>LOW</strong> (baixa maturidade digital), <strong>MID</strong> (alta maturidade) ou <strong>HIGH</strong> (com integração técnica)</span></li>' +
+    '</ul>' +
+    '</div>' +
+
+    '</div>' +
+    '</div>' +
+
+    '</div>' + // fim impl-info-body
+    '</div>';
+  var legend = '';
+  var pipeline = '<div class="px-4 pb-4 overflow-x-auto scrollbar-thin">' +
+    '<div class="flex gap-2 min-w-max pb-2">' +
+    IMP_STAGES_SMB.map(function(stage, idx) {
+      var sentimentoText = stage.sentimento.todos || stage.sentimento.bc || Object.values(stage.sentimento)[0];
+      var shortSentimento = sentimentoText.length > 26 ? sentimentoText.substring(0, 24) + '…' : sentimentoText;
+      var isLast = idx === IMP_STAGES_SMB.length - 1;
+      return '<div class="flex items-center gap-2">' +
+        '<button onclick="openImplStage(\'' + stage.id + '\')" class="group flex flex-col items-center w-28 text-center p-2 rounded-xl hover:bg-amber-50 transition-colors cursor-pointer">' +
+        '<span class="text-xs font-semibold ' + color.text + ' group-hover:underline leading-tight">' + escHtml(stage.nome) + '</span>' +
+        '<span class="mt-1 text-[10px] text-slate-400 leading-tight">' + escHtml(stage.responsavel_display) + '</span>' +
+        '<span class="mt-1.5 text-[10px] px-1.5 py-0.5 rounded-full ' + color.badge + ' max-w-[112px] truncate block">' + escHtml(shortSentimento) + '</span>' +
+        '</button>' +
+        (!isLast ? '<div class="w-4 h-0.5 flex-shrink-0 ' + color.line + '"></div>' : '') +
+        '</div>';
+    }).join('') +
+    '</div></div>';
+  return '<div>' + callout + legend + pipeline + '</div>';
+}
+
+function renderImplDrawer(stage) {
+  var sections = [
+    { l:'💬 Sentimento do cliente', v:stage.sentimento },
+    { l:'🎯 Necessidade', v:stage.necessidade },
+    { l:'👋 Ação do cliente', v:stage.acao_cliente },
+    { l:'🔑 Gatilho de passagem', v:stage.gatilho },
+    { l:'👤 Responsável (Headcount)', v:stage.headcount },
+    { l:'📋 Papel do headcount', v:stage.papel_headcount },
+    { l:'🧑‍💼 Papel do vendedor', v:stage.papel_vendedor },
+    { l:'🔵 Objeto HubSpot', v:stage.objeto_hubspot },
+    { l:'🟣 Etapa CRM', v:stage.etapa_crm },
+    { l:'📂 Campos HubSpot', v:stage.campos_hubspot },
+    { l:'⚡ Ações manuais', v:stage.acoes_manuais },
+    { l:'🤖 Ações automáticas', v:stage.acoes_automaticas },
+    { l:'📚 Metodologias', v:stage.metodologias },
+    { l:'🛠️ Ferramentas externas', v:stage.ferramentas_externas },
+    { l:'🏠 Ferramentas internas', v:stage.ferramentas_internas },
+  ].filter(function(s){ return s.v; });
+
+  var cf = state.implCluster === 'all' ? 'clusterA' : state.implCluster;
+  var tabs = [
+    { k:'clusterA', label:'Cluster A', active: cf === 'clusterA' },
+    { k:'bc',       label:'B e C',     active: cf === 'bc' },
+  ];
+  var tabsHtml = '<div class="flex gap-1 mt-2">' +
+    tabs.map(function(t) {
+      var baseClass = 'text-xs px-3 py-1 rounded-full font-medium cursor-pointer transition-colors border ';
+      var activeStyle, inactiveStyle;
+      if (t.k === 'clusterA') {
+        activeStyle = 'background:#0036BD;color:#fff;border-color:#0036BD;';
+        inactiveStyle = 'background:#EFF6FF;color:#0036BD;border-color:#BFDBFE;';
+      } else if (t.k === 'bc') {
+        activeStyle = 'background:#475569;color:#fff;border-color:#475569;';
+        inactiveStyle = 'background:#F1F5F9;color:#475569;border-color:#CBD5E1;';
+      } else {
+        activeStyle = 'background:#F59E0B;color:#fff;border-color:#F59E0B;';
+        inactiveStyle = 'background:#FEF3C7;color:#92400E;border-color:#FDE68A;';
+      }
+      return '<button onclick="setImplCluster(\'' + t.k + '\')" class="' + baseClass + '" style="' + (t.active ? activeStyle : inactiveStyle) + '">' + t.label + '</button>';
+    }).join('') +
+    '</div>';
+
+  return '<div class="fixed inset-0 bg-black/40 z-40 flex justify-end" onclick="setState({activeImplStage:null})">' +
+    '<div class="bg-white w-full max-w-xl h-full overflow-y-auto shadow-2xl drawer-slide" onclick="event.stopPropagation()">' +
+    '<div class="sticky top-0 bg-white border-b border-slate-100 px-6 py-4 z-10">' +
+    '<div class="flex items-start justify-between">' +
+    '<div>' +
+    '<span class="text-xs font-medium px-2 py-0.5 rounded-full" style="background:#FEF3C7;color:#92400E;">⚙️ Implementação · Pipeline 5.1</span>' +
+    '<h3 class="font-bold text-slate-800 text-lg mt-1">' + escHtml(stage.nome) + '</h3>' +
+    '<span class="text-xs text-slate-500">' + escHtml(stage.fase) + ' · ' + escHtml(stage.responsavel_display) + '</span>' +
+    '</div>' +
+    '<button onclick="setState({activeImplStage:null})" class="text-slate-400 hover:text-slate-600 text-2xl leading-none mt-1">&times;</button>' +
+    '</div>' +
+    tabsHtml +
+    '</div>' +
+    '<div class="p-6 space-y-3">' +
+    sections.map(function(s) {
+      return '<div class="bg-slate-50 rounded-xl p-4">' +
+        '<p class="text-xs font-semibold text-slate-500 mb-2">' + s.l + '</p>' +
+        renderVariantField(s.v, cf) +
+        '</div>';
+    }).join('') +
+    '</div>' +
+    '</div>' +
+    '</div>';
+}
+
 // ─── HUBSPOT DATA ────────────────────────────────────────────────────────────
 
 const HUBSPOT_PIPELINES = [
@@ -396,6 +803,8 @@ let state = {
   page: 'home',         // 'home' | 'segment'
   segmentId: null,
   activeStage: null,
+  activeImplStage: null,
+  implCluster: 'clusterA', // 'clusterA' | 'bc'
   showModal: false,
   modalSegment: '',
   modalPhase: '',
@@ -411,8 +820,9 @@ function setState(updates) {
 // ─── COMPONENTS ──────────────────────────────────────────────────────────────
 
 function completenessChip(c) {
-  if (c === 'complete') return '<span class="text-xs px-2 py-0.5 rounded-full font-medium bg-green-100 text-green-700">✓ Completo</span>';
-  if (c === 'partial')  return '<span class="text-xs px-2 py-0.5 rounded-full font-medium bg-amber-100 text-amber-700">~ Parcial</span>';
+  if (c === 'complete')    return '<span class="text-xs px-2 py-0.5 rounded-full font-medium bg-green-100 text-green-700">✓ Completo</span>';
+  if (c === 'partial')     return '<span class="text-xs px-2 py-0.5 rounded-full font-medium bg-amber-100 text-amber-700">~ Parcial</span>';
+  if (c === 'in_progress') return '<span class="text-xs px-2 py-0.5 rounded-full font-medium bg-yellow-100 text-yellow-700">⏳ Em andamento</span>';
   return '<span class="text-xs px-2 py-0.5 rounded-full font-medium bg-slate-100 text-slate-500">· Em breve</span>';
 }
 
@@ -679,6 +1089,7 @@ function renderSegmentPage(seg) {
     ${renderFooter()}
     ${state.showModal ? renderModal() : ''}
     ${state.activeStage ? renderDrawer(state.activeStage) : ''}
+    ${state.activeImplStage ? renderImplDrawer(state.activeImplStage) : ''}
   </div>`;
 }
 
@@ -705,7 +1116,7 @@ function renderPhase(phase, segId) {
           ${phase.stageCount ? `<span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg">📊 ${phase.stageCount} etapa${phase.stageCount!==1?'s':''}</span>` : ''}
         </div>
       </div>
-      ${phase.stages.length > 0 ? renderStagesTimeline(phase) : renderEmptyPhase(phase)}
+      ${phase.id === 'implementacao' && segId === 'smb' && IMP_STAGES_SMB.length > 0 ? renderImplPhase(phase) : phase.stages.length > 0 ? renderStagesTimeline(phase) : renderEmptyPhase(phase)}
     </div>
   </div>`;
 }
@@ -1067,11 +1478,11 @@ function escHtml(str) {
 
 function navigateTo(segId, phaseId) {
   if (segId === 'home') {
-    setState({ page:'home', segmentId:null, activeStage:null, searchQuery:'' });
+    setState({ page:'home', segmentId:null, activeStage:null, activeImplStage:null, implCluster:'clusterA', searchQuery:'' });
   } else if (segId === 'hubspot') {
-    setState({ page:'hubspot', segmentId:null, activeStage:null, searchQuery:'' });
+    setState({ page:'hubspot', segmentId:null, activeStage:null, activeImplStage:null, implCluster:'clusterA', searchQuery:'' });
   } else {
-    setState({ page:'segment', segmentId:segId, activeStage:null, searchQuery:'' });
+    setState({ page:'segment', segmentId:segId, activeStage:null, activeImplStage:null, searchQuery:'' });
     if (phaseId) {
       setTimeout(() => scrollToPhase('phase-'+phaseId), 100);
     }
@@ -1172,6 +1583,14 @@ function render() {
 }
 
 // ─── LEGENDA ─────────────────────────────────────────────────────────────────
+
+function toggleImplInfo() {
+  var body = document.getElementById('impl-info-body');
+  var chevron = document.getElementById('impl-info-chevron');
+  if (!body) return;
+  var isHidden = body.classList.toggle('hidden');
+  if (chevron) chevron.textContent = isHidden ? '▼ expandir' : '▲ fechar';
+}
 
 function toggleLegend() {
   const body = document.getElementById('legend-body');
