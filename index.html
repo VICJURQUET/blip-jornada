@@ -6,15 +6,23 @@
   <title>Jornada 360° · Blip</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            blip: { 50:'#f0eeff',100:'#e2ddff',200:'#c8bfff',500:'#5B2DE5',600:'#4918d4',700:'#3c10b8',900:'#1E1B4B' }
+            blip: {
+              50:'#e6f4ff', 100:'#cce9ff', 200:'#99d3ff',
+              400:'#0096FA', 500:'#1968F0', 600:'#0036BD',
+              700:'#0036BD', 900:'#202C44'
+            },
+            brand: {
+              blue:'#0096FA', medium:'#1968F0', dark:'#0036BD',
+              navy:'#202C44', yellow:'#FFC501'
+            }
           },
-          fontFamily: { sans: ['Inter','system-ui','sans-serif'] }
+          fontFamily: { sans: ['Lexend','Inter','system-ui','sans-serif'] }
         }
       }
     }
@@ -76,6 +84,60 @@
 </div>
 
 <div id="app" class="locked"></div>
+
+<!-- LEGENDA FIXA -->
+<div id="legend-panel" class="fixed left-4 top-1/2 -translate-y-1/2 z-50 hidden">
+  <div class="bg-white border border-slate-200 rounded-2xl shadow-lg overflow-hidden w-52">
+    <!-- Header -->
+    <button onclick="toggleLegend()" class="w-full flex items-center justify-between px-4 py-3 bg-slate-50 border-b border-slate-100 hover:bg-slate-100 transition-colors">
+      <span class="text-xs font-semibold text-slate-600 uppercase tracking-wider">Legenda</span>
+      <span id="legend-chevron" class="text-slate-400 text-xs">▲</span>
+    </button>
+    <!-- Body -->
+    <div id="legend-body" class="px-4 py-4 space-y-4">
+      <!-- Etapa -->
+      <div class="flex items-start gap-3">
+        <div class="w-8 flex-shrink-0 flex justify-center pt-0.5">
+          <span class="text-xs font-semibold text-blue-500">etapa</span>
+        </div>
+        <div>
+          <p class="text-xs font-semibold text-slate-700 leading-tight">Nome da etapa</p>
+          <p class="text-[10px] text-slate-400 mt-0.5">Conforme cadastrado no HubSpot</p>
+        </div>
+      </div>
+      <!-- Responsável -->
+      <div class="flex items-start gap-3">
+        <div class="w-8 flex-shrink-0 flex justify-center pt-0.5">
+          <span class="text-[10px] text-slate-400 font-medium italic">cargo</span>
+        </div>
+        <div>
+          <p class="text-xs font-semibold text-slate-700 leading-tight">Responsável</p>
+          <p class="text-[10px] text-slate-400 mt-0.5">Papel que conduz a etapa</p>
+        </div>
+      </div>
+      <!-- Sentimento -->
+      <div class="flex items-start gap-3">
+        <div class="w-8 flex-shrink-0 flex justify-center pt-0.5">
+          <span class="text-[10px] px-1.5 py-0.5 rounded-full bg-slate-100 text-slate-500 whitespace-nowrap font-medium">tag</span>
+        </div>
+        <div>
+          <p class="text-xs font-semibold text-slate-700 leading-tight">Sentimento</p>
+          <p class="text-[10px] text-slate-400 mt-0.5">Emoção do cliente na etapa</p>
+        </div>
+      </div>
+      <!-- Conector -->
+      <div class="flex items-start gap-3">
+        <div class="w-8 flex-shrink-0 flex justify-center items-center" style="padding-top:6px">
+          <div class="w-5 h-0.5 bg-slate-300"></div>
+        </div>
+        <div>
+          <p class="text-xs font-semibold text-slate-700 leading-tight">Avanço</p>
+          <p class="text-[10px] text-slate-400 mt-0.5">Progressão entre etapas</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
 // ─── AUTH ────────────────────────────────────────────────────────────────────
@@ -188,7 +250,7 @@ const SEGMENTS = [
     description: 'Atende contas Whales e Sharks · Plataforma Blip 2.0',
     icon: '🏛️', audience: 'BDRs, Closers, CSMs, KAMs',
     notionUrl: 'https://www.notion.so/blip-ai/Jornada-MAcc-360-36ddcfddcf4a810fa25af53d7a751d54',
-    color: { gradient:'from-purple-700 to-purple-500', badge:'bg-purple-100 text-purple-700', dot:'bg-purple-500', btn:'bg-purple-600 hover:bg-purple-700', border:'border-purple-300', light:'bg-purple-50', text:'text-purple-600' },
+    color: { gradient:'from-[#0036BD] to-[#1968F0]', badge:'bg-blue-100 text-blue-700', dot:'bg-blue-600', btn:'bg-blue-700 hover:bg-blue-800', border:'border-blue-300', light:'bg-blue-50', text:'text-blue-700' },
     phases: [
       {
         id:'land', name:'Funil Land', icon:'📘',
@@ -233,7 +295,7 @@ const SEGMENTS = [
     description: 'Atende exclusivamente contas Whales · Plataforma Blip 2.0',
     icon: '🌟', audience: 'BDRs, AEs, CSMs, KAEs',
     notionUrl: 'https://www.notion.so/blip-ai/Jornada-StAcc-360-36ddcfddcf4a8109ae91c7d736b0401c',
-    color: { gradient:'from-teal-700 to-teal-500', badge:'bg-teal-100 text-teal-700', dot:'bg-teal-500', btn:'bg-teal-600 hover:bg-teal-700', border:'border-teal-300', light:'bg-teal-50', text:'text-teal-600' },
+    color: { gradient:'from-[#202C44] to-[#0036BD]', badge:'bg-blue-100 text-blue-800', dot:'bg-blue-900', btn:'bg-blue-900 hover:bg-blue-950', border:'border-blue-200', light:'bg-blue-50', text:'text-blue-900' },
     phases: [
       {
         id:'land', name:'Funil Land', icon:'📘',
@@ -359,39 +421,59 @@ function renderHome() {
   const showResults = state.searchQuery.length >= 2;
 
   return `
-  <div class="min-h-screen flex flex-col">
-    <!-- Header -->
-    <header class="bg-white border-b border-slate-200 sticky top-0 z-40">
-      <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <div class="w-8 h-8 bg-blip-500 rounded-lg flex items-center justify-center">
-            <span class="text-white text-sm font-bold">B</span>
-          </div>
-          <span class="font-semibold text-slate-800">Jornada 360°</span>
+  <div class="min-h-screen flex flex-col" style="font-family:'Lexend',Inter,system-ui,sans-serif;background:#F5F5F5;">
+
+    <!-- NAVBAR -->
+    <header class="bg-white border-b border-slate-100 sticky top-0 z-40 shadow-sm">
+      <div class="max-w-6xl mx-auto px-6 py-3 flex items-center gap-4">
+        <!-- Logo -->
+        <div class="flex items-center flex-shrink-0">
+          <svg height="32" viewBox="0 0 240 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Speech bubble: circle with tail bottom-left -->
+            <path d="M38 6C19.2 6 4 19.9 4 37C4 54.1 19.2 68 38 68C42.2 68 46.2 67.3 49.9 66L64 74L60.1 59.8C65.8 54.6 69.5 47.2 69.5 39C69.5 21.9 55.7 8 38 6Z" fill="#0096FA"/>
+            <!-- blip text using tspan for precise control -->
+            <text x="82" y="56" font-family="'Lexend', 'Arial Rounded MT Bold', Arial, sans-serif" font-size="46" font-weight="800" fill="#111111" letter-spacing="-0.5">blip</text>
+          </svg>
         </div>
-        <button onclick="setState({showModal:true})" class="flex items-center gap-2 bg-blip-500 hover:bg-blip-600 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors">
-          <span>⚡</span> Acionar
+
+        <!-- Search (compact, center) -->
+        <div class="flex-1 max-w-xs hidden md:block relative">
+          <div class="flex items-center bg-slate-50 border border-slate-200 rounded-lg overflow-hidden">
+            <span class="pl-3 text-slate-400 text-sm">🔍</span>
+            <input id="search-input" type="text" value="${escHtml(state.searchQuery)}"
+              placeholder="Buscar etapa, metodologia..."
+              oninput="setState({searchQuery:this.value})"
+              class="flex-1 px-3 py-2 text-slate-800 text-sm focus:outline-none bg-transparent placeholder:text-slate-400" />
+            ${state.searchQuery ? `<button onclick="setState({searchQuery:''})" class="pr-3 text-slate-400 hover:text-slate-600">&times;</button>` : ''}
+          </div>
+          ${showResults ? renderSearchDropdown(results) : ''}
+        </div>
+
+        <div class="flex-1"></div>
+
+        <!-- Acionar -->
+        <button onclick="setState({showModal:true})" class="flex items-center gap-2 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors flex-shrink-0" style="background:#1968F0;" onmouseover="this.style.background='#0036BD'" onmouseout="this.style.background='#1968F0'">
+          <span>⚡</span><span>Acionar</span>
         </button>
       </div>
     </header>
 
     <main class="flex-1">
-      <!-- Hero -->
-      <section class="bg-gradient-to-br from-blip-900 via-blip-700 to-blip-500 text-white py-16 px-6">
+
+      <!-- HERO -->
+      <section class="text-white py-14 px-6" style="background:linear-gradient(135deg,#1968F0 0%,#0036BD 100%);">
         <div class="max-w-3xl mx-auto text-center">
-          <div class="inline-flex items-center gap-2 bg-white/10 rounded-full px-4 py-1.5 text-sm mb-6">
-            <span>🗺️</span><span>Guia completo da jornada do cliente Blip 2.0</span>
-          </div>
-          <h1 class="text-4xl font-bold mb-4 leading-tight">Jornada do Cliente 360°</h1>
-          <p class="text-white/80 text-lg mb-8 max-w-xl mx-auto">
+          <h1 class="text-4xl mb-4 leading-tight" style="font-family:Lexend,sans-serif;font-weight:900;">Central da Jornada do Cliente Blip</h1>
+          <p class="text-lg mb-10" style="font-weight:300;color:rgba(255,255,255,0.85);max-width:560px;margin-left:auto;margin-right:auto;margin-bottom:2.5rem;">
             Da prospecção ao upsell — processos, gatilhos, metodologias e ferramentas para cada etapa, por unidade de negócio.
           </p>
-          <!-- Search -->
-          <div class="relative max-w-xl mx-auto">
+
+          <!-- Search (hero, mobile-visible) -->
+          <div class="relative max-w-xl mx-auto md:hidden">
             <div class="flex items-center bg-white rounded-xl shadow-lg overflow-hidden">
               <span class="pl-4 text-slate-400">🔍</span>
-              <input id="search-input" type="text" value="${escHtml(state.searchQuery)}"
-                placeholder="Buscar por etapa, metodologia, papel, campo HubSpot..."
+              <input id="search-input-mobile" type="text" value="${escHtml(state.searchQuery)}"
+                placeholder="Buscar por etapa, metodologia, papel..."
                 oninput="setState({searchQuery:this.value})"
                 class="flex-1 px-4 py-3.5 text-slate-800 text-sm focus:outline-none placeholder:text-slate-400" />
               ${state.searchQuery ? `<button onclick="setState({searchQuery:''})" class="pr-4 text-slate-400 hover:text-slate-600 text-lg">&times;</button>` : ''}
@@ -401,99 +483,81 @@ function renderHome() {
         </div>
       </section>
 
-      <!-- Segment cards -->
-      <section class="max-w-6xl mx-auto px-6 py-12">
-        <h2 class="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-6">Escolha a unidade de negócio</h2>
+      <!-- QUICK ACCESS BUTTONS -->
+      <section class="max-w-6xl mx-auto px-6 -mt-5 mb-8 relative z-10">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+          ${[
+            { icon:'📋', label:'Processos SAP',                  action:"location.href='sap.html'",       desc:'Como preencher o HubSpot para não dar erro?' },
+            { icon:'🏢', label:'Central de Revenue Enablement',  action:'',                               desc:'A casa de todas as apresentações e documentos' },
+            { icon:'📖', label:'Empowerment Guide',              action:'',                               desc:'O guia para a melhor negociação do seu lead/cliente' },
+            { icon:'📈', label:'Growth Insights',                action:'',                               desc:'O seu copiloto super dotado' },
+          ].map(q => `
+          <button onclick="${q.action || ''}" class="group bg-white rounded-xl border text-left px-4 py-3.5 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5" style="border-color:#0096FA;" ${!q.action ? 'disabled style="border-color:#0096FA;opacity:0.7;cursor:default;"' : ''}>
+            <div class="text-xl mb-1.5">${q.icon}</div>
+            <p class="text-sm font-semibold text-slate-800 leading-tight" style="font-family:Lexend,sans-serif;">${q.label}</p>
+            <p class="text-xs text-slate-400 mt-0.5">${q.desc}</p>
+          </button>`).join('')}
+        </div>
+      </section>
+
+      <!-- BU CARDS -->
+      <section class="max-w-6xl mx-auto px-6 pb-10">
+        <h2 class="text-xs font-semibold uppercase tracking-widest mb-5" style="color:#202C44;opacity:0.5;">Unidades de Negócio</h2>
         <div class="grid md:grid-cols-3 gap-6">
           ${SEGMENTS.map(seg => renderSegmentCard(seg)).join('')}
         </div>
       </section>
 
-      <!-- HubSpot + SAP cards -->
-      <section class="max-w-6xl mx-auto px-6 pb-12">
-        <h2 class="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-6">Ferramentas &amp; Processos</h2>
-        <div class="flex flex-col gap-4">
-          <!-- HubSpot card -->
-          <button onclick="navigateTo('hubspot')" class="group w-full bg-white rounded-2xl border-2 border-orange-200 hover:border-orange-400 hover:shadow-md transition-all duration-200 overflow-hidden text-left">
-            <div class="bg-gradient-to-r from-orange-600 to-orange-400 p-6 text-white flex items-center justify-between">
-              <div class="flex items-center gap-4">
-                <span class="text-4xl">🟠</span>
-                <div>
-                  <h3 class="text-2xl font-bold">HubSpot CRM</h3>
-                  <p class="text-white/80 text-sm mt-0.5">Pipelines e campos obrigatórios — referência para todas as BUs</p>
-                </div>
-              </div>
-              <span class="bg-white/20 rounded-lg px-3 py-1.5 text-sm font-medium group-hover:bg-white/30 transition-colors">Ver pipelines →</span>
-            </div>
-            <div class="p-5 flex gap-8">
-              ${HUBSPOT_PIPELINES.map(p => `
-              <div class="flex items-center gap-3">
-                <span class="text-xl">${p.icon}</span>
-                <div>
-                  <p class="text-sm font-semibold text-slate-700">${p.name}</p>
-                  <p class="text-xs text-slate-500">${p.stageCount} etapas · Objeto: Negócio</p>
-                </div>
-              </div>`).join('<div class="w-px bg-slate-200 self-stretch"></div>')}
-              <div class="ml-auto self-center text-xs text-slate-400">Válido para SMB · MAcc · StAcc</div>
-            </div>
-          </button>
+      <!-- FERRAMENTAS & PROCESSOS -->
+      <section class="px-6 pb-12" style="background:#F5F5F5;">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-xs font-semibold uppercase tracking-widest mb-5" style="color:#202C44;opacity:0.5;">Ferramentas &amp; Processos</h2>
+          <div class="flex flex-col gap-4">
 
-          <!-- SAP card -->
-          <button onclick="location.href='sap.html'" class="group w-full bg-white rounded-2xl border-2 border-blue-200 hover:border-blue-400 hover:shadow-md transition-all duration-200 overflow-hidden text-left">
-            <div class="bg-gradient-to-r from-[#0C2F5A] to-[#1968F0] p-6 text-white flex items-center justify-between">
-              <div class="flex items-center gap-4">
-                <span class="text-4xl">📋</span>
-                <div>
-                  <h3 class="text-2xl font-bold">Processos SAP</h3>
-                  <p class="text-white/80 text-sm mt-0.5">Integração SAP × HubSpot — passo a passo para todas as BUs</p>
+            <!-- HubSpot (discreto) -->
+            <button onclick="navigateTo('hubspot')" class="group w-full bg-white rounded-xl border border-slate-200 hover:border-orange-300 hover:shadow-md transition-all duration-200 overflow-hidden text-left" style="border-radius:10px;">
+              <div class="px-4 py-3 flex items-center justify-between border-b border-slate-100">
+                <div class="flex items-center gap-2.5">
+                  <span style="font-size:18px;">🟠</span>
+                  <div>
+                    <p class="text-sm font-semibold text-slate-700" style="font-family:Lexend,sans-serif;">HubSpot CRM</p>
+                    <p class="text-xs text-slate-400">Pipelines e campos obrigatórios</p>
+                  </div>
                 </div>
+                <span class="text-xs text-orange-500 font-medium group-hover:underline">Ver pipelines →</span>
               </div>
-              <span class="bg-white/20 rounded-lg px-3 py-1.5 text-sm font-medium group-hover:bg-white/30 transition-colors">Ver processos ↗</span>
-            </div>
-            <div class="p-5 flex flex-wrap gap-6 items-center">
-              <div class="flex items-center gap-3">
-                <span class="text-xl">🏁</span>
-                <div>
-                  <p class="text-sm font-semibold text-slate-700">Land — Novos Clientes</p>
-                  <p class="text-xs text-slate-500">Item de linha · Criação no SAP</p>
-                </div>
+              <div class="px-4 py-3 flex flex-wrap gap-5 items-center">
+                ${HUBSPOT_PIPELINES.map(p => `
+                <div class="flex items-center gap-2">
+                  <span class="text-sm">${p.icon}</span>
+                  <div>
+                    <p class="text-xs font-medium text-slate-600">${p.name}</p>
+                    <p class="text-[10px] text-slate-400">${p.stageCount} etapas</p>
+                  </div>
+                </div>`).join('<div class="w-px bg-slate-100 self-stretch"></div>')}
+                <div class="ml-auto text-[10px] text-slate-400">SMB · MAcc · StAcc</div>
               </div>
-              <div class="w-px bg-slate-200 self-stretch"></div>
-              <div class="flex items-center gap-3">
-                <span class="text-xl">🚀</span>
-                <div>
-                  <p class="text-sm font-semibold text-slate-700">Expand — Clientes Ativos</p>
-                  <p class="text-xs text-slate-500">Aditivos · Upsell · Renovação</p>
-                </div>
-              </div>
-              <div class="w-px bg-slate-200 self-stretch"></div>
-              <div class="flex items-center gap-3">
-                <span class="text-xl">🛑</span>
-                <div>
-                  <p class="text-sm font-semibold text-slate-700">Cancelamento</p>
-                  <p class="text-xs text-slate-500">Churn · Baixa no SAP</p>
-                </div>
-              </div>
-              <div class="ml-auto self-center text-xs text-slate-400">Válido para SMB · MAcc · StAcc</div>
-            </div>
-          </button>
+            </button>
+
+          </div>
         </div>
-      </section>
 
-      <!-- How to use -->
-      <section class="max-w-6xl mx-auto px-6 pb-12">
-        <div class="bg-white rounded-2xl border border-slate-200 p-6">
-          <h3 class="text-sm font-semibold text-slate-700 mb-4">🧭 Como usar este portal</h3>
+        <!-- Como usar -->
+        <div class="mt-6 bg-white rounded-xl border border-slate-100 p-6" style="border-radius:10px;">
+          <h3 class="text-xs font-semibold uppercase tracking-widest mb-4" style="color:#202C44;opacity:0.5;">🧭 Como usar este portal</h3>
           <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             ${[
               {i:'🔍',t:'Busca global',d:'Encontre qualquer etapa, metodologia, campo HubSpot ou papel do vendedor em segundos'},
-              {i:'📍',t:'Jornada visual',d:'Explore as 4 fases de cada BU com todas as dimensões: CRM, ações e customer centric'},
+              {i:'📍',t:'Jornada visual',d:'Explore as fases de desenvolvimento de vendas e atendimento ao cliente de cada BU com todas as dimensões do relacionamento com o cliente'},
               {i:'💡',t:'Dicas por etapa',d:'Cada etapa tem informações de sentimento do cliente, necessidade e gatilho de passagem'},
               {i:'⚡',t:'Acionar',d:'Contribua com conteúdo ou peça ajuda ao time de Revenue Enablement via Slack'},
-            ].map(x=>`<div class="flex gap-3"><span class="text-2xl flex-shrink-0">${x.i}</span><div><p class="text-sm font-medium text-slate-800">${x.t}</p><p class="text-xs text-slate-500 mt-0.5">${x.d}</p></div></div>`).join('')}
+            ].map(x=>`<div class="flex gap-3"><span class="text-2xl flex-shrink-0">${x.i}</span><div><p class="text-sm font-semibold text-slate-800">${x.t}</p><p class="text-xs text-slate-500 mt-0.5">${x.d}</p></div></div>`).join('')}
           </div>
         </div>
+
+      </div>
       </section>
+
     </main>
 
     ${renderFooter()}
@@ -502,7 +566,7 @@ function renderHome() {
 }
 
 function renderSearchDropdown(results) {
-  if (results.length === 0) return `<div class="absolute top-full left-0 right-0 mt-2 bg-white rounded-xl shadow-xl border border-slate-100 z-50 fade-in"><div class="px-4 py-6 text-center text-slate-500 text-sm">Nenhum resultado</div></div>`;
+  if (results.length === 0) return `<div class="absolute top-full left-0 right-0 mt-2 bg-white rounded-xl shadow-xl border border-slate-100 z-50 fade-in"><div class="px-4 py-8 text-center"><div class="text-3xl mb-2" style="color:#0096FA;">🔍</div><p class="text-sm font-semibold text-slate-700" style="font-family:Lexend,sans-serif;">Nenhum resultado encontrado</p><p class="text-xs text-slate-400 mt-1">Tente buscar por etapa, papel ou metodologia</p></div></div>`;
   return `
   <div class="absolute top-full left-0 right-0 mt-2 bg-white rounded-xl shadow-xl border border-slate-100 overflow-hidden text-left z-50 max-h-80 overflow-y-auto scrollbar-thin fade-in">
     <div class="px-4 py-2 border-b border-slate-100 text-xs font-medium text-slate-500">${results.length} resultado${results.length!==1?'s':''}</div>
@@ -523,32 +587,36 @@ function renderSegmentCard(seg) {
   const completeFases = seg.phases.filter(p => p.completeness === 'complete').length;
   const partialFases = seg.phases.filter(p => p.completeness === 'partial').length;
   return `
-  <button onclick="navigateTo('${seg.id}')" class="group bg-white rounded-2xl border-2 ${seg.color.border} hover:shadow-md transition-all duration-200 overflow-hidden text-left w-full">
-    <div class="bg-gradient-to-r ${seg.color.gradient} p-6 text-white">
+  <button onclick="navigateTo('${seg.id}')" class="group text-left w-full transition-all duration-200"
+    style="border-radius:10px;border:1.5px solid #e2e8f0;box-shadow:0 1px 3px rgba(0,0,0,0.06);overflow:hidden;background:transparent;"
+    onmouseover="this.style.boxShadow='0 8px 24px rgba(25,104,240,0.13)';this.style.transform='translateY(-2px)'"
+    onmouseout="this.style.boxShadow='0 1px 3px rgba(0,0,0,0.06)';this.style.transform='translateY(0)'">
+    <div class="bg-gradient-to-r ${seg.color.gradient} p-5 text-white">
       <div class="flex items-start justify-between">
         <div>
-          <div class="text-3xl mb-2">${seg.icon}</div>
-          <h3 class="text-2xl font-bold">${seg.name}</h3>
+          <div class="text-2xl mb-1.5">${seg.icon}</div>
+          <h3 class="text-xl font-bold" style="font-family:Lexend,sans-serif;">${seg.name}</h3>
+          <p class="text-white/70 text-xs mt-0.5">${seg.fullName}</p>
         </div>
         <span class="bg-white/20 rounded-lg px-2 py-1 text-xs font-medium">Blip 2.0</span>
       </div>
     </div>
-    <div class="p-5">
-      <p class="text-xs text-slate-500 mb-4">${seg.description}</p>
+    <div class="p-5" style="background:white;">
+      <p class="text-xs text-slate-500 mb-4 text-left">${seg.description}</p>
       <div class="space-y-2 mb-4">
         ${seg.phases.map(p => `
         <div class="flex items-center gap-2.5">
-          <span class="text-base">${p.icon}</span>
-          <span class="text-xs text-slate-700 flex-1">${p.name}</span>
+          <span class="text-sm">${p.icon}</span>
+          <span class="text-xs text-slate-700 flex-1 text-left">${p.name}</span>
           ${completenessChip(p.completeness)}
         </div>`).join('')}
       </div>
       <div class="rounded-lg px-3 py-2 ${seg.color.light}">
-        <p class="text-xs text-slate-600"><span class="font-medium">Times:</span> ${seg.audience}</p>
+        <p class="text-xs text-slate-600 text-left"><span class="font-medium">Times:</span> ${seg.audience}</p>
       </div>
       <div class="mt-4 flex items-center justify-between">
         <span class="text-xs text-slate-400">${completeFases+partialFases}/${seg.phases.length} fases com conteúdo</span>
-        <span class="text-xs font-semibold text-slate-600 group-hover:translate-x-1 transition-transform">Ver jornada →</span>
+        <span class="text-xs font-semibold group-hover:translate-x-1 transition-transform" style="color:#1968F0;">Ver jornada →</span>
       </div>
     </div>
   </button>`;
@@ -643,19 +711,84 @@ function renderPhase(phase, segId) {
 }
 
 function renderStagesTimeline(phase) {
+  // Split stages: Contato vs Negócio
+  // The transition stage (Contato → Negócio) appears in BOTH rows:
+  //   - as "Qualificado" in the Contato row
+  //   - as "Deal" in the Negócio row
+  const transitionStage = phase.stages.find(s => s.hubspotObject === 'Contato → Negócio');
+  const contatoStages = [
+    ...phase.stages.filter(s => s.hubspotObject === 'Contato'),
+    ...(transitionStage ? [{ ...transitionStage, _displayName: 'Qualificado', responsible: 'BDR' }] : [])
+  ];
+  const negocioStages = [
+    ...(transitionStage ? [{ ...transitionStage, _displayName: 'Deal' }] : []),
+    ...phase.stages.filter(s => s.hubspotObject === 'Negócio')
+  ];
+  const hasTransition = contatoStages.length > 0 && negocioStages.length > 0;
+
+  function stageBlock(stage, displayIdx, isLast) {
+    const label = stage._displayName || stage.hubspotStage || stage.name;
+    const stageData = { ...stage };
+    delete stageData._displayName;
+    return `
+    <div class="flex items-center gap-3">
+      <button onclick='openStage(${JSON.stringify(stageData).replace(/'/g,"&#39;")})' class="group flex flex-col items-center w-28 text-center">
+        <span class="text-xs font-semibold ${phase.color.text} group-hover:underline leading-tight">${label}</span>
+        ${stage.responsible ? `<span class="mt-1 text-xs text-slate-400">${stage.responsible}</span>` : ''}
+        ${stage.sentiment && stage.sentiment !== '—' ? `<span class="mt-2 text-xs px-2 py-0.5 rounded-full ${phase.color.badge} max-w-[112px] truncate">${stage.sentiment}</span>` : ''}
+      </button>
+      ${!isLast ? `<div class="w-5 h-0.5 flex-shrink-0 ${phase.color.line}"></div>` : ''}
+    </div>`;
+  }
+
+  if (!hasTransition) {
+    return `
+    <div class="p-4 overflow-x-auto scrollbar-thin">
+      <div class="flex gap-6 min-w-max pb-2">
+        ${phase.stages.map((stage, idx) => stageBlock(stage, idx+1, idx === phase.stages.length-1)).join('')}
+      </div>
+    </div>`;
+  }
+
+  const negocioStart = contatoStages.length + 1;
+
   return `
-  <div class="p-4 overflow-x-auto scrollbar-thin">
-    <div class="flex gap-3 min-w-max pb-2">
-      ${phase.stages.map((stage, idx) => `
-      <div class="flex items-center gap-3">
-        <button onclick='openStage(${JSON.stringify(stage).replace(/'/g,"&#39;")})' class="group flex flex-col items-center w-32 text-center">
-          <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white mb-2 transition-transform group-hover:scale-110 ${phase.color.bg}">${idx+1}</div>
-          <span class="text-xs font-medium ${phase.color.text} group-hover:underline leading-tight">${stage.hubspotStage||stage.name}</span>
-          ${stage.responsible ? `<span class="mt-1 text-xs text-slate-400">${stage.responsible}</span>` : ''}
-          ${stage.sentiment && stage.sentiment !== '—' ? `<span class="mt-2 text-xs px-2 py-0.5 rounded-full ${phase.color.badge} max-w-[120px] truncate">${stage.sentiment}</span>` : ''}
-        </button>
-        ${idx < phase.stages.length-1 ? `<div class="w-6 h-0.5 flex-shrink-0 ${phase.color.line}"></div>` : ''}
-      </div>`).join('')}
+  <div class="px-4 pt-4 pb-4 space-y-0">
+    <!-- Linha de Contato (centralizada) -->
+    <div class="flex flex-col items-center">
+      <div class="flex items-center gap-1.5 mb-3">
+        <span class="w-1.5 h-1.5 rounded-full bg-slate-400 inline-block"></span>
+        <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Pipeline de Leads · Contato</span>
+      </div>
+      <div class="flex gap-6 pb-1">
+        ${contatoStages.map((stage, idx) => stageBlock(stage, idx+1, idx === contatoStages.length-1)).join('')}
+      </div>
+    </div>
+
+    <!-- Transição (centralizada) -->
+    <div class="flex justify-center py-8">
+      <div class="flex flex-col items-center gap-1.5 bg-orange-50 border border-orange-200 rounded-xl px-4 py-3">
+        <div class="flex items-center gap-2">
+          <svg class="w-3.5 h-3.5 text-orange-400 flex-shrink-0 rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+          <span class="text-[11px] font-semibold text-slate-500">Contato</span>
+          <svg class="w-3 h-3 text-orange-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+          <span class="text-[11px] font-semibold text-orange-600">Negócio</span>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-orange-400 inline-block"></span>
+          <span class="text-[10px] font-semibold text-orange-500 uppercase tracking-wider">Pipeline Land · Negócio</span>
+          <span class="text-[10px] text-slate-400">· automação cria o deal no CRM</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Linha de Negócio -->
+    <div>
+      <div class="overflow-x-auto scrollbar-thin">
+        <div class="flex gap-6 min-w-max pb-1">
+          ${negocioStages.map((stage, idx) => stageBlock(stage, negocioStart+idx, idx === negocioStages.length-1)).join('')}
+        </div>
+      </div>
     </div>
   </div>`;
 }
@@ -1032,6 +1165,19 @@ function render() {
   } else if (state.page === 'hubspot') {
     app.innerHTML = renderHubSpotPage();
   }
+
+  // Mostra/esconde legenda dependendo da página
+  const legend = document.getElementById('legend-panel');
+  if (legend) legend.classList.toggle('hidden', state.page !== 'segment');
+}
+
+// ─── LEGENDA ─────────────────────────────────────────────────────────────────
+
+function toggleLegend() {
+  const body = document.getElementById('legend-body');
+  const chevron = document.getElementById('legend-chevron');
+  const collapsed = body.classList.toggle('hidden');
+  chevron.textContent = collapsed ? '▼' : '▲';
 }
 
 // ─── INIT ────────────────────────────────────────────────────────────────────
