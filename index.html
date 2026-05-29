@@ -1068,18 +1068,6 @@ function renderSegmentPage(seg) {
       </div>
     </div>
 
-    <!-- Flow nav -->
-    <div class="max-w-6xl mx-auto w-full px-6 pt-8">
-      <div class="flex items-center gap-2 overflow-x-auto scrollbar-thin pb-2">
-        ${seg.phases.map((p,i) => `
-        <div class="flex items-center gap-2 flex-shrink-0">
-          <button onclick="scrollToPhase('phase-${p.id}')" class="flex items-center gap-2 px-4 py-2 rounded-full border text-sm font-medium transition-all ${p.color.badge} hover:opacity-80">
-            <span>${p.icon}</span><span>${p.name}</span><span class="opacity-60 text-xs">(${p.stageCount||'?'})</span>
-          </button>
-          ${i < seg.phases.length-1 ? '<span class="text-slate-300 text-lg">→</span>' : ''}
-        </div>`).join('')}
-      </div>
-    </div>
 
     <!-- Phases -->
     <main class="flex-1 max-w-6xl mx-auto w-full px-6 py-8 space-y-8">
