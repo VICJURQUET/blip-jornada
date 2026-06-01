@@ -195,7 +195,7 @@ const SEGMENTS = [
         id:'land', name:'Funil Land', icon:'📘',
         description:'Aquisição de novos clientes · Do primeiro contato ao TOS assinado',
         lead:'BDR + Inside Sales', stageCount:12, hubspotObject:'Contato → Negócio',
-        completeness:'complete',
+        completeness:'in_progress',
         color:{ bg:'bg-blue-500', text:'text-blue-600', border:'border-blue-200', badge:'bg-blue-100 text-blue-700', line:'bg-blue-200' },
         stages:[
           { id:'s1', name:'Start Contact', hubspotStage:'Start Contact', sentiment:'Inquietude', need:'Identificar que tem um problema', clientAction:'Inbound: levantada de mão · Outbound: sem ação do cliente', passTrigger:'—', responsible:'BDR', sellerRole:'Validar SLA (tamanho empresa, SLA BU e SLA dono da oportunidade). Validar requisitos do site. Validar contato: email, wpp e linkedin. Estudar informações públicas do contato.', hubspotObject:'Contato', hubspotFields:'—', methodologies:['Social Selling'] },
@@ -220,7 +220,7 @@ const SEGMENTS = [
         color:{ bg:'bg-amber-500', text:'text-amber-600', border:'border-amber-200', badge:'bg-amber-100 text-amber-700', line:'bg-amber-200' }, stages:[]
       },
       {
-        id:'full-adoption', name:'Full Adoption', icon:'🌱',
+        id:'full-adoption', name:'Adoção', icon:'🌱',
         description:'Da homologação à entrada no Funil Expand — adoção plena da plataforma',
         lead:'CSM', stageCount:3, hubspotObject:'Ticket', completeness:'empty',
         transitionNote:'Após o Ganho no Land, o vendedor acompanha o cliente por 6 meses. Somente após este período o cliente é transferido para o Account Manager (AM).',
@@ -229,7 +229,7 @@ const SEGMENTS = [
       {
         id:'expand', name:'Funil Expand', icon:'📈',
         description:'Expansão de clientes ativos — do mapeamento ao aditivo assinado',
-        lead:'Account Manager', stageCount:9, hubspotObject:'Negócio', completeness:'complete',
+        lead:'Account Manager', stageCount:9, hubspotObject:'Negócio', completeness:'in_progress',
         color:{ bg:'bg-purple-500', text:'text-purple-600', border:'border-purple-200', badge:'bg-purple-100 text-purple-700', line:'bg-purple-200' },
         stages:[
           { id:'e1', name:'Mapeamento', hubspotStage:'Mapeamento', sentiment:'—', need:'—', clientAction:'—', passTrigger:'Deal criado no pipeline SMB Expand', responsible:'AM', sellerRole:'Revisar tickets de suporte e histórico do cliente · Analisar inadimplência e parceria · Identificar oportunidades de expansão · Registrar análise no CRM', hubspotObject:'Negócio', hubspotFields:'Nome do negócio · Pipeline ([SMB] Expand) · Proprietário · [Expand] Origem do deal · Data de fechamento · Moeda · País · Contato · Empresa' },
@@ -255,7 +255,7 @@ const SEGMENTS = [
       {
         id:'land', name:'Funil Land', icon:'📘',
         description:'Aquisição de novos clientes · Do primeiro contato ao TOS assinado',
-        lead:'BDR + Closer', stageCount:12, hubspotObject:'Contato → Negócio', completeness:'complete',
+        lead:'BDR + Closer', stageCount:12, hubspotObject:'Contato → Negócio', completeness:'in_progress',
         color:{ bg:'bg-blue-500', text:'text-blue-600', border:'border-blue-200', badge:'bg-blue-100 text-blue-700', line:'bg-blue-200' },
         stages:[
           { id:'m1', name:'Start Contact', hubspotStage:'Start Contact', sentiment:'Inquietude', need:'Identificar que tem um problema', clientAction:'Inbound: levantada de mão · Outbound: sem ação do cliente', passTrigger:'—', responsible:'BDR', sellerRole:'Validar contato: email, wpp e linkedin. Estudar informações públicas do contato. Pesquisar sobre prospect no LinkedIn.', hubspotObject:'Contato', hubspotFields:'—', methodologies:['Social Selling'] },
@@ -273,7 +273,7 @@ const SEGMENTS = [
         ]
       },
       { id:'implementacao', name:'Implementação', icon:'⚙️', description:'Do TOS assinado ao cliente no ar — onboarding consultivo', lead:'Time de Implementação', stageCount:0, hubspotObject:'Ticket', completeness:'empty', transitionNote:'Após o Ganho no Land, o time de implementação é ativado via passagem de bastão.', color:{ bg:'bg-amber-500', text:'text-amber-600', border:'border-amber-200', badge:'bg-amber-100 text-amber-700', line:'bg-amber-200' }, stages:[] },
-      { id:'full-adoption', name:'Full Adoption', icon:'🌱', description:'Da homologação à entrada no Funil Expand', lead:'CSM', stageCount:0, hubspotObject:'Ticket', completeness:'empty', transitionNote:'Após o Ganho no Land, o vendedor acompanha o cliente por 6 meses antes da transferência ao KAM.', color:{ bg:'bg-green-500', text:'text-green-600', border:'border-green-200', badge:'bg-green-100 text-green-700', line:'bg-green-200' }, stages:[] },
+      { id:'full-adoption', name:'Adoção', icon:'🌱', description:'Da homologação à entrada no Funil Expand', lead:'CSM', stageCount:0, hubspotObject:'Ticket', completeness:'empty', transitionNote:'Após o Ganho no Land, o vendedor acompanha o cliente por 6 meses antes da transferência ao KAM.', color:{ bg:'bg-green-500', text:'text-green-600', border:'border-green-200', badge:'bg-green-100 text-green-700', line:'bg-green-200' }, stages:[] },
       {
         id:'expand', name:'Funil Expand', icon:'📈',
         description:'Expansão de clientes ativos — do mapeamento ao aditivo assinado',
@@ -300,7 +300,7 @@ const SEGMENTS = [
       {
         id:'land', name:'Funil Land', icon:'📘',
         description:'Aquisição de novos clientes estratégicos · Do primeiro contato ao TOS assinado',
-        lead:'BDR + AEs', stageCount:12, hubspotObject:'Contato → Negócio', completeness:'complete',
+        lead:'BDR + AEs', stageCount:12, hubspotObject:'Contato → Negócio', completeness:'in_progress',
         color:{ bg:'bg-blue-500', text:'text-blue-600', border:'border-blue-200', badge:'bg-blue-100 text-blue-700', line:'bg-blue-200' },
         stages:[
           { id:'t1', name:'Start Contact', hubspotStage:'Start Contact', sentiment:'Ainda não mapeado', need:'Identificar o contato e entender a persona', clientAction:'Inbound: levantada de mão · Outbound: sem ação do cliente', passTrigger:'BDR cadastra os contatos da empresa que vai organizar a prospecção', responsible:'BDR', sellerRole:'BDR cadastra no HubSpot os contatos da sua frente (gerência para baixo).\n\nNeste momento BDR e AE podem avaliar envolvimento de marketing como apoio à abordagem.', hubspotObject:'Contato', hubspotFields:'—', methodologies:['Social Selling','Account-Based Marketing'], tools:[{name:'Lusha'},{name:'Sales Navigator'},{name:'Gem Copy',url:'https://gemini.google.com/gem/1MHDWKHqJdbU2OAJgykh3N3l83KgUeQkz?usp=sharing'}] },
@@ -310,16 +310,16 @@ const SEGMENTS = [
           { id:'t5', name:'Qualificado / Opps', hubspotStage:'Qualificado / Opps', sentiment:'Clareza', need:'Ver o gap atual vs ideal', clientAction:'Identificar pontos essenciais e confirmar a reunião agendada.', passTrigger:'Data confirmada para o primeiro encontro entre AE + BDR (podendo envolver gerência)', responsible:'AE', sellerRole:'Criação do opp é automática ao chegar nesta etapa. O opp vai para a pipeline de vendas na etapa Opp.', hubspotObject:'Contato → Negócio', manualActions:'Preenchimento Manual de atividades — Briefing / Passagem de bastão Qualificação→Aquisição', autoActions:'Criação do opp automática na pipeline de vendas', methodologies:['Demo 2 Win','Value-Based Selling','SPIN'],
             oppView:{ name:'Opp', hubspotStage:'Opps', hubspotObject:'Negócio', clientAction:'Comparecer na reunião agendada e compartilhar informações essenciais.', passTrigger:'Primeira e segunda reunião realizada.', responsible:'AE', sellerRole:'Realizar o encantamento da conta. Nesta primeira abordagem o vendedor precisa apresentar o potencial da Blip para engajar a conta e conseguir um segundo momento.', manualActions:'Registro das reuniões no HubSpot', autoActions:'Sem ação automática' } },
           { id:'t6', name:'Apresentação', hubspotStage:'Apresentação', sentiment:'Segurança', need:'Entender como funciona na prática a ferramenta da Blip', clientAction:'Solicitar um de-para das funcionalidades da Blip e dos objetivos de negócio', passTrigger:'Apresentação do projeto personalizado agendada', responsible:'AE', sellerRole:'Educação sobre modelos de WhatsApp. Discovery completo. Apresentação dos Use Cases. Entender como o Blip pode ser usado em toda a jornada do cliente.', hubspotObject:'Negócio', methodologies:['MEDDPICC','Value-Based Selling'] },
-          { id:'t7', name:'Design de Projeto', hubspotStage:'Design de Projeto', sentiment:'Ambição', need:'ROI para vender internamente', clientAction:'Validar ROI · Confirmar investimento', passTrigger:'Proposta comercial apresentada', responsible:'AE', sellerRole:'Demonstrar a solução aplicada ao problema. Preparar esboço (Mockup/Miro). Validar aderência, stakeholders e critérios de decisão.', hubspotObject:'Negócio', hubspotFields:'Produtos Add-Ons · Objetivos da contratação (obrigatório)', methodologies:['MEDDPICC','Value-Based Selling'] },
-          { id:'t8', name:'Proposta Apresentada', hubspotStage:'Proposta Apresentada', sentiment:'Conforto', need:'Eliminar atritos financeiros', clientAction:'Validar investimento · Escolher Blip', passTrigger:'Negociação iniciada', responsible:'AE', sellerRole:'Validação com cliente do desenho proposto. Apresentação da proposta comercial. Validar critérios de decisão e processo de compra.', hubspotObject:'Negócio', methodologies:['MAP','MEDDPICC'] },
-          { id:'t9', name:'Negociação', hubspotStage:'Negociação', sentiment:'Conforto', need:'Eliminar atritos · Negociar condições', clientAction:'Envolver stakeholders · Validar decisão', passTrigger:'Negociação aprovada', responsible:'AE', sellerRole:'Alinhar condições comerciais. Validação de Governança e Compliance. Alinhar data para OK Formal.', hubspotObject:'Negócio', hubspotFields:'Data de fechamento (obrigatório) · Times envolvidos', hubspotFieldsSAP:[{text:'Verificar item de linha — acessar os Processos SAP',url:'sap.html'},{text:'Adicionar CNPJ na empresa vinculada à oportunidade',url:'sap.html'}], methodologies:['Principled Negotiation (Harvard)','MEDDPICC','MAP'] },
+          { id:'t7', name:'Design de Projeto', hubspotStage:'Design de Projeto', sentiment:'Ambição', need:'ROI para vender internamente', clientAction:'Validar ROI · Confirmar investimento', passTrigger:'Proposta comercial apresentada', responsible:'AE', sellerRole:'Demonstrar a solução aplicada ao problema. Preparar esboço (Mockup/Miro). Validar aderência, stakeholders e critérios de decisão.', hubspotObject:'Negócio', hubspotFields:'Produtos Add-Ons · Objetivos da contratação (obrigatório)', methodologies:['MEDDPICC','Value-Based Selling'], supportTeams:[{name:'Value Design',actionUrl:''},{name:'Professional Services',actionUrl:''}] },
+          { id:'t8', name:'Proposta Apresentada', hubspotStage:'Proposta Apresentada', sentiment:'Conforto', need:'Eliminar atritos financeiros', clientAction:'Validar investimento · Escolher Blip', passTrigger:'Negociação iniciada', responsible:'AE', sellerRole:'Validação com cliente do desenho proposto. Apresentação da proposta comercial. Validar critérios de decisão e processo de compra.', hubspotObject:'Negócio', methodologies:['MAP','MEDDPICC'], supportTeams:[{name:'Deal Desk',actionUrl:''}] },
+          { id:'t9', name:'Negociação', hubspotStage:'Negociação', sentiment:'Conforto', need:'Eliminar atritos · Negociar condições', clientAction:'Envolver stakeholders · Validar decisão', passTrigger:'Negociação aprovada', responsible:'AE', sellerRole:'Alinhar condições comerciais. Validação de Governança e Compliance. Alinhar data para OK Formal.', hubspotObject:'Negócio', hubspotFields:'Data de fechamento (obrigatório) · Times envolvidos', hubspotFieldsSAP:[{text:'Verificar item de linha — acessar os Processos SAP',url:'sap.html'},{text:'Adicionar CNPJ na empresa vinculada à oportunidade',url:'sap.html'},{text:'Acessar o Empowerment Guide para alçadas de negociação',url:'#empowerment-guide'}], methodologies:['Principled Negotiation (Harvard)','MEDDPICC','MAP'] },
           { id:'t10', name:'OK Formal', hubspotStage:'OK Formal', sentiment:'Respaldo', need:'Segurança jurídica e SLA', clientAction:'Validar juridicamente · Alinhar data de assinatura', passTrigger:'Dados da minuta enviados', responsible:'AE', sellerRole:'Governança e Compliance · Alinhar data para OK Formal', hubspotObject:'Negócio', hubspotFieldsSAP:[{text:'Preencher manual de atividade Novos Clientes [SAP]',url:'sap.html'}], methodologies:['MEDDPICC'] },
           { id:'t11', name:'Rev. Contrato', hubspotStage:'Rev. Contrato', sentiment:'Respaldo', need:'Segurança jurídica total', clientAction:'Validar juridicamente · Organizar próximos passos', passTrigger:'TOS assinado', responsible:'AE', sellerRole:'Solicitar dados jurídicos · Validar trâmites com SI · Assegurar celeridade', hubspotObject:'Negócio', hubspotFields:'Potencial de audiência desta empresa (obrigatório)', manualActions:'Manual "Novos Clientes [SAP]" · E-mail formalização do projeto · Manual de atividades para ativação', methodologies:['MEDDPICC'] },
           { id:'t12', name:'Ganho', hubspotStage:'Ganho', sentiment:'Herói', need:'Clareza da jornada com a Blip', clientAction:'Organizar próximos passos · Passagem de bastão', passTrigger:'—', responsible:'AE', sellerRole:'Revisar HubSpot · Manual de passagem de bastão · Ativar time de implementação', hubspotObject:'Negócio', hubspotFields:'Resultados esperados com a contratação (obrigatório)', methodologies:['MEDDPICC'] },
         ]
       },
-      { id:'implementacao', name:'Implementação', icon:'⚙️', description:'Do TOS assinado ao cliente no ar — onboarding consultivo', lead:'Time de Implementação', stageCount:0, hubspotObject:'Ticket', completeness:'empty', transitionNote:'Após o Ganho no Land, o time de implementação é ativado via passagem de bastão.', color:{ bg:'bg-amber-500', text:'text-amber-600', border:'border-amber-200', badge:'bg-amber-100 text-amber-700', line:'bg-amber-200' }, stages:[] },
-      { id:'full-adoption', name:'Full Adoption', icon:'🌱', description:'Da homologação à entrada no Funil Expand', lead:'CSM', stageCount:3, hubspotObject:'Ticket', completeness:'empty', transitionNote:'Após o Ganho no Land, o vendedor acompanha o cliente por 6 meses antes da transferência ao Account Manager.', color:{ bg:'bg-green-500', text:'text-green-600', border:'border-green-200', badge:'bg-green-100 text-green-700', line:'bg-green-200' }, stages:[] },
+      { id:'implementacao', name:'Implementação', icon:'⚙️', description:'Do TOS assinado ao cliente no ar', lead:'Time de Implementação', stageCount:0, hubspotObject:'Ticket', completeness:'empty', transitionNote:'Após o Ganho no Land, o time de implementação é ativado via passagem de bastão.', color:{ bg:'bg-amber-500', text:'text-amber-600', border:'border-amber-200', badge:'bg-amber-100 text-amber-700', line:'bg-amber-200' }, stages:[] },
+      { id:'full-adoption', name:'Adoção', icon:'🌱', description:'Da homologação à entrada no Funil Expand', lead:'CSM', stageCount:3, hubspotObject:'Ticket', completeness:'empty', transitionNote:'Após o Ganho no Land, o vendedor acompanha o cliente por 6 meses antes da transferência ao Account Manager.', color:{ bg:'bg-green-500', text:'text-green-600', border:'border-green-200', badge:'bg-green-100 text-green-700', line:'bg-green-200' }, stages:[] },
       { id:'expand', name:'Funil Expand', icon:'📈', description:'Expansão de clientes ativos — do mapeamento ao aditivo assinado', lead:'Account Manager', stageCount:9, hubspotObject:'Negócio', completeness:'empty', color:{ bg:'bg-purple-500', text:'text-purple-600', border:'border-purple-200', badge:'bg-purple-100 text-purple-700', line:'bg-purple-200' }, stages:[] }
     ]
   }
@@ -948,6 +948,10 @@ function renderHome() {
                 </div>`).join('<div class="w-px bg-slate-100 self-stretch"></div>')}
                 <div class="ml-auto text-[10px] text-slate-400">SMB · MAcc · StAcc</div>
               </div>
+              <div class="px-4 py-3 border-t border-slate-100 flex items-center justify-between">
+                <p class="text-xs text-slate-500">Acesse a central de conhecimento do time de RevOps no Notion</p>
+                <a href="https://app.notion.com/p/blip-ai/Central-de-conhecimento-RevOps-25adcfddcf4a803cb8a0f1d2d8608990" target="_blank" onclick="event.stopPropagation()" class="flex-shrink-0 text-xs font-medium px-3 py-1.5 rounded-lg ml-4 transition-colors" style="background:#FB923C;color:#fff;" onmouseover="this.style.background='#EA580C'" onmouseout="this.style.background='#FB923C'">Acessar RevOps ↗</a>
+              </div>
             </button>
 
           </div>
@@ -1295,8 +1299,6 @@ function renderDrawer(stage) {
     { l:'🔑 Gatilho de passagem', v:stage.passTrigger },
     { l:'👤 Responsável', v:stage.responsible },
     { l:'📋 Papel do vendedor', v:stage.sellerRole },
-    { l:'🟣 Objeto HubSpot', v:stage.hubspotObject },
-    { l:'🔵 Etapa CRM', v:stage.hubspotStage },
     { l:'📝 Campos HubSpot', v:stage.hubspotFields },
     { l:'🤝 Ações Manuais', v:stage.manualActions },
     { l:'⚡ Ações Automáticas', v:stage.autoActions },
@@ -1333,6 +1335,19 @@ function renderDrawer(stage) {
             <div class="flex items-center justify-between gap-3 bg-white rounded-lg px-3 py-2.5" style="border:1px solid #FED7AA;">
               <p class="text-sm text-slate-700 leading-snug flex-1">${escHtml(item.text)}</p>
               <a href="${escHtml(item.url)}" target="_blank" class="flex-shrink-0 text-xs font-medium px-2.5 py-1 rounded-lg transition-colors whitespace-nowrap" style="background:#EA580C;color:#fff;" onmouseover="this.style.background='#C2410C'" onmouseout="this.style.background='#EA580C'">Abrir ↗</a>
+            </div>`).join('')}
+          </div>
+        </div>` : ''}
+        ${stage.supportTeams && stage.supportTeams.length > 0 ? `
+        <div class="rounded-xl p-4" style="background:#F0FDF4;border:1px solid #BBF7D0;">
+          <p class="text-xs font-semibold text-green-700 mb-3">🤝 Times de apoio</p>
+          <div class="space-y-2">
+            ${stage.supportTeams.map(t => `
+            <div class="flex items-center justify-between gap-3 bg-white rounded-lg px-3 py-2.5" style="border:1px solid #BBF7D0;">
+              <p class="text-sm font-medium text-slate-700">${escHtml(t.name)}</p>
+              ${t.actionUrl
+                ? `<a href="${escHtml(t.actionUrl)}" target="_blank" class="flex-shrink-0 text-xs font-medium px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap" style="background:#16A34A;color:#fff;" onmouseover="this.style.background='#15803D'" onmouseout="this.style.background='#16A34A'">Clique aqui para acionar o time ↗</a>`
+                : `<span class="flex-shrink-0 text-xs font-medium px-3 py-1.5 rounded-lg whitespace-nowrap" style="background:#16A34A;color:#fff;opacity:0.5;cursor:default;">Clique aqui para acionar o time</span>`}
             </div>`).join('')}
           </div>
         </div>` : ''}
@@ -1397,7 +1412,7 @@ function renderModal() {
                 <option value="" ${!phase?'selected':''}>Todas / Geral</option>
                 <option value="Funil Land">Funil Land</option>
                 <option value="Implementação">Implementação</option>
-                <option value="Full Adoption">Full Adoption</option>
+                <option value="Adoção">Adoção</option>
                 <option value="Funil Expand">Funil Expand</option>
               </select>
             </div>
