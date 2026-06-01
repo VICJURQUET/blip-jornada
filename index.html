@@ -303,16 +303,17 @@ const SEGMENTS = [
         lead:'BDR + AEs', stageCount:12, hubspotObject:'Contato → Negócio', completeness:'complete',
         color:{ bg:'bg-blue-500', text:'text-blue-600', border:'border-blue-200', badge:'bg-blue-100 text-blue-700', line:'bg-blue-200' },
         stages:[
-          { id:'t1', name:'Start Contact', hubspotStage:'Start Contact', sentiment:'Inquietude', need:'Identificar que tem um problema', clientAction:'Inbound: levantada de mão · Outbound: sem ação do cliente', passTrigger:'Empresa mapeada no território de StAcc', responsible:'BDR', sellerRole:'Validar requisitos do site. Validar contato: email, wpp e linkedin. Estudar informações públicas. Pesquisar sobre prospect no LinkedIn.', hubspotObject:'Contato', hubspotFields:'—', methodologies:['Social Selling'] },
-          { id:'t2', name:'Tentativa', hubspotStage:'Tentativa', sentiment:'Inquietude', need:'Entender que a Blip é relevante e que o tempo dele vai ser bem investido', clientAction:'Responder tentativa de contato', passTrigger:'Prospect respondeu', responsible:'BDR', sellerRole:'Estudar informações públicas. Personalizar o contato. Conquistar a primeira resposta do lead.', hubspotObject:'Contato', hubspotFields:'Segmento (obrigatório) · Frente atendida · Site (obrigatório) · LinkedIn (obrigatório) · Modelo de negócio do cliente', methodologies:['Social Selling'] },
-          { id:'t3', name:'Conectado', hubspotStage:'Conectado', sentiment:'Interesse · Dor', need:'Reconhecer que precisa da Blip', clientAction:'Compartilhar a dor · Responder contato', passTrigger:'Dor compartilhada · SLA Opp validado', responsible:'BDR', sellerRole:'Aplicar metodologias de vendas. Utilizar Use Cases.', hubspotObject:'Contato', hubspotFields:'Frente prospectada (obrigatório) · Instagram · Facebook', methodologies:['Sandler','SPIN','GPCTBA/C&I'] },
-          { id:'t4', name:'Evaluation', hubspotStage:'Evaluation', sentiment:'Alívio · Curiosidade', need:'Ver a Blip como relevante', clientAction:'Reconhecer Blip como parceiro estratégico', passTrigger:'Campos HubSpot OK · SLA Opp validado', responsible:'BDR', sellerRole:'Diagnóstico completo do lead. Coletar as principais dores e necessidades.', hubspotObject:'Contato', hubspotFields:'Outros sistemas que a empresa usa · Ferramenta atual · Concorrente mapeado · Potencial total do cliente · Dor', methodologies:['Challenger Sale','Solution Selling','SPIN'] },
-          { id:'t5', name:'Qualificado / Opps', hubspotStage:'Qualificado / Opps', sentiment:'Clareza', need:'Ver o gap atual vs ideal', clientAction:'Identificar pontos essenciais · Validar', passTrigger:'Reunião de diagnóstico realizada · Fit com a Blip', responsible:'AE', sellerRole:'Estudar briefing do BDR. Pesquisar sobre prospect no LinkedIn. Preparar casos de sucesso. Preparar apresentação.', hubspotObject:'Contato → Negócio', manualActions:'Preenchimento Manual de atividades — Briefing / Passagem de bastão Qualificação→Aquisição', autoActions:'Criação do negócio feita de forma automática', methodologies:['Demo 2 Win','Value-Based Selling','SPIN'] },
-          { id:'t6', name:'Apresentação', hubspotStage:'Apresentação', sentiment:'Segurança', need:'Entender como funciona na prática', clientAction:'Validar funcionalidades e critérios de decisão', passTrigger:'Apresentação do projeto construído feita', responsible:'AE', sellerRole:'Educação sobre modelos de WhatsApp (material oficial!). Discovery. Apresentação dos Use Cases. Entender como o Blip pode ser usado em toda a jornada do cliente.', hubspotObject:'Negócio', methodologies:['MEDDPICC','Value-Based Selling'] },
+          { id:'t1', name:'Start Contact', hubspotStage:'Start Contact', sentiment:'Ainda não mapeado', need:'Identificar o contato e entender a persona', clientAction:'Inbound: levantada de mão · Outbound: sem ação do cliente', passTrigger:'BDR cadastra os contatos da empresa que vai organizar a prospecção', responsible:'BDR', sellerRole:'BDR cadastra no HubSpot os contatos da sua frente (gerência para baixo).\n\nNeste momento BDR e AE podem avaliar envolvimento de marketing como apoio à abordagem.', hubspotObject:'Contato', hubspotFields:'—', methodologies:['Social Selling','Account-Based Marketing'], tools:[{name:'Lusha'},{name:'Sales Navigator'},{name:'Gem Copy',url:'https://gemini.google.com/gem/1MHDWKHqJdbU2OAJgykh3N3l83KgUeQkz?usp=sharing'}] },
+          { id:'t2', name:'Tentativa', hubspotStage:'Tentativa', sentiment:'Ainda não mapeado', need:'Entender que a Blip é relevante e que o tempo dele vai ser bem investido', clientAction:'Ainda sem ação ativa — aguarda retorno', passTrigger:'Prospect respondeu em qualquer canal', responsible:'BDR', sellerRole:'Abordar o contato em todos os canais disponíveis: email, WhatsApp, LinkedIn, telefone. Personalizar cada touchpoint com base no dossiê da conta. Conquistar a primeira resposta.', hubspotObject:'Contato', hubspotFields:'Segmento (obrigatório) · Frente atendida · Site (obrigatório) · LinkedIn (obrigatório) · Modelo de negócio do cliente', methodologies:['Social Selling','Sequência multicanal'] },
+          { id:'t3', name:'Conectado', hubspotStage:'Conectado', sentiment:'Receptividade', need:'Reconhecer a Blip como relevante e aceitar um primeiro encontro', clientAction:'Respondeu ao contato — conta iniciando abertura', passTrigger:'Agenda criada pelo BDR para o primeiro encontro', responsible:'BDR', sellerRole:'O contato permanece em Conectado até que uma agenda seja criada.\n\nSe o encontro for online: BDR participa.\nSe o encontro for presencial (offline): BDR não participa.\n\nNeste momento é criado um grupo no Slack com gerência da área, AE e BDR para trocar sobre a conta e alinhar o agendamento.', hubspotObject:'Contato', hubspotFields:'Frente prospectada (obrigatório) · Instagram · Facebook', methodologies:['Sandler','SPIN','GPCTBA/C&I'] },
+          { id:'t4', name:'Evaluation', hubspotStage:'Evaluation', sentiment:'Curiosidade', need:'Ver a Blip como relevante', clientAction:'Reconhecer Blip como parceiro estratégico', passTrigger:'Dor compartilhada', responsible:'BDR', sellerRole:'Diagnóstico completo do lead. Coletar as principais dores e necessidades.', hubspotObject:'Contato', hubspotFields:'Outros sistemas que a empresa usa · Ferramenta atual · Concorrente mapeado · Potencial total do cliente · Dor', methodologies:['Challenger Sale','Solution Selling','SPIN'] },
+          { id:'t5', name:'Qualificado / Opps', hubspotStage:'Qualificado / Opps', sentiment:'Clareza', need:'Ver o gap atual vs ideal', clientAction:'Identificar pontos essenciais e confirmar a reunião agendada.', passTrigger:'Data confirmada para o primeiro encontro entre AE + BDR (podendo envolver gerência)', responsible:'AE', sellerRole:'Criação do opp é automática ao chegar nesta etapa. O opp vai para a pipeline de vendas na etapa Opp.', hubspotObject:'Contato → Negócio', manualActions:'Preenchimento Manual de atividades — Briefing / Passagem de bastão Qualificação→Aquisição', autoActions:'Criação do opp automática na pipeline de vendas', methodologies:['Demo 2 Win','Value-Based Selling','SPIN'],
+            oppView:{ name:'Opp', hubspotStage:'Opps', hubspotObject:'Negócio', clientAction:'Comparecer na reunião agendada e compartilhar informações essenciais.', passTrigger:'Primeira e segunda reunião realizada.', responsible:'AE', sellerRole:'Realizar o encantamento da conta. Nesta primeira abordagem o vendedor precisa apresentar o potencial da Blip para engajar a conta e conseguir um segundo momento.', manualActions:'Registro das reuniões no HubSpot', autoActions:'Sem ação automática' } },
+          { id:'t6', name:'Apresentação', hubspotStage:'Apresentação', sentiment:'Segurança', need:'Entender como funciona na prática a ferramenta da Blip', clientAction:'Solicitar um de-para das funcionalidades da Blip e dos objetivos de negócio', passTrigger:'Apresentação do projeto personalizado agendada', responsible:'AE', sellerRole:'Educação sobre modelos de WhatsApp. Discovery completo. Apresentação dos Use Cases. Entender como o Blip pode ser usado em toda a jornada do cliente.', hubspotObject:'Negócio', methodologies:['MEDDPICC','Value-Based Selling'] },
           { id:'t7', name:'Design de Projeto', hubspotStage:'Design de Projeto', sentiment:'Ambição', need:'ROI para vender internamente', clientAction:'Validar ROI · Confirmar investimento', passTrigger:'Proposta comercial apresentada', responsible:'AE', sellerRole:'Demonstrar a solução aplicada ao problema. Preparar esboço (Mockup/Miro). Validar aderência, stakeholders e critérios de decisão.', hubspotObject:'Negócio', hubspotFields:'Produtos Add-Ons · Objetivos da contratação (obrigatório)', methodologies:['MEDDPICC','Value-Based Selling'] },
           { id:'t8', name:'Proposta Apresentada', hubspotStage:'Proposta Apresentada', sentiment:'Conforto', need:'Eliminar atritos financeiros', clientAction:'Validar investimento · Escolher Blip', passTrigger:'Negociação iniciada', responsible:'AE', sellerRole:'Validação com cliente do desenho proposto. Apresentação da proposta comercial. Validar critérios de decisão e processo de compra.', hubspotObject:'Negócio', methodologies:['MAP','MEDDPICC'] },
-          { id:'t9', name:'Negociação', hubspotStage:'Negociação', sentiment:'Conforto', need:'Eliminar atritos · Negociar condições', clientAction:'Envolver stakeholders · Validar decisão', passTrigger:'Negociação aprovada', responsible:'AE', sellerRole:'Alinhar condições comerciais. Validação de Governança e Compliance. Alinhar data para OK Formal.', hubspotObject:'Negócio', hubspotFields:'Data de fechamento (obrigatório) · Times envolvidos', methodologies:['Principled Negotiation (Harvard)','MEDDPICC','MAP'] },
-          { id:'t10', name:'OK Formal', hubspotStage:'OK Formal', sentiment:'Respaldo', need:'Segurança jurídica e SLA', clientAction:'Validar juridicamente · Alinhar data de assinatura', passTrigger:'Dados da minuta enviados', responsible:'AE', sellerRole:'Governança e Compliance · Alinhar data para OK Formal', hubspotObject:'Negócio', methodologies:['MEDDPICC'] },
+          { id:'t9', name:'Negociação', hubspotStage:'Negociação', sentiment:'Conforto', need:'Eliminar atritos · Negociar condições', clientAction:'Envolver stakeholders · Validar decisão', passTrigger:'Negociação aprovada', responsible:'AE', sellerRole:'Alinhar condições comerciais. Validação de Governança e Compliance. Alinhar data para OK Formal.', hubspotObject:'Negócio', hubspotFields:'Data de fechamento (obrigatório) · Times envolvidos', hubspotFieldsSAP:[{text:'Verificar item de linha — acessar os Processos SAP',url:'sap.html'},{text:'Adicionar CNPJ na empresa vinculada à oportunidade',url:'sap.html'}], methodologies:['Principled Negotiation (Harvard)','MEDDPICC','MAP'] },
+          { id:'t10', name:'OK Formal', hubspotStage:'OK Formal', sentiment:'Respaldo', need:'Segurança jurídica e SLA', clientAction:'Validar juridicamente · Alinhar data de assinatura', passTrigger:'Dados da minuta enviados', responsible:'AE', sellerRole:'Governança e Compliance · Alinhar data para OK Formal', hubspotObject:'Negócio', hubspotFieldsSAP:[{text:'Preencher manual de atividade Novos Clientes [SAP]',url:'sap.html'}], methodologies:['MEDDPICC'] },
           { id:'t11', name:'Rev. Contrato', hubspotStage:'Rev. Contrato', sentiment:'Respaldo', need:'Segurança jurídica total', clientAction:'Validar juridicamente · Organizar próximos passos', passTrigger:'TOS assinado', responsible:'AE', sellerRole:'Solicitar dados jurídicos · Validar trâmites com SI · Assegurar celeridade', hubspotObject:'Negócio', hubspotFields:'Potencial de audiência desta empresa (obrigatório)', manualActions:'Manual "Novos Clientes [SAP]" · E-mail formalização do projeto · Manual de atividades para ativação', methodologies:['MEDDPICC'] },
           { id:'t12', name:'Ganho', hubspotStage:'Ganho', sentiment:'Herói', need:'Clareza da jornada com a Blip', clientAction:'Organizar próximos passos · Passagem de bastão', passTrigger:'—', responsible:'AE', sellerRole:'Revisar HubSpot · Manual de passagem de bastão · Ativar time de implementação', hubspotObject:'Negócio', hubspotFields:'Resultados esperados com a contratação (obrigatório)', methodologies:['MEDDPICC'] },
         ]
@@ -898,7 +899,7 @@ function renderHome() {
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
           ${[
             { icon:'📋', label:'Processos SAP',                  action:"location.href='sap.html'",       desc:'Como preencher o HubSpot para não dar erro?' },
-            { icon:'🏢', label:'Central de Revenue Enablement',  action:'',                               desc:'A casa de todas as apresentações e documentos' },
+            { icon:'🏢', label:'Central de Revenue Enablement',  action:"window.open('https://app.notion.com/p/blip-ai/Central-Revenue-Enablement-248dcfddcf4a80019774ca8b6faecd5c','_blank')", desc:'A casa de todas as apresentações e documentos' },
             { icon:'📖', label:'Empowerment Guide',              action:'',                               desc:'O guia para a melhor negociação do seu lead/cliente' },
             { icon:'📈', label:'Growth Insights',                action:'',                               desc:'O seu copiloto super dotado' },
           ].map(q => `
@@ -1061,8 +1062,20 @@ function renderSegmentPage(seg) {
             <p class="text-white/80 mt-2 text-sm">${seg.description}</p>
             <p class="text-white/60 text-xs mt-2">Times: ${seg.audience}</p>
           </div>
-          <div class="flex gap-2 flex-wrap">
-            ${seg.phases.map(p => `<button onclick="scrollToPhase('phase-${p.id}')" class="text-xs px-3 py-1.5 rounded-lg font-medium bg-white/20 text-white hover:bg-white/30 transition-colors">${p.icon} ${p.name}</button>`).join('')}
+          <div class="flex flex-col items-end gap-3">
+            <!-- Acesso rápido -->
+            <div class="flex gap-2 flex-wrap justify-end">
+              ${[
+                { icon:'📋', label:'Processos SAP',               action:"location.href='sap.html'" },
+                { icon:'🏢', label:'Central de Enablement',        action:"window.open('https://app.notion.com/p/blip-ai/Central-Revenue-Enablement-248dcfddcf4a80019774ca8b6faecd5c','_blank')" },
+                { icon:'📖', label:'Empowerment Guide',            action:'' },
+                { icon:'📈', label:'Growth Insights',              action:'' },
+              ].map(q => `<button onclick="${q.action || ''}" class="text-xs px-3 py-1.5 rounded-lg font-medium bg-white/15 text-white/90 hover:bg-white/25 transition-colors border border-white/20 ${!q.action ? 'opacity-60 cursor-default' : ''}">${q.icon} ${q.label}</button>`).join('')}
+            </div>
+            <!-- Fases -->
+            <div class="flex gap-2 flex-wrap justify-end">
+              ${seg.phases.map(p => `<button onclick="scrollToPhase('phase-${p.id}')" class="text-xs px-3 py-1.5 rounded-lg font-medium bg-white/20 text-white hover:bg-white/30 transition-colors">${p.icon} ${p.name}</button>`).join('')}
+            </div>
           </div>
         </div>
       </div>
@@ -1104,12 +1117,86 @@ function renderPhase(phase, segId) {
           ${phase.stageCount ? `<span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg">📊 ${phase.stageCount} etapa${phase.stageCount!==1?'s':''}</span>` : ''}
         </div>
       </div>
-      ${phase.id === 'implementacao' && segId === 'smb' && IMP_STAGES_SMB.length > 0 ? renderImplPhase(phase) : phase.stages.length > 0 ? renderStagesTimeline(phase) : renderEmptyPhase(phase)}
+      ${phase.id === 'implementacao' && segId === 'smb' && IMP_STAGES_SMB.length > 0 ? renderImplPhase(phase) : phase.stages.length > 0 ? (segId === 'stacc' && phase.id === 'land' ? renderPreCrmStacc() : '') + renderStagesTimeline(phase, segId) : renderEmptyPhase(phase)}
     </div>
   </div>`;
 }
 
-function renderStagesTimeline(phase) {
+function renderPreCrmStacc() {
+  return `
+  <div class="mx-4 mt-4 mb-0 rounded-xl overflow-hidden" style="border:1px solid #C7D2FE;">
+    <button onclick="togglePreCrm()" class="w-full flex items-center justify-between px-5 py-3.5 text-left transition-colors hover:opacity-90" style="background:#EEF2FF;">
+      <div>
+        <p class="font-bold text-slate-800 text-sm">🔍 Pré-Prospecção — O que acontece antes do CRM</p>
+        <p class="text-xs text-slate-500 mt-0.5">Etapa sem registro de etapa no HubSpot · Território nomeado, dossiê e divisão de frentes</p>
+      </div>
+      <span id="pre-crm-chevron" class="text-slate-400 text-xs ml-4 flex-shrink-0">▼ expandir</span>
+    </button>
+    <div id="pre-crm-body" class="hidden border-t" style="background:white;border-color:#C7D2FE;">
+      <div class="px-5 py-4 space-y-4">
+
+        <div class="flex gap-3">
+          <div class="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5" style="background:#4F46E5;">1</div>
+          <div>
+            <p class="text-xs font-semibold text-slate-700">Pesquisa da conta (BDR)</p>
+            <p class="text-xs text-slate-500 mt-0.5">Em StAcc, todas as contas a trabalhar já foram nomeadas — o território é conhecido. O BDR faz uma pesquisa aprofundada da conta e monta o dossiê inicial. <span class="font-medium text-slate-600">Resultado registrado na empresa no HubSpot</span>, sem etapa CRM.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-3">
+          <div class="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5" style="background:#4F46E5;">2</div>
+          <div>
+            <p class="text-xs font-semibold text-slate-700">Seleção do AE (Diretoria)</p>
+            <p class="text-xs text-slate-500 mt-0.5">A diretoria da área define qual AE tem mais fit com a conta prospectada. O critério principal é <span class="font-medium text-slate-600">relacionamento existente</span> e, em segundo plano, o tamanho da carteira atual do AE.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-3">
+          <div class="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5" style="background:#4F46E5;">3</div>
+          <div>
+            <p class="text-xs font-semibold text-slate-700">Dossiê conjunto (AE + BDR)</p>
+            <p class="text-xs text-slate-500 mt-0.5">AE e BDR se reúnem para incrementar a pesquisa e montar o dossiê completo da conta. Neste momento definem juntos quais contatos serão abertos para prospecção.</p>
+          </div>
+        </div>
+
+        <div class="rounded-lg p-3 space-y-2" style="background:#F5F3FF;border:1px solid #DDD6FE;">
+          <p class="text-xs font-bold" style="color:#4F46E5;">Divisão de frentes de prospecção</p>
+          <div class="flex gap-2 flex-wrap">
+            <div class="flex-1 min-w-[180px] rounded-md p-2.5" style="background:#EDE9FE;border:1px solid #C4B5FD;">
+              <p class="text-xs font-semibold" style="color:#4F46E5;">AE prospecta</p>
+              <p class="text-xs text-slate-600 mt-0.5">Gerência para cima (C-level, VP, Diretoria)</p>
+            </div>
+            <div class="flex-1 min-w-[180px] rounded-md p-2.5" style="background:#F5F3FF;border:1px solid #DDD6FE;">
+              <p class="text-xs font-semibold text-slate-700">BDR prospecta</p>
+              <p class="text-xs text-slate-600 mt-0.5">Gerência para baixo (Coordenação, Gerência, etc.)</p>
+            </div>
+          </div>
+          <p class="text-[10px] text-slate-400 italic">⚠️ Regra com exceções — por acordo entre BDR e AE, os perfis podem ser alterados pontualmente.</p>
+        </div>
+
+        <div class="rounded-lg p-3" style="background:#F0FDF4;border:1px solid #BBF7D0;">
+          <p class="text-xs font-semibold text-green-700 mb-1">Saída desta etapa</p>
+          <div class="space-y-1">
+            <p class="text-xs text-slate-600">→ <span class="font-medium">BDR</span> cadastra em <span class="font-medium">Start Contact</span> os contatos que vai prospectar</p>
+            <p class="text-xs text-slate-600">→ <span class="font-medium">AE</span> cadastra em <span class="font-medium">OPP</span> os contatos que vai prospectar (entra direto na pipeline de vendas)</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>`;
+}
+
+function togglePreCrm() {
+  var body = document.getElementById('pre-crm-body');
+  var chevron = document.getElementById('pre-crm-chevron');
+  if (!body) return;
+  var isHidden = body.classList.contains('hidden');
+  body.classList.toggle('hidden');
+  if (chevron) chevron.textContent = isHidden ? '▲ recolher' : '▼ expandir';
+}
+
+function renderStagesTimeline(phase, segId) {
   // Split stages: Contato vs Negócio
   // The transition stage (Contato → Negócio) appears in BOTH rows:
   //   - as "Qualificado" in the Contato row
@@ -1120,7 +1207,7 @@ function renderStagesTimeline(phase) {
     ...(transitionStage ? [{ ...transitionStage, _displayName: 'Qualificado', responsible: 'BDR' }] : [])
   ];
   const negocioStages = [
-    ...(transitionStage ? [{ ...transitionStage, _displayName: 'Deal' }] : []),
+    ...(transitionStage ? [{ ...transitionStage, ...(transitionStage.oppView || {}), _displayName: 'Opp' }] : []),
     ...phase.stages.filter(s => s.hubspotObject === 'Negócio')
   ];
   const hasTransition = contatoStages.length > 0 && negocioStages.length > 0;
@@ -1134,7 +1221,7 @@ function renderStagesTimeline(phase) {
       <button onclick='openStage(${JSON.stringify(stageData).replace(/'/g,"&#39;")})' class="group flex flex-col items-center w-28 text-center">
         <span class="text-xs font-semibold ${phase.color.text} group-hover:underline leading-tight">${label}</span>
         ${stage.responsible ? `<span class="mt-1 text-xs text-slate-400">${stage.responsible}</span>` : ''}
-        ${stage.sentiment && stage.sentiment !== '—' ? `<span class="mt-2 text-xs px-2 py-0.5 rounded-full ${phase.color.badge} max-w-[112px] truncate">${stage.sentiment}</span>` : ''}
+        ${stage.sentiment && stage.sentiment !== '—' && stage.sentiment !== 'Ainda não mapeado' ? `<span class="mt-2 text-xs px-2 py-0.5 rounded-full ${phase.color.badge} max-w-[112px] truncate">${stage.sentiment}</span>` : ''}
       </button>
       ${!isLast ? `<div class="w-5 h-0.5 flex-shrink-0 ${phase.color.line}"></div>` : ''}
     </div>`;
@@ -1176,7 +1263,7 @@ function renderStagesTimeline(phase) {
         <div class="flex items-center gap-1.5">
           <span class="w-1.5 h-1.5 rounded-full bg-orange-400 inline-block"></span>
           <span class="text-[10px] font-semibold text-orange-500 uppercase tracking-wider">Pipeline Land · Negócio</span>
-          <span class="text-[10px] text-slate-400">· automação cria o deal no CRM</span>
+          <span class="text-[10px] text-slate-400">· automação cria o opp no CRM</span>
         </div>
       </div>
     </div>
@@ -1203,7 +1290,7 @@ function renderEmptyPhase(phase) {
 function renderDrawer(stage) {
   const fields = [
     { l:'💭 Sentimento do cliente', v:stage.sentiment },
-    { l:'🎯 Necessidade', v:stage.need },
+    { l:'🎯 Necessidade do lead', v:stage.need },
     { l:'✋ Ação do cliente', v:stage.clientAction },
     { l:'🔑 Gatilho de passagem', v:stage.passTrigger },
     { l:'👤 Responsável', v:stage.responsible },
@@ -1236,6 +1323,27 @@ function renderDrawer(stage) {
           <p class="text-xs font-semibold text-slate-500 mb-2">📚 Metodologias</p>
           <div class="flex flex-wrap gap-2">
             ${stage.methodologies.map(m => `<span class="bg-blue-100 text-blue-700 text-xs font-medium px-2.5 py-1 rounded-full">${escHtml(m)}</span>`).join('')}
+          </div>
+        </div>` : ''}
+        ${stage.hubspotFieldsSAP ? `
+        <div class="rounded-xl p-4" style="background:#FFF7ED;border:1px solid #FED7AA;">
+          <p class="text-xs font-semibold mb-3" style="color:#C2410C;">📋 Campos HubSpot para SAP</p>
+          <div class="space-y-2">
+            ${(Array.isArray(stage.hubspotFieldsSAP) ? stage.hubspotFieldsSAP : [{text: stage.hubspotFieldsSAP, url: 'sap.html'}]).map(item => `
+            <div class="flex items-center justify-between gap-3 bg-white rounded-lg px-3 py-2.5" style="border:1px solid #FED7AA;">
+              <p class="text-sm text-slate-700 leading-snug flex-1">${escHtml(item.text)}</p>
+              <a href="${escHtml(item.url)}" target="_blank" class="flex-shrink-0 text-xs font-medium px-2.5 py-1 rounded-lg transition-colors whitespace-nowrap" style="background:#EA580C;color:#fff;" onmouseover="this.style.background='#C2410C'" onmouseout="this.style.background='#EA580C'">Abrir ↗</a>
+            </div>`).join('')}
+          </div>
+        </div>` : ''}
+        ${stage.tools && stage.tools.length > 0 ? `
+        <div class="bg-slate-50 rounded-xl p-4">
+          <p class="text-xs font-semibold text-slate-500 mb-2">🛠️ Ferramentas de apoio</p>
+          <div class="flex flex-wrap gap-2">
+            ${stage.tools.map(t => t.url
+              ? `<a href="${escHtml(t.url)}" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 bg-white border border-blue-200 text-blue-700 text-xs font-medium px-3 py-1.5 rounded-lg shadow-sm hover:bg-blue-50 transition-colors">${escHtml(t.name)} ↗</a>`
+              : `<span class="inline-flex items-center gap-1.5 bg-white border border-slate-200 text-slate-700 text-xs font-medium px-3 py-1.5 rounded-lg shadow-sm">${escHtml(t.name)}</span>`
+            ).join('')}
           </div>
         </div>` : ''}
       </div>
