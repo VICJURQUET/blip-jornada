@@ -43,6 +43,51 @@
 </head>
 <body class="bg-slate-50 min-h-screen">
 
+<!-- MODAL VD -->
+<div id="vd-modal" class="fixed inset-0 z-[9998] hidden items-center justify-center p-4" style="background:rgba(0,0,0,0.5);">
+  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
+    <!-- Header -->
+    <div class="flex items-center justify-between px-6 py-5 border-b border-slate-100">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg" style="background:#F3EFFE;">💜</div>
+        <div>
+          <h2 class="font-bold text-slate-800 text-base">Como acionar o Value Designer</h2>
+          <p class="text-xs text-slate-400">Revenue Enablement · Blip</p>
+        </div>
+      </div>
+      <button onclick="closeVdModal()" class="text-slate-400 hover:text-slate-600 text-xl font-bold leading-none">×</button>
+    </div>
+    <!-- Body -->
+    <div class="px-6 py-5 space-y-5 text-sm text-slate-700">
+      <!-- Abertura de tickets -->
+      <div>
+        <p class="font-semibold text-slate-800 mb-3">📍 Abertura de tickets:</p>
+        <ol class="space-y-2 list-none">
+          <li class="flex gap-2"><span class="flex-shrink-0 w-5 h-5 rounded-full text-xs font-bold flex items-center justify-center text-white" style="background:#7C3AED;">1</span><span>Acesse a tela do <strong>Negócio</strong> relacionada ao acionamento;</span></li>
+          <li class="flex gap-2"><span class="flex-shrink-0 w-5 h-5 rounded-full text-xs font-bold flex items-center justify-center text-white" style="background:#7C3AED;">2</span><span>Em <strong>"Manuais"</strong> pesquise por <strong>"[BRASIL] Acionamento [VD]"</strong> para visualizar o formulário;</span></li>
+          <li class="flex gap-2"><span class="flex-shrink-0 w-5 h-5 rounded-full text-xs font-bold flex items-center justify-center text-white" style="background:#7C3AED;">3</span><span>Selecione o manual <strong>"[BRASIL] Acionamento [VD]"</strong>;</span></li>
+          <li class="flex gap-2"><span class="flex-shrink-0 w-5 h-5 rounded-full text-xs font-bold flex items-center justify-center text-white" style="background:#7C3AED;">4</span><span>Preencha os campos solicitados;</span></li>
+        </ol>
+        <p class="mt-3 text-slate-500 text-xs bg-slate-50 rounded-lg px-3 py-2">Pronto, um ticket para o acionamento será criado automaticamente.</p>
+      </div>
+      <!-- Links -->
+      <div class="space-y-2">
+        <p class="font-semibold text-slate-800">📃 Mais detalhes em:</p>
+        <a href="https://docs.google.com/document/d/1hPjKQqxnx8nChkhssAAvhKouMvC_jveSLYLo6VvCduQ/edit?usp=sharing" target="_blank" rel="noopener" class="flex items-start gap-2 rounded-xl px-4 py-3 border border-purple-100 hover:border-purple-300 hover:bg-purple-50 transition-colors" style="background:#FAFAFF;">
+          <span class="text-base flex-shrink-0">📄</span>
+          <span class="text-xs leading-relaxed"><strong class="text-purple-700">Documento do procedimento de acionamento do VD</strong><br><span class="text-slate-400">Detalhes completos do processo</span></span>
+          <span class="ml-auto text-purple-400 flex-shrink-0 text-xs">↗</span>
+        </a>
+        <a href="https://drive.google.com/file/d/1FQoejg5N9QWO4zM_PslvSr-CR9HdFil8/view" target="_blank" rel="noopener" class="flex items-start gap-2 rounded-xl px-4 py-3 border border-purple-100 hover:border-purple-300 hover:bg-purple-50 transition-colors" style="background:#FAFAFF;">
+          <span class="text-base flex-shrink-0">🎬</span>
+          <span class="text-xs leading-relaxed"><strong class="text-purple-700">Vídeo de 2min — passo a passo de como acionar o VD pelo HubSpot</strong><br><span class="text-slate-400">Tutorial em vídeo</span></span>
+          <span class="ml-auto text-purple-400 flex-shrink-0 text-xs">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- LOGIN SCREEN -->
 <div id="login-screen" class="fixed inset-0 z-[9999] flex items-center justify-center bg-gradient-to-br from-blip-900 via-blip-700 to-blip-500">
   <div class="w-full max-w-sm mx-4">
@@ -204,8 +249,8 @@ const SEGMENTS = [
           { id:'s4', name:'Evaluation', hubspotStage:'Evaluation', sentiment:'Alívio · Curiosidade', need:'Ver a Blip como relevante', clientAction:'Reconhecer Blip como parceiro estratégico', passTrigger:'Dor compartilhada · SLA Opp validado', responsible:'BDR', sellerRole:'Diagnóstico completo do lead. Coletar as principais dores e necessidades.', hubspotObject:'Contato', hubspotFields:'Outros sistemas que a empresa usa · Ferramenta atual · Concorrente mapeado · Potencial total do cliente · Dor', methodologies:['Challenger Sale','Solution Selling','SPIN'] },
           { id:'s5', name:'Qualificado / Opps', hubspotStage:'Qualificado / Opps', sentiment:'Clareza', need:'Ver o gap atual vs ideal', clientAction:'Identificar pontos essenciais · Validar', passTrigger:'Campos HubSpot OK · SLA Opp validado', responsible:'Inside Sales', sellerRole:'Estudar briefing do BDR. Pesquisar sobre prospect no LinkedIn. Preparar casos de sucesso. Preparar apresentação.', hubspotObject:'Contato → Negócio', hubspotFields:'Caso de uso (obrigatório) · Ferramenta atual (obrigatório) · Etapa de Jornada (obrigatório) · Data de fechamento (obrigatório) · Score de Qualificação (obrigatório)', manualActions:'Preenchimento manual de atividades — Briefing / Passagem de bastão BDR→IS', autoActions:'Criação do negócio automática · Roleta automática', methodologies:['Demo 2 Win','Value-Based Selling','SPIN'] },
           { id:'s6', name:'Apresentação', hubspotStage:'Apresentação', sentiment:'Segurança', need:'Entender como funciona na prática', clientAction:'Validar funcionalidades e critérios de decisão', passTrigger:'Reunião de diagnóstico realizada · Fit com a Blip', responsible:'Inside Sales', sellerRole:'Educação sobre modelos de WhatsApp (material oficial!). Discovery para coletar dores. Apresentação dos Use Cases. Entender como o Blip pode ser usado em toda a jornada do cliente.', hubspotObject:'Negócio', hubspotFields:'Ferramenta conversacional atual (obrigatório) · Áreas atendidas no projeto (obrigatório) · Score de Qualificação (obrigatório)', methodologies:['MEDDPICC','Value-Based Selling'] },
-          { id:'s7', name:'Design de Projeto', hubspotStage:'Design de Projeto', sentiment:'Ambição', need:'ROI para vender internamente', clientAction:'Validar ROI · Confirmar investimento', passTrigger:'Apresentação do projeto construído feita', responsible:'Inside Sales', sellerRole:'Demonstrar a solução aplicada ao problema. Preparar esboço (Mockup/Miro). Validar aderência, stakeholders e critérios de decisão. Explorar parte técnica.', hubspotObject:'Negócio', hubspotFields:'Produtos Add-Ons · Objetivos da contratação (obrigatório) · Novas frentes para prospecção do BDR?', manualActions:'Acionar Parceiro (se necessário) · Acionar VD (se necessário) · Cadastro Item de Linha', methodologies:['MEDDPICC','Value-Based Selling'] },
-          { id:'s8', name:'Proposta Apresentada', hubspotStage:'Proposta Apresentada', sentiment:'Conforto', need:'Eliminar atritos financeiros', clientAction:'Validar investimento · Escolher Blip', passTrigger:'Proposta comercial apresentada', responsible:'Inside Sales', sellerRole:'Validação com cliente do desenho proposto. Apresentação da proposta comercial. Validar critérios de decisão e processo de compra. Alinhar condições comerciais.', hubspotObject:'Negócio', hubspotFields:'Data de fechamento · Critério de decisão (obrigatório) · Principais desafios (obrigatório) · Existe processo de compra', methodologies:['MEDDPICC','MAP'] },
+          { id:'s7', name:'Design de Projeto', hubspotStage:'Design de Projeto', sentiment:'Ambição', need:'ROI para vender internamente', clientAction:'Validar ROI · Confirmar investimento', passTrigger:'Apresentação do projeto construído feita', responsible:'Inside Sales', sellerRole:'Demonstrar a solução aplicada ao problema. Preparar esboço (Mockup/Miro). Validar aderência, stakeholders e critérios de decisão. Explorar parte técnica.', hubspotObject:'Negócio', hubspotFields:'Produtos Add-Ons · Objetivos da contratação (obrigatório) · Novas frentes para prospecção do BDR?', manualActions:'Acionar Parceiro (se necessário) · Acionar VD (se necessário) · Cadastro Item de Linha', methodologies:['MEDDPICC','Value-Based Selling'], sapLink:true },
+          { id:'s8', name:'Proposta Apresentada', hubspotStage:'Proposta Apresentada', sentiment:'Conforto', need:'Eliminar atritos financeiros', clientAction:'Validar investimento · Escolher Blip', passTrigger:'Proposta comercial apresentada', responsible:'Inside Sales', sellerRole:'Validação com cliente do desenho proposto. Apresentação da proposta comercial. Validar critérios de decisão e processo de compra. Alinhar condições comerciais.', hubspotObject:'Negócio', hubspotFields:'Data de fechamento · Critério de decisão (obrigatório) · Principais desafios (obrigatório) · Existe processo de compra', methodologies:['MEDDPICC','MAP'], sapLink:true, hubspotFieldsSAP:[{text:'Verificar item de linha — acessar os Processos SAP',url:'sap.html'},{text:'Adicionar CNPJ na empresa vinculada à oportunidade',url:'sap.html'}] },
           { id:'s9', name:'Negociação', hubspotStage:'Negociação', sentiment:'Conforto', need:'Eliminar atritos · Negociar condições', clientAction:'Envolver stakeholders · Validar decisão', passTrigger:'Negociação iniciada', responsible:'Inside Sales', sellerRole:'Alinhar condições comerciais com prazo para assinatura. Validação de Governança e Compliance. Alinhar data para OK Formal.', hubspotObject:'Negócio', hubspotFields:'Data de fechamento (obrigatório) · Times envolvidos', methodologies:['Principled Negotiation (Harvard)','MEDDPICC','MAP'] },
           { id:'s10', name:'OK Formal', hubspotStage:'OK Formal', sentiment:'Respaldo', need:'Segurança jurídica e SLA', clientAction:'Validar juridicamente · Alinhar data de assinatura', passTrigger:'Negociação aprovada', responsible:'Inside Sales', sellerRole:'Governança e Compliance · Alinhar data para OK Formal', hubspotObject:'Negócio', hubspotFields:'—', methodologies:['MEDDPICC'] },
           { id:'s11', name:'Rev. Contrato', hubspotStage:'Rev. Contrato', sentiment:'Respaldo', need:'Segurança jurídica total', clientAction:'Validar juridicamente · Organizar próximos passos', passTrigger:'Dados da minuta enviados', responsible:'Inside Sales', sellerRole:'Solicitar dados jurídicos · Validar trâmites com SI · Assegurar celeridade', hubspotObject:'Negócio', hubspotFields:'Potencial de audiência desta empresa (obrigatório)', methodologies:['MEDDPICC'] },
@@ -264,8 +309,8 @@ const SEGMENTS = [
           { id:'m4', name:'Evaluation', hubspotStage:'Evaluation', sentiment:'Alívio · Curiosidade', need:'Ver a Blip como relevante', clientAction:'Reconhecer Blip como parceiro estratégico', passTrigger:'Dor compartilhada · SLA Opp validado', responsible:'BDR', sellerRole:'Diagnóstico completo do lead. Coletar as principais dores e necessidades.', hubspotObject:'Contato', hubspotFields:'Outros sistemas que a empresa usa · Ferramenta atual · Concorrente mapeado · Potencial total do cliente · Dor', methodologies:['Challenger Sale','Solution Selling','SPIN'] },
           { id:'m5', name:'Qualificado / Opps', hubspotStage:'Qualificado / Opps', sentiment:'Clareza', need:'Ver o gap atual vs ideal', clientAction:'Identificar pontos essenciais · Validar', passTrigger:'Campos HubSpot OK · SLA Opp validado', responsible:'Closer', sellerRole:'Estudar briefing do BDR. Pesquisar sobre prospect no LinkedIn. Preparar casos de sucesso. Preparar apresentação.', hubspotObject:'Contato → Negócio', hubspotFields:'Caso de uso (obrigatório) · Ferramenta atual (obrigatório) · Etapa de Jornada (obrigatório) · Data de fechamento (obrigatório) · Score de Qualificação (obrigatório)', manualActions:'Preenchimento Manual de atividades — Briefing (resumo das informações coletadas pelo BDR sobre o lead) / Passagem de bastão Qualificação→Aquisição', autoActions:'Criação do negócio automática · Roleta automática', methodologies:['Demo 2 Win','Value-Based Selling','SPIN'] },
           { id:'m6', name:'Apresentação', hubspotStage:'Apresentação', sentiment:'Segurança', need:'Entender como funciona na prática', clientAction:'Validar funcionalidades e critérios de decisão', passTrigger:'Reunião de diagnóstico realizada · Fit com a Blip', responsible:'Closer', sellerRole:'Educação sobre modelos de WhatsApp (material oficial!). Discovery. Apresentação dos Use Cases. Entender como o Blip pode ser usado em toda a jornada do cliente.', hubspotObject:'Negócio', methodologies:['MEDDPICC','Value-Based Selling'] },
-          { id:'m7', name:'Design de Projeto', hubspotStage:'Design de Projeto', sentiment:'Ambição', need:'ROI para vender internamente', clientAction:'Validar ROI · Confirmar investimento', passTrigger:'Apresentação do projeto construído feita', responsible:'Closer', sellerRole:'Demonstrar a solução aplicada ao problema. Preparar esboço (Mockup/Miro). Validar aderência, stakeholders e critérios de decisão.', hubspotObject:'Negócio', hubspotFields:'Produtos Add-Ons · Objetivos da contratação (obrigatório) · Novas frentes para prospecção do BDR?', manualActions:'Acionar Parceiro (se necessário) · Acionar VD (se necessário) · Cadastro Item de Linha', methodologies:['MEDDPICC','Value-Based Selling'] },
-          { id:'m8', name:'Proposta Apresentada', hubspotStage:'Proposta Apresentada', sentiment:'Conforto', need:'Eliminar atritos financeiros', clientAction:'Validar investimento · Escolher Blip', passTrigger:'Proposta comercial apresentada', responsible:'Closer', sellerRole:'Validação com cliente do desenho proposto. Apresentação da proposta comercial. Validar critérios de decisão e processo de compra. Alinhar condições comerciais.', hubspotObject:'Negócio', methodologies:['MAP','MEDDPICC'] },
+          { id:'m7', name:'Design de Projeto', hubspotStage:'Design de Projeto', sentiment:'Ambição', need:'ROI para vender internamente', clientAction:'Validar ROI · Confirmar investimento', passTrigger:'Apresentação do projeto construído feita', responsible:'Closer', sellerRole:'Demonstrar a solução aplicada ao problema. Preparar esboço (Mockup/Miro). Validar aderência, stakeholders e critérios de decisão.', hubspotObject:'Negócio', hubspotFields:'Produtos Add-Ons · Objetivos da contratação (obrigatório) · Novas frentes para prospecção do BDR?', manualActions:'Acionar Parceiro (se necessário) · Acionar VD (se necessário) · Cadastro Item de Linha', methodologies:['MEDDPICC','Value-Based Selling'], sapLink:true },
+          { id:'m8', name:'Proposta Apresentada', hubspotStage:'Proposta Apresentada', sentiment:'Conforto', need:'Eliminar atritos financeiros', clientAction:'Validar investimento · Escolher Blip', passTrigger:'Proposta comercial apresentada', responsible:'Closer', sellerRole:'Validação com cliente do desenho proposto. Apresentação da proposta comercial. Validar critérios de decisão e processo de compra. Alinhar condições comerciais.', hubspotObject:'Negócio', methodologies:['MAP','MEDDPICC'], sapLink:true, hubspotFieldsSAP:[{text:'Verificar item de linha — acessar os Processos SAP',url:'sap.html'},{text:'Adicionar CNPJ na empresa vinculada à oportunidade',url:'sap.html'}] },
           { id:'m9', name:'Negociação', hubspotStage:'Negociação', sentiment:'Conforto', need:'Eliminar atritos · Negociar condições', clientAction:'Envolver stakeholders · Validar decisão', passTrigger:'Negociação iniciada', responsible:'Closer', sellerRole:'Alinhar condições comerciais com prazo para assinatura. Validação de Governança e Compliance. Alinhar data para OK Formal.', hubspotObject:'Negócio', hubspotFields:'Data de fechamento (obrigatório) · Times envolvidos', methodologies:['Principled Negotiation (Harvard)','MEDDPICC','MAP'] },
           { id:'m10', name:'OK Formal', hubspotStage:'OK Formal', sentiment:'Respaldo', need:'Segurança jurídica e SLA', clientAction:'Validar juridicamente · Alinhar data de assinatura', passTrigger:'Negociação aprovada', responsible:'Closer', sellerRole:'Governança e Compliance · Alinhar data para OK Formal', hubspotObject:'Negócio', methodologies:['MEDDPICC'] },
           { id:'m11', name:'Rev. Contrato', hubspotStage:'Rev. Contrato', sentiment:'Respaldo', need:'Segurança jurídica total', clientAction:'Validar juridicamente · Organizar próximos passos', passTrigger:'Dados da minuta enviados', responsible:'Closer', sellerRole:'Solicitar dados jurídicos · Validar trâmites com SI · Assegurar celeridade', hubspotObject:'Negócio', hubspotFields:'Potencial de audiência desta empresa (obrigatório)', methodologies:['MEDDPICC'] },
@@ -309,12 +354,12 @@ const SEGMENTS = [
           { id:'t4', name:'Evaluation', hubspotStage:'Evaluation', sentiment:'Curiosidade', need:'Ver a Blip como relevante', clientAction:'Reconhecer Blip como parceiro estratégico', passTrigger:'Dor compartilhada', responsible:'BDR', sellerRole:'O lead respondeu na etapa de Conectado sinalizando interesse em receber um material ou proposta. O BDR move para Evaluation e tenta coletar o mínimo de informações necessárias para personalizar o material antes de avançar para oportunidade.\n\nPara criar o material personalizado, além de contar com a participação e colaboração do time de AE, VD e MKT, também utilizam de referência os materiais da Central de Enablement.', hubspotObject:'Contato', hubspotFields:'Outros sistemas que a empresa usa · Ferramenta atual · Concorrente mapeado · Potencial total do cliente', methodologies:['Challenger Sale','Solution Selling','SPIN'], tools:[{name:'Central de Revenue Enablement',url:'https://app.notion.com/p/blip-ai/Central-Revenue-Enablement-248dcfddcf4a80019774ca8b6faecd5c'}], supportTeams:[{name:'Value Design (VD)',actionUrl:'https://app.hubspot.com/playbooks/1796841/compose/80142663'},{name:'Marketing (MKT)',actionUrl:''}] },
           { id:'t5', name:'Qualificado / Opps', hubspotStage:'Qualificado / Opps', sentiment:'Clareza', need:'Ver o gap atual vs ideal', clientAction:'Identificar pontos essenciais e confirmar a reunião agendada.', passTrigger:'Data confirmada para o primeiro encontro entre AE + BDR (podendo envolver diretoria e/ou time técnico de pré-vendas)', responsible:'AE', sellerRole:'Criação do opp é automática ao chegar nesta etapa. O opp vai para a pipeline de vendas na etapa Opp.', hubspotObject:'Contato → Negócio', manualActions:'Preenchimento Manual de atividades — Briefing (resumo das informações coletadas pelo BDR sobre o lead) / Passagem de bastão Qualificação→Aquisição\n\n* Ao preencher o manual, é criada automaticamente uma observação no deal gerado pela automação no pipeline de vendas.', autoActions:'Criação do opp automática na pipeline de vendas', methodologies:['Demo 2 Win','Value-Based Selling','SPIN'], tools:[{name:'Manual de Passagem de Bastão BDR ↔ AE',url:''}],
             oppView:{ name:'Opp', hubspotStage:'Opps', hubspotObject:'Negócio', clientAction:'Comparecer na reunião agendada e compartilhar informações essenciais.', passTrigger:'Primeira reunião realizada com próximo passo já combinado (ex: segunda reunião agendada).', responsible:'AE', sellerRole:'Realizar o encantamento da conta. Nesta primeira abordagem o vendedor precisa apresentar o potencial da Blip para engajar a conta e conseguir um segundo momento.', manualActions:'Registro das reuniões no HubSpot', autoActions:'Sem ação automática' } },
-          { id:'t6', name:'Apresentação', hubspotStage:'Apresentação', sentiment:'Segurança', need:'Entender como funciona na prática a ferramenta da Blip', clientAction:'Solicitar um de-para das funcionalidades da Blip e dos objetivos de negócio', passTrigger:'Apresentação do projeto personalizado agendada', responsible:'AE', sellerRole:'Educação sobre modelos de WhatsApp. Discovery completo. Apresentação dos Use Cases. Entender como o Blip pode ser usado em toda a jornada do cliente.', hubspotObject:'Negócio', methodologies:['MEDDPICC','Value-Based Selling'] },
-          { id:'t7', name:'Design de Projeto', hubspotStage:'Design de Projeto', sentiment:'Ambição', need:'ROI para vender internamente', clientAction:'Validar ROI · Confirmar investimento', passTrigger:'Proposta comercial apresentada', responsible:'AE', sellerRole:'Demonstrar a solução aplicada ao problema. Preparar esboço (Mockup/Miro). Validar aderência, stakeholders e critérios de decisão.', hubspotObject:'Negócio', hubspotFields:'Produtos Add-Ons · Objetivos da contratação (obrigatório)', methodologies:['MEDDPICC','Value-Based Selling'], supportTeams:[{name:'Value Design',actionUrl:'https://app.hubspot.com/playbooks/1796841/compose/80142663'},{name:'Professional Services',actionUrl:''}] },
-          { id:'t8', name:'Proposta Apresentada', hubspotStage:'Proposta Apresentada', sentiment:'Conforto', need:'Eliminar atritos financeiros', clientAction:'Validar investimento · Escolher Blip', passTrigger:'Negociação iniciada', responsible:'AE', sellerRole:'Validação com cliente do desenho proposto. Apresentação da proposta comercial. Validar critérios de decisão e processo de compra.', hubspotObject:'Negócio', methodologies:['MAP','MEDDPICC'], supportTeams:[{name:'Deal Desk',actionUrl:'https://docs.google.com/presentation/d/1psPfMcPS4wr7kCox0HOUY2x9hvXALtoi6bXKCdn7RbQ/edit?slide=id.g3d9b2327066_2_2#slide=id.g3d9b2327066_2_2'}] },
-          { id:'t9', name:'Negociação', hubspotStage:'Negociação', sentiment:'Conforto', need:'Eliminar atritos · Negociar condições', clientAction:'Envolver stakeholders · Validar decisão', passTrigger:'Negociação aprovada', responsible:'AE', sellerRole:'Alinhar condições comerciais. Validação de Governança e Compliance. Alinhar data para OK Formal.', hubspotObject:'Negócio', hubspotFields:'Data de fechamento (obrigatório) · Times envolvidos', hubspotFieldsSAP:[{text:'Verificar item de linha — acessar os Processos SAP',url:'sap.html'},{text:'Adicionar CNPJ na empresa vinculada à oportunidade',url:'sap.html'}], tools:[{name:'Empowerment Guide — alçadas de negociação',url:'https://app.notion.com/p/blip-ai/330dcfddcf4a8096bd82fbfdb26b28f0?v=346dcfddcf4a80539913000c6041c9a3'}], methodologies:['Principled Negotiation (Harvard)','MEDDPICC','MAP'] },
+          { id:'t6', name:'Apresentação', hubspotStage:'Apresentação', sentiment:'Segurança', need:'Entender como funciona na prática a ferramenta da Blip', clientAction:'Solicitar um de-para das funcionalidades da Blip e dos objetivos de negócio', passTrigger:'Apresentação do projeto personalizado agendada', responsible:'AE', sellerRole:'Educação sobre modelos de WhatsApp. Discovery completo. Apresentação dos Use Cases. Entender como o Blip pode ser usado em toda a jornada do cliente.', hubspotObject:'Negócio', methodologies:['MEDDPICC','Value-Based Selling'], supportTeams:[{name:'Value Designer',actionUrl:'vd-popup'}] },
+          { id:'t7', name:'Design de Projeto', hubspotStage:'Design de Projeto', sentiment:'Ambição', need:'ROI para vender internamente', clientAction:'Validar ROI · Confirmar investimento', passTrigger:'Proposta comercial apresentada', responsible:'AE', sellerRole:'Demonstrar a solução aplicada ao problema. Preparar esboço (Mockup/Miro). Validar aderência, stakeholders e critérios de decisão.', hubspotObject:'Negócio', hubspotFields:'Produtos Add-Ons · Objetivos da contratação (obrigatório)', methodologies:['MEDDPICC','Value-Based Selling'], supportTeams:[{name:'Value Designer',actionUrl:'vd-popup'},{name:'Professional Services',actionUrl:''}] },
+          { id:'t8', name:'Proposta Apresentada', hubspotStage:'Proposta Apresentada', sentiment:'Conforto', need:'Eliminar atritos financeiros', clientAction:'Validar investimento · Escolher Blip', passTrigger:'Negociação iniciada', responsible:'AE', sellerRole:'Validação com cliente do desenho proposto. Apresentação da proposta comercial. Validar critérios de decisão e processo de compra.', hubspotObject:'Negócio', methodologies:['MAP','MEDDPICC'], sapLink:true, hubspotFieldsSAP:[{text:'Verificar item de linha — acessar os Processos SAP',url:'sap.html'},{text:'Adicionar CNPJ na empresa vinculada à oportunidade',url:'sap.html'}], supportTeams:[{name:'Value Designer',actionUrl:'vd-popup'},{name:'Deal Desk',actionUrl:'https://docs.google.com/presentation/d/1psPfMcPS4wr7kCox0HOUY2x9hvXALtoi6bXKCdn7RbQ/edit?slide=id.g3d9b2327066_2_2#slide=id.g3d9b2327066_2_2'}] },
+          { id:'t9', name:'Negociação', hubspotStage:'Negociação', sentiment:'Conforto', need:'Eliminar atritos · Negociar condições', clientAction:'Envolver stakeholders · Validar decisão', passTrigger:'Negociação aprovada', responsible:'AE', sellerRole:'Alinhar condições comerciais. Validação de Governança e Compliance. Alinhar data para OK Formal.', hubspotObject:'Negócio', hubspotFields:'Data de fechamento (obrigatório) · Times envolvidos', hubspotFieldsSAP:[{text:'Verificar item de linha — acessar os Processos SAP',url:'sap.html'},{text:'Adicionar CNPJ na empresa vinculada à oportunidade',url:'sap.html'}], tools:[{name:'Empowerment Guide — alçadas de negociação',url:'https://app.notion.com/p/blip-ai/330dcfddcf4a8096bd82fbfdb26b28f0?v=346dcfddcf4a80539913000c6041c9a3'}], methodologies:['Principled Negotiation (Harvard)','MEDDPICC','MAP'], supportTeams:[{name:'Value Designer',actionUrl:'vd-popup'}] },
           { id:'t10', name:'OK Formal', hubspotStage:'OK Formal', sentiment:'Respaldo', need:'Segurança jurídica e SLA', clientAction:'Validar juridicamente · Alinhar data de assinatura', passTrigger:'Dados da minuta enviados', responsible:'AE', sellerRole:'Governança e Compliance · Alinhar data para OK Formal', hubspotObject:'Negócio', hubspotFieldsSAP:[{text:'Preencher manual de atividade Novos Clientes [SAP]',url:'sap.html'}], methodologies:['MEDDPICC'] },
-          { id:'t11', name:'Rev. Contrato', hubspotStage:'Rev. Contrato', sentiment:'Respaldo', need:'Segurança jurídica total', clientAction:'Validar juridicamente · Organizar próximos passos', passTrigger:'TOS assinado', responsible:'AE', sellerRole:'Solicitar dados jurídicos · Validar trâmites com SI · Assegurar celeridade', hubspotObject:'Negócio', hubspotFields:'Potencial de audiência desta empresa (obrigatório)', manualActions:'Manual "Novos Clientes [SAP]" · E-mail formalização do projeto · Manual de atividades para ativação', methodologies:['MEDDPICC'] },
+          { id:'t11', name:'Rev. Contrato', hubspotStage:'Rev. Contrato', sentiment:'Respaldo', need:'Segurança jurídica total', clientAction:'Validar juridicamente · Organizar próximos passos', passTrigger:'TOS assinado', responsible:'AE', sellerRole:'Solicitar dados jurídicos · Validar trâmites com SI · Assegurar celeridade', hubspotObject:'Negócio', hubspotFields:'Potencial de audiência desta empresa (obrigatório)', manualActions:'Manual "Novos Clientes [SAP]" · E-mail formalização do projeto · Manual de atividades para ativação', methodologies:['MEDDPICC'], sapLink:true },
           { id:'t12', name:'Ganho', hubspotStage:'Ganho', sentiment:'Herói', need:'Clareza da jornada com a Blip', clientAction:'Organizar próximos passos · Passagem de bastão', passTrigger:'—', responsible:'AE', sellerRole:'Revisar HubSpot · Manual de passagem de bastão · Ativar time de implementação', hubspotObject:'Negócio', hubspotFields:'Resultados esperados com a contratação (obrigatório)', methodologies:['MEDDPICC'] },
         ]
       },
@@ -1224,6 +1269,7 @@ function renderStagesTimeline(phase, segId) {
     const label = stage._displayName || stage.hubspotStage || stage.name;
     const stageData = { ...stage };
     delete stageData._displayName;
+    stageData._funnelId = phase.id;
     return `
     <div class="flex items-center gap-3">
       <button onclick='openStage(${JSON.stringify(stageData).replace(/'/g,"&#39;")})' class="group flex flex-col items-center w-28 text-center">
@@ -1296,21 +1342,23 @@ function renderEmptyPhase(phase) {
 }
 
 function renderDrawer(stage) {
-  const fields = [
-    { l:'💭 Sentimento do cliente', v:stage.sentiment },
-    { l:'🎯 Necessidade do lead', v:stage.need },
-    { l:'✋ Ação do cliente', v:stage.clientAction },
-    { l:'🔑 Gatilho de passagem', v:stage.passTrigger },
-    { l:'👤 Responsável', v:stage.responsible },
-    { l:'📋 Papel do vendedor', v:stage.sellerRole },
-    { l:'📝 Campos HubSpot', v:stage.hubspotFields },
-    { l:'🤝 Ações Manuais', v:stage.manualActions },
-    { l:'⚡ Ações Automáticas', v:stage.autoActions },
+  const isLand = stage._funnelId === 'land';
+  const sentimentLabel = isLand ? 'Sentimento do lead' : 'Sentimento do cliente';
+  const actionLabel = isLand ? 'Ação do lead' : 'Ação do cliente';
+
+  const ccItems = [
+    { l: sentimentLabel, v: stage.sentiment },
+    { l: 'Necessidade do lead', v: stage.need },
+    { l: actionLabel, v: stage.clientAction },
   ].filter(f => f.v && f.v !== '—');
+
+  const hasHubspot = stage.passTrigger || (stage.hubspotFields && stage.hubspotFields !== '—') || stage.manualActions || stage.autoActions || stage.hubspotFieldsSAP;
 
   return `
   <div class="fixed inset-0 bg-black/40 z-40 flex justify-end" onclick="setState({activeStage:null})">
     <div class="bg-white w-full max-w-xl h-full overflow-y-auto shadow-2xl drawer-slide" onclick="event.stopPropagation()">
+
+      <!-- Header -->
       <div class="sticky top-0 bg-white border-b border-slate-100 px-6 py-4 flex items-center justify-between z-10">
         <div>
           <h3 class="font-bold text-slate-800 text-lg">${escHtml(stage.hubspotStage||stage.name)}</h3>
@@ -1318,23 +1366,82 @@ function renderDrawer(stage) {
         </div>
         <button onclick="setState({activeStage:null})" class="text-slate-400 hover:text-slate-600 text-2xl leading-none">&times;</button>
       </div>
+
       <div class="p-6 space-y-4">
-        ${fields.map(f => `
-        <div class="bg-slate-50 rounded-xl p-4">
-          <p class="text-xs font-semibold text-slate-500 mb-1.5">${f.l}</p>
-          <p class="text-sm text-slate-800 leading-relaxed whitespace-pre-line">${escHtml(f.v)}</p>
-        </div>`).join('')}
-        ${stage.hubspotFieldsSAP ? `
-        <div class="rounded-xl p-4" style="background:#FFF7ED;border:1px solid #FED7AA;">
-          <p class="text-xs font-semibold mb-3" style="color:#C2410C;">📋 Campos HubSpot para SAP</p>
-          <div class="space-y-2">
-            ${(Array.isArray(stage.hubspotFieldsSAP) ? stage.hubspotFieldsSAP : [{text: stage.hubspotFieldsSAP, url: 'sap.html'}]).map(item => `
-            <div class="flex items-center justify-between gap-3 bg-white rounded-lg px-3 py-2.5" style="border:1px solid #FED7AA;">
-              <p class="text-sm text-slate-700 leading-snug flex-1">${escHtml(item.text)}</p>
-              <a href="${escHtml(item.url)}" target="_blank" class="flex-shrink-0 text-xs font-medium px-2.5 py-1 rounded-lg transition-colors whitespace-nowrap" style="background:#EA580C;color:#fff;" onmouseover="this.style.background='#C2410C'" onmouseout="this.style.background='#EA580C'">Abrir ↗</a>
+
+        <!-- 1. Customer Centricity (accordion) -->
+        ${ccItems.length > 0 ? `
+        <div class="rounded-xl overflow-hidden" style="border:1px solid #C7D2FE;">
+          <button onclick="(function(btn){var body=btn.nextElementSibling;var open=body.classList.toggle('hidden');btn.querySelector('.cc-chevron').textContent=open?'▼':'▲';})(this)" class="w-full flex items-center justify-between px-4 py-3 text-left" style="background:#EEF2FF;">
+            <span class="text-xs font-semibold" style="color:#3730A3;">🧠 Customer Centricity</span>
+            <span class="cc-chevron text-xs" style="color:#3730A3;">▼</span>
+          </button>
+          <div class="hidden divide-y divide-slate-100 bg-white">
+            ${ccItems.map(f => `
+            <div class="px-4 py-3">
+              <p class="text-xs font-semibold text-slate-500 mb-1">${escHtml(f.l)}</p>
+              <p class="text-sm text-slate-800 leading-relaxed">${escHtml(f.v)}</p>
             </div>`).join('')}
           </div>
         </div>` : ''}
+
+        <!-- 2. Metodologias de vendas -->
+        ${stage.methodologies && stage.methodologies.length > 0 ? `
+        <div class="bg-slate-50 rounded-xl p-4">
+          <p class="text-xs font-semibold text-slate-500 mb-2">📚 Metodologias de vendas</p>
+          <div class="flex flex-wrap gap-2">
+            ${stage.methodologies.map(m => `<span class="bg-blue-100 text-blue-700 text-xs font-medium px-2.5 py-1 rounded-full">${escHtml(m)}</span>`).join('')}
+          </div>
+        </div>` : ''}
+
+        <!-- 3. Papel do vendedor -->
+        ${stage.sellerRole ? `
+        <div class="bg-slate-50 rounded-xl p-4">
+          <p class="text-xs font-semibold text-slate-500 mb-1.5">📋 Papel do vendedor</p>
+          <p class="text-sm text-slate-800 leading-relaxed whitespace-pre-line">${escHtml(stage.sellerRole)}</p>
+        </div>` : ''}
+
+        <!-- 4. HubSpot (orange block) -->
+        ${hasHubspot ? `
+        <div class="rounded-xl p-4" style="background:#FFF7ED;border:1px solid #FED7AA;">
+          <div class="flex items-center justify-between mb-3">
+            <p class="text-xs font-semibold" style="color:#C2410C;">🟠 HubSpot</p>
+            ${(stage.sapLink || stage.hubspotFieldsSAP) ? `<a href="sap.html" target="_blank" class="text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap" style="background:#EA580C;color:#fff;" onmouseover="this.style.background='#C2410C'" onmouseout="this.style.background='#EA580C'">⚙️ Processos SAP ↗</a>` : ''}
+          </div>
+          <div class="space-y-3">
+            ${stage.passTrigger ? `
+            <div>
+              <p class="text-xs font-semibold mb-1" style="color:#EA580C;">🔑 Gatilho de passagem</p>
+              <p class="text-sm text-slate-800 leading-relaxed">${escHtml(stage.passTrigger)}</p>
+            </div>` : ''}
+            ${stage.hubspotFields && stage.hubspotFields !== '—' ? `
+            <div>
+              <p class="text-xs font-semibold mb-1" style="color:#EA580C;">📝 Campos</p>
+              <p class="text-sm text-slate-800 leading-relaxed">${escHtml(stage.hubspotFields)}</p>
+            </div>` : ''}
+            ${stage.manualActions ? `
+            <div>
+              <p class="text-xs font-semibold mb-1" style="color:#EA580C;">🤝 Ações Manuais</p>
+              <p class="text-sm text-slate-800 leading-relaxed">${escHtml(stage.manualActions)}</p>
+            </div>` : ''}
+            ${stage.autoActions ? `
+            <div>
+              <p class="text-xs font-semibold mb-1" style="color:#EA580C;">⚡ Ações Automáticas</p>
+              <p class="text-sm text-slate-800 leading-relaxed">${escHtml(stage.autoActions)}</p>
+            </div>` : ''}
+            ${stage.hubspotFieldsSAP ? `
+            <div class="space-y-2 pt-1">
+              <p class="text-xs font-semibold" style="color:#EA580C;">📋 Campos para SAP</p>
+              ${(Array.isArray(stage.hubspotFieldsSAP) ? stage.hubspotFieldsSAP : [{text: stage.hubspotFieldsSAP, url: 'sap.html'}]).map(item => `
+              <div class="flex items-center justify-between gap-3 bg-white rounded-lg px-3 py-2.5 mt-1" style="border:1px solid #FED7AA;">
+                <p class="text-sm text-slate-700 leading-snug flex-1">${escHtml(item.text)}</p>
+                <a href="${escHtml(item.url)}" target="_blank" class="flex-shrink-0 text-xs font-medium px-2.5 py-1 rounded-lg transition-colors whitespace-nowrap" style="background:#EA580C;color:#fff;" onmouseover="this.style.background='#C2410C'" onmouseout="this.style.background='#EA580C'">Abrir ↗</a>
+              </div>`).join('')}
+            </div>` : ''}
+          </div>
+        </div>` : ''}
+
+        <!-- 5. Times de apoio -->
         ${stage.supportTeams && stage.supportTeams.length > 0 ? `
         <div class="rounded-xl p-4" style="background:#F0FDF4;border:1px solid #BBF7D0;">
           <p class="text-xs font-semibold text-green-700 mb-3">🤝 Times de apoio</p>
@@ -1342,29 +1449,35 @@ function renderDrawer(stage) {
             ${stage.supportTeams.map(t => `
             <div class="flex items-center justify-between gap-3 bg-white rounded-lg px-3 py-2.5" style="border:1px solid #BBF7D0;">
               <p class="text-sm font-medium text-slate-700">${escHtml(t.name)}</p>
-              ${t.actionUrl
-                ? `<a href="${escHtml(t.actionUrl)}" target="_blank" class="flex-shrink-0 text-xs font-medium px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap" style="background:#16A34A;color:#fff;" onmouseover="this.style.background='#15803D'" onmouseout="this.style.background='#16A34A'">Clique aqui para acionar o time ↗</a>`
-                : `<span class="flex-shrink-0 text-xs font-medium px-3 py-1.5 rounded-lg whitespace-nowrap" style="background:#16A34A;color:#fff;opacity:0.5;cursor:default;">Clique aqui para acionar o time</span>`}
+              ${t.actionUrl === 'vd-popup'
+                ? `<button onclick="openVdModal()" class="flex-shrink-0 text-xs font-medium px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap" style="background:#7C3AED;color:#fff;" onmouseover="this.style.background='#6D28D9'" onmouseout="this.style.background='#7C3AED'">Como acionar VD ↗</button>`
+                : t.actionUrl
+                  ? `<a href="${escHtml(t.actionUrl)}" target="_blank" class="flex-shrink-0 text-xs font-medium px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap" style="background:#16A34A;color:#fff;" onmouseover="this.style.background='#15803D'" onmouseout="this.style.background='#16A34A'">Clique aqui para acionar o time ↗</a>`
+                  : `<span class="flex-shrink-0 text-xs font-medium px-3 py-1.5 rounded-lg whitespace-nowrap" style="background:#16A34A;color:#fff;opacity:0.5;cursor:default;">Clique aqui para acionar o time</span>`}
             </div>`).join('')}
           </div>
         </div>` : ''}
-        ${stage.tools && stage.tools.length > 0 ? `
+
+        <!-- 6. Ferramentas de apoio -->
+        ${(stage.tools && stage.tools.length > 0) || isLand ? (() => {
+          const landDefaults = isLand ? [
+            { name:'Central de Revenue Enablement', url:'https://app.notion.com/p/blip-ai/Central-Revenue-Enablement-248dcfddcf4a80019774ca8b6faecd5c' },
+            { name:'Growth Insights', url:'' }
+          ] : [];
+          const existing = stage.tools || [];
+          const merged = [...existing.filter(t => !landDefaults.some(d => d.name === t.name)), ...landDefaults];
+          return `
         <div class="bg-slate-50 rounded-xl p-4">
           <p class="text-xs font-semibold text-slate-500 mb-2">🛠️ Ferramentas de apoio</p>
           <div class="flex flex-wrap gap-2">
-            ${stage.tools.map(t => t.url
+            ${merged.map(t => t.url
               ? `<a href="${escHtml(t.url)}" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 bg-white border border-blue-200 text-blue-700 text-xs font-medium px-3 py-1.5 rounded-lg shadow-sm hover:bg-blue-50 transition-colors">${escHtml(t.name)} ↗</a>`
               : `<span class="inline-flex items-center gap-1.5 bg-white border border-slate-200 text-slate-700 text-xs font-medium px-3 py-1.5 rounded-lg shadow-sm">${escHtml(t.name)}</span>`
             ).join('')}
           </div>
-        </div>` : ''}
-        ${stage.methodologies && stage.methodologies.length > 0 ? `
-        <div class="bg-slate-50 rounded-xl p-4">
-          <p class="text-xs font-semibold text-slate-500 mb-2">📚 Metodologias</p>
-          <div class="flex flex-wrap gap-2">
-            ${stage.methodologies.map(m => `<span class="bg-blue-100 text-blue-700 text-xs font-medium px-2.5 py-1 rounded-full">${escHtml(m)}</span>`).join('')}
-          </div>
-        </div>` : ''}
+        </div>`;
+        })() : ''}
+
       </div>
     </div>
   </div>`;
@@ -1787,6 +1900,23 @@ function toggleLegend() {
   const collapsed = body.classList.toggle('hidden');
   chevron.textContent = collapsed ? '▼' : '▲';
 }
+
+// ─── MODAL VD ────────────────────────────────────────────────────────────────
+
+function openVdModal() {
+  const m = document.getElementById('vd-modal');
+  m.classList.remove('hidden');
+  m.classList.add('flex');
+}
+function closeVdModal() {
+  const m = document.getElementById('vd-modal');
+  m.classList.add('hidden');
+  m.classList.remove('flex');
+}
+document.addEventListener('click', e => {
+  const m = document.getElementById('vd-modal');
+  if (e.target === m) closeVdModal();
+});
 
 // ─── INIT ────────────────────────────────────────────────────────────────────
 
