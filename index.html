@@ -787,12 +787,14 @@ const HUBSPOT_PIPELINES = [
     icon: '📘',
     description: 'Do primeiro contato ao TOS assinado · Referência: todas as BUs',
     stageCount: 12,
+    bdrCount: 5,
     stages: [
       { name:'Start Contact',         object:'Contato',           fields:'—',                                                                                                                               manualActions:'',  autoActions:'' },
       { name:'Tentativa',             object:'Contato',           fields:'Segmento (obrigatório) · Frente atendida · Site (obrigatório) · LinkedIn (obrigatório) · Modelo de negócio do cliente',           manualActions:'Pesquisa web · Cadência', autoActions:'' },
       { name:'Conectado',             object:'Contato',           fields:'Frente prospectada (obrigatório) · Instagram · Facebook',                                                                         manualActions:'',  autoActions:'' },
       { name:'Evaluation',            object:'Contato',           fields:'Outros sistemas que a empresa usa · Qual ferramenta utiliza atualmente? · Concorrente mapeado · Potencial total do cliente · Potencial frente prospectada · Dor', manualActions:'', autoActions:'' },
-      { name:'Qualificado / Opps',    object:'Contato → Negócio', fields:'Caso de uso (obrigatório) · Ferramenta atual (obrigatório) · Etapa de Jornada - Caso de uso (obrigatório) · Data de fechamento (obrigatório) · Canal de Qualificação da OP (obrigatório) · Score de Qualificação (obrigatório) · Temperatura do deal', manualActions:'Preenchimento manual — Briefing / Passagem de bastão Qualificação→Aquisição', autoActions:'Criação do negócio automática · Roleta automática' },
+      { name:'Qualificado',            object:'Contato',           fields:'Caso de uso (obrigatório) · Ferramenta atual (obrigatório) · Etapa de Jornada - Caso de uso (obrigatório) · Data de fechamento (obrigatório) · Canal de Qualificação da OP (obrigatório) · Score de Qualificação (obrigatório) · Temperatura do deal', manualActions:'Preenchimento manual — Briefing / Passagem de bastão Qualificação→Aquisição', autoActions:'' },
+      { name:'Opps',                   object:'Negócio',           fields:'Caso de uso (obrigatório) · Ferramenta atual (obrigatório) · Etapa de Jornada - Caso de uso (obrigatório) · Data de fechamento (obrigatório) · Canal de Qualificação da OP (obrigatório) · Score de Qualificação (obrigatório) · Temperatura do deal', manualActions:'', autoActions:'Criação do negócio automática · Roleta automática' },
       { name:'Apresentação',          object:'Negócio',           fields:'Ferramenta conversacional atual (obrigatório) · Quais áreas serão atendidas no projeto com a Blip? (obrigatório) · Etapa de Jornada - Caso de uso (obrigatório) · Data de fechamento (obrigatório) · Score de Qualificação (obrigatório) · Temperatura do deal', manualActions:'Roleta para aquisição', autoActions:'' },
       { name:'Design de Projeto',     object:'Negócio',           fields:'Produtos Add-Ons · Objetivos da contratação (obrigatório) · Novas frentes para prospecção do SDR/BDR?',                           manualActions:'Acionar Parceiro (se necessário) · Acionar VD (se necessário) · Cadastro Item de Linha', autoActions:'' },
       { name:'Proposta Apresentada',  object:'Negócio',           fields:'Data de fechamento · Critério de decisão da contratação (obrigatório) · Principais desafios que deseja resolver com o Blip (obrigatório) · Existe processo de compra', manualActions:'Personalizar Item de linha (se necessário)', autoActions:'' },
@@ -1827,23 +1829,48 @@ function renderHubSpotPage() {
                 </tr>
               </thead>
               <tbody>
-                ${pipeline.stages.map((s, i) => `
-                <tr class="border-b border-slate-50 hover:bg-slate-50 transition-colors">
+                ${pipeline.stages.map((s, i) => {
+                  const isBdr = pipeline.bdrCount && i < pipeline.bdrCount;
+                  const isSellerStart = pipeline.bdrCount && i === pipeline.bdrCount;
+                  const bgColor = isBdr ? 'bg-yellow-50 hover:bg-yellow-100' : pipeline.bdrCount ? 'bg-red-50 hover:bg-red-100' : 'hover:bg-slate-50';
+                  const numColor = isBdr ? 'bg-yellow-400 text-yellow-900' : pipeline.bdrCount ? 'bg-red-500 text-white' : 'bg-orange-500 text-white';
+                  const separatorRow = isSellerStart ? `
+                  <tr>
+                    <td colspan="3" class="px-4 pt-4 pb-2">
+                      <div class="flex items-center gap-2">
+                        <span class="text-xs font-bold text-red-600 uppercase tracking-wider">Vendedor</span>
+                        <span class="flex gap-1.5">
+                          <span class="text-[10px] bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full font-semibold">SMB: Inside Sales</span>
+                          <span class="text-[10px] bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full font-semibold">MAcc: Closer</span>
+                          <span class="text-[10px] bg-teal-100 text-teal-700 px-2 py-0.5 rounded-full font-semibold">StAcc: AE</span>
+                        </span>
+                      </div>
+                    </td>
+                  </tr>` : '';
+                  const bdrHeaderRow = i === 0 && pipeline.bdrCount ? `
+                  <tr>
+                    <td colspan="3" class="px-4 pt-4 pb-2">
+                      <span class="text-xs font-bold text-yellow-600 uppercase tracking-wider">BDR</span>
+                    </td>
+                  </tr>` : '';
+                  return bdrHeaderRow + separatorRow + `
+                <tr class="border-b border-slate-100 transition-colors ${bgColor}">
                   <td class="px-4 py-3">
-                    <span class="w-6 h-6 rounded-full bg-orange-500 text-white text-xs font-bold flex items-center justify-center">${i+1}</span>
+                    <span class="w-6 h-6 rounded-full ${numColor} text-xs font-bold flex items-center justify-center">${pipeline.bdrCount ? (isBdr ? i+1 : i) : i+1}</span>
                   </td>
                   <td class="px-4 py-3 font-semibold text-slate-800">${s.name}</td>
                   <td class="px-4 py-3">
                     <span class="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full font-medium">🟣 ${s.object}</span>
                   </td>
-                </tr>`).join('')}
+                </tr>`;
+                }).join('')}
               </tbody>
             </table>
           </div>
 
           <!-- CTA: campos por BU -->
           <div class="px-6 py-4 border-t border-orange-100 bg-orange-50 flex flex-wrap items-center gap-3">
-            <span class="text-xs text-orange-800 font-medium">📝 Conheça os campos obrigatórios por BU:</span>
+            <span class="text-xs text-orange-800 font-medium">📝 Conheça a operação de cada BU:</span>
             ${SEGMENTS.map(seg => `
             <button onclick="navigateTo('${seg.id}')" class="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg border transition-colors ${
               seg.id==='smb'  ? 'border-blue-200 text-blue-700 bg-white hover:bg-blue-50' :
