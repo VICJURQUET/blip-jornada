@@ -1563,6 +1563,10 @@ function renderOppModal() {
               <p class="text-xs text-slate-600 leading-relaxed">A oportunidade é validada pelo AE e movida para <strong>"Apresentação"</strong> após a primeira reunião com o lead, desde que haja um próximo passo definido.</p>
               <p class="text-xs font-medium text-green-700 mt-1.5">Reunião aconteceu + próximo passo combinado → Move para Apresentação.</p>
             </div>
+            <div class="bg-white rounded-lg p-3" style="border:1px solid #BBF7D0;">
+              <p class="text-xs font-semibold text-green-700 mb-1">📄 Casos de RFP</p>
+              <p class="text-xs text-slate-600 leading-relaxed">Enviamos uma proposta — este deal deve ser movido para <strong>Apresentação</strong> em 24h e a oportunidade é considerada válida.</p>
+            </div>
           </div>
         </div>
 
@@ -1574,13 +1578,16 @@ function renderOppModal() {
 
         <!-- Passagem de Bastão -->
         <div class="rounded-xl p-4" style="background:#FFF7ED;border:1px solid #FED7AA;">
-          <p class="text-sm font-bold" style="color:#C2410C;">📋 Passagem de bastão para o KAE</p>
-          <p class="text-xs text-slate-600 mt-2 mb-3">Além dos critérios acima, para uma oportunidade ser considerada válida, deve ser feita a passagem de bastão para o KAE com as seguintes informações inseridas no manual de atividade:</p>
+          <div class="flex items-center justify-between mb-2">
+            <p class="text-sm font-bold" style="color:#C2410C;">📋 Passagem de bastão para o AE</p>
+            <a href="#" onclick="return false;" class="text-xs font-medium px-3 py-1.5 rounded-lg transition-colors cursor-not-allowed opacity-60" style="background:#FEF3C7;color:#92400E;border:1px solid #FDE68A;" title="Em breve">📘 Briefing Land StAcc 2026</a>
+          </div>
+          <p class="text-xs text-slate-600 mb-3">Além dos critérios acima, para uma oportunidade ser considerada válida, deve ser feita a passagem de bastão para o AE com as seguintes informações inseridas no manual de atividade:</p>
           <div class="space-y-1.5">
             ${[
-              ['Contexto da Conta','Cenário atual e histórico com a Blip'],
               ['Dossiê','Link do dossiê'],
-              ['Identificação do Contato','Papel na tomada de decisão'],
+              ['Identificação do Contato','LinkedIn do contato'],
+              ['Contexto da Conta','Cenário atual, histórico com a Blip e caso de uso'],
               ['Mapeamento Técnico','Sistemas utilizados e atual fornecedor'],
               ['Riscos Percebidos','Qualquer ponto de atenção para o fechamento'],
             ].map(([title, desc]) => `
@@ -1593,7 +1600,7 @@ function renderOppModal() {
 
         <!-- Nota final -->
         <div class="rounded-xl p-4 bg-slate-50 border border-slate-200">
-          <p class="text-xs text-slate-600 leading-relaxed">Durante a reunião inicial com o lead, o <strong>KAE</strong> tem o papel de confirmar se o cenário mapeado condiz com a realidade. Havendo divergência, o vendedor deve <strong>invalidar a oportunidade e mover para perda ainda no mesmo dia</strong>.</p>
+          <p class="text-xs text-slate-600 leading-relaxed">Durante a reunião inicial com o lead, o <strong>AE</strong> tem o papel de confirmar se o cenário mapeado condiz com a realidade. Havendo divergência, o vendedor deve <strong>invalidar a oportunidade e mover para perda ainda no mesmo dia</strong>.</p>
           <p class="text-xs text-slate-500 mt-2 italic">Para garantir a rastreabilidade do processo, sempre que possível, as reuniões devem ser gravadas para eventual conferência.</p>
         </div>
 
