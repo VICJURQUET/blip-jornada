@@ -153,6 +153,175 @@
 </div>
 
 <!-- LOGIN SCREEN -->
+<!-- MODAL PROCESSOS QUALIFICAÇÃO · SMB -->
+<div id="modal-proc-qualif-smb" class="fixed inset-0 z-[9998] hidden items-center justify-center p-4" style="background:rgba(0,0,0,0.5);">
+  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md">
+    <div class="flex items-center justify-between px-6 py-5 border-b border-slate-100">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg" style="background:#EEF2FF;">🔍</div>
+        <div>
+          <h2 class="font-bold text-slate-800 text-base">Processos Qualificação</h2>
+          <p class="text-xs text-slate-400">Pipeline de Leads · BDR · SMB</p>
+        </div>
+      </div>
+      <button onclick="document.getElementById('modal-proc-qualif-smb').classList.add('hidden');document.getElementById('modal-proc-qualif-smb').classList.remove('flex')" class="text-slate-400 hover:text-slate-600 text-xl font-bold leading-none">×</button>
+    </div>
+    <div class="px-6 py-5 space-y-4 text-sm text-slate-700">
+      <div>
+        <p class="font-semibold text-slate-800 mb-3">Prospecção e Cadência</p>
+        <p class="text-sm text-slate-600 mb-4">A prospecção é executada com foco individualizado no Contato:</p>
+        <div class="space-y-3">
+          <div class="flex gap-3 bg-slate-50 rounded-xl px-4 py-3">
+            <span class="flex-shrink-0 w-5 h-5 rounded-full text-xs font-bold flex items-center justify-center text-white" style="background:#4F46E5;">1</span>
+            <div><p class="text-xs font-semibold text-slate-800">Individualização</p><p class="text-xs text-slate-500 mt-0.5">Cada contato deve possuir sua própria cadência de atividades.</p></div>
+          </div>
+          <div class="flex gap-3 bg-slate-50 rounded-xl px-4 py-3">
+            <span class="flex-shrink-0 w-5 h-5 rounded-full text-xs font-bold flex items-center justify-center text-white" style="background:#4F46E5;">2</span>
+            <div><p class="text-xs font-semibold text-slate-800">Personalização</p><p class="text-xs text-slate-500 mt-0.5">A cadência deve ser definida com base na origem e no canal disponível de cada contato.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="pt-2 border-t border-slate-100 space-y-3">
+        <a href="https://docs.google.com/document/d/1K4R4uI3IiQhF11-sOVWPRUfcIwS_TNwqmDq0ydNIKow/edit?tab=t.0" target="_blank" rel="noopener" class="flex items-center gap-2 text-xs font-medium px-3 py-2 rounded-lg transition-colors" style="background:#EEF2FF;color:#4F46E5;border:1px solid #C7D2FE;" onmouseover="this.style.background='#E0E7FF'" onmouseout="this.style.background='#EEF2FF'">📋 Registro de atividade ↗</a>
+        <div class="text-xs text-slate-700 space-y-3">
+          <div>
+            <p class="font-semibold text-green-700 mb-1.5">✅ O que são touchpoints válidos no SLA?</p>
+            <ul class="space-y-1 text-slate-500 list-none">
+              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Print de conversas no WhatsApp;</li>
+              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Print de conversas por InMail (LinkedIn);</li>
+              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Ligações gravadas;</li>
+              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>E-mails seguidos de tentativas em outros canais, como ligação e WhatsApp (no mesmo dia do envio do e-mail);</li>
+              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Tarefas futuras com o alinhamento feito com o lead ou de tentativa futura de contato dentro do prazo de 90 dias. <span class="italic">(Apenas a tarefa futura, sem atividades recentes que comprovem um próximo passo, não garantem SLA)</span></li>
+            </ul>
+          </div>
+          <div>
+            <p class="font-semibold text-red-600 mb-1.5">❌ O que não são touchpoints válidos para SLA?</p>
+            <ul class="space-y-1 text-slate-500 list-none">
+              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Chamadas registradas como NA (não atende), caixa postal, sem nenhuma outra tentativa de contato dentro do mesmo dia e sem tarefa futura;</li>
+              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Conexão de LinkedIn (apenas a conexão por si só) sem tentativa de contato por outros canais;</li>
+              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Sequência de e-mails sem chamadas e outras tentativas ao longo dos meses;</li>
+              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Tarefas com check sem a atividade em si;</li>
+              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Registro de chamadas sem gravação e sem informação do que foi falado.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL PROCESSOS QUALIFICAÇÃO · MAcc -->
+<div id="modal-proc-qualif-macc" class="fixed inset-0 z-[9998] hidden items-center justify-center p-4" style="background:rgba(0,0,0,0.5);">
+  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md">
+    <div class="flex items-center justify-between px-6 py-5 border-b border-slate-100">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg" style="background:#EEF2FF;">🔍</div>
+        <div>
+          <h2 class="font-bold text-slate-800 text-base">Processos Qualificação</h2>
+          <p class="text-xs text-slate-400">Pipeline de Leads · BDR · MAcc</p>
+        </div>
+      </div>
+      <button onclick="document.getElementById('modal-proc-qualif-macc').classList.add('hidden');document.getElementById('modal-proc-qualif-macc').classList.remove('flex')" class="text-slate-400 hover:text-slate-600 text-xl font-bold leading-none">×</button>
+    </div>
+    <div class="px-6 py-5 space-y-4 text-sm text-slate-700">
+      <div>
+        <p class="font-semibold text-slate-800 mb-3">Prospecção e Cadência</p>
+        <p class="text-sm text-slate-600 mb-4">A prospecção é executada com foco individualizado no Contato:</p>
+        <div class="space-y-3">
+          <div class="flex gap-3 bg-slate-50 rounded-xl px-4 py-3">
+            <span class="flex-shrink-0 w-5 h-5 rounded-full text-xs font-bold flex items-center justify-center text-white" style="background:#4F46E5;">1</span>
+            <div><p class="text-xs font-semibold text-slate-800">Individualização</p><p class="text-xs text-slate-500 mt-0.5">Cada contato deve possuir sua própria cadência de atividades.</p></div>
+          </div>
+          <div class="flex gap-3 bg-slate-50 rounded-xl px-4 py-3">
+            <span class="flex-shrink-0 w-5 h-5 rounded-full text-xs font-bold flex items-center justify-center text-white" style="background:#4F46E5;">2</span>
+            <div><p class="text-xs font-semibold text-slate-800">Personalização</p><p class="text-xs text-slate-500 mt-0.5">A cadência deve ser definida com base na origem e no canal disponível de cada contato.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="pt-2 border-t border-slate-100 space-y-3">
+        <a href="https://docs.google.com/document/d/1K4R4uI3IiQhF11-sOVWPRUfcIwS_TNwqmDq0ydNIKow/edit?tab=t.0" target="_blank" rel="noopener" class="flex items-center gap-2 text-xs font-medium px-3 py-2 rounded-lg transition-colors" style="background:#EEF2FF;color:#4F46E5;border:1px solid #C7D2FE;" onmouseover="this.style.background='#E0E7FF'" onmouseout="this.style.background='#EEF2FF'">📋 Registro de atividade ↗</a>
+        <div class="text-xs text-slate-700 space-y-3">
+          <div>
+            <p class="font-semibold text-green-700 mb-1.5">✅ O que são touchpoints válidos no SLA?</p>
+            <ul class="space-y-1 text-slate-500 list-none">
+              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Print de conversas no WhatsApp;</li>
+              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Print de conversas por InMail (LinkedIn);</li>
+              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Ligações gravadas;</li>
+              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>E-mails seguidos de tentativas em outros canais, como ligação e WhatsApp (no mesmo dia do envio do e-mail);</li>
+            </ul>
+          </div>
+          <div>
+            <p class="font-semibold text-red-600 mb-1.5">❌ O que não são touchpoints válidos para SLA?</p>
+            <ul class="space-y-1 text-slate-500 list-none">
+              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Chamadas registradas como NA (não atende), caixa postal, sem nenhuma outra tentativa de contato dentro do mesmo dia e sem tarefa futura;</li>
+              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Conexão de LinkedIn (apenas a conexão por si só) sem tentativa de contato por outros canais;</li>
+              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Sequência de e-mails sem chamadas e outras tentativas ao longo dos meses;</li>
+              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Tarefas com check sem a atividade em si;</li>
+              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Registro de chamadas sem gravação e sem informação do que foi falado.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL PROCESSOS QUALIFICAÇÃO · StAcc -->
+<div id="modal-proc-qualif-stacc" class="fixed inset-0 z-[9998] hidden items-center justify-center p-4" style="background:rgba(0,0,0,0.5);">
+  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md">
+    <div class="flex items-center justify-between px-6 py-5 border-b border-slate-100">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg" style="background:#EEF2FF;">🔍</div>
+        <div>
+          <h2 class="font-bold text-slate-800 text-base">Processos Qualificação</h2>
+          <p class="text-xs text-slate-400">Pipeline de Leads · BDR · StAcc</p>
+        </div>
+      </div>
+      <button onclick="document.getElementById('modal-proc-qualif-stacc').classList.add('hidden');document.getElementById('modal-proc-qualif-stacc').classList.remove('flex')" class="text-slate-400 hover:text-slate-600 text-xl font-bold leading-none">×</button>
+    </div>
+    <div class="px-6 py-5 space-y-4 text-sm text-slate-700">
+      <div>
+        <p class="font-semibold text-slate-800 mb-3">Prospecção e Cadência</p>
+        <p class="text-sm text-slate-600 mb-4">A prospecção é executada com foco individualizado no Contato:</p>
+        <div class="space-y-3">
+          <div class="flex gap-3 bg-slate-50 rounded-xl px-4 py-3">
+            <span class="flex-shrink-0 w-5 h-5 rounded-full text-xs font-bold flex items-center justify-center text-white" style="background:#4F46E5;">1</span>
+            <div><p class="text-xs font-semibold text-slate-800">Individualização</p><p class="text-xs text-slate-500 mt-0.5">Cada contato deve possuir sua própria cadência de atividades.</p></div>
+          </div>
+          <div class="flex gap-3 bg-slate-50 rounded-xl px-4 py-3">
+            <span class="flex-shrink-0 w-5 h-5 rounded-full text-xs font-bold flex items-center justify-center text-white" style="background:#4F46E5;">2</span>
+            <div><p class="text-xs font-semibold text-slate-800">Personalização</p><p class="text-xs text-slate-500 mt-0.5">A cadência deve ser definida com base na origem e no canal disponível de cada contato.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="pt-2 border-t border-slate-100 space-y-3">
+        <a href="https://docs.google.com/document/d/1K4R4uI3IiQhF11-sOVWPRUfcIwS_TNwqmDq0ydNIKow/edit?tab=t.0" target="_blank" rel="noopener" class="flex items-center gap-2 text-xs font-medium px-3 py-2 rounded-lg transition-colors" style="background:#EEF2FF;color:#4F46E5;border:1px solid #C7D2FE;" onmouseover="this.style.background='#E0E7FF'" onmouseout="this.style.background='#EEF2FF'">📋 Registro de atividade ↗</a>
+        <div class="text-xs text-slate-700 space-y-3">
+          <div>
+            <p class="font-semibold text-green-700 mb-1.5">✅ O que são touchpoints válidos no SLA?</p>
+            <ul class="space-y-1 text-slate-500 list-none">
+              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Print de conversas no WhatsApp;</li>
+              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Print de conversas por InMail (LinkedIn);</li>
+              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Ligações gravadas;</li>
+              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>E-mails seguidos de tentativas em outros canais, como ligação e WhatsApp (no mesmo dia do envio do e-mail);</li>
+            </ul>
+          </div>
+          <div>
+            <p class="font-semibold text-red-600 mb-1.5">❌ O que não são touchpoints válidos para SLA?</p>
+            <ul class="space-y-1 text-slate-500 list-none">
+              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Chamadas registradas como NA (não atende), caixa postal, sem nenhuma outra tentativa de contato dentro do mesmo dia e sem tarefa futura;</li>
+              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Conexão de LinkedIn (apenas a conexão por si só) sem tentativa de contato por outros canais;</li>
+              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Sequência de e-mails sem chamadas e outras tentativas ao longo dos meses;</li>
+              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Tarefas com check sem a atividade em si;</li>
+              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Registro de chamadas sem gravação e sem informação do que foi falado.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div id="login-screen" class="fixed inset-0 z-[9999] flex items-center justify-center bg-gradient-to-br from-blip-900 via-blip-700 to-blip-500">
   <div class="w-full max-w-sm mx-4">
     <!-- Card -->
@@ -1139,6 +1308,23 @@ function renderHome() {
               </div>
             </button>
 
+            <!-- Navigator Blip -->
+            <div class="w-full bg-white rounded-xl border border-slate-200 overflow-hidden" style="border-radius:10px;">
+              <div class="px-4 py-3 flex items-center justify-between border-b border-slate-100">
+                <div class="flex items-center gap-2.5">
+                  <span style="font-size:18px;">🧭</span>
+                  <div>
+                    <p class="text-sm font-semibold text-slate-700" style="font-family:Lexend,sans-serif;">Navigator Blip</p>
+                    <p class="text-xs text-slate-400">Análises e Insights</p>
+                  </div>
+                </div>
+              </div>
+              <div class="px-4 py-3 flex items-center justify-between gap-4">
+                <p class="text-xs text-slate-500 leading-relaxed max-w-xl">O time Blip criou o <strong class="text-slate-700">LAND Navigator Blip</strong>. Uma dash capaz de escutar todas as calls gravadas ou transcritas e gerar insights para a operação e para o vendedor.</p>
+                <a href="https://blip-land-navigator.lovable.app/" target="_blank" rel="noopener" class="flex-shrink-0 text-xs font-medium px-4 py-2 rounded-lg transition-colors text-white" style="background:#1968F0;" onmouseover="this.style.background='#0036BD'" onmouseout="this.style.background='#1968F0'">Acessar Navigator ↗</a>
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -1315,6 +1501,7 @@ function renderPhase(phase, segId) {
           ${segId === 'stacc' && phase.id === 'land' ? `<button onclick="setState({showOppModal:true})" class="text-xs font-medium px-2.5 py-1 rounded-lg transition-colors" style="background:#EEF2FF;color:#4F46E5;border:1px solid #C7D2FE;" onmouseover="this.style.background='#E0E7FF'" onmouseout="this.style.background='#EEF2FF'">💡 O que é uma oportunidade em LAND StAcc?</button>` : ''}
           ${segId === 'smb' && phase.id === 'land' ? `<button onclick="setState({showOppModalSmb:true})" class="text-xs font-medium px-2.5 py-1 rounded-lg transition-colors" style="background:#EEF2FF;color:#4F46E5;border:1px solid #C7D2FE;" onmouseover="this.style.background='#E0E7FF'" onmouseout="this.style.background='#EEF2FF'">💡 O que é uma oportunidade em LAND SMB?</button>` : ''}
           ${segId === 'macc' && phase.id === 'land' ? `<button onclick="setState({showOppModalMacc:true})" class="text-xs font-medium px-2.5 py-1 rounded-lg transition-colors" style="background:#EEF2FF;color:#4F46E5;border:1px solid #C7D2FE;" onmouseover="this.style.background='#E0E7FF'" onmouseout="this.style.background='#EEF2FF'">💡 O que é uma oportunidade em LAND MAcc?</button>` : ''}
+          ${phase.id === 'land' && ['smb','macc','stacc'].includes(segId) ? `<a href="https://docs.google.com/document/d/1l0Zrvd0QCZGkVJVipSPQ9M31n2NA2q-E4e_72YRMRwI/edit?usp=sharing" target="_blank" rel="noopener" onclick="event.stopPropagation()" class="text-xs font-medium px-2.5 py-1 rounded-lg transition-colors" style="background:#EEF2FF;color:#4F46E5;border:1px solid #C7D2FE;" onmouseover="this.style.background='#E0E7FF'" onmouseout="this.style.background='#EEF2FF'">💡 Como criar um lead manualmente ↗</a>` : ''}
         </div>
       </div>
       ${phase.id === 'implementacao' && segId === 'smb' && IMP_STAGES_SMB.length > 0 ? renderImplPhase(phase) : phase.stages.length > 0 ? (segId === 'stacc' && phase.id === 'land' ? renderPreCrmStacc() : '') + renderStagesTimeline(phase, segId) : renderEmptyPhase(phase)}
@@ -1418,6 +1605,7 @@ function renderStagesTimeline(phase, segId) {
     const stageData = { ...stage };
     delete stageData._displayName;
     stageData._funnelId = phase.id;
+    stageData._segId = segId;
     return `
     <div class="flex items-center gap-3">
       <button onclick='openStage(${JSON.stringify(stageData).replace(/'/g,"&#39;")})' class="group flex flex-col items-center w-28 text-center">
@@ -1444,9 +1632,10 @@ function renderStagesTimeline(phase, segId) {
   <div class="px-4 pt-4 pb-4 space-y-0">
     <!-- Linha de Contato (centralizada) -->
     <div class="flex flex-col items-center">
-      <div class="flex items-center gap-1.5 mb-3">
+      <div class="flex items-center gap-2 mb-3">
         <span class="w-1.5 h-1.5 rounded-full bg-slate-400 inline-block"></span>
         <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Pipeline de Leads · Contato</span>
+        <button onclick="document.getElementById('modal-proc-qualif-${segId}').classList.remove('hidden');document.getElementById('modal-proc-qualif-${segId}').classList.add('flex')" class="text-[10px] font-semibold px-2 py-0.5 rounded-md transition-colors" style="background:#EEF2FF;color:#4F46E5;border:1px solid #C7D2FE;" onmouseover="this.style.background='#E0E7FF'" onmouseout="this.style.background='#EEF2FF'">Processos Qualificação</button>
       </div>
       <div class="flex gap-6 pb-1">
         ${contatoStages.map((stage, idx) => stageBlock(stage, idx+1, idx === contatoStages.length-1)).join('')}
@@ -1547,6 +1736,9 @@ function renderDrawer(stage) {
         <div class="bg-slate-50 rounded-xl p-4">
           <p class="text-xs font-semibold text-slate-500 mb-1.5">📋 Papel do vendedor</p>
           <p class="text-sm text-slate-800 leading-relaxed whitespace-pre-line">${escHtml(stage.sellerRole)}</p>
+          ${stage._segId === 'smb' && stage.id === 's3' ? `
+          <a href="https://app.mural.co/t/takeblip0749/m/takeblip0749/1767630857513/417bf3ee2a940da6bba0bd4fa43768b29b49e319" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 mt-3 text-xs font-medium px-3 py-1.5 rounded-lg transition-colors" style="background:#EEF2FF;color:#4F46E5;border:1px solid #C7D2FE;" onmouseover="this.style.background='#E0E7FF'" onmouseout="this.style.background='#EEF2FF'">✨ Como fazer a reunião de engajamento perfeita ↗</a>
+          ` : ''}
         </div>` : ''}
 
         <!-- 4. HubSpot (orange block) -->
@@ -1957,6 +2149,35 @@ function renderHubSpotPage() {
               <span class="text-xs bg-orange-100 text-orange-700 px-2.5 py-1 rounded-lg font-medium">📊 ${pipeline.stageCount} etapas</span>
               <span class="text-xs bg-slate-100 text-slate-600 px-2.5 py-1 rounded-lg">Válido para SMB · MAcc · StAcc</span>
             </div>
+            ${pipeline.id === 'land' ? `
+            <div class="mt-4 bg-blue-50 border border-blue-100 rounded-xl px-4 py-4">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="text-base">🔗</span>
+                <p class="text-xs font-semibold text-blue-900">Estrutura de Objetos e Associações</p>
+              </div>
+              <p class="text-xs text-blue-700 mb-3">O trabalho de LAND deve seguir a hierarquia de objetos dentro do HubSpot:</p>
+              <div class="grid grid-cols-2 gap-2">
+                <div class="bg-white border border-blue-200 rounded-lg px-3 py-2.5">
+                  <p class="text-xs font-semibold text-slate-800 mb-0.5">🟣 Contato</p>
+                  <p class="text-xs text-slate-500 leading-relaxed">Objeto vinculado ao Lead e depois levado ao negócio. Contém informações do contato, ou seja, da pessoa!</p>
+                </div>
+                <div class="bg-white border border-blue-200 rounded-lg px-3 py-2.5">
+                  <p class="text-xs font-semibold text-slate-800 mb-0.5">🟣 Empresa</p>
+                  <p class="text-xs text-slate-500 leading-relaxed">Objeto vinculado ao Contato e ao negócio. Contém informações do CNPJ.</p>
+                </div>
+                <div class="bg-white border border-blue-200 rounded-lg px-3 py-2.5 flex flex-col gap-2">
+                  <p class="text-xs font-semibold text-slate-800 mb-0.5">🟣 Lead</p>
+                  <p class="text-xs text-slate-500 leading-relaxed">Objeto de trabalho do time de qualificação, obrigatoriamente vinculado a um contato.</p>
+                  <a href="https://docs.google.com/document/d/1IylpF2LhfbNYW-ntg-fwloFQRe_dTdpECMApsUZvs94/edit?tab=t.0" target="_blank" rel="noopener" class="self-start text-xs font-medium px-2.5 py-1 rounded-lg text-white transition-colors" style="background:#1968F0;" onmouseover="this.style.background='#0036BD'" onmouseout="this.style.background='#1968F0'">Como acessar a pipeline de leads ↗</a>
+                  <a href="https://docs.google.com/document/d/1l0Zrvd0QCZGkVJVipSPQ9M31n2NA2q-E4e_72YRMRwI/edit?usp=sharing" target="_blank" rel="noopener" class="self-start text-xs font-medium px-2.5 py-1 rounded-lg transition-colors" style="background:#EEF2FF;color:#4F46E5;border:1px solid #C7D2FE;" onmouseover="this.style.background='#E0E7FF'" onmouseout="this.style.background='#EEF2FF'">Como criar um lead manualmente ↗</a>
+                </div>
+                <div class="bg-white border border-blue-200 rounded-lg px-3 py-2.5 flex flex-col gap-2">
+                  <p class="text-xs font-semibold text-slate-800 mb-0.5">🟣 Negócio</p>
+                  <p class="text-xs text-slate-500 leading-relaxed">Objeto de trabalho do time de aquisição. Obrigatoriamente vinculado a um ou vários contatos, mas a apenas uma empresa.</p>
+                  <a href="https://docs.google.com/document/d/1vY9NjL1J4i5O35-zcGcDxisjXz-60smOLIItSNjyjy4/edit?tab=t.0" target="_blank" rel="noopener" class="self-start text-xs font-medium px-2.5 py-1 rounded-lg text-white transition-colors" style="background:#1968F0;" onmouseover="this.style.background='#0036BD'" onmouseout="this.style.background='#1968F0'">Como acessar a pipeline de negócios ↗</a>
+                </div>
+              </div>
+            </div>` : ''}
           </div>
 
           <!-- Stages table -->
