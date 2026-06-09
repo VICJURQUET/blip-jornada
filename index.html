@@ -90,7 +90,7 @@
 
 <!-- MODAL ETAPA HUBSPOT -->
 <div id="hs-stage-modal" class="fixed inset-0 z-[9997] hidden items-center justify-center p-4" style="background:rgba(0,0,0,0.5);" onclick="closeHsStageModal(event)">
-  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col" onclick="event.stopPropagation()">
+  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] flex flex-col" onclick="event.stopPropagation()">
     <!-- Header -->
     <div class="flex items-center justify-between px-6 py-5 border-b border-slate-100 flex-shrink-0">
       <div id="hs-modal-header" class="flex items-center gap-3">
@@ -476,8 +476,8 @@ const SEGMENTS = [
         completeness:'in_progress',
         color:{ bg:'bg-blue-500', text:'text-blue-600', border:'border-blue-200', badge:'bg-blue-100 text-blue-700', line:'bg-blue-200' },
         stages:[
-          { id:'s1', name:'Start Contact', hubspotStage:'Start Contact', sentiment:'-', need:'-', clientAction:'Inbound: levantada de mão · Outbound: sem ação do cliente', passTrigger:'SLA Validado', responsible:'BDR', sellerRole:'Validar SLA (tamanho empresa, SLA BU e SLA dono da oportunidade). Validar requisitos do site. Validar contato: email, wpp e linkedin. Estudar informações públicas do contato.', hubspotObject:'Contato', hubspotFields:'—', methodologies:['Social Selling'], tools:[{name:'Lusha',url:'https://www.lusha.com/hp/'},{name:'Sales Navigator',url:'https://linkedin.com/premium/products?upsellOrderOrigin=guest_login_sales_nav&utype=sales_ss'},{name:'Gem Copy',url:'https://gemini.google.com/gem/1MHDWKHqJdbU2OAJgykh3N3l83KgUeQkz?usp=sharing'},{name:'BuiltWith',url:''},{name:'Wappalyzer',url:''},{name:'SemRush',url:''},{name:'Stilingue',url:''},{name:'Central de Revenue Enablement',url:'https://app.notion.com/p/blip-ai/Central-Revenue-Enablement-248dcfddcf4a80019774ca8b6faecd5c'},{name:'Growth Insights',url:''}] },
-          { id:'s2', name:'Tentativa', hubspotStage:'Tentativa', sentiment:'-', need:'-', clientAction:'Inbound e Outbound: Responder tentativa de contato', passTrigger:'Lead respondeu o contato.', responsible:'BDR', sellerRole:'Estudar informações públicas do contato.\nPersonalizar o contato.\nConquistar a primeira resposta do lead.', hubspotObject:'Contato', hubspotFields:'Segmento (obrigatório) · Frente atendida · Site (obrigatório) · LinkedIn (obrigatório) · Modelo de negócio do cliente', methodologies:['Social Selling'], tools:[{name:'Central de Revenue Enablement',url:'https://app.notion.com/p/blip-ai/Central-Revenue-Enablement-248dcfddcf4a80019774ca8b6faecd5c'},{name:'Growth Insights',url:''},{name:'Lusha',url:'https://www.lusha.com/hp/'},{name:'Sales Navigator',url:'https://linkedin.com/premium/products?upsellOrderOrigin=guest_login_sales_nav&utype=sales_ss'},{name:'Gem Copy',url:'https://gemini.google.com/gem/1MHDWKHqJdbU2OAJgykh3N3l83KgUeQkz?usp=sharing'}] },
+          { id:'s1', name:'Start Contact', hubspotStage:'Start Contact', sentiment:'-', need:'-', clientAction:'Inbound: levantada de mão · Outbound: sem ação do cliente', passTrigger:'SLA Validado', responsible:'BDR', sellerRole:'Validar SLA (tamanho empresa, SLA BU e SLA dono da oportunidade). Validar requisitos do site. Validar contato: email, wpp e linkedin. Estudar informações públicas do contato.', hubspotObject:'Contato', hubspotFields:'—', autoActions:'🔵 Inbound — Prazo de 1 dia útil para atendimento.\nSem atendimento → roletado para outro SDR.\n2º SDR sem atendimento em 1 dia útil → nova roletagem.\nApós 2 roletagens sem atendimento → Desqualificado.\n\n🟠 Outbound — Mesma lógica, prazo de 5 dias úteis antes de cada redistribuição.', methodologies:['Social Selling'], tools:[{name:'Lusha',url:'https://www.lusha.com/hp/'},{name:'Sales Navigator',url:'https://linkedin.com/premium/products?upsellOrderOrigin=guest_login_sales_nav&utype=sales_ss'},{name:'Gem Copy',url:'https://gemini.google.com/gem/1MHDWKHqJdbU2OAJgykh3N3l83KgUeQkz?usp=sharing'},{name:'BuiltWith',url:''},{name:'Wappalyzer',url:''},{name:'SemRush',url:''},{name:'Stilingue',url:''},{name:'Central de Revenue Enablement',url:'https://app.notion.com/p/blip-ai/Central-Revenue-Enablement-248dcfddcf4a80019774ca8b6faecd5c'},{name:'Growth Insights',url:''}] },
+          { id:'s2', name:'Tentativa', hubspotStage:'Tentativa', sentiment:'-', need:'-', clientAction:'Inbound e Outbound: Responder tentativa de contato', passTrigger:'Lead respondeu o contato.', responsible:'BDR', sellerRole:'Estudar informações públicas do contato.\nPersonalizar o contato.\nConquistar a primeira resposta do lead.', hubspotObject:'Contato', hubspotFields:'Segmento (obrigatório) · Frente atendida · Site (obrigatório) · LinkedIn (obrigatório) · Modelo de negócio do cliente', autoActions:'Tempo máximo na etapa — se ultrapassado, deal desqualificado automaticamente e disponível para outro time.\n\n🔵 Inbound/Marketing\nSmall: 7 dias úteis · Mid: 7 dias úteis · Large: 14 dias úteis · Enterprise: 14 dias úteis\n\n🟠 Outbound\nSmall: 7 dias úteis · Mid: 14 dias úteis · Large: 30 dias úteis · Enterprise: 45 dias úteis\n\nBase: estudo RevOps [Apresentação] Ganho x Inatividade - V2.2', autoActionsLinks:[{name:'[Apresentação] Ganho x Inatividade - V2.2',url:'https://docs.google.com/presentation/d/1tCG_TNfWi2iG7JNKtFmm4vy1COqyTI0bezTgLLrePWg/edit?slide=id.g253d7a8b788_0_0#slide=id.g253d7a8b788_0_0'}], methodologies:['Social Selling'], tools:[{name:'Central de Revenue Enablement',url:'https://app.notion.com/p/blip-ai/Central-Revenue-Enablement-248dcfddcf4a80019774ca8b6faecd5c'},{name:'Growth Insights',url:''},{name:'Lusha',url:'https://www.lusha.com/hp/'},{name:'Sales Navigator',url:'https://linkedin.com/premium/products?upsellOrderOrigin=guest_login_sales_nav&utype=sales_ss'},{name:'Gem Copy',url:'https://gemini.google.com/gem/1MHDWKHqJdbU2OAJgykh3N3l83KgUeQkz?usp=sharing'}] },
           { id:'s3', name:'Conectado', hubspotStage:'Conectado', sentiment:'Curiosidade', need:'Entender a Blip', clientAction:'Compartilhar a dor ou o desejo com a ferramenta Blip', passTrigger:'Validou que existe uma dor ou um desejo que pode ser atendido pela blip, mas ainda precisa bater alguns detalhes antes do agendamento', responsible:'BDR', sellerRole:'Aplicar metodologias de vendas para extrair informações importantes.\nUtilizar Use Cases.', hubspotObject:'Contato', hubspotFields:'Frente prospectada (obrigatório) · Instagram · Facebook', methodologies:['Sandler','SPIN','GPCTBA/C&I'], tools:[{name:'Central de Revenue Enablement',url:'https://app.notion.com/p/blip-ai/Central-Revenue-Enablement-248dcfddcf4a80019774ca8b6faecd5c'},{name:'Growth Insights',url:''},{name:'Sales Navigator',url:'https://linkedin.com/premium/products?upsellOrderOrigin=guest_login_sales_nav&utype=sales_ss'}] },
           { id:'s4', name:'Evaluation', hubspotStage:'Evaluation', sentiment:'Curiosidade', need:'Alinhar próximos passos', clientAction:'Reconhecer Blip como potencial para parceiro estratégico', passTrigger:'SLA Opp validado', responsible:'BDR', sellerRole:'Diagnóstico completo do lead.\nEducação do Whatsapp.\nColetar as principais dores e necessidades.', hubspotObject:'Contato', hubspotFields:'Outros sistemas que a empresa usa · Ferramenta atual · Concorrente mapeado · Potencial total do cliente · Dor', methodologies:['Challenger Sale','Solution Selling','SPIN'], tools:[{name:'Central de Revenue Enablement',url:'https://app.notion.com/p/blip-ai/Central-Revenue-Enablement-248dcfddcf4a80019774ca8b6faecd5c'},{name:'Growth Insights',url:''},{name:'Sales Navigator',url:'https://linkedin.com/premium/products?upsellOrderOrigin=guest_login_sales_nav&utype=sales_ss'}] },
           { id:'s5', name:'Qualificado', hubspotStage:'Qualificado', sentiment:'Curiosidade', need:'Aprofundar o entendimento em Blip', clientAction:'Confirmar reuniao', passTrigger:'Reuniao confirmada', responsible:'BDR', sellerRole:'Registrar o Briefing da oportunidade.\nConfirmar reuniao', hubspotObject:'Contato', hubspotFields:'Caso de uso (obrigatório) · Ferramenta atual (obrigatório) · Etapa de Jornada (obrigatório) · Data de fechamento (obrigatório)', manualActions:'Preenchimento manual de atividades — Briefing / Passagem de bastão BDR→IS', manualActionsLinks:[{name:'Passagem de bastão BDR→IS',url:'https://app.hubspot.com/playbooks/1796841/compose/81023005'}], autoActions:'Criação do negócio automática · Roleta automática', methodologies:['Demo 2 Win','Value-Based Selling','SPIN'], tools:[{name:'Central de Revenue Enablement',url:'https://app.notion.com/p/blip-ai/Central-Revenue-Enablement-248dcfddcf4a80019774ca8b6faecd5c'},{name:'Growth Insights',url:''}] },
@@ -1023,12 +1023,12 @@ const HUBSPOT_PIPELINES = [
     stages: [
       { name:'Start Contact',         object:'Contato',
         fieldsSMB:'—', fieldsMAcc:'—', fieldsStAcc:'—',
-        autoSMB:'—', autoMAcc:'—', autoStAcc:'—' },
+        autoSMB:'🔵 Inbound: prazo de 1 dia útil para atendimento.\n🟠 Outbound: prazo de 5 dias úteis para atendimento.\n\nLógica da automação:\nSem atendimento → roletado para outro SDR.\n2º SDR sem atendimento → nova roletagem.\nApós 2 roletagens → Desqualificado.', autoMAcc:'—', autoStAcc:'—' },
       { name:'Tentativa',             object:'Contato',
         fieldsSMB:'Segmento (obrigatório) · Frente atendida · Site (obrigatório) · LinkedIn (obrigatório) · Modelo de negócio do cliente',
         fieldsMAcc:'Segmento (obrigatório) · Frente atendida · Site (obrigatório) · LinkedIn (obrigatório) · Modelo de negócio do cliente',
         fieldsStAcc:'Segmento (obrigatório) · Frente atendida · Site (obrigatório) · LinkedIn (obrigatório) · Modelo de negócio do cliente',
-        autoSMB:'—', autoMAcc:'—', autoStAcc:'—' },
+        autoSMB:'Tempo máximo na etapa — se ultrapassado o deal é desqualificado automaticamente.\n\n🔵 Inbound/Marketing\nSmall: 7 dias\nMid: 7 dias\nLarge: 14 dias\nEnterprise: 14 dias\n\n🟠 Outbound\nSmall: 7 dias\nMid: 14 dias\nLarge: 30 dias\nEnterprise: 45 dias\n\n<a href="https://docs.google.com/presentation/d/1tCG_TNfWi2iG7JNKtFmm4vy1COqyTI0bezTgLLrePWg/edit?slide=id.g253d7a8b788_0_0#slide=id.g253d7a8b788_0_0" target="_blank" rel="noopener" style="color:#EA580C;font-weight:600;">📊 Base: Ganho x Inatividade - V2.2 ↗</a>', autoMAcc:'—', autoStAcc:'—' },
       { name:'Conectado',             object:'Contato',
         fieldsSMB:'Frente prospectada (obrigatório) · Instagram · Facebook',
         fieldsMAcc:'Frente prospectada (obrigatório) · Instagram · Facebook',
@@ -1043,7 +1043,7 @@ const HUBSPOT_PIPELINES = [
         fieldsSMB:'Caso de uso (obrigatório) · Ferramenta atual (obrigatório) · Etapa de Jornada (obrigatório) · Data de fechamento (obrigatório)',
         fieldsMAcc:'Caso de uso (obrigatório) · Ferramenta atual (obrigatório) · Etapa de Jornada (obrigatório) · Data de fechamento (obrigatório)',
         fieldsStAcc:'—',
-        autoSMB:'—', autoMAcc:'—', autoStAcc:'Criação do opp automática na pipeline de vendas' },
+        autoSMB:'Criação do negócio automática.\n\n🎯 Roleta de agendamento: atribui a reunião ao IS com menor estoque de OPPs.\n\nEnviar e-mail de passagem de bastão (em até 1h do agendamento) com IS/Closer em cópia, link da reunião, data e horário. Duas notificações ativas são disparadas ao contato do deal.\n\n⚠️ Pontos críticos:\n1. "Link da reunião" = apenas link da agenda do IS.\n2. Desassociar contatos que não converteram — manter só o que agendou.\n\nSe não migrar para Aquisição automaticamente: verificar campos obrigatórios (especialmente Proprietário do negócio → IS/Closer).', autoMAcc:'—', autoStAcc:'Criação do opp automática na pipeline de vendas' },
       { name:'Opps',                   object:'Negócio',
         fieldsSMB:'—', fieldsMAcc:'—', fieldsStAcc:'—',
         autoSMB:'—', autoMAcc:'—', autoStAcc:'—' },
@@ -1744,7 +1744,48 @@ function renderDrawer(stage) {
           ` : ''}
         </div>` : ''}
 
-        <!-- 4. HubSpot (orange block) -->
+        <!-- 4. Times de apoio -->
+        ${stage.supportTeams && stage.supportTeams.length > 0 ? `
+        <div class="rounded-xl p-4" style="background:#F0FDF4;border:1px solid #BBF7D0;">
+          <p class="text-xs font-semibold text-green-700 mb-3">🤝 Times de apoio</p>
+          <div class="space-y-2">
+            ${stage.supportTeams.map(t => `
+            <div class="flex items-center justify-between gap-3 bg-white rounded-lg px-3 py-2.5" style="border:1px solid #BBF7D0;">
+              <p class="text-sm font-medium text-slate-700">${escHtml(t.name)}</p>
+              ${t.actionUrl === 'vd-popup'
+                ? `<button onclick="openVdModal()" class="flex-shrink-0 text-xs font-medium px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap" style="background:#7C3AED;color:#fff;" onmouseover="this.style.background='#6D28D9'" onmouseout="this.style.background='#7C3AED'">Como acionar VD ↗</button>`
+                : t.actionUrl
+                  ? `<a href="${escHtml(t.actionUrl)}" target="_blank" class="flex-shrink-0 text-xs font-medium px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap" style="background:#16A34A;color:#fff;" onmouseover="this.style.background='#15803D'" onmouseout="this.style.background='#16A34A'">Clique aqui para acionar o time ↗</a>`
+                  : `<span class="flex-shrink-0 text-xs font-medium px-3 py-1.5 rounded-lg whitespace-nowrap" style="background:#16A34A;color:#fff;opacity:0.5;cursor:default;">Clique aqui para acionar o time</span>`}
+            </div>`).join('')}
+          </div>
+        </div>` : ''}
+
+        <!-- 5. Ferramentas de apoio -->
+        ${(stage.tools && stage.tools.length > 0) || isLand ? (() => {
+          const landDefaults = isLand ? [
+            { name:'Central de Revenue Enablement', url:'https://app.notion.com/p/blip-ai/Central-Revenue-Enablement-248dcfddcf4a80019774ca8b6faecd5c' },
+            { name:'Growth Insights', url:'' }
+          ] : [];
+          const existing = stage.tools || [];
+          const merged = [...existing.filter(t => !landDefaults.some(d => d.name === t.name)), ...landDefaults];
+          return `
+        <div class="bg-slate-50 rounded-xl p-4">
+          <p class="text-xs font-semibold text-slate-500 mb-2">🛠️ Ferramentas de apoio</p>
+          <div class="flex flex-wrap gap-2">
+            ${merged.map(t => t.url
+              ? `<a href="${escHtml(t.url)}" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 bg-white border border-blue-200 text-blue-700 text-xs font-medium px-3 py-1.5 rounded-lg shadow-sm hover:bg-blue-50 transition-colors">${escHtml(t.name)} ↗</a>`
+              : `<span class="inline-flex items-center gap-1.5 bg-white border border-slate-200 text-slate-700 text-xs font-medium px-3 py-1.5 rounded-lg shadow-sm">${escHtml(t.name)}</span>`
+            ).join('')}
+          </div>
+          ${merged.filter(t => t.description).map(t => `
+          <div class="mt-2 text-xs text-slate-500 bg-white border border-slate-100 rounded-lg px-3 py-2 leading-relaxed">
+            <span class="font-semibold text-slate-600">${escHtml(t.name)}:</span> ${escHtml(t.description)}
+          </div>`).join('')}
+        </div>`;
+        })() : ''}
+
+        <!-- 6. HubSpot (orange block) -->
         ${hasHubspot ? `
         <div class="rounded-xl p-4" style="background:#FFF7ED;border:1px solid #FED7AA;">
           <div class="flex items-center justify-between mb-3">
@@ -1785,6 +1826,10 @@ function renderDrawer(stage) {
             <div>
               <p class="text-xs font-semibold mb-1" style="color:#EA580C;">⚡ Ações Automáticas</p>
               <p class="text-sm text-slate-800 leading-relaxed whitespace-pre-line">${escHtml(stage.autoActions).replace(/ · /g, '\n')}</p>
+              ${(stage.autoActionsLinks||[]).map(l => l.url
+                ? `<a href="${escHtml(l.url)}" target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-xs font-medium mt-1" style="color:#EA580C;">${escHtml(l.name)} <span>↗</span></a>`
+                : `<span class="inline-flex items-center gap-1 text-xs font-medium mt-1 text-slate-400 italic">${escHtml(l.name)} (link em breve)</span>`
+              ).join('<br>')}
             </div>` : ''}
             ${stage.hubspotFieldsSAP ? `
             <div class="space-y-2 pt-1">
@@ -1810,47 +1855,6 @@ function renderDrawer(stage) {
             </div>`).join('')}
           </div>
         </div>` : ''}
-
-        <!-- 5. Times de apoio -->
-        ${stage.supportTeams && stage.supportTeams.length > 0 ? `
-        <div class="rounded-xl p-4" style="background:#F0FDF4;border:1px solid #BBF7D0;">
-          <p class="text-xs font-semibold text-green-700 mb-3">🤝 Times de apoio</p>
-          <div class="space-y-2">
-            ${stage.supportTeams.map(t => `
-            <div class="flex items-center justify-between gap-3 bg-white rounded-lg px-3 py-2.5" style="border:1px solid #BBF7D0;">
-              <p class="text-sm font-medium text-slate-700">${escHtml(t.name)}</p>
-              ${t.actionUrl === 'vd-popup'
-                ? `<button onclick="openVdModal()" class="flex-shrink-0 text-xs font-medium px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap" style="background:#7C3AED;color:#fff;" onmouseover="this.style.background='#6D28D9'" onmouseout="this.style.background='#7C3AED'">Como acionar VD ↗</button>`
-                : t.actionUrl
-                  ? `<a href="${escHtml(t.actionUrl)}" target="_blank" class="flex-shrink-0 text-xs font-medium px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap" style="background:#16A34A;color:#fff;" onmouseover="this.style.background='#15803D'" onmouseout="this.style.background='#16A34A'">Clique aqui para acionar o time ↗</a>`
-                  : `<span class="flex-shrink-0 text-xs font-medium px-3 py-1.5 rounded-lg whitespace-nowrap" style="background:#16A34A;color:#fff;opacity:0.5;cursor:default;">Clique aqui para acionar o time</span>`}
-            </div>`).join('')}
-          </div>
-        </div>` : ''}
-
-        <!-- 6. Ferramentas de apoio -->
-        ${(stage.tools && stage.tools.length > 0) || isLand ? (() => {
-          const landDefaults = isLand ? [
-            { name:'Central de Revenue Enablement', url:'https://app.notion.com/p/blip-ai/Central-Revenue-Enablement-248dcfddcf4a80019774ca8b6faecd5c' },
-            { name:'Growth Insights', url:'' }
-          ] : [];
-          const existing = stage.tools || [];
-          const merged = [...existing.filter(t => !landDefaults.some(d => d.name === t.name)), ...landDefaults];
-          return `
-        <div class="bg-slate-50 rounded-xl p-4">
-          <p class="text-xs font-semibold text-slate-500 mb-2">🛠️ Ferramentas de apoio</p>
-          <div class="flex flex-wrap gap-2">
-            ${merged.map(t => t.url
-              ? `<a href="${escHtml(t.url)}" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 bg-white border border-blue-200 text-blue-700 text-xs font-medium px-3 py-1.5 rounded-lg shadow-sm hover:bg-blue-50 transition-colors">${escHtml(t.name)} ↗</a>`
-              : `<span class="inline-flex items-center gap-1.5 bg-white border border-slate-200 text-slate-700 text-xs font-medium px-3 py-1.5 rounded-lg shadow-sm">${escHtml(t.name)}</span>`
-            ).join('')}
-          </div>
-          ${merged.filter(t => t.description).map(t => `
-          <div class="mt-2 text-xs text-slate-500 bg-white border border-slate-100 rounded-lg px-3 py-2 leading-relaxed">
-            <span class="font-semibold text-slate-600">${escHtml(t.name)}:</span> ${escHtml(t.description)}
-          </div>`).join('')}
-        </div>`;
-        })() : ''}
 
       </div>
     </div>
@@ -2398,13 +2402,22 @@ function openStage(stage) {
 function openHsStageModal(s) {
   document.getElementById('hs-modal-title').textContent = s.name;
   document.getElementById('hs-modal-subtitle').textContent = (s.pipelineName || '') + ' · Objeto: ' + (s.object || '');
-  function fmt(v) { return v && v !== '—' ? v.split(' · ').map(f => '<span class="inline-block mb-1">• ' + f + '</span><br>').join('') : '<span class="text-slate-400 italic">—</span>'; }
+  function escH(t) { return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function fmt(v) { return v && v !== '—' ? v.split(' · ').map(f => '<span class="inline-block mb-1">• ' + escH(f) + '</span><br>').join('') : '<span class="text-slate-400 italic">—</span>'; }
+  function fmtAuto(v) {
+    if (!v || v === '—') return '<span class="text-slate-400 italic">—</span>';
+    return v.split('\n').map(line => {
+      const trimmed = line.trim();
+      if (!trimmed) return '<div class="mt-2"></div>';
+      return '<div class="mb-1 leading-snug">' + trimmed + '</div>';
+    }).join('');
+  }
   document.getElementById('hs-fields-smb').innerHTML = fmt(s.fieldsSMB);
   document.getElementById('hs-fields-macc').innerHTML = fmt(s.fieldsMAcc);
   document.getElementById('hs-fields-stacc').innerHTML = fmt(s.fieldsStAcc);
-  document.getElementById('hs-auto-smb').innerHTML = fmt(s.autoSMB);
-  document.getElementById('hs-auto-macc').innerHTML = fmt(s.autoMAcc);
-  document.getElementById('hs-auto-stacc').innerHTML = fmt(s.autoStAcc);
+  document.getElementById('hs-auto-smb').innerHTML = fmtAuto(s.autoSMB);
+  document.getElementById('hs-auto-macc').innerHTML = fmtAuto(s.autoMAcc);
+  document.getElementById('hs-auto-stacc').innerHTML = fmtAuto(s.autoStAcc);
   const modal = document.getElementById('hs-stage-modal');
   modal.classList.remove('hidden');
   modal.classList.add('flex');
