@@ -476,18 +476,83 @@ const SEGMENTS = [
         completeness:'in_progress',
         color:{ bg:'bg-blue-500', text:'text-blue-600', border:'border-blue-200', badge:'bg-blue-100 text-blue-700', line:'bg-blue-200' },
         stages:[
-          { id:'s1', name:'Start Contact', hubspotStage:'Start Contact', sentiment:'-', need:'-', clientAction:'Inbound: levantada de mão · Outbound: sem ação do cliente', passTrigger:'SLA Validado', responsible:'BDR', sellerRole:'Validar SLA (tamanho empresa, SLA BU e SLA dono da oportunidade). Validar requisitos do site. Validar contato: email, wpp e linkedin. Estudar informações públicas do contato.', hubspotObject:'Contato', hubspotFields:'—', autoActions:'🔵 Inbound — Prazo de 1 dia útil para atendimento.\nSem atendimento → roletado para outro SDR.\n2º SDR sem atendimento em 1 dia útil → nova roletagem.\nApós 2 roletagens sem atendimento → Desqualificado.\n\n🟠 Outbound — Mesma lógica, prazo de 5 dias úteis antes de cada redistribuição.', methodologies:['Social Selling'], tools:[{name:'Lusha',url:'https://www.lusha.com/hp/'},{name:'Sales Navigator',url:'https://linkedin.com/premium/products?upsellOrderOrigin=guest_login_sales_nav&utype=sales_ss'},{name:'Gem Copy',url:'https://gemini.google.com/gem/1MHDWKHqJdbU2OAJgykh3N3l83KgUeQkz?usp=sharing'},{name:'BuiltWith',url:''},{name:'Wappalyzer',url:''},{name:'SemRush',url:''},{name:'Stilingue',url:''},{name:'Central de Revenue Enablement',url:'https://app.notion.com/p/blip-ai/Central-Revenue-Enablement-248dcfddcf4a80019774ca8b6faecd5c'},{name:'Growth Insights',url:''}] },
-          { id:'s2', name:'Tentativa', hubspotStage:'Tentativa', sentiment:'-', need:'-', clientAction:'Inbound e Outbound: Responder tentativa de contato', passTrigger:'Lead respondeu o contato.', responsible:'BDR', sellerRole:'Estudar informações públicas do contato.\nPersonalizar o contato.\nConquistar a primeira resposta do lead.', hubspotObject:'Contato', hubspotFields:'Segmento (obrigatório) · Frente atendida · Site (obrigatório) · LinkedIn (obrigatório) · Modelo de negócio do cliente', autoActions:'Tempo máximo na etapa — se ultrapassado, deal desqualificado automaticamente e disponível para outro time.\n\n🔵 Inbound/Marketing\nSmall: 7 dias úteis · Mid: 7 dias úteis · Large: 14 dias úteis · Enterprise: 14 dias úteis\n\n🟠 Outbound\nSmall: 7 dias úteis · Mid: 14 dias úteis · Large: 30 dias úteis · Enterprise: 45 dias úteis\n\nBase: estudo RevOps [Apresentação] Ganho x Inatividade - V2.2', autoActionsLinks:[{name:'[Apresentação] Ganho x Inatividade - V2.2',url:'https://docs.google.com/presentation/d/1tCG_TNfWi2iG7JNKtFmm4vy1COqyTI0bezTgLLrePWg/edit?slide=id.g253d7a8b788_0_0#slide=id.g253d7a8b788_0_0'}], methodologies:['Social Selling'], tools:[{name:'Central de Revenue Enablement',url:'https://app.notion.com/p/blip-ai/Central-Revenue-Enablement-248dcfddcf4a80019774ca8b6faecd5c'},{name:'Growth Insights',url:''},{name:'Lusha',url:'https://www.lusha.com/hp/'},{name:'Sales Navigator',url:'https://linkedin.com/premium/products?upsellOrderOrigin=guest_login_sales_nav&utype=sales_ss'},{name:'Gem Copy',url:'https://gemini.google.com/gem/1MHDWKHqJdbU2OAJgykh3N3l83KgUeQkz?usp=sharing'}] },
+          { id:'s1', name:'Start Contact', hubspotStage:'Start Contact', sentiment:'-', need:'-', clientAction:'Inbound: levantada de mão · Outbound: sem ação do cliente', passTrigger:'SLA Validado', responsible:'BDR', sellerRole:'',sellerRoleHtml:`<div class="space-y-4 text-sm">
+  <p class="text-slate-500 italic text-xs">Antes de mover de etapa, valide os 3 critérios abaixo:</p>
+
+  <!-- 1. Site -->
+  <div class="rounded-lg overflow-hidden border border-blue-100">
+    <div class="flex items-center gap-2 px-3 py-2 bg-blue-50">
+      <span class="flex items-center justify-center w-5 h-5 rounded-full bg-blue-500 text-white text-[10px] font-bold shrink-0">1</span>
+      <span class="font-semibold text-blue-700 text-xs uppercase tracking-wide">Site</span>
+    </div>
+    <div class="px-3 py-3 bg-white space-y-2">
+      <p class="text-slate-600 text-xs">Requisitos para aprovação do <strong class="text-slate-800">WhatsApp Business</strong>:</p>
+      <ul class="space-y-1">
+        <li class="flex items-start gap-2 text-xs text-slate-700"><span class="text-blue-400 mt-0.5">✓</span>Nome da empresa</li>
+        <li class="flex items-start gap-2 text-xs text-slate-700"><span class="text-blue-400 mt-0.5">✓</span>Logo e logotipo da marca</li>
+        <li class="flex items-start gap-2 text-xs text-slate-700"><span class="text-blue-400 mt-0.5">✓</span>Seção "sobre a empresa"</li>
+        <li class="flex items-start gap-2 text-xs text-slate-700"><span class="text-blue-400 mt-0.5">✓</span>Produto/serviço oferecido claramente descrito</li>
+        <li class="flex items-start gap-2 text-xs text-slate-700"><span class="text-blue-400 mt-0.5">✓</span><span>Domínio próprio <span class="bg-red-50 text-red-600 text-[10px] px-1.5 py-0.5 rounded font-medium">não pode ser wix, google sites etc</span></span></li>
+        <li class="flex items-start gap-2 text-xs text-slate-700"><span class="text-blue-400 mt-0.5">✓</span>Redes sociais da marca (boa prática)</li>
+      </ul>
+      <div class="flex items-start gap-2 bg-amber-50 border border-amber-100 rounded px-2.5 py-2 mt-1">
+        <span class="text-amber-500 text-xs shrink-0">💡</span>
+        <p class="text-xs text-amber-800">Se o site não abrir pelo link do HubSpot, buscar a empresa no <strong>Google</strong> e no <strong>LinkedIn</strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Dono -->
+  <div class="rounded-lg overflow-hidden border border-purple-100">
+    <div class="flex items-center gap-2 px-3 py-2 bg-purple-50">
+      <span class="flex items-center justify-center w-5 h-5 rounded-full bg-purple-500 text-white text-[10px] font-bold shrink-0">2</span>
+      <span class="font-semibold text-purple-700 text-xs uppercase tracking-wide">Dono</span>
+    </div>
+    <div class="px-3 py-3 bg-white space-y-2">
+      <p class="text-xs text-slate-700">Verifique se a empresa <strong>já está sendo trabalhada</strong> por outro BDR/IS (SLA de <strong>60 dias</strong>).</p>
+      <div class="flex items-start gap-2 bg-red-50 border border-red-100 rounded px-2.5 py-2">
+        <span class="text-red-400 text-xs shrink-0 mt-0.5">⚠️</span>
+        <p class="text-xs text-red-800">Se estiver, mova para <strong>Desqualificado por SLA</strong> de outro BDR/SDR ou IS/Closer.</p>
+      </div>
+      <p class="text-xs text-slate-700 pt-1">Na <strong>Empresa</strong> no HubSpot, confira o campo <strong>"SDR Responsável e Proprietário"</strong> — seu nome deve estar lá.</p>
+    </div>
+  </div>
+
+  <!-- 3. Território -->
+  <div class="rounded-lg overflow-hidden border border-emerald-100">
+    <div class="flex items-center gap-2 px-3 py-2 bg-emerald-50">
+      <span class="flex items-center justify-center w-5 h-5 rounded-full bg-emerald-500 text-white text-[10px] font-bold shrink-0">3</span>
+      <span class="font-semibold text-emerald-700 text-xs uppercase tracking-wide">Território</span>
+    </div>
+    <div class="px-3 py-3 bg-white space-y-2">
+      <p class="text-xs text-slate-700">Dentro de <strong>EMPRESA</strong>, o campo <strong>"Tipo de conta"</strong> deve indicar <span class="bg-emerald-50 text-emerald-700 text-[10px] px-1.5 py-0.5 rounded font-semibold">SMB</span> ou <span class="bg-violet-50 text-violet-700 text-[10px] px-1.5 py-0.5 rounded font-semibold">MAcc</span>. Valide se o deal pertence ao seu território.</p>
+      <p class="text-xs text-slate-700">Confira se a <strong>empresa e o contato</strong> não estão duplicados no HubSpot — busque por nome e site da empresa.</p>
+    </div>
+  </div>
+
+  <!-- Pins -->
+  <div class="space-y-2 pt-1">
+    <div class="flex items-start gap-2 bg-green-50 border border-green-200 rounded-lg px-3 py-2.5">
+      <span class="text-green-600 shrink-0">📌</span>
+      <p class="text-xs text-green-800">Tudo validado e empresa apta? Avance para a próxima etapa.</p>
+    </div>
+    <div class="flex items-start gap-2 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2.5">
+      <span class="text-slate-500 shrink-0">📌</span>
+      <p class="text-xs text-slate-700">Empresa fora do SLA ou inapta? Avance para <strong>DESQUALIFICADO</strong> com o motivo correto.</p>
+    </div>
+  </div>
+</div>`, hubspotObject:'Contato', hubspotFields:'—', autoActions:'🔵 Inbound — Prazo de 1 dia útil para atendimento.\nSem atendimento → roletado para outro SDR.\n2º SDR sem atendimento em 1 dia útil → nova roletagem.\nApós 2 roletagens sem atendimento → Desqualificado.\n\n🟠 Outbound — Mesma lógica, prazo de 5 dias úteis antes de cada redistribuição.', methodologies:['Social Selling'], tools:[{name:'Lusha',url:'https://www.lusha.com/hp/'},{name:'Sales Navigator',url:'https://linkedin.com/premium/products?upsellOrderOrigin=guest_login_sales_nav&utype=sales_ss'},{name:'Gem Copy',url:'https://gemini.google.com/gem/1MHDWKHqJdbU2OAJgykh3N3l83KgUeQkz?usp=sharing'},{name:'BuiltWith',url:''},{name:'Wappalyzer',url:''},{name:'SemRush',url:''},{name:'Stilingue',url:''},{name:'Central de Revenue Enablement',url:'https://app.notion.com/p/blip-ai/Central-Revenue-Enablement-248dcfddcf4a80019774ca8b6faecd5c'},{name:'Growth Insights',url:''}] },
+          { id:'s2', name:'Tentativa', hubspotStage:'Tentativa', sentiment:'-', need:'-', clientAction:'Inbound e Outbound: Responder tentativa de contato', passTrigger:'Lead respondeu o contato.', responsible:'BDR', sellerRole:'Antes de mover de etapa, certifique-se que foi feito:\n\nNa origem INBOUND os negócios virão sempre com o contato, que levantou a mão, associado ao negócio.\n\nNa origem OUTBOUND:\n- Os negócios vêm de IC sem contatos associados;\n- Os contatos estarão dentro da Empresa;\n- Os BDRs devem abrir a empresa, selecionar os contatos e associá-los ao negócio à medida que forem sendo trabalhados — adicionar apenas os contatos que trabalhar.\n\n📌 Ao passar um deal para essa etapa, é extremamente importante que trabalhe o deal a partir daqui, colocando em sequência de e-mails com tarefas ou minimamente registrando todos os touchpoints com os contatos associados e sempre criando tarefa futura para que o deal não se perca no pipeline.\n\n📌 ATENÇÃO:\n1- Enviar e-mails através do negócio, associando o contato específico.\n2- Cuidado ao escolher uma sequência — verifique se é necessário personalizar algum e-mail.\n3- Todas as sequências criadas e mais atualizadas estão dentro de Sequências, na pasta [2025] Qualificação.\n4- VERIFIQUE SEMPRE O NOME DO CONTATO E O NOME DA EMPRESA ANTES DE ENVIAR A CADÊNCIA.\n5- Sempre registrar todas as ações no negócio e associar com o contato específico.\n6- Toda atividade realizada precisa, obrigatoriamente, ter um registro da interação no contato.\n7- É obrigatório relatar o que aconteceu na ação e registrar no tipo adequado de interação: E-mail, chamada, LinkedIn, WhatsApp, Reunião, etc.', hubspotObject:'Contato', hubspotFields:'Segmento (obrigatório) · Frente atendida · Site (obrigatório) · LinkedIn (obrigatório) · Modelo de negócio do cliente', autoActions:'Tempo máximo na etapa — se ultrapassado, deal desqualificado automaticamente e disponível para outro time.\n\n🔵 Inbound/Marketing\nSmall: 7 dias úteis · Mid: 7 dias úteis · Large: 14 dias úteis · Enterprise: 14 dias úteis\n\n🟠 Outbound\nSmall: 7 dias úteis · Mid: 14 dias úteis · Large: 30 dias úteis · Enterprise: 45 dias úteis\n\nBase: estudo RevOps [Apresentação] Ganho x Inatividade - V2.2', autoActionsLinks:[{name:'[Apresentação] Ganho x Inatividade - V2.2',url:'https://docs.google.com/presentation/d/1tCG_TNfWi2iG7JNKtFmm4vy1COqyTI0bezTgLLrePWg/edit?slide=id.g253d7a8b788_0_0#slide=id.g253d7a8b788_0_0'}], methodologies:['Social Selling'], tools:[{name:'Central de Revenue Enablement',url:'https://app.notion.com/p/blip-ai/Central-Revenue-Enablement-248dcfddcf4a80019774ca8b6faecd5c'},{name:'Growth Insights',url:''},{name:'Lusha',url:'https://www.lusha.com/hp/'},{name:'Sales Navigator',url:'https://linkedin.com/premium/products?upsellOrderOrigin=guest_login_sales_nav&utype=sales_ss'},{name:'Gem Copy',url:'https://gemini.google.com/gem/1MHDWKHqJdbU2OAJgykh3N3l83KgUeQkz?usp=sharing'}] },
           { id:'s3', name:'Conectado', hubspotStage:'Conectado', sentiment:'Curiosidade', need:'Entender a Blip', clientAction:'Compartilhar a dor ou o desejo com a ferramenta Blip', passTrigger:'Validou que existe uma dor ou um desejo que pode ser atendido pela blip, mas ainda precisa bater alguns detalhes antes do agendamento', responsible:'BDR', sellerRole:'Aplicar metodologias de vendas para extrair informações importantes.\nUtilizar Use Cases.', hubspotObject:'Contato', hubspotFields:'Frente prospectada (obrigatório) · Instagram · Facebook', methodologies:['Sandler','SPIN','GPCTBA/C&I'], tools:[{name:'Central de Revenue Enablement',url:'https://app.notion.com/p/blip-ai/Central-Revenue-Enablement-248dcfddcf4a80019774ca8b6faecd5c'},{name:'Growth Insights',url:''},{name:'Sales Navigator',url:'https://linkedin.com/premium/products?upsellOrderOrigin=guest_login_sales_nav&utype=sales_ss'}] },
           { id:'s4', name:'Evaluation', hubspotStage:'Evaluation', sentiment:'Curiosidade', need:'Alinhar próximos passos', clientAction:'Reconhecer Blip como potencial para parceiro estratégico', passTrigger:'SLA Opp validado', responsible:'BDR', sellerRole:'Diagnóstico completo do lead.\nEducação do Whatsapp.\nColetar as principais dores e necessidades.', hubspotObject:'Contato', hubspotFields:'Outros sistemas que a empresa usa · Ferramenta atual · Concorrente mapeado · Potencial total do cliente · Dor', methodologies:['Challenger Sale','Solution Selling','SPIN'], tools:[{name:'Central de Revenue Enablement',url:'https://app.notion.com/p/blip-ai/Central-Revenue-Enablement-248dcfddcf4a80019774ca8b6faecd5c'},{name:'Growth Insights',url:''},{name:'Sales Navigator',url:'https://linkedin.com/premium/products?upsellOrderOrigin=guest_login_sales_nav&utype=sales_ss'}] },
-          { id:'s5', name:'Qualificado', hubspotStage:'Qualificado', sentiment:'Curiosidade', need:'Aprofundar o entendimento em Blip', clientAction:'Confirmar reuniao', passTrigger:'Reuniao confirmada', responsible:'BDR', sellerRole:'Registrar o Briefing da oportunidade.\nConfirmar reuniao', hubspotObject:'Contato', hubspotFields:'Caso de uso (obrigatório) · Ferramenta atual (obrigatório) · Etapa de Jornada (obrigatório) · Data de fechamento (obrigatório)', manualActions:'Preenchimento manual de atividades — Briefing / Passagem de bastão BDR→IS', manualActionsLinks:[{name:'Passagem de bastão BDR→IS',url:'https://app.hubspot.com/playbooks/1796841/compose/81023005'}], autoActions:'Criação do negócio automática · Roleta automática', methodologies:['Demo 2 Win','Value-Based Selling','SPIN'], tools:[{name:'Central de Revenue Enablement',url:'https://app.notion.com/p/blip-ai/Central-Revenue-Enablement-248dcfddcf4a80019774ca8b6faecd5c'},{name:'Growth Insights',url:''}] },
-          { id:'s5b', name:'Opps', hubspotStage:'Opps', sentiment:'Curiosidade', need:'Aprofundar o entendimento em Blip', clientAction:'Comparecer na reuniao agendada', passTrigger:'Reuniao realizada', responsible:'Inside Sales', sellerRole:'Estudar briefing do BDR.\nPesquisar sobre prospect no LinkedIn.\nPesquisar mais informações de mercado sobre a empresa.\nPreparar cases de sucesso de acordo com a necessidade do lead.\nPreparar apresentação.', hubspotObject:'Negócio', hubspotFields:'Campos preenchidos pelo time de qualificacao.', manualActions:'Passagem do deal para proxima etapa logo apos a reuniao (SLA de 24h) · Registro da Reuniao', methodologies:['Demo 2 Win','Value-Based Selling','SPIN'], tools:[{name:'Gem Pré Call',url:'https://gemini.google.com/gem/1soThEkF5oRnxyvA3GSvjgcUAplhbwME0?usp=sharing',description:'Analisa o site da empresa e o briefing para encontrar oportunidades em canais digitais e como se relaciona com o produto Blip. Identifica possíveis soluções para a jornada do cliente, cruzando as informações com funcionalidades Blip. Sugere cases com o link do número de WhatsApp.'}] },
-          { id:'s6', name:'Apresentação', hubspotStage:'Apresentação', sentiment:'Segurança', need:'Entender como funciona na prática', clientAction:'Validar funcionalidades e critérios de decisão', passTrigger:'Foi feita a apresentação do projeto construído.', responsible:'Inside Sales', sellerRole:'Educação sobre os modelos de WhatsApp (usar material oficial).\nDiscovery para coletar as principais dores e necessidades do seu negócio/lead.\nLevar nosso conhecimento retido no processo sobre as dores e necessidades do negócio/lead.\nApresentação dos Use Cases (como nossos clientes - daquele segmento - usam e como a solução ajuda o negócio deles).\nEntender como o Blip pode ser usado em toda a jornada do cliente/usuário desse negócio.\nAlinhamento do que é importante para o lead e puxar próximo passo - verbalizar como podemos ajudar a empresa e validar a importância disso para o lead.', hubspotObject:'Negócio', hubspotFields:'Ferramenta conversacional atual (obrigatório) · Áreas atendidas no projeto (obrigatório) · Score de Qualificação (obrigatório)', methodologies:['MEDDPICC','Value-Based Selling'], sapLink:true, supportTeams:[{name:'Value Design',actionUrl:'vd-popup'},{name:'Parceiros - Como acionar o time de parcerias',actionUrl:''}], tools:[{name:'Gem Apresentação',url:'https://gemini.google.com/gem/1ztFQYfun1YsXt4s45XIadLL4qCzHKdOx?usp=sharing',description:'Cria um resumo detalhado da reunião, identificando tom da conversa, próximos passos, dor do cliente, KPIs, stakeholders e números chave. Sugere como preencher os campos no HubSpot com base na transcrição (concorrentes, sistemas de integração, objeções). Redige um e-mail profissional ("Champions Letter") para o vendedor enviar ao lead, resumindo a reunião e os próximos passos.'}] },
-          { id:'s7', name:'Design de Projeto', hubspotStage:'Design de Projeto', sentiment:'Ambição', need:'ROI para vender internamente', clientAction:'Validar ROI\nConfirmar investimento', passTrigger:'Apresentação do projeto construído feita', responsible:'Inside Sales', sellerRole:'Demonstrar a solução aplicada a resolução do problema do prospect.\nPreparar esboço do projeto do lead (Mockup/Miro).\nValidar aderência com a solução apresentada.\nValidar se há outros Stakeholders que precisam ser envolvidos no processo.\nValidar critérios para decisão.\nExplorar parte técnica (definir o que é relevante para pessoas de TI).\nEntender o que é importante para o gestor analisar dentro da plataforma.\nMostrar o dia a dia com a ferramenta (extrair as facilidades, desafios, receios, etc).', hubspotObject:'Negócio', hubspotFields:'Produtos Add-Ons · Objetivos da contratação (obrigatório) · Novas frentes para prospecção do BDR?', methodologies:['MEDDPICC','Value-Based Selling'], sapLink:true, supportTeams:[{name:'Value Design',actionUrl:'vd-popup'},{name:'Parceiros - Como acionar o time de parcerias',actionUrl:''}] },
-          { id:'s8', name:'Proposta Apresentada', hubspotStage:'Proposta Apresentada', sentiment:'Conforto', need:'Validar a importancia de contratar a Blip', clientAction:'Validar investimento\nEscolher Blip', passTrigger:'Proposta comercial apresentada e solicitacao de negociacao', responsible:'Inside Sales', sellerRole:'Validação com o cliente do desenho proposto.\nApresentação da proposta comercial.\nValidar o processo de decisão.\nValidar o processo de compra.\nFechamento de portas.', hubspotObject:'Negócio', hubspotFields:'Data de fechamento · Critério de decisão (obrigatório) · Principais desafios (obrigatório) · Existe processo de compra', manualActions:'Enviar a proposta por e-mail', methodologies:['MEDDPICC','MAP'], sapLink:true, hubspotFieldsSAP:[{text:'Verificar item de linha — acessar os Processos SAP',url:'sap.html'},{text:'Adicionar CNPJ na empresa vinculada à oportunidade',url:'sap.html'}] },
-          { id:'s9', name:'Negociação', hubspotStage:'Negociação', sentiment:'Conforto', need:'Eliminar atritos financeiros\nNegociar condições', clientAction:'Envolver stakeholders\nValidar decisão', passTrigger:'Negociação finalizada', responsible:'Inside Sales', sellerRole:'Envolver outros stakeholders para tomada de decisão.\nRevisar dor/necessidade do lead, retorno esperado.\nValidar critério de decisão e processo de decisão.\nValidar processo de compra e próximos passos.\nAlinhar condições comerciais com prazo para assinatura do contrato.\nValidação de questões de Governança e Compliance.\nAlinhar data para OK Formal.', hubspotObject:'Negócio', hubspotFields:'Data de fechamento (obrigatório) · Times envolvidos', methodologies:['Principled Negotiation (Harvard)','MEDDPICC','MAP'], sapLink:true, hubspotFieldsSAP:[{text:'Verificar item de linha — acessar os Processos SAP',url:'sap.html'},{text:'Adicionar CNPJ na empresa vinculada à oportunidade',url:'sap.html'}], tools:[{name:'Empowerment Guide — alçadas de negociação',url:'https://app.notion.com/p/blip-ai/330dcfddcf4a8096bd82fbfdb26b28f0?v=346dcfddcf4a80539913000c6041c9a3'}], supportTeams:[{name:'Value Designer',actionUrl:'vd-popup'},{name:'Deal Desk',actionUrl:''}] },
-          { id:'s10', name:'OK Formal', hubspotStage:'OK Formal', sentiment:'Empolgação', need:'Entender os próximos passos para contratação', clientAction:'Seguir para contratação', passTrigger:'Dados da minuta enviado', responsible:'Inside Sales', sellerRole:'Solicitar dados jurídicos para elaboração da Minuta comercial.\nValidar e facilitar trâmites com SI.\nValidar prazos para cada etapa até a assinatura do contrato.\nDados para contrato.', hubspotObject:'Negócio', hubspotFields:'Data de fechamento (obrigatório) · Times envolvidos', methodologies:['MEDDPICC'], sapLink:true, hubspotFieldsSAP:[{text:'Verificar item de linha — acessar os Processos SAP',url:'sap.html'},{text:'Adicionar CNPJ na empresa vinculada à oportunidade',url:'sap.html'},{text:'Preencher manual de atividade Novos Clientes [SAP]',url:'sap.html'}] },
-          { id:'s11', name:'Rev. Contrato', hubspotStage:'Rev. Contrato', sentiment:'Respaldo', need:'Segurança jurídica total', clientAction:'Organizar próximos passos para implementação', passTrigger:'Dados da minuta enviados', responsible:'Inside Sales', sellerRole:'Enviar minuta para análise do lead.\nAssegurar que todos os trâmites jurídicos entre o cliente e Blip são realizados de forma célere.\nEnviar contrato para assinatura do lead.\nAlinhar prazo para assinatura e início do projeto.\nRevisar dados preenchidos no Hubspot.', hubspotObject:'Negócio', hubspotFields:'Potencial de audiência desta empresa (obrigatório)', methodologies:['MEDDPICC'], sapLink:true, hubspotFieldsSAP:[{text:'Verificar item de linha — acessar os Processos SAP',url:'sap.html'},{text:'Adicionar CNPJ na empresa vinculada à oportunidade',url:'sap.html'},{text:'Preencher manual de atividade Novos Clientes [SAP]',url:'sap.html'}], contractLinks:[{name:'Contrato via Orçamento do HubSpot',url:'https://drive.google.com/file/d/1ecc5oNQl62yc71opuNKB_YeHh0ONtUZr/view'}] },
+          { id:'s5', name:'Qualificado', hubspotStage:'Qualificado', sentiment:'Curiosidade', need:'Aprofundar o entendimento em Blip', clientAction:'Confirmar reuniao', passTrigger:'Reuniao confirmada', responsible:'BDR', sellerRole:'Registrar o Briefing da oportunidade.\nConfirmar reuniao', hubspotObject:'Contato', hubspotFields:'Caso de uso (obrigatório) · Ferramenta atual (obrigatório) · Etapa de Jornada (obrigatório) · Data de fechamento (obrigatório)', manualActions:'Preenchimento manual de atividades — Briefing / Passagem de bastão BDR→IS', manualActionsLinks:[{name:'Passagem de bastão BDR→IS',url:'https://app.hubspot.com/playbooks/1796841/compose/81023005'}], autoActions:'Criação do negócio automática · Roleta automática', agendamentoOpp:true, methodologies:['Demo 2 Win','Value-Based Selling','SPIN'], tools:[{name:'Central de Revenue Enablement',url:'https://app.notion.com/p/blip-ai/Central-Revenue-Enablement-248dcfddcf4a80019774ca8b6faecd5c'},{name:'Growth Insights',url:''}] },
+          { id:'s5b', name:'Opps', fupFlow:true, hubspotStage:'Opps', sentiment:'Curiosidade', need:'Aprofundar o entendimento em Blip', clientAction:'Comparecer na reuniao agendada', passTrigger:'Reuniao realizada', responsible:'Inside Sales', sellerRole:'Estudar briefing do BDR.\nPesquisar sobre prospect no LinkedIn.\nPesquisar mais informações de mercado sobre a empresa.\nPreparar cases de sucesso de acordo com a necessidade do lead.\nPreparar apresentação.', hubspotObject:'Negócio', hubspotFields:'Campos preenchidos pelo time de qualificacao.', manualActions:'Passagem do deal para proxima etapa logo apos a reuniao (SLA de 24h) · Registro da Reuniao', methodologies:['Demo 2 Win','Value-Based Selling','SPIN'], tools:[{name:'Gem Pré Call',url:'https://gemini.google.com/gem/1soThEkF5oRnxyvA3GSvjgcUAplhbwME0?usp=sharing',description:'Analisa o site da empresa e o briefing para encontrar oportunidades em canais digitais e como se relaciona com o produto Blip. Identifica possíveis soluções para a jornada do cliente, cruzando as informações com funcionalidades Blip. Sugere cases com o link do número de WhatsApp.'}] },
+          { id:'s6', name:'Apresentação', fupFlow:true, hubspotStage:'Apresentação', sentiment:'Segurança', need:'Entender como funciona na prática', clientAction:'Validar funcionalidades e critérios de decisão', passTrigger:'Foi feita a apresentação do projeto construído.', responsible:'Inside Sales', sellerRole:'Educação sobre os modelos de WhatsApp (usar material oficial).\nDiscovery para coletar as principais dores e necessidades do seu negócio/lead.\nLevar nosso conhecimento retido no processo sobre as dores e necessidades do negócio/lead.\nApresentação dos Use Cases (como nossos clientes - daquele segmento - usam e como a solução ajuda o negócio deles).\nEntender como o Blip pode ser usado em toda a jornada do cliente/usuário desse negócio.\nAlinhamento do que é importante para o lead e puxar próximo passo - verbalizar como podemos ajudar a empresa e validar a importância disso para o lead.', hubspotObject:'Negócio', hubspotFields:'Ferramenta conversacional atual (obrigatório) · Áreas atendidas no projeto (obrigatório) · Score de Qualificação (obrigatório)', methodologies:['MEDDPICC','Value-Based Selling'], sapLink:true, supportTeams:[{name:'Value Design',actionUrl:'vd-popup'},{name:'Parceiros - Como acionar o time de parcerias',actionUrl:''}], tools:[{name:'Gem Apresentação',url:'https://gemini.google.com/gem/1ztFQYfun1YsXt4s45XIadLL4qCzHKdOx?usp=sharing',description:'Cria um resumo detalhado da reunião, identificando tom da conversa, próximos passos, dor do cliente, KPIs, stakeholders e números chave. Sugere como preencher os campos no HubSpot com base na transcrição (concorrentes, sistemas de integração, objeções). Redige um e-mail profissional ("Champions Letter") para o vendedor enviar ao lead, resumindo a reunião e os próximos passos.'}] },
+          { id:'s7', name:'Design de Projeto', fupFlow:true, hubspotStage:'Design de Projeto', sentiment:'Ambição', need:'ROI para vender internamente', clientAction:'Validar ROI\nConfirmar investimento', passTrigger:'Apresentação do projeto construído feita', responsible:'Inside Sales', sellerRole:'Demonstrar a solução aplicada a resolução do problema do prospect.\nPreparar esboço do projeto do lead (Mockup/Miro).\nValidar aderência com a solução apresentada.\nValidar se há outros Stakeholders que precisam ser envolvidos no processo.\nValidar critérios para decisão.\nExplorar parte técnica (definir o que é relevante para pessoas de TI).\nEntender o que é importante para o gestor analisar dentro da plataforma.\nMostrar o dia a dia com a ferramenta (extrair as facilidades, desafios, receios, etc).', hubspotObject:'Negócio', hubspotFields:'Produtos Add-Ons · Objetivos da contratação (obrigatório) · Novas frentes para prospecção do BDR?', methodologies:['MEDDPICC','Value-Based Selling'], sapLink:true, supportTeams:[{name:'Value Design',actionUrl:'vd-popup'},{name:'Parceiros - Como acionar o time de parcerias',actionUrl:''}] },
+          { id:'s8', name:'Proposta Apresentada', fupFlow:true, hubspotStage:'Proposta Apresentada', sentiment:'Conforto', need:'Validar a importancia de contratar a Blip', clientAction:'Validar investimento\nEscolher Blip', passTrigger:'Proposta comercial apresentada e solicitacao de negociacao', responsible:'Inside Sales', sellerRole:'Validação com o cliente do desenho proposto.\nApresentação da proposta comercial.\nValidar o processo de decisão.\nValidar o processo de compra.\nFechamento de portas.', hubspotObject:'Negócio', hubspotFields:'Data de fechamento · Critério de decisão (obrigatório) · Principais desafios (obrigatório) · Existe processo de compra', manualActions:'Enviar a proposta por e-mail', methodologies:['MEDDPICC','MAP'], sapLink:true, hubspotFieldsSAP:[{text:'Verificar item de linha — acessar os Processos SAP',url:'sap.html'},{text:'Adicionar CNPJ na empresa vinculada à oportunidade',url:'sap.html'}] },
+          { id:'s9', name:'Negociação', fupFlow:true, hubspotStage:'Negociação', sentiment:'Conforto', need:'Eliminar atritos financeiros\nNegociar condições', clientAction:'Envolver stakeholders\nValidar decisão', passTrigger:'Negociação finalizada', responsible:'Inside Sales', sellerRole:'Envolver outros stakeholders para tomada de decisão.\nRevisar dor/necessidade do lead, retorno esperado.\nValidar critério de decisão e processo de decisão.\nValidar processo de compra e próximos passos.\nAlinhar condições comerciais com prazo para assinatura do contrato.\nValidação de questões de Governança e Compliance.\nAlinhar data para OK Formal.', hubspotObject:'Negócio', hubspotFields:'Data de fechamento (obrigatório) · Times envolvidos', methodologies:['Principled Negotiation (Harvard)','MEDDPICC','MAP'], sapLink:true, hubspotFieldsSAP:[{text:'Verificar item de linha — acessar os Processos SAP',url:'sap.html'},{text:'Adicionar CNPJ na empresa vinculada à oportunidade',url:'sap.html'}], tools:[{name:'Empowerment Guide — alçadas de negociação',url:'https://app.notion.com/p/blip-ai/330dcfddcf4a8096bd82fbfdb26b28f0?v=346dcfddcf4a80539913000c6041c9a3'}], supportTeams:[{name:'Value Designer',actionUrl:'vd-popup'},{name:'Deal Desk',actionUrl:''}] },
+          { id:'s10', name:'OK Formal', fupFlow:true, hubspotStage:'OK Formal', sentiment:'Empolgação', need:'Entender os próximos passos para contratação', clientAction:'Seguir para contratação', passTrigger:'Dados da minuta enviado', responsible:'Inside Sales', sellerRole:'Solicitar dados jurídicos para elaboração da Minuta comercial.\nValidar e facilitar trâmites com SI.\nValidar prazos para cada etapa até a assinatura do contrato.\nDados para contrato.', hubspotObject:'Negócio', hubspotFields:'Data de fechamento (obrigatório) · Times envolvidos', methodologies:['MEDDPICC'], sapLink:true, hubspotFieldsSAP:[{text:'Verificar item de linha — acessar os Processos SAP',url:'sap.html'},{text:'Adicionar CNPJ na empresa vinculada à oportunidade',url:'sap.html'},{text:'Preencher manual de atividade Novos Clientes [SAP]',url:'sap.html'}], tosEmissao:true },
+          { id:'s11', name:'Rev. Contrato', fupFlow:true, hubspotStage:'Rev. Contrato', sentiment:'Respaldo', need:'Segurança jurídica total', clientAction:'Organizar próximos passos para implementação', passTrigger:'Dados da minuta enviados', responsible:'Inside Sales', sellerRole:'Enviar minuta para análise do lead.\nAssegurar que todos os trâmites jurídicos entre o cliente e Blip são realizados de forma célere.\nEnviar contrato para assinatura do lead.\nAlinhar prazo para assinatura e início do projeto.\nRevisar dados preenchidos no Hubspot.', hubspotObject:'Negócio', hubspotFields:'Potencial de audiência desta empresa (obrigatório)', methodologies:['MEDDPICC'], sapLink:true, hubspotFieldsSAP:[{text:'Verificar item de linha — acessar os Processos SAP',url:'sap.html'},{text:'Adicionar CNPJ na empresa vinculada à oportunidade',url:'sap.html'},{text:'Preencher manual de atividade Novos Clientes [SAP]',url:'sap.html'}], contractLinks:[{name:'Contrato via Orçamento do HubSpot',url:'https://drive.google.com/file/d/1ecc5oNQl62yc71opuNKB_YeHh0ONtUZr/view'}] },
           { id:'s12', name:'Ganho', hubspotStage:'Ganho', sentiment:'Herói', need:'Clareza da jornada com a Blip', clientAction:'Organizar próximos passos · Passagem de bastão', passTrigger:'TOS assinado', responsible:'Inside Sales', sellerRole:'Revisar HubSpot · Manual de passagem de bastão · Ativar time de implementação', hubspotObject:'Negócio', hubspotFields:'Resultados esperados com a contratação (obrigatório)', methodologies:['MEDDPICC'] },
         ]
       },
@@ -546,7 +611,7 @@ const SEGMENTS = [
           { id:'m7', name:'Design de Projeto', hubspotStage:'Design de Projeto', sentiment:'Ambição', need:'ROI para vender internamente', clientAction:'Validar ROI · Confirmar investimento', passTrigger:'Apresentação do projeto construído feita', responsible:'Closer', sellerRole:'Demonstrar a solução aplicada ao problema. Preparar esboço (Mockup/Miro). Validar aderência, stakeholders e critérios de decisão.', hubspotObject:'Negócio', hubspotFields:'Produtos Add-Ons · Objetivos da contratação (obrigatório) · Novas frentes para prospecção do BDR? · Novos produtos negociados (obrigatório) · Houve envolvimento de CDA na construção do Design de Solução? (obrigatório) · Houve envolvimento de parceiro na construção do Design de Solução? (obrigatório)', manualActions:'Acionar Parceiro (se necessário) · Acionar VD (se necessário) · Cadastro Item de Linha', methodologies:['MEDDPICC','Value-Based Selling'], sapLink:true },
           { id:'m8', name:'Proposta Apresentada', hubspotStage:'Proposta Apresentada', sentiment:'Conforto', need:'Eliminar atritos financeiros', clientAction:'Validar investimento · Escolher Blip', passTrigger:'Proposta comercial apresentada', responsible:'Closer', sellerRole:'Validação com cliente do desenho proposto. Apresentação da proposta comercial. Validar critérios de decisão e processo de compra. Alinhar condições comerciais.', hubspotObject:'Negócio', hubspotFields:'Data de fechamento (obrigatório) · Participação em RFP (obrigatório) · Concorrência (obrigatório) · Tipo de plano apresentado (obrigatório) · [Conversational Agency] Qual parceiro (obrigatório)', methodologies:['MAP','MEDDPICC'], sapLink:true, hubspotFieldsSAP:[{text:'Verificar item de linha — acessar os Processos SAP',url:'sap.html'},{text:'Adicionar CNPJ na empresa vinculada à oportunidade',url:'sap.html'}] },
           { id:'m9', name:'Negociação', hubspotStage:'Negociação', sentiment:'Conforto', need:'Eliminar atritos · Negociar condições', clientAction:'Envolver stakeholders · Validar decisão', passTrigger:'Negociação iniciada', responsible:'Closer', sellerRole:'Alinhar condições comerciais com prazo para assinatura. Validação de Governança e Compliance. Alinhar data para OK Formal.', hubspotObject:'Negócio', hubspotFields:'Data de fechamento (obrigatório) · Times envolvidos · Alavanca de negócio · Etapa da jornada (caso de uso) · Necessidade de envolvimento dos Diretores e C-Lvls Blip? (obrigatório) · Foi concedida bonificação na ativação? (obrigatório) · O desenvolvimento será pago diretamente à Blip? (obrigatório) · Novas frentes mapeadas para prospecção? (obrigatório) · Novos produtos negociados (obrigatório) · Qual concorrente', methodologies:['Principled Negotiation (Harvard)','MEDDPICC','MAP'], supportTeams:[{name:'Value Designer',actionUrl:'vd-popup'},{name:'Deal Desk',actionUrl:''}] },
-          { id:'m10', name:'OK Formal', hubspotStage:'OK Formal', sentiment:'Respaldo', need:'Segurança jurídica e SLA', clientAction:'Validar juridicamente · Alinhar data de assinatura', passTrigger:'Negociação aprovada', responsible:'Closer', sellerRole:'Governança e Compliance · Alinhar data para OK Formal', hubspotObject:'Negócio', hubspotFields:'Tipo de negócio (obrigatório) · [LAND] Novo contrato · Incremento de MAUs · Volume estimado de conversas mensais (obrigatório) · Tipo de Contrato (obrigatório) · Condições comerciais (obrigatório) · Idioma (obrigatório) · Times envolvidos na negociação (obrigatório) · Razão Social (obrigatório)', sapLink:true, hubspotFieldsSAP:[{text:'Preencher manual de atividade Novos Clientes [SAP]',url:'sap.html'}], methodologies:['MEDDPICC'] },
+          { id:'m10', name:'OK Formal', hubspotStage:'OK Formal', sentiment:'Respaldo', need:'Segurança jurídica e SLA', clientAction:'Validar juridicamente · Alinhar data de assinatura', passTrigger:'Negociação aprovada', responsible:'Closer', sellerRole:'Governança e Compliance · Alinhar data para OK Formal', hubspotObject:'Negócio', hubspotFields:'Tipo de negócio (obrigatório) · [LAND] Novo contrato · Incremento de MAUs · Volume estimado de conversas mensais (obrigatório) · Tipo de Contrato (obrigatório) · Condições comerciais (obrigatório) · Idioma (obrigatório) · Times envolvidos na negociação (obrigatório) · Razão Social (obrigatório)', sapLink:true, hubspotFieldsSAP:[{text:'Preencher manual de atividade Novos Clientes [SAP]',url:'sap.html'}], methodologies:['MEDDPICC'], tosEmissao:true },
           { id:'m11', name:'Rev. Contrato', hubspotStage:'Rev. Contrato', sentiment:'Respaldo', need:'Segurança jurídica total', clientAction:'Validar juridicamente · Organizar próximos passos', passTrigger:'Dados da minuta enviados', responsible:'Closer', sellerRole:'Solicitar dados jurídicos · Validar trâmites com SI · Assegurar celeridade', hubspotObject:'Negócio', hubspotFields:'Potencial de audiência desta empresa (obrigatório)', methodologies:['MEDDPICC'] },
           { id:'m12', name:'Ganho', hubspotStage:'Ganho', sentiment:'Herói', need:'Clareza da jornada com a Blip', clientAction:'Organizar próximos passos · Passagem de bastão', passTrigger:'TOS assinado', responsible:'Closer', sellerRole:'Revisar HubSpot · Manual de passagem de bastão · Ativar time de implementação', hubspotObject:'Negócio', hubspotFieldsPrefilled:'Data de fechamento · Tipo de negócio · [LAND] Novo contrato · Tipo de Contrato · Condições comerciais · Idioma · Times envolvidos na negociação · Novos produtos negociados · Qual concorrente · Origem do Deal · Proprietário do negócio · SDR Responsável · Volumetria · [Portabilidade] BSP', hubspotFields:'Canal Contratado · Networking da Diretoria · Regra de cobrança · Modalidade de contrato · Tem parceiro de serviço · Cliente tem time próprio de desenvolvimento? · Potencial máximo de audiência mensal (MAUs) · Proposta Revisada por Liderança · Contrato assinado (anexar) · [PS] Necessário Subsídio?', sapLink:true,  sapFormFields:'País · [SAP] Empresa da Blip que o cliente será faturado · [SAP] E-mail para envio de nota fiscal · [SAP] Forma de pagamento · [SAP] Condição de pagamento · [SAP] Ciclo de faturamento', methodologies:['MEDDPICC'] },
         ]
@@ -591,7 +656,7 @@ const SEGMENTS = [
           { id:'t7', name:'Design de Projeto', hubspotStage:'Design de Projeto', sentiment:'Encantamento', need:'Entender como funciona a ferramenta da Blip e os ganhos de negócio que o produto pode trazer', clientAction:'Solicitar um de-para das funcionalidades da Blip e dos objetivos de negócio', passTrigger:'Proposta comercial apresentada', responsible:'KAE', sellerRole:'Demonstrar a solução aplicada ao problema.\nPreparar esboço (Mockup/Miro).\nValidar aderência, stakeholders e critérios de decisão.', hubspotObject:'Negócio', hubspotFields:'Produtos Add-Ons · Objetivos da contratação (obrigatório) · Novos produtos negociados (obrigatório) · Houve envolvimento de CDA na construção do Design de Solução? (obrigatório) · Houve envolvimento de parceiro na construção do Design de Solução? (obrigatório)', methodologies:['MEDDPICC','Value-Based Selling'], supportTeams:[{name:'Value Designer',actionUrl:'vd-popup'},{name:'Professional Services',actionUrl:''}] },
           { id:'t8', name:'Proposta Apresentada', hubspotStage:'Proposta Apresentada', sentiment:'Conforto', need:'Eliminar atritos financeiros', clientAction:'Validar investimento · Escolher Blip', passTrigger:'Negociação iniciada', responsible:'KAE', sellerRole:'Validação com cliente do desenho proposto. Apresentação da proposta comercial. Validar critérios de decisão e processo de compra.', hubspotObject:'Negócio', hubspotFields:'Data de fechamento (obrigatório) · Participação em RFP (obrigatório) · Concorrência (obrigatório) · Tipo de plano apresentado (obrigatório) · [Conversational Agency] Qual parceiro (obrigatório)', methodologies:['MAP','MEDDPICC'], sapLink:true, hubspotFieldsSAP:[{text:'Verificar item de linha — acessar os Processos SAP',url:'sap.html'},{text:'Adicionar CNPJ na empresa vinculada à oportunidade',url:'sap.html'}], supportTeams:[{name:'Value Designer',actionUrl:'vd-popup'},{name:'Deal Desk',actionUrl:'https://docs.google.com/presentation/d/1psPfMcPS4wr7kCox0HOUY2x9hvXALtoi6bXKCdn7RbQ/edit?slide=id.g3d9b2327066_2_2#slide=id.g3d9b2327066_2_2'}] },
           { id:'t9', name:'Negociação', hubspotStage:'Negociação', sentiment:'Conforto', need:'Eliminar atritos · Negociar condições', clientAction:'Envolver stakeholders · Validar decisão', passTrigger:'Negociação aprovada', responsible:'KAE', sellerRole:'Alinhar condições comerciais. Validação de Governança e Compliance. Alinhar data para OK Formal.', hubspotObject:'Negócio', hubspotFields:'Data de fechamento (obrigatório) · Times envolvidos · Alavanca de negócio · Etapa da jornada (caso de uso) · Necessidade de envolvimento dos Diretores e C-Lvls Blip? (obrigatório) · Foi concedida bonificação na ativação? (obrigatório) · O desenvolvimento será pago diretamente à Blip? (obrigatório) · Novas frentes mapeadas para prospecção? (obrigatório) · Novos produtos negociados (obrigatório) · Qual concorrente', hubspotFieldsSAP:[{text:'Verificar item de linha — acessar os Processos SAP',url:'sap.html'},{text:'Adicionar CNPJ na empresa vinculada à oportunidade',url:'sap.html'}], tools:[{name:'Empowerment Guide — alçadas de negociação',url:'https://app.notion.com/p/blip-ai/330dcfddcf4a8096bd82fbfdb26b28f0?v=346dcfddcf4a80539913000c6041c9a3'}], methodologies:['Principled Negotiation (Harvard)','MEDDPICC','MAP'], supportTeams:[{name:'Value Designer',actionUrl:'vd-popup'},{name:'Deal Desk',actionUrl:''}] },
-          { id:'t10', name:'OK Formal', hubspotStage:'OK Formal', sentiment:'Respaldo', need:'Segurança jurídica e SLA', clientAction:'Validar juridicamente o TOS', passTrigger:'Dados da minuta enviados', responsible:'KAE', sellerRole:'Governança e Compliance · Alinhar datas de assinatura', hubspotObject:'Negócio', hubspotFields:'Tipo de negócio (obrigatório) · [LAND] Novo contrato · Incremento de MAUs · Volume estimado de conversas mensais (obrigatório) · Tipo de Contrato (obrigatório) · Condições comerciais (obrigatório) · Idioma (obrigatório) · Times envolvidos na negociação (obrigatório) · Razão Social (obrigatório)', sapLink:true, hubspotFieldsSAP:[{text:'Preencher manual de atividade Novos Clientes [SAP]',url:'sap.html'}], methodologies:['MEDDPICC'] },
+          { id:'t10', name:'OK Formal', hubspotStage:'OK Formal', sentiment:'Respaldo', need:'Segurança jurídica e SLA', clientAction:'Validar juridicamente o TOS', passTrigger:'Dados da minuta enviados', responsible:'KAE', sellerRole:'Governança e Compliance · Alinhar datas de assinatura', hubspotObject:'Negócio', hubspotFields:'Tipo de negócio (obrigatório) · [LAND] Novo contrato · Incremento de MAUs · Volume estimado de conversas mensais (obrigatório) · Tipo de Contrato (obrigatório) · Condições comerciais (obrigatório) · Idioma (obrigatório) · Times envolvidos na negociação (obrigatório) · Razão Social (obrigatório)', sapLink:true, hubspotFieldsSAP:[{text:'Preencher manual de atividade Novos Clientes [SAP]',url:'sap.html'}], methodologies:['MEDDPICC'], tosEmissao:true },
           { id:'t11', name:'Rev. Contrato', hubspotStage:'Rev. Contrato', sentiment:'Respaldo', need:'Segurança jurídica total', clientAction:'Validar juridicamente · Organizar próximos passos', passTrigger:'TOS assinado', responsible:'KAE', sellerRole:'Solicitar dados jurídicos · Validar trâmites com SI · Assegurar celeridade', hubspotObject:'Negócio', hubspotFields:'Potencial de audiência desta empresa (obrigatório)', hubspotFieldsSAP:[{text:'Preencher manual de atividade Novos Clientes [SAP]',url:'sap.html'}], manualActions:'E-mail formalização do projeto · Manual de atividades para ativação', methodologies:['MEDDPICC'], sapLink:true },
           { id:'t12', name:'Ganho', hubspotStage:'Ganho', sentiment:'Herói', need:'Clareza da jornada com a Blip', clientAction:'Organizar próximos passos · Passagem de bastão', passTrigger:'—', responsible:'KAE', sellerRole:'Revisar HubSpot · Manual de passagem de bastão · Ativar time de implementação', hubspotObject:'Negócio', hubspotFieldsPrefilled:'Data de fechamento · Tipo de negócio · [LAND] Novo contrato · Tipo de Contrato · Condições comerciais · Idioma · Times envolvidos na negociação · Novos produtos negociados · Qual concorrente · Origem do Deal · Proprietário do negócio · SDR Responsável · Volumetria · [Portabilidade] BSP', hubspotFields:'Canal Contratado · Networking da Diretoria · Regra de cobrança · Modalidade de contrato · Tem parceiro de serviço · Cliente tem time próprio de desenvolvimento? · Potencial máximo de audiência mensal (MAUs) · Proposta Revisada por Liderança · Contrato assinado (anexar) · [PS] Necessário Subsídio?', sapLink:true,  sapFormFields:'País · [SAP] Empresa da Blip que o cliente será faturado · [SAP] E-mail para envio de nota fiscal · [SAP] Forma de pagamento · [SAP] Condição de pagamento · [SAP] Ciclo de faturamento', methodologies:['MEDDPICC'] },
         ]
@@ -1044,39 +1109,39 @@ const HUBSPOT_PIPELINES = [
         fieldsMAcc:'Caso de uso (obrigatório) · Ferramenta atual (obrigatório) · Etapa de Jornada (obrigatório) · Data de fechamento (obrigatório)',
         fieldsStAcc:'—',
         autoSMB:'Criação do negócio automática.\n\n🎯 Roleta de agendamento: atribui a reunião ao IS com menor estoque de OPPs.\n\nEnviar e-mail de passagem de bastão (em até 1h do agendamento) com IS/Closer em cópia, link da reunião, data e horário. Duas notificações ativas são disparadas ao contato do deal.\n\n⚠️ Pontos críticos:\n1. "Link da reunião" = apenas link da agenda do IS.\n2. Desassociar contatos que não converteram — manter só o que agendou.\n\nSe não migrar para Aquisição automaticamente: verificar campos obrigatórios (especialmente Proprietário do negócio → IS/Closer).', autoMAcc:'—', autoStAcc:'Criação do opp automática na pipeline de vendas' },
-      { name:'Opps',                   object:'Negócio',
+      { name:'Opps',                   object:'Negócio', fupFlow:true,
         fieldsSMB:'—', fieldsMAcc:'—', fieldsStAcc:'—',
-        autoSMB:'—', autoMAcc:'—', autoStAcc:'—' },
-      { name:'Apresentação',          object:'Negócio',
+        autoSMB:'', autoMAcc:'—', autoStAcc:'—' },
+      { name:'Apresentação',          object:'Negócio', fupFlow:true,
         fieldsSMB:'Ferramenta conversacional atual (obrigatório) · Áreas atendidas no projeto (obrigatório) · Score de Qualificação (obrigatório)',
         fieldsMAcc:'Tipo de negócio (obrigatório) · Qual concorrente (obrigatório) · Existe processo de Compras? (obrigatório)',
         fieldsStAcc:'Tipo de negócio (obrigatório) · Qual concorrente (obrigatório) · Existe processo de Compras? (obrigatório)',
         autoSMB:'Roleta para aquisição', autoMAcc:'—', autoStAcc:'—' },
-      { name:'Design de Projeto',     object:'Negócio',
+      { name:'Design de Projeto',     object:'Negócio', fupFlow:true,
         fieldsSMB:'Produtos Add-Ons · Objetivos da contratação (obrigatório) · Novas frentes para prospecção do BDR?',
         fieldsMAcc:'Produtos Add-Ons · Objetivos da contratação (obrigatório) · Novas frentes para prospecção do BDR? · Novos produtos negociados (obrigatório) · Houve envolvimento de CDA? (obrigatório) · Houve envolvimento de parceiro? (obrigatório)',
         fieldsStAcc:'Produtos Add-Ons · Objetivos da contratação (obrigatório) · Novos produtos negociados (obrigatório) · Houve envolvimento de CDA? (obrigatório) · Houve envolvimento de parceiro? (obrigatório)',
-        autoSMB:'—', autoMAcc:'—', autoStAcc:'—' },
-      { name:'Proposta Apresentada',  object:'Negócio',
+        autoSMB:'', autoMAcc:'—', autoStAcc:'—' },
+      { name:'Proposta Apresentada',  object:'Negócio', fupFlow:true,
         fieldsSMB:'Data de fechamento · Critério de decisão (obrigatório) · Principais desafios (obrigatório) · Existe processo de compra',
         fieldsMAcc:'Data de fechamento (obrigatório) · Participação em RFP (obrigatório) · Concorrência (obrigatório) · Tipo de plano apresentado (obrigatório) · [Conversational Agency] Qual parceiro (obrigatório)',
         fieldsStAcc:'Data de fechamento (obrigatório) · Participação em RFP (obrigatório) · Concorrência (obrigatório) · Tipo de plano apresentado (obrigatório) · [Conversational Agency] Qual parceiro (obrigatório)',
-        autoSMB:'—', autoMAcc:'—', autoStAcc:'—' },
-      { name:'Negociação',            object:'Negócio',
+        autoSMB:'', autoMAcc:'—', autoStAcc:'—' },
+      { name:'Negociação',            object:'Negócio', fupFlow:true,
         fieldsSMB:'Data de fechamento (obrigatório) · Times envolvidos',
         fieldsMAcc:'Data de fechamento (obrigatório) · Times envolvidos · Alavanca de negócio · Necessidade de envolvimento de Diretores e C-Lvls? (obrigatório) · Foi concedida bonificação? (obrigatório) · O desenvolvimento será pago à Blip? (obrigatório) · Novas frentes mapeadas? (obrigatório) · Novos produtos negociados (obrigatório)',
         fieldsStAcc:'Data de fechamento (obrigatório) · Times envolvidos · Alavanca de negócio · Necessidade de envolvimento de Diretores e C-Lvls? (obrigatório) · Foi concedida bonificação? (obrigatório) · O desenvolvimento será pago à Blip? (obrigatório) · Novas frentes mapeadas? (obrigatório) · Novos produtos negociados (obrigatório)',
-        autoSMB:'—', autoMAcc:'—', autoStAcc:'—' },
-      { name:'OK Formal',             object:'Negócio',
+        autoSMB:'', autoMAcc:'—', autoStAcc:'—' },
+      { name:'OK Formal',             object:'Negócio', fupFlow:true,
         fieldsSMB:'Data de fechamento (obrigatório) · Times envolvidos',
         fieldsMAcc:'Tipo de negócio (obrigatório) · [LAND] Novo contrato · Incremento de MAUs · Volume estimado de conversas mensais (obrigatório) · Tipo de Contrato (obrigatório) · Condições comerciais (obrigatório) · Idioma (obrigatório) · Times envolvidos (obrigatório) · Razão Social (obrigatório)',
         fieldsStAcc:'Tipo de negócio (obrigatório) · [LAND] Novo contrato · Incremento de MAUs · Volume estimado de conversas mensais (obrigatório) · Tipo de Contrato (obrigatório) · Condições comerciais (obrigatório) · Idioma (obrigatório) · Times envolvidos (obrigatório) · Razão Social (obrigatório)',
-        autoSMB:'—', autoMAcc:'—', autoStAcc:'—' },
-      { name:'Rev. Contrato',         object:'Negócio',
+        autoSMB:'', autoMAcc:'—', autoStAcc:'—' },
+      { name:'Rev. Contrato',         object:'Negócio', fupFlow:true,
         fieldsSMB:'Potencial de audiência desta empresa (obrigatório)',
         fieldsMAcc:'Potencial de audiência desta empresa (obrigatório)',
         fieldsStAcc:'Potencial de audiência desta empresa (obrigatório)',
-        autoSMB:'—', autoMAcc:'—', autoStAcc:'—' },
+        autoSMB:'', autoMAcc:'—', autoStAcc:'—' },
       { name:'Ganho',                 object:'Negócio',
         fieldsSMB:'Resultados esperados com a contratação (obrigatório)',
         fieldsMAcc:'Canal Contratado · Networking da Diretoria · Regra de cobrança · Modalidade de contrato · Tem parceiro de serviço · Cliente tem time próprio de desenvolvimento? · Potencial máximo de audiência mensal (MAUs) · Proposta Revisada por Liderança · Contrato assinado (anexar) · [PS] Necessário Subsídio?',
@@ -1439,6 +1504,7 @@ function renderSegmentPage(seg) {
             <h1 class="text-3xl font-bold">${seg.name} · ${seg.fullName}</h1>
             <p class="text-white/80 mt-2 text-sm">${seg.description}</p>
             <p class="text-white/60 text-xs mt-2">Times: ${seg.audience}</p>
+            <p class="text-white/70 text-xs mt-2">Para conhecer mais a atuação do time acesse nossas <a href="https://docs.google.com/document/d/1bhLJkwot96TFdQGvBEAbZ16XXOatvnLhZX3DzttDXrY/edit?tab=t.0" target="_blank" rel="noopener" class="underline font-semibold text-white hover:text-white/90">Pastas de Calls Gravadas ↗</a>.</p>
           </div>
           <div class="flex flex-col items-end gap-3">
             <!-- Acesso rápido -->
@@ -1646,7 +1712,7 @@ function renderStagesTimeline(phase, segId) {
     </div>
 
     <!-- Transição (centralizada) -->
-    <div class="flex justify-center py-8">
+    <div class="flex flex-col items-center gap-2 py-8">
       <div class="flex flex-col items-center gap-1.5 bg-orange-50 border border-orange-200 rounded-xl px-4 py-3">
         <div class="flex items-center gap-2">
           <svg class="w-3.5 h-3.5 text-orange-400 flex-shrink-0 rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
@@ -1654,11 +1720,11 @@ function renderStagesTimeline(phase, segId) {
           <svg class="w-3 h-3 text-orange-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
           <span class="text-[11px] font-semibold text-orange-600">Negócio</span>
         </div>
-        <div class="flex items-center gap-1.5">
-          <span class="w-1.5 h-1.5 rounded-full bg-orange-400 inline-block"></span>
-          <span class="text-[10px] font-semibold text-orange-500 uppercase tracking-wider">Pipeline Land · Negócio</span>
-          <span class="text-[10px] text-slate-400">· automação cria o opp no CRM</span>
-        </div>
+        <span class="text-[10px] text-slate-400">automação cria o opp no CRM</span>
+      </div>
+      <div class="flex items-center gap-1.5">
+        <span class="w-1.5 h-1.5 rounded-full bg-orange-400 inline-block"></span>
+        <span class="text-[10px] font-semibold text-orange-500 uppercase tracking-wider">Pipeline Land · Negócio</span>
       </div>
     </div>
 
@@ -1735,13 +1801,18 @@ function renderDrawer(stage) {
         </div>` : ''}
 
         <!-- 3. Papel do vendedor -->
-        ${stage.sellerRole ? `
-        <div class="bg-slate-50 rounded-xl p-4">
-          <p class="text-xs font-semibold text-slate-500 mb-1.5">📋 Papel do vendedor</p>
-          <p class="text-sm text-slate-800 leading-relaxed whitespace-pre-line">${escHtml(stage.sellerRole)}</p>
-          ${stage._segId === 'smb' && stage.id === 's3' ? `
-          <a href="https://app.mural.co/t/takeblip0749/m/takeblip0749/1767630857513/417bf3ee2a940da6bba0bd4fa43768b29b49e319" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 mt-3 text-xs font-medium px-3 py-1.5 rounded-lg transition-colors" style="background:#EEF2FF;color:#4F46E5;border:1px solid #C7D2FE;" onmouseover="this.style.background='#E0E7FF'" onmouseout="this.style.background='#EEF2FF'">✨ Como fazer a reunião de engajamento perfeita ↗</a>
-          ` : ''}
+        ${(stage.sellerRole || stage.sellerRoleHtml) ? `
+        <div class="rounded-xl overflow-hidden" style="border:1px solid #E2E8F0;">
+          <button onclick="(function(btn){var body=btn.nextElementSibling;var open=body.classList.toggle('hidden');btn.querySelector('.sr-chevron').textContent=open?'▼':'▲';})(this)" class="w-full flex items-center justify-between px-4 py-3 text-left bg-slate-50">
+            <span class="text-xs font-semibold text-slate-500">📋 Papel do vendedor</span>
+            <span class="sr-chevron text-xs text-slate-400">▼</span>
+          </button>
+          <div class="hidden bg-white px-4 py-3 space-y-2">
+            ${stage.sellerRoleHtml ? stage.sellerRoleHtml : `<p class="text-sm text-slate-800 leading-relaxed whitespace-pre-line">${escHtml(stage.sellerRole)}</p>`}
+            ${stage._segId === 'smb' && stage.id === 's3' ? `
+            <a href="https://app.mural.co/t/takeblip0749/m/takeblip0749/1767630857513/417bf3ee2a940da6bba0bd4fa43768b29b49e319" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 mt-3 text-xs font-medium px-3 py-1.5 rounded-lg transition-colors" style="background:#EEF2FF;color:#4F46E5;border:1px solid #C7D2FE;" onmouseover="this.style.background='#E0E7FF'" onmouseout="this.style.background='#EEF2FF'">✨ Como fazer a reunião de engajamento perfeita ↗</a>
+            ` : ''}
+          </div>
         </div>` : ''}
 
         <!-- 4. Times de apoio -->
@@ -1787,12 +1858,15 @@ function renderDrawer(stage) {
 
         <!-- 6. HubSpot (orange block) -->
         ${hasHubspot ? `
-        <div class="rounded-xl p-4" style="background:#FFF7ED;border:1px solid #FED7AA;">
-          <div class="flex items-center justify-between mb-3">
-            <p class="text-xs font-semibold" style="color:#C2410C;">🟠 HubSpot</p>
-            ${(stage.sapLink || stage.hubspotFieldsSAP) ? `<a href="sap.html" target="_blank" class="text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap" style="background:#EA580C;color:#fff;" onmouseover="this.style.background='#C2410C'" onmouseout="this.style.background='#EA580C'">⚙️ Processos SAP ↗</a>` : ''}
-          </div>
-          <div class="space-y-3">
+        <div class="rounded-xl overflow-hidden" style="border:1px solid #FED7AA;">
+          <button onclick="(function(btn){var body=btn.nextElementSibling;var open=body.classList.toggle('hidden');btn.querySelector('.hs-chevron').textContent=open?'▼':'▲';})(this)" class="w-full flex items-center justify-between px-4 py-3 text-left" style="background:#FFF7ED;">
+            <span class="text-xs font-semibold" style="color:#C2410C;">🟠 HubSpot</span>
+            <div class="flex items-center gap-2">
+              ${(stage.sapLink || stage.hubspotFieldsSAP) ? `<a href="sap.html" target="_blank" onclick="event.stopPropagation()" class="text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap" style="background:#EA580C;color:#fff;" onmouseover="this.style.background='#C2410C'" onmouseout="this.style.background='#EA580C'">⚙️ Processos SAP ↗</a>` : ''}
+              <span class="hs-chevron text-xs" style="color:#C2410C;">▼</span>
+            </div>
+          </button>
+          <div class="hidden px-4 py-3 space-y-3" style="background:#FFF7ED;">
             ${stage.passTrigger ? `
             <div>
               <p class="text-xs font-semibold mb-1" style="color:#EA580C;">🔑 Gatilho de passagem</p>
@@ -1843,7 +1917,208 @@ function renderDrawer(stage) {
           </div>
         </div>` : ''}
 
-        <!-- 4b. Contrato -->
+        <!-- 4b. Regras de agendamento OPP -->
+        ${stage.agendamentoOpp ? `
+        <div class="rounded-xl overflow-hidden" style="border:1px solid #BFDBFE;">
+          <button onclick="(function(btn){var body=btn.nextElementSibling;var open=body.classList.toggle('hidden');btn.querySelector('.ag-chevron').textContent=open?'▼':'▲';})(this)" class="w-full flex items-center justify-between px-4 py-3 text-left" style="background:#EFF6FF;">
+            <span class="text-xs font-semibold" style="color:#1D4ED8;">📅 Regras para agendamento da OPP</span>
+            <span class="ag-chevron text-xs" style="color:#1D4ED8;">▼</span>
+          </button>
+          <div class="hidden px-4 py-4 space-y-4 bg-white text-sm">
+
+            <!-- Bloco 1: SLA de tempo -->
+            <div class="rounded-lg overflow-hidden border border-blue-100">
+              <div class="flex items-center gap-2 px-3 py-2 bg-blue-50">
+                <span class="flex items-center justify-center w-5 h-5 rounded-full bg-blue-500 text-white text-[10px] font-bold shrink-0">1</span>
+                <span class="font-semibold text-blue-700 text-xs uppercase tracking-wide">Tempo máximo para agendamento</span>
+              </div>
+              <div class="px-3 py-3 space-y-3">
+                <div class="flex items-center gap-3 bg-blue-50 rounded-lg px-3 py-2.5">
+                  <span class="text-2xl">📆</span>
+                  <div>
+                    <p class="text-xs font-semibold text-blue-800">Máximo de <span class="text-blue-600">7 dias</span> entre o primeiro contato e a reunião</p>
+                    <p class="text-xs text-slate-500 mt-0.5">Válido para todos os portes e origens de lead.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-2 bg-amber-50 border border-amber-100 rounded-lg px-3 py-2.5">
+                  <span class="text-amber-500 shrink-0">💡</span>
+                  <p class="text-xs text-amber-800">É permitido agendar para o <strong>mesmo dia</strong>, desde que haja um espaço mínimo de <strong>2 horas</strong> entre o agendamento e a reunião — tempo para o IS ler o briefing e se preparar.</p>
+                </div>
+                <div class="grid grid-cols-2 gap-2 pt-1">
+                  <div class="rounded-lg bg-green-50 border border-green-100 px-3 py-2.5 text-center">
+                    <p class="text-[10px] text-green-600 font-semibold uppercase tracking-wide mb-1">Benefício</p>
+                    <p class="text-xs text-slate-700">Lead engajado — informação e necessidade <strong>frescos</strong> na mente, conversa mais produtiva.</p>
+                  </div>
+                  <div class="rounded-lg bg-red-50 border border-red-100 px-3 py-2.5 text-center">
+                    <p class="text-[10px] text-red-500 font-semibold uppercase tracking-wide mb-1">Risco</p>
+                    <p class="text-xs text-slate-700">Quanto maior o intervalo, maior a chance de <strong>no-show</strong> e perda de interesse.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bloco 2: Registro do briefing -->
+            <div class="rounded-lg overflow-hidden border border-indigo-100">
+              <div class="flex items-center gap-2 px-3 py-2 bg-indigo-50">
+                <span class="flex items-center justify-center w-5 h-5 rounded-full bg-indigo-500 text-white text-[10px] font-bold shrink-0">2</span>
+                <span class="font-semibold text-indigo-700 text-xs uppercase tracking-wide">Registro do Briefing</span>
+              </div>
+              <div class="px-3 py-3 space-y-2">
+                <div class="flex items-center gap-2 bg-indigo-50 rounded-lg px-3 py-2">
+                  <span class="text-indigo-500 text-sm">📝</span>
+                  <p class="text-xs text-indigo-800">O briefing deve ser preenchido <strong>até 24h antes</strong> da reunião.</p>
+                </div>
+                <div class="flex items-start gap-2 bg-slate-50 border border-slate-100 rounded-lg px-3 py-2.5">
+                  <span class="text-slate-400 shrink-0 text-xs mt-0.5">⚠️</span>
+                  <p class="text-xs text-slate-600"><strong>Exceção:</strong> o pré-vendedor deve alinhar com o Inside Sales a urgência. Se o IS concordar, o briefing pode ser aceito fora do SLA.</p>
+                </div>
+                <p class="text-xs text-slate-500 px-1 pt-1">O IS precisa do briefing para:</p>
+                <ul class="space-y-1 pl-1">
+                  <li class="flex items-center gap-2 text-xs text-slate-700"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0"></span>Analisar a veracidade das informações</li>
+                  <li class="flex items-center gap-2 text-xs text-slate-700"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0"></span>Pesquisar o site da empresa</li>
+                  <li class="flex items-center gap-2 text-xs text-slate-700"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0"></span>Simular canais de atendimento</li>
+                  <li class="flex items-center gap-2 text-xs text-slate-700"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0"></span>Usar o Stilingue para coletar informações adicionais</li>
+                  <li class="flex items-center gap-2 text-xs text-slate-700"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0"></span>Produzir materiais personalizados</li>
+                  <li class="flex items-center gap-2 text-xs text-slate-700"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0"></span>Separar cases, guias e conteúdos de apoio</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>` : ''}
+
+        <!-- 4c. Emissão do TOS -->
+        ${stage.tosEmissao ? `
+        <div class="rounded-xl overflow-hidden" style="border:1px solid #D1FAE5;">
+          <button onclick="(function(btn){var body=btn.nextElementSibling;var open=body.classList.toggle('hidden');btn.querySelector('.tos-chevron').textContent=open?'▼':'▲';})(this)" class="w-full flex items-center justify-between px-4 py-3 text-left" style="background:#ECFDF5;">
+            <span class="text-xs font-semibold" style="color:#065F46;">📝 Emissão do TOS</span>
+            <span class="tos-chevron text-xs" style="color:#065F46;">▼</span>
+          </button>
+          <div class="hidden bg-white divide-y divide-slate-100">
+
+            <!-- Via HubSpot -->
+            <div class="px-4 py-4 space-y-3">
+              <p class="text-xs font-semibold text-slate-700">1. Via HubSpot</p>
+              <div>
+                <p class="text-xs text-slate-500 mb-1">Para planos:</p>
+                <div class="flex flex-wrap gap-1.5">
+                  ${['MAU START','MAU BUSINESS','MAU ENTERPRISE LITE','MAU+IA START','MAU+IA BUSINESS','MAU+IA ENTERPRISE LITE'].map(p =>
+                    `<span class="text-xs font-medium px-2 py-0.5 rounded-full" style="background:#ECFDF5;color:#065F46;border:1px solid #A7F3D0;">${p}</span>`
+                  ).join('')}
+                </div>
+              </div>
+              <div class="flex flex-col gap-2">
+                <a href="https://drive.google.com/file/d/1ecc5oNQl62yc71opuNKB_YeHh0ONtUZr/view?usp=sharing" target="_blank" rel="noopener" class="flex items-center gap-2 rounded-lg px-3 py-2.5 text-xs font-medium transition-colors" style="background:#ECFDF5;color:#065F46;border:1px solid #A7F3D0;" onmouseover="this.style.background='#D1FAE5'" onmouseout="this.style.background='#ECFDF5'">
+                  🎬 Veja o vídeo do passo a passo <span class="ml-auto">↗</span>
+                </a>
+                <a href="https://docs.google.com/document/d/1WZXPibT-NIZ7Bqh_AqXEdMa7XQs0OyU8VToWB3Xo8tA/edit?tab=t.0#heading=h.pfgik3pjcn9d" target="_blank" rel="noopener" class="flex items-center gap-2 rounded-lg px-3 py-2.5 text-xs font-medium transition-colors" style="background:#ECFDF5;color:#065F46;border:1px solid #A7F3D0;" onmouseover="this.style.background='#D1FAE5'" onmouseout="this.style.background='#ECFDF5'">
+                  📄 Conheça a documentação completa <span class="ml-auto">↗</span>
+                </a>
+              </div>
+              <p class="text-xs text-amber-700 bg-amber-50 rounded-lg px-3 py-2" style="border:1px solid #FDE68A;">⚠️ Lembre-se: o orçamento via HubSpot não permite nenhum tipo de personalização no conteúdo.</p>
+            </div>
+
+            <!-- Via Netlex -->
+            <div class="px-4 py-4 space-y-3">
+              <p class="text-xs font-semibold text-slate-700">2. Via Netlex</p>
+              <div>
+                <p class="text-xs text-slate-500 mb-1">Para planos:</p>
+                <div class="flex flex-wrap gap-1.5">
+                  ${['MAU ENTERPRISE','DEU SIMPLES','OUTCOMES'].map(p =>
+                    `<span class="text-xs font-medium px-2 py-0.5 rounded-full" style="background:#EFF6FF;color:#1E40AF;border:1px solid #BFDBFE;">${p}</span>`
+                  ).join('')}
+                </div>
+              </div>
+              <span class="inline-flex items-center gap-2 rounded-lg px-3 py-2.5 text-xs font-medium" style="background:#F1F5F9;color:#94A3B8;border:1px solid #E2E8F0;">📄 Documentação — link em breve</span>
+            </div>
+
+          </div>
+        </div>` : ''}
+
+        <!-- 4d. Fluxo de Perda por FUP -->
+        ${stage.fupFlow ? `
+        <div class="rounded-xl overflow-hidden" style="border:1px solid #FCA5A5;">
+          <button onclick="(function(btn){var body=btn.nextElementSibling;var open=body.classList.toggle('hidden');btn.querySelector('.fup-chevron').textContent=open?'▼':'▲';})(this)" class="w-full flex items-center justify-between px-4 py-3 text-left" style="background:#FEF2F2;">
+            <span class="text-xs font-semibold text-red-700">⚠️ Fluxo de Perda Automática por Falta de FUP</span>
+            <span class="fup-chevron text-xs text-red-400">▼</span>
+          </button>
+          <div class="hidden bg-white divide-y divide-slate-100">
+
+            <!-- Critérios de entrada -->
+            <div class="px-4 py-4 space-y-3">
+              <p class="text-xs font-semibold text-slate-700">📋 Critérios para entrar no fluxo</p>
+              <p class="text-xs text-slate-500 leading-relaxed">O deal precisa estar em: <span class="font-medium text-slate-700">Opps, Apresentação, Design de Projeto, Proposta Apresentada, Negociação, OK Formal ou Revisão de Contrato</span> — sem atividade futura agendada e com última interação mais antiga que o limite do segmento:</p>
+              <div class="grid grid-cols-2 gap-2">
+                <div class="rounded-lg px-3 py-2.5 text-xs" style="background:#FEF2F2;border:1px solid #FCA5A5;">
+                  <p class="font-semibold text-red-700 mb-1">🏢 Small <span class="font-normal text-slate-500">(1–49 func.)</span></p>
+                  <p class="text-slate-600">Mais de <strong>3 dias</strong> sem atividade</p>
+                  <p class="text-slate-500 mt-0.5">Aviso <strong>1 dia</strong> antes da perda</p>
+                </div>
+                <div class="rounded-lg px-3 py-2.5 text-xs" style="background:#FEF2F2;border:1px solid #FCA5A5;">
+                  <p class="font-semibold text-red-700 mb-1">🏙️ Mid <span class="font-normal text-slate-500">(50–249 func.)</span></p>
+                  <p class="text-slate-600">Mais de <strong>5 dias</strong> sem atividade</p>
+                  <p class="text-slate-500 mt-0.5">Aviso <strong>2 dias</strong> antes da perda</p>
+                </div>
+                <div class="rounded-lg px-3 py-2.5 text-xs" style="background:#FEF2F2;border:1px solid #FCA5A5;">
+                  <p class="font-semibold text-red-700 mb-1">🏛️ Large <span class="font-normal text-slate-500">(250–999 func.)</span></p>
+                  <p class="text-slate-600">Mais de <strong>10 dias</strong> sem atividade</p>
+                  <p class="text-slate-500 mt-0.5">Aviso <strong>2 dias</strong> antes da perda</p>
+                </div>
+                <div class="rounded-lg px-3 py-2.5 text-xs" style="background:#FEF2F2;border:1px solid #FCA5A5;">
+                  <p class="font-semibold text-red-700 mb-1">🌐 Enterprise <span class="font-normal text-slate-500">(1000+ func.)</span></p>
+                  <p class="text-slate-600">Mais de <strong>10 dias</strong> sem atividade</p>
+                  <p class="text-slate-500 mt-0.5">Aviso <strong>2 dias</strong> antes da perda</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Alerta ao vendedor -->
+            <div class="px-4 py-4 space-y-2">
+              <p class="text-xs font-semibold text-slate-700">🔔 Alerta ao vendedor</p>
+              <p class="text-xs text-slate-500">Um alerta é disparado via HubSpot informando que o negócio está sem atividades e corre risco de ser perdido.</p>
+              <div class="rounded-lg px-3 py-2.5 text-xs italic text-slate-600 leading-relaxed" style="background:#FFFBEB;border:1px solid #FDE68A;">
+                "Olá, [Seu Nome]! O negócio <strong>[Nome do Negócio]</strong> está sem atividades e poderá ser perdido [amanhã / em 2 dias] por <strong>Falta de Follow-up (FUP)</strong>. Agende uma tarefa para evitar a perda."
+              </div>
+            </div>
+
+            <!-- Coordenação + desfechos -->
+            <div class="px-4 py-4 space-y-3">
+              <button onclick="(function(btn){var body=btn.nextElementSibling;var open=body.classList.toggle('hidden');btn.querySelector('.coord-chev').textContent=open?'▼':'▲';})(this)" class="w-full flex items-center justify-between text-left">
+                <p class="text-xs font-semibold text-slate-700">📣 Como a coordenação será avisada?</p>
+                <span class="coord-chev text-xs text-slate-400">▼</span>
+              </button>
+              <div class="hidden space-y-1.5 text-xs text-slate-600">
+                <p>Após 2 dias da notificação ao vendedor, o deal é enviado via <strong>Slack e e-mail</strong> para a coordenação.</p>
+                <p>Após esse período, o deal é movido automaticamente para <strong>Perda</strong>.</p>
+              </div>
+              <div class="space-y-2 pt-1">
+                <div class="flex gap-2 rounded-lg px-3 py-2.5 text-xs" style="background:#F0FDF4;border:1px solid #BBF7D0;">
+                  <span class="text-green-500 flex-shrink-0">✅</span>
+                  <p class="text-slate-600">Se houver nova atividade registrada no período → negócio <strong class="text-green-700">sai do fluxo</strong>.</p>
+                </div>
+                <div class="flex gap-2 rounded-lg px-3 py-2.5 text-xs" style="background:#FEF2F2;border:1px solid #FCA5A5;">
+                  <span class="text-red-400 flex-shrink-0">❌</span>
+                  <p class="text-slate-600">Se não houver nenhuma atividade → negócio marcado como <strong class="text-red-700">Perdido — "Falta de Follow-up (FUP)"</strong>.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- O que conta como atividade -->
+            <div class="px-4 py-4 space-y-2">
+              <p class="text-xs font-semibold text-slate-700">📌 O que conta como atividade no HubSpot?</p>
+              <div class="flex flex-wrap gap-1.5">
+                ${['📧 E-mails enviados ou recebidos','🤝 Reuniões realizadas','📞 Chamadas registradas','✅ Tarefas concluídas'].map(a =>
+                  `<span class="text-xs px-2.5 py-1 rounded-full font-medium" style="background:#F0FDF4;color:#166534;border:1px solid #BBF7D0;">${a}</span>`
+                ).join('')}
+              </div>
+              <p class="text-xs text-amber-700 bg-amber-50 rounded-lg px-3 py-2 mt-1" style="border:1px solid #FDE68A;">⚠️ Criar uma tarefa futura <strong>não atualiza</strong> a data da última atividade. É preciso <strong>concluir a tarefa</strong> para que a data seja atualizada.</p>
+              <p class="text-xs text-slate-500 pt-1">Um negócio pode <strong>entrar no fluxo novamente</strong> se voltar a ficar sem atividades e sem tarefas agendadas após sair.</p>
+            </div>
+
+          </div>
+        </div>` : ''}
+
+        <!-- 4c. Contrato -->
         ${stage.contractLinks && stage.contractLinks.length > 0 ? `
         <div class="rounded-xl p-4" style="background:#F0F9FF;border:1px solid #BAE6FD;">
           <p class="text-xs font-semibold text-sky-700 mb-3">📄 Contrato</p>
@@ -1945,21 +2220,159 @@ function renderOppModal() {
 function renderOppModalSmb() {
   return `
   <div class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onclick="setState({showOppModalSmb:false})">
-    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg" onclick="event.stopPropagation()">
-      <div class="flex items-center justify-between px-6 py-5 border-b border-slate-100">
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col" onclick="event.stopPropagation()">
+      <!-- Header -->
+      <div class="flex items-center justify-between px-6 py-5 border-b border-slate-100 flex-shrink-0">
         <div class="flex items-center gap-3">
           <div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg" style="background:#EEF2FF;">💡</div>
           <div>
-            <h2 class="font-bold text-slate-800 text-base">O que é uma oportunidade em LAND SMB?</h2>
-            <p class="text-xs text-slate-400">Revenue Enablement · Blip</p>
+            <h2 class="font-bold text-slate-800 text-base">O que é uma Oportunidade em LAND SMB?</h2>
+            <p class="text-xs text-slate-400">SLAs entre Qualificação e Aquisição · Revenue Enablement</p>
           </div>
         </div>
         <button onclick="setState({showOppModalSmb:false})" class="text-slate-400 hover:text-slate-600 text-2xl leading-none ml-4 flex-shrink-0">&times;</button>
       </div>
-      <div class="px-6 py-8 flex flex-col items-center gap-3 text-center">
-        <span class="text-3xl">🚧</span>
-        <p class="text-sm font-semibold text-slate-700">Conteúdo em construção</p>
-        <p class="text-xs text-slate-400">Em breve você encontrará aqui a definição de oportunidade válida para o LAND SMB.</p>
+      <!-- Body -->
+      <div class="overflow-y-auto flex-1 px-6 py-5 space-y-5 text-sm text-slate-700">
+
+        <!-- Definição -->
+        <div class="rounded-xl p-4 space-y-2" style="background:#EEF2FF;border:1px solid #C7D2FE;">
+          <p class="text-xs font-semibold text-indigo-700 uppercase tracking-wider">📌 O que é uma OPPS?</p>
+          <p class="text-sm text-slate-700 leading-relaxed">Uma <strong>oportunidade (OPPS)</strong> é um negócio em potencial que já passou por uma etapa de filtro e está pronto para avançar no funil. É um lead que não apenas demonstrou interesse, mas que também se encaixa no perfil ideal de cliente da Blip.</p>
+          <div class="space-y-2 mt-2">
+            <div class="flex gap-2 bg-white rounded-lg px-3 py-2" style="border:1px solid #C7D2FE;">
+              <span class="text-indigo-400 flex-shrink-0 mt-0.5">·</span>
+              <p class="text-xs text-slate-600">A OPPS ainda <strong class="text-slate-700">não é garantida para a meta</strong> — será validada pelo IS/Closer na reunião com o lead.</p>
+            </div>
+            <div class="flex gap-2 bg-white rounded-lg px-3 py-2" style="border:1px solid #C7D2FE;">
+              <span class="text-indigo-400 flex-shrink-0 mt-0.5">·</span>
+              <p class="text-xs text-slate-600">Se aprovada → passa para <strong class="text-slate-700">APRESENTAÇÃO no mesmo dia da reunião</strong> (Inside Sales é o responsável pela mudança).</p>
+            </div>
+            <div class="flex gap-2 bg-white rounded-lg px-3 py-2" style="border:1px solid #C7D2FE;">
+              <span class="text-indigo-400 flex-shrink-0 mt-0.5">·</span>
+              <p class="text-xs text-slate-600">Se invalidada → vai direto para <strong class="text-slate-700">PERDA no mesmo dia</strong> (No Show / No Opp — responsabilidade do IS/Closer).</p>
+            </div>
+            <div class="flex gap-2 bg-white rounded-lg px-3 py-2" style="border:1px solid #C7D2FE;">
+              <span class="text-indigo-400 flex-shrink-0 mt-0.5">·</span>
+              <p class="text-xs text-slate-600">Se o BDR reagendar → <strong class="text-slate-700">opp permanece em OPPS</strong>. Sem reagendamento → Perda (motivo: No Show).</p>
+            </div>
+            <div class="flex gap-2 bg-white rounded-lg px-3 py-2" style="border:1px solid #C7D2FE;">
+              <span class="text-indigo-400 flex-shrink-0 mt-0.5">·</span>
+              <p class="text-xs text-slate-600">É <strong class="text-slate-700">responsabilidade do SDR/BDR</strong> tentar reverter a OPPS quando possível.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Critérios tabela -->
+        <div>
+          <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">✅ Critérios para uma Oportunidade ser Válida</p>
+          <div class="overflow-x-auto rounded-xl" style="border:1px solid #E2E8F0;">
+            <table class="w-full text-xs border-collapse">
+              <thead>
+                <tr style="background:#F8FAFC;">
+                  <th class="text-left px-3 py-2.5 font-semibold text-slate-600 border-b border-slate-200 w-2/5">Aspecto</th>
+                  <th class="text-left px-3 py-2.5 font-semibold text-slate-600 border-b border-slate-200">Preenchimento</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100">
+                <tr><td class="px-3 py-2.5 font-medium text-slate-700 align-top">Ferramenta atual</td><td class="px-3 py-2.5 text-slate-600 align-top">WhatsApp Business ou qualquer comparável</td></tr>
+                <tr style="background:#FAFAFA;"><td class="px-3 py-2.5 font-medium text-slate-700 align-top">Áreas atendidas</td><td class="px-3 py-2.5 text-slate-600 align-top">Todas — se for RH, puxar outra área para agenda ou alinhar com o Inside para seguir como qualiopps</td></tr>
+                <tr><td class="px-3 py-2.5 font-medium text-slate-700 align-top">Concorrente mapeado</td><td class="px-3 py-2.5 text-slate-600 align-top">Qualquer comparável</td></tr>
+                <tr style="background:#FAFAFA;"><td class="px-3 py-2.5 font-medium text-slate-700 align-top">Canais ativos</td><td class="px-3 py-2.5 text-slate-600 align-top">Qualquer canal nativo na Blip</td></tr>
+                <tr><td class="px-3 py-2.5 font-medium text-slate-700 align-top">Objetivo da contratação</td><td class="px-3 py-2.5 text-slate-600 align-top leading-relaxed">Ampliar presença digital · Reduzir TMR · Aumentar produtividade · Estruturar atendimento · Garantir continuidade · Aumentar conversão · Melhorar experiência · Automatizar fluxos · Obter visibilidade de dados · Aumentar segurança e controle</td></tr>
+                <tr style="background:#FAFAFA;"><td class="px-3 py-2.5 font-medium text-slate-700 align-top">Critério de decisão</td><td class="px-3 py-2.5 text-slate-600 align-top leading-relaxed">Orçamento · Simplicidade · Integrações · ROI · Escalabilidade · Canais suportados · IA e PLN · Automação · Handoff · Suporte · CS · Segurança · Uptime · Curva de aprendizado · Dashboards · Cases · Reputação</td></tr>
+                <tr><td class="px-3 py-2.5 font-medium text-slate-700 align-top">Desafios mapeados</td><td class="px-3 py-2.5 text-slate-600 align-top leading-relaxed">Baixo alcance · Demora nas respostas · Volume alto · Desorganização · Atendimento duplicado · Perda de receita · Processos manuais · Dificuldade em mensurar · Uso inseguro do canal</td></tr>
+                <tr style="background:#FAFAFA;"><td class="px-3 py-2.5 font-medium text-slate-700 align-top">Potencial (conversas/mês)</td><td class="px-3 py-2.5 text-slate-600 align-top">801–2.000 · 2.001–5.000 · 5.001–10.000 · +10.001</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Cargo por tamanho e origem -->
+        <div>
+          <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">👤 Cargo válido por tamanho e origem</p>
+          <div class="space-y-2">
+            <div class="rounded-xl px-4 py-3 space-y-1" style="background:#FFF7ED;border:1px solid #FED7AA;">
+              <p class="text-xs font-semibold text-orange-700">🟠 OUTBOUND</p>
+              <p class="text-xs text-slate-600"><strong>Small (20–49 func.) e Mid:</strong> exige qualificação de pelo menos uma pessoa com cargo de <strong>liderança</strong>.</p>
+              <p class="text-xs text-slate-600"><strong>Large e Enterprise:</strong> cargo de analista para cima — sem restrição.</p>
+            </div>
+            <div class="rounded-xl px-4 py-3 space-y-1" style="background:#EFF6FF;border:1px solid #BFDBFE;">
+              <p class="text-xs font-semibold text-blue-700">🔵 INBOUND</p>
+              <p class="text-xs text-slate-600"><strong>Small e Mid:</strong> analista para cima + expectativa de contratação em até <strong>3 meses</strong> (perguntar de forma aberta).</p>
+              <p class="text-xs text-slate-600"><strong>Large e Enterprise:</strong> analista para cima + expectativa de até <strong>12 meses</strong>.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timing e Budget -->
+        <div class="grid grid-cols-2 gap-3">
+          <div class="rounded-xl p-4" style="background:#F0FDF4;border:1px solid #BBF7D0;">
+            <p class="text-xs font-semibold text-green-700 mb-2">⏱ Timing</p>
+            <ul class="text-xs text-slate-600 space-y-1">
+              <li><strong>Small:</strong> 3 meses</li>
+              <li><strong>Mid:</strong> 6 meses</li>
+              <li><strong>Large e Enterprise:</strong> 12 meses</li>
+            </ul>
+          </div>
+          <div class="rounded-xl p-4" style="background:#FFFBEB;border:1px solid #FDE68A;">
+            <p class="text-xs font-semibold text-amber-700 mb-2">💰 Budget mínimo</p>
+            <p class="text-xs text-slate-600"><strong>Small:</strong> validar R$ 3.000</p>
+          </div>
+        </div>
+
+        <!-- Casos especiais -->
+        <div>
+          <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">⚠️ Casos Especiais</p>
+          <div class="space-y-2">
+
+            <div class="rounded-xl overflow-hidden" style="border:1px solid #E2E8F0;">
+              <button onclick="(function(btn){var b=btn.nextElementSibling;var o=b.classList.toggle('hidden');btn.querySelector('.opp-chev').textContent=o?'▼':'▲';})(this)" class="w-full flex items-center justify-between px-4 py-2.5 text-left bg-slate-50">
+                <span class="text-xs font-semibold text-slate-600">📲 Disparo Ativo e WhatsApp</span>
+                <span class="opp-chev text-xs text-slate-400">▼</span>
+              </button>
+              <div class="hidden px-4 py-3 text-xs text-slate-600 space-y-1.5 bg-white">
+                <p>Se mensagens ativas representarem <strong>mais de 50% do total</strong>, o BDR precisa informar o <strong>preço da conversa de marketing</strong>.</p>
+                <p>Verificar se o lead conhece a diferença entre <strong>WhatsApp Business e WhatsApp Business API</strong>. Se não souber, o BDR deve explicar.</p>
+              </div>
+            </div>
+
+            <div class="rounded-xl overflow-hidden" style="border:1px solid #E2E8F0;">
+              <button onclick="(function(btn){var b=btn.nextElementSibling;var o=b.classList.toggle('hidden');btn.querySelector('.opp-chev2').textContent=o?'▼':'▲';})(this)" class="w-full flex items-center justify-between px-4 py-2.5 text-left bg-slate-50">
+                <span class="text-xs font-semibold text-slate-600">🏛️ Empresa Gov ou Licitação</span>
+                <span class="opp-chev2 text-xs text-slate-400">▼</span>
+              </button>
+              <div class="hidden px-4 py-3 text-xs text-slate-600 space-y-1.5 bg-white">
+                <p>O time SMB <strong>não trabalha com licitações</strong>. Perguntar ao lead se pode contratar a Blip diretamente e aceitar nossos Termos de Serviço sem alterações.</p>
+                <p>Se aceitar → OPP pode ser criada. Se não → perder por <em>No prospect Licitação</em> e encaminhar ao time de parcerias.</p>
+                <p>Se o alinhamento não for feito, o time de vendas pode registrar como <em>No Opp</em>.</p>
+              </div>
+            </div>
+
+            <div class="rounded-xl overflow-hidden" style="border:1px solid #E2E8F0;">
+              <button onclick="(function(btn){var b=btn.nextElementSibling;var o=b.classList.toggle('hidden');btn.querySelector('.opp-chev3').textContent=o?'▼':'▲';})(this)" class="w-full flex items-center justify-between px-4 py-2.5 text-left bg-slate-50">
+                <span class="text-xs font-semibold text-slate-600">🏢 Empresa de Agência</span>
+                <span class="opp-chev3 text-xs text-slate-400">▼</span>
+              </button>
+              <div class="hidden px-4 py-3 text-xs text-slate-600 space-y-1.5 bg-white">
+                <p>Descobrir se a contratação é para a agência ou para um de seus clientes.</p>
+                <p>Se for para cliente e a agência não revelar o nome: deal no formato <strong>"empresa xpto | Agência xyz"</strong> → alinhar com IS como <em>qualiopps</em>.</p>
+                <p>Se não puder revelar o cliente, criar <em>qualiopps</em> com nome fictício no HubSpot: <strong>"nome fictício | Agência xyz"</strong>.</p>
+                <p>Sempre marcar na roleta correta (Small, Mid, Large, Enterprise) conforme o número de funcionários do cliente final.</p>
+                <p>Quando a agência abrir o nome do cliente: se já houver BDR trabalhando (SLA 90 dias), transferir imediatamente. Se houver IS envolvido, passar o deal para ele.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Nota de registro -->
+        <div class="rounded-xl px-4 py-3 text-xs text-slate-600 leading-relaxed" style="background:#F8FAFC;border:1px solid #E2E8F0;">
+          <p class="font-semibold text-slate-700 mb-1">📋 Lembrete de Registro no HubSpot</p>
+          <p>Tudo o que é feito na qualificação e aquisição precisa ser registrado no HubSpot (ligações, e-mails, mensagens e reuniões). O registro é a prova de que o processo está correto e a oportunidade é legítima.</p>
+          <p class="mt-1 text-slate-500 italic">Caso não tenha registro de qualificação mas tenha de aquisição, a aquisição fica com o peso da decisão — e vice-versa.</p>
+        </div>
+
       </div>
     </div>
   </div>`;
@@ -2415,7 +2828,27 @@ function openHsStageModal(s) {
   document.getElementById('hs-fields-smb').innerHTML = fmt(s.fieldsSMB);
   document.getElementById('hs-fields-macc').innerHTML = fmt(s.fieldsMAcc);
   document.getElementById('hs-fields-stacc').innerHTML = fmt(s.fieldsStAcc);
-  document.getElementById('hs-auto-smb').innerHTML = fmtAuto(s.autoSMB);
+  const fupHtml = s.fupFlow ? `
+    <div style="margin-top:10px;border-radius:10px;overflow:hidden;border:1px solid #FCA5A5;">
+      <button onclick="(function(btn){var b=btn.nextElementSibling;var o=b.classList.toggle('hidden');btn.querySelector('.fup-hs-chev').textContent=o?'▼':'▲';})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#FEF2F2;border:none;cursor:pointer;text-align:left;">
+        <span style="font-size:11px;font-weight:700;color:#B91C1C;">⚠️ Fluxo de Perda Automática por Falta de FUP</span>
+        <span class="fup-hs-chev" style="font-size:11px;color:#EF4444;">▼</span>
+      </button>
+      <div class="hidden" style="background:#fff;padding:10px 12px;font-size:11px;color:#475569;line-height:1.6;">
+        <p style="margin-bottom:6px;">Deal sem atividade futura agendada e com última interação mais antiga que o limite do segmento:</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px;">
+          <div style="border-radius:6px;padding:6px 8px;background:#FEF2F2;border:1px solid #FCA5A5;"><strong style="color:#B91C1C;">Small</strong> (1–49): +3 dias · aviso 1d antes</div>
+          <div style="border-radius:6px;padding:6px 8px;background:#FEF2F2;border:1px solid #FCA5A5;"><strong style="color:#B91C1C;">Mid</strong> (50–249): +5 dias · aviso 2d antes</div>
+          <div style="border-radius:6px;padding:6px 8px;background:#FEF2F2;border:1px solid #FCA5A5;"><strong style="color:#B91C1C;">Large</strong> (250–999): +10 dias · aviso 2d antes</div>
+          <div style="border-radius:6px;padding:6px 8px;background:#FEF2F2;border:1px solid #FCA5A5;"><strong style="color:#B91C1C;">Enterprise</strong> (1000+): +10 dias · aviso 2d antes</div>
+        </div>
+        <p style="margin-bottom:4px;"><strong>Após o aviso:</strong> 2 dias depois a coordenação recebe notificação via Slack e e-mail.</p>
+        <p style="margin-bottom:6px;">Se não houver nova atividade → deal marcado como <strong>Perdido — "Falta de Follow-up (FUP)"</strong>.</p>
+        <p style="background:#FFFBEB;border:1px solid #FDE68A;border-radius:6px;padding:6px 8px;margin-bottom:4px;">⚠️ <strong>Criar tarefa futura não atualiza a última atividade.</strong> Só tarefas concluídas, e-mails, reuniões ou chamadas registradas contam.</p>
+        <p style="color:#64748B;">Um deal pode entrar no fluxo novamente se voltar a ficar sem atividades após sair.</p>
+      </div>
+    </div>` : '';
+  document.getElementById('hs-auto-smb').innerHTML = (s.fupFlow && (!s.autoSMB || s.autoSMB === '—') ? '' : fmtAuto(s.autoSMB)) + fupHtml;
   document.getElementById('hs-auto-macc').innerHTML = fmtAuto(s.autoMAcc);
   document.getElementById('hs-auto-stacc').innerHTML = fmtAuto(s.autoStAcc);
   const modal = document.getElementById('hs-stage-modal');
