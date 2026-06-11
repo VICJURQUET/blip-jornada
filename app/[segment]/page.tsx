@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getSegment } from '@/data/index'
-import type { Stage, Phase } from '@/data/types'
+import type { Stage, Phase, SellerRoleBlock } from '@/data/types'
 import AcionamentoModal from '@/components/AcionamentoModal'
 import BigModal from '@/components/BigModal'
 
@@ -19,6 +19,104 @@ const segmentAccent: Record<string, { header: string; btn: string; ring: string 
   smb:   { header: 'from-blue-700 to-blue-500',   btn: 'bg-blue-600 hover:bg-blue-700',   ring: 'ring-blue-500' },
   macc:  { header: 'from-purple-700 to-purple-500', btn: 'bg-purple-600 hover:bg-purple-700', ring: 'ring-purple-500' },
   stacc: { header: 'from-teal-700 to-teal-500',   btn: 'bg-teal-600 hover:bg-teal-700',   ring: 'ring-teal-500' },
+}
+
+const categoryColors: Record<string, { bg: string; border: string; badge: string; dot: string }> = {
+  pink:   { bg: 'bg-pink-50',   border: 'border-pink-200',   badge: 'bg-pink-100 text-pink-700',   dot: 'bg-pink-400' },
+  blue:   { bg: 'bg-blue-50',   border: 'border-blue-200',   badge: 'bg-blue-100 text-blue-700',   dot: 'bg-blue-400' },
+  green:  { bg: 'bg-green-50',  border: 'border-green-200',  badge: 'bg-green-100 text-green-700',  dot: 'bg-green-400' },
+  amber:  { bg: 'bg-amber-50',  border: 'border-amber-200',  badge: 'bg-amber-100 text-amber-700',  dot: 'bg-amber-400' },
+  orange: { bg: 'bg-orange-50', border: 'border-orange-200', badge: 'bg-orange-100 text-orange-700', dot: 'bg-orange-400' },
+  purple: { bg: 'bg-purple-50', border: 'border-purple-200', badge: 'bg-purple-100 text-purple-700', dot: 'bg-purple-400' },
+}
+
+function SellerRoleRich({ blocks }: { blocks: SellerRoleBlock[] }) {
+  return (
+    <div className="space-y-4">
+      {blocks.map((block, i) => {
+        if (block.type === 'section') {
+          return (
+            <div key={i} className="rounded-xl border border-blue-100 bg-blue-50 p-4">
+              <p className="text-xs font-bold text-blue-700 uppercase tracking-wide mb-1">{block.title}</p>
+              {block.subtitle && <p className="text-xs text-slate-600 mb-3 leading-relaxed">{block.subtitle}</p>}
+              {block.items && (
+                <ul className="space-y-1.5">
+                  {block.items.map((item, j) => (
+                    <li key={j} className="flex items-center gap-2 text-xs text-slate-700">
+                      <span className="w-1.5 h-1.5 rounded-full bg-blue-400 flex-shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          )
+        }
+
+        if (block.type === 'fields') {
+          return (
+            <div key={i} className="rounded-xl border border-slate-200 bg-white p-4">
+              <p className="text-xs font-bold text-slate-700 uppercase tracking-wide mb-1">{block.title}</p>
+              {block.subtitle && <p className="text-xs text-slate-500 mb-3">{block.subtitle}</p>}
+              {block.fields && (
+                <div className="space-y-1">
+                  {block.fields.map((field, j) => (
+                    <div key={j} className={`flex items-center gap-2 py-1.5 border-b border-slate-100 last:border-0 ${field.indent ? 'pl-4' : ''}`}>
+                      <span className="text-xs font-medium text-slate-600 flex-shrink-0">{field.label}</span>
+                      <span className="flex-1 h-px border-b border-dashed border-slate-200" />
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )
+        }
+
+        if (block.type === 'categories' && block.categories) {
+          return (
+            <div key={i} className="rounded-xl border border-slate-200 bg-white p-4">
+              <p className="text-xs font-bold text-slate-700 uppercase tracking-wide mb-1">{block.title}</p>
+              {block.subtitle && <p className="text-xs text-slate-500 mb-3 leading-relaxed">{block.subtitle}</p>}
+              <div className="space-y-2">
+                {block.categories.map((cat, j) => {
+                  const c = categoryColors[cat.color] ?? categoryColors['blue']
+                  return (
+                    <div key={j} className={`rounded-lg border ${c.border} ${c.bg} p-3`}>
+                      <div className="flex items-center gap-2 mb-1.5">
+                        <span className={`w-2 h-2 rounded-full flex-shrink-0 ${c.dot}`} />
+                        <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${c.badge}`}>{cat.name}</span>
+                      </div>
+                      <p className="text-xs text-slate-700 leading-relaxed mb-1">{cat.description}</p>
+                      <p className="text-xs text-slate-500 italic leading-relaxed">
+                        <span className="font-medium not-italic text-slate-600">Ex.: </span>{cat.examples}
+                      </p>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+          )
+        }
+
+        if (block.type === 'cta') {
+          return (
+            <a
+              key={i}
+              href={block.url || '#'}
+              target={block.url ? '_blank' : undefined}
+              rel="noopener noreferrer"
+              className="flex items-center justify-between gap-3 rounded-xl border border-blue-200 bg-gradient-to-r from-blue-50 to-indigo-50 px-4 py-3 hover:border-blue-400 hover:shadow-sm transition-all group cursor-pointer"
+            >
+              <span className="text-sm font-semibold text-blue-700 group-hover:text-blue-900">{block.title}</span>
+              <span className="text-blue-400 group-hover:text-blue-600 text-base flex-shrink-0">↗</span>
+            </a>
+          )
+        }
+
+        return null
+      })}
+    </div>
+  )
 }
 
 function StageDrawer({ stage, onClose }: { stage: Stage; onClose: () => void }) {
@@ -53,6 +151,12 @@ function StageDrawer({ stage, onClose }: { stage: Stage; onClose: () => void }) 
         </div>
 
         <div className="p-6 space-y-4">
+          {stage.sellerRoleBlocks && stage.sellerRoleBlocks.length > 0 && (
+            <div className="bg-slate-50 rounded-xl p-4">
+              <p className="text-xs font-semibold text-slate-500 mb-3">📋 Papel do vendedor</p>
+              <SellerRoleRich blocks={stage.sellerRoleBlocks} />
+            </div>
+          )}
           {fields.map((f) => (
             <div key={f.label} className="bg-slate-50 rounded-xl p-4">
               <p className="text-xs font-semibold text-slate-500 mb-1.5">{f.label}</p>
@@ -79,6 +183,24 @@ function StageDrawer({ stage, onClose }: { stage: Stage; onClose: () => void }) 
                     {m}
                   </span>
                 ))}
+              </div>
+            </div>
+          )}
+
+          {stage.externalTools && stage.externalTools.length > 0 && (
+            <div className="bg-slate-50 rounded-xl p-4">
+              <p className="text-xs font-semibold text-slate-500 mb-3">🛠️ Ferramentas de apoio</p>
+              <div className="space-y-2">
+                {stage.externalTools.map((tool) => {
+                  const [name, ...descParts] = tool.split(' — ')
+                  const desc = descParts.join(' — ')
+                  return (
+                    <div key={name} className="bg-white rounded-lg p-3 border border-slate-100">
+                      <p className="text-xs font-semibold text-slate-700">{name}</p>
+                      {desc && <p className="text-xs text-slate-500 mt-0.5 leading-relaxed">{desc}</p>}
+                    </div>
+                  )
+                })}
               </div>
             </div>
           )}

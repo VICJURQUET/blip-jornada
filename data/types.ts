@@ -1,3 +1,18 @@
+export interface SellerRoleBlock {
+  type: 'section' | 'checklist' | 'fields' | 'categories' | 'cta'
+  title: string
+  subtitle?: string
+  items?: string[]
+  fields?: { label: string; indent?: boolean }[]
+  url?: string
+  categories?: {
+    name: string
+    color: string
+    description: string
+    examples: string
+  }[]
+}
+
 export interface Stage {
   id: string
   name: string
@@ -7,6 +22,7 @@ export interface Stage {
   passTrigger?: string
   responsible?: string
   sellerRole?: string
+  sellerRoleBlocks?: SellerRoleBlock[]
   hubspotObject?: string
   hubspotStage?: string
   hubspotFields?: string
