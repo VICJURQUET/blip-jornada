@@ -43,51 +43,6 @@
 </head>
 <body class="bg-slate-50 min-h-screen">
 
-<!-- MODAL VD -->
-<div id="vd-modal" class="fixed inset-0 z-[9998] hidden items-center justify-center p-4" style="background:rgba(0,0,0,0.5);">
-  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
-    <!-- Header -->
-    <div class="flex items-center justify-between px-6 py-5 border-b border-slate-100">
-      <div class="flex items-center gap-3">
-        <div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg" style="background:#F3EFFE;">💜</div>
-        <div>
-          <h2 class="font-bold text-slate-800 text-base">Como acionar o Value Designer</h2>
-          <p class="text-xs text-slate-400">Revenue Enablement · Blip</p>
-        </div>
-      </div>
-      <button onclick="closeVdModal()" class="text-slate-400 hover:text-slate-600 text-xl font-bold leading-none">×</button>
-    </div>
-    <!-- Body -->
-    <div class="px-6 py-5 space-y-5 text-sm text-slate-700">
-      <!-- Abertura de tickets -->
-      <div>
-        <p class="font-semibold text-slate-800 mb-3">📍 Abertura de tickets:</p>
-        <ol class="space-y-2 list-none">
-          <li class="flex gap-2"><span class="flex-shrink-0 w-5 h-5 rounded-full text-xs font-bold flex items-center justify-center text-white" style="background:#7C3AED;">1</span><span>Acesse a tela do <strong>Negócio</strong> relacionada ao acionamento;</span></li>
-          <li class="flex gap-2"><span class="flex-shrink-0 w-5 h-5 rounded-full text-xs font-bold flex items-center justify-center text-white" style="background:#7C3AED;">2</span><span>Em <strong>"Manuais"</strong> pesquise por <strong>"[BRASIL] Acionamento [VD]"</strong> para visualizar o formulário;</span></li>
-          <li class="flex gap-2"><span class="flex-shrink-0 w-5 h-5 rounded-full text-xs font-bold flex items-center justify-center text-white" style="background:#7C3AED;">3</span><span>Selecione o manual <strong>"[BRASIL] Acionamento [VD]"</strong>;</span></li>
-          <li class="flex gap-2"><span class="flex-shrink-0 w-5 h-5 rounded-full text-xs font-bold flex items-center justify-center text-white" style="background:#7C3AED;">4</span><span>Preencha os campos solicitados;</span></li>
-        </ol>
-        <p class="mt-3 text-slate-500 text-xs bg-slate-50 rounded-lg px-3 py-2">Pronto, um ticket para o acionamento será criado automaticamente.</p>
-      </div>
-      <!-- Links -->
-      <div class="space-y-2">
-        <p class="font-semibold text-slate-800">📃 Mais detalhes em:</p>
-        <a href="https://docs.google.com/document/d/1hPjKQqxnx8nChkhssAAvhKouMvC_jveSLYLo6VvCduQ/edit?usp=sharing" target="_blank" rel="noopener" class="flex items-start gap-2 rounded-xl px-4 py-3 border border-purple-100 hover:border-purple-300 hover:bg-purple-50 transition-colors" style="background:#FAFAFF;">
-          <span class="text-base flex-shrink-0">📄</span>
-          <span class="text-xs leading-relaxed"><strong class="text-purple-700">Documento do procedimento de acionamento do VD</strong><br><span class="text-slate-400">Detalhes completos do processo</span></span>
-          <span class="ml-auto text-purple-400 flex-shrink-0 text-xs">↗</span>
-        </a>
-        <a href="https://drive.google.com/file/d/1FQoejg5N9QWO4zM_PslvSr-CR9HdFil8/view" target="_blank" rel="noopener" class="flex items-start gap-2 rounded-xl px-4 py-3 border border-purple-100 hover:border-purple-300 hover:bg-purple-50 transition-colors" style="background:#FAFAFF;">
-          <span class="text-base flex-shrink-0">🎬</span>
-          <span class="text-xs leading-relaxed"><strong class="text-purple-700">Vídeo de 2min — passo a passo de como acionar o VD pelo HubSpot</strong><br><span class="text-slate-400">Tutorial em vídeo</span></span>
-          <span class="ml-auto text-purple-400 flex-shrink-0 text-xs">↗</span>
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- MODAL ETAPA HUBSPOT -->
 <div id="hs-stage-modal" class="fixed inset-0 z-[9997] hidden items-center justify-center p-4" style="background:rgba(0,0,0,0.5);" onclick="closeHsStageModal(event)">
   <div class="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] flex flex-col" onclick="event.stopPropagation()">
@@ -152,746 +107,7 @@
   </div>
 </div>
 
-<!-- MODAIS VERMELHOS -->
-<div id="modal-desq-perdidos" class="fixed inset-0 z-[9999] hidden items-center justify-center p-4" style="background:rgba(0,0,0,0.55);" onclick="if(event.target===this){closeModalDesqPerdidos()}">
-  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[92vh] flex flex-col" onclick="event.stopPropagation()">
-    <div class="flex items-center justify-between px-7 py-5 border-b border-slate-100 flex-shrink-0">
-      <div class="flex items-center gap-4">
-        <div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background:#FFE4E6;">❌</div>
-        <div>
-          <h2 class="font-bold text-slate-800 text-lg leading-tight">Desqualificados e Perdidos</h2>
-          <p class="text-xs text-slate-400 mt-0.5">Funil Land · Pipeline de Leads e Aquisição</p>
-        </div>
-      </div>
-      <button onclick="closeModalDesqPerdidos()" class="text-slate-400 hover:text-slate-600 text-2xl font-bold leading-none ml-4 flex-shrink-0">×</button>
-    </div>
-    <div class="flex border-b border-slate-100 flex-shrink-0 px-7">
-      <button id="tab-desq-btn" onclick="switchDesqTab('desq')" class="text-sm font-semibold px-4 py-3 border-b-2 border-rose-500 text-rose-600 transition-colors">🔴 Desqualificados</button>
-      <button id="tab-perd-btn" onclick="switchDesqTab('perd')" class="text-sm font-medium px-4 py-3 border-b-2 border-transparent text-slate-500 hover:text-slate-700 transition-colors">🔴 Perdidos</button>
-    </div>
-    <div class="overflow-y-auto flex-1 text-sm text-slate-700">
-
-      <!-- TAB: DESQUALIFICADOS -->
-      <div id="tab-desq" class="px-7 py-6 space-y-6">
-
-        <div class="rounded-xl p-4 text-xs leading-relaxed" style="background:#FFF1F2;border:1px solid #FECDD3;">
-          <p class="font-semibold text-rose-800 mb-1">O que são motivos de desqualificação?</p>
-          <p class="text-rose-700">Utilizados pelo time de Qualificação na Pipeline de Leads. Atribuídos ao contato ao mover para a etapa <strong>Desqualificado</strong>. Servem para estudo do processo comercial, reciclagem de leads e feedback entre qualificação, marketing e Inteligência Comercial.</p>
-        </div>
-
-        <div>
-          <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">🗂️ Clusters</p>
-          <div class="grid grid-cols-2 gap-2">
-            <div class="rounded-lg px-3 py-2.5" style="background:#FAFAFA;border:1px solid #F1F5F9;"><p class="font-semibold text-slate-700 text-xs">No-Prospect</p><p class="text-slate-500 text-xs mt-0.5">Contato inválido, perfil inadequado ou situação da empresa não aderente</p></div>
-            <div class="rounded-lg px-3 py-2.5" style="background:#FAFAFA;border:1px solid #F1F5F9;"><p class="font-semibold text-slate-700 text-xs">Maturidade</p><p class="text-slate-500 text-xs mt-0.5">Empresa sem estrutura ou preparo para adotar a solução</p></div>
-            <div class="rounded-lg px-3 py-2.5" style="background:#FAFAFA;border:1px solid #F1F5F9;"><p class="font-semibold text-slate-700 text-xs">Urgência</p><p class="text-slate-500 text-xs mt-0.5">Projeto despriorizado ou pausado no momento</p></div>
-            <div class="rounded-lg px-3 py-2.5" style="background:#FAFAFA;border:1px solid #F1F5F9;"><p class="font-semibold text-slate-700 text-xs">Budget</p><p class="text-slate-500 text-xs mt-0.5">Empresa não contratará por questões financeiras</p></div>
-            <div class="rounded-lg px-3 py-2.5" style="background:#FAFAFA;border:1px solid #F1F5F9;"><p class="font-semibold text-slate-700 text-xs">Produto</p><p class="text-slate-500 text-xs mt-0.5">Funcionalidades ausentes ou que não atenderam aos critérios</p></div>
-            <div class="rounded-lg px-3 py-2.5" style="background:#FAFAFA;border:1px solid #F1F5F9;"><p class="font-semibold text-slate-700 text-xs">Concorrente</p><p class="text-slate-500 text-xs mt-0.5">Empresa optou por um concorrente da Blip</p></div>
-            <div class="rounded-lg px-3 py-2.5" style="background:#FAFAFA;border:1px solid #F1F5F9;"><p class="font-semibold text-slate-700 text-xs">Fornecedor atual</p><p class="text-slate-500 text-xs mt-0.5">Empresa seguirá com solução própria ou fornecedor atual</p></div>
-            <div class="rounded-lg px-3 py-2.5" style="background:#FAFAFA;border:1px solid #F1F5F9;"><p class="font-semibold text-slate-700 text-xs">Conexão</p><p class="text-slate-500 text-xs mt-0.5">Prospect não respondeu após tentativas de contato</p></div>
-            <div class="rounded-lg px-3 py-2.5" style="background:#FAFAFA;border:1px solid #F1F5F9;"><p class="font-semibold text-slate-700 text-xs">Blip GO</p><p class="text-slate-500 text-xs mt-0.5">Perfil simples demais para a solução principal da Blip</p></div>
-            <div class="rounded-lg px-3 py-2.5" style="background:#FAFAFA;border:1px solid #F1F5F9;"><p class="font-semibold text-slate-700 text-xs">SLA de</p><p class="text-slate-500 text-xs mt-0.5">Lead já atendido por outra área (MAcc, SMB, Global, Parcerias…)</p></div>
-          </div>
-        </div>
-
-        <div>
-          <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">📋 Motivos de desqualificação</p>
-          <p class="text-xs text-slate-500 mb-3">Formato: <span class="font-mono bg-slate-100 px-1.5 py-0.5 rounded">[Cluster] [Motivo]</span> · Motivos marcados com <strong>*</strong> podem ser usados já na primeira etapa de contato.</p>
-          <div class="space-y-3">
-            <div class="rounded-xl overflow-hidden" style="border:1px solid #FECACA;">
-              <div class="px-4 py-2 text-xs font-bold" style="background:#FEF2F2;color:#374151;">No-Prospect</div>
-              <table class="w-full text-xs"><tbody>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700 w-2/5">Sem ponto de contato *</td><td class="px-4 py-2 text-slate-500">Prospect recebido sem informação de contato válida (e-mail, telefone, LinkedIn…)</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Modelo de negócio não aderente à Blip</td><td class="px-4 py-2 text-slate-500">Empresa opera em modelo não aderente ao Blip</td></tr>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700">Site inválido ou sem site *</td><td class="px-4 py-2 text-slate-500">Sem site válido, impossibilitando pesquisa sobre a empresa</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Cargo é estudante / autônomo / estagiário *</td><td class="px-4 py-2 text-slate-500">Cargo sem poder de decisão ou influência na contratação</td></tr>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700">Empresa encerrou a operação *</td><td class="px-4 py-2 text-slate-500">Empresa não está mais em funcionamento</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Empresa GOV *</td><td class="px-4 py-2 text-slate-500">Empresa do setor governamental</td></tr>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700">Licitação</td><td class="px-4 py-2 text-slate-500">Processo de contratação via licitação, não alinhado ao processo Blip</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Cliente *</td><td class="px-4 py-2 text-slate-500">Prospect já é cliente da Blip</td></tr>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700">Duplicada</td><td class="px-4 py-2 text-slate-500">Empresa ou deal duplicado no HubSpot</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Empresa Concorrente *</td><td class="px-4 py-2 text-slate-500">Empresa do prospect é comparável à Blip</td></tr>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700">Base Fria / somente disparos ativos</td><td class="px-4 py-2 text-slate-500">Estratégia de uso do WhatsApp API apenas para disparo para base fria</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Segmento proibido META *</td><td class="px-4 py-2 text-slate-500">Segmento não permitido pela Meta. Inbound: atender e oferecer outros canais; se insistir só no WhatsApp, desqualificar com razão "Segmento Proibido". Outbound: não prosseguir, desqualificar em "Iniciar Contato".</td></tr>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700">Queria só API da META</td><td class="px-4 py-2 text-slate-500">Prospect não quer um sistema, apenas a API Oficial da Meta</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Cliente oculto</td><td class="px-4 py-2 text-slate-500">Cliente oculto</td></tr>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700">Interesse em ser parceiro</td><td class="px-4 py-2 text-slate-500">Prospect quer ser parceiro, não cliente</td></tr>
-              </tbody></table>
-            </div>
-            <div class="rounded-xl overflow-hidden" style="border:1px solid #FED7AA;">
-              <div class="px-4 py-2 text-xs font-bold" style="background:#FFF7ED;color:#374151;">Conexão</div>
-              <table class="w-full text-xs"><tbody>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700 w-2/5">Não respondeu após cadência</td><td class="px-4 py-2 text-slate-500">Tentativas por todos os canais sem retorno</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Falta de conexão BDR/SDR</td><td class="px-4 py-2 text-slate-500">BDR/SDR ultrapassou o SLA sem contato com o prospect</td></tr>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700">Conectamos e o lead não respondeu mais</td><td class="px-4 py-2 text-slate-500">Houve primeiro contato, mas sem retorno posterior</td></tr>
-              </tbody></table>
-            </div>
-            <div class="rounded-xl overflow-hidden" style="border:1px solid #FDE68A;">
-              <div class="px-4 py-2 text-xs font-bold" style="background:#FFFBEB;color:#374151;">Urgência</div>
-              <table class="w-full text-xs"><tbody>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700 w-2/5">Está implantando outro produto agora</td><td class="px-4 py-2 text-slate-500">Prospect vai implantar outro produto no momento</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Despriorização do projeto</td><td class="px-4 py-2 text-slate-500">Projeto despriorizado sem razão informada</td></tr>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700">Pausa Temporária com Retomada Planejada</td><td class="px-4 py-2 text-slate-500">Não vai contratar agora, mas planeja retomar em X tempo</td></tr>
-              </tbody></table>
-            </div>
-            <div class="rounded-xl overflow-hidden" style="border:1px solid #BAE6FD;">
-              <div class="px-4 py-2 text-xs font-bold" style="background:#F0F9FF;color:#374151;">Concorrente</div>
-              <table class="w-full text-xs"><tbody>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700 w-2/5">Valor mínimo do plano acima do corrente</td><td class="px-4 py-2 text-slate-500">Plano mínimo da Blip acima do concorrente</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Funcionalidade</td><td class="px-4 py-2 text-slate-500">Concorrente oferece funcionalidade que a Blip não entrega</td></tr>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700">Optaram por desenvolver internamente</td><td class="px-4 py-2 text-slate-500">Prospect opta por solução interna</td></tr>
-              </tbody></table>
-            </div>
-            <div class="rounded-xl overflow-hidden" style="border:1px solid #BBF7D0;">
-              <div class="px-4 py-2 text-xs font-bold" style="background:#F0FDF4;color:#374151;">Fornecedor atual</div>
-              <table class="w-full text-xs"><tbody>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700 w-2/5">Preço do fornecedor atual mais atrativo</td><td class="px-4 py-2 text-slate-500">Prospect permanece por questão de preço</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Funcionalidade</td><td class="px-4 py-2 text-slate-500">Blip não tem funcionalidade disponível no fornecedor atual</td></tr>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700">Tempo de implantação e adaptação</td><td class="px-4 py-2 text-slate-500">Custo de troca de ferramenta é uma barreira</td></tr>
-              </tbody></table>
-            </div>
-            <div class="rounded-xl overflow-hidden" style="border:1px solid #FECDD3;">
-              <div class="px-4 py-2 text-xs font-bold" style="background:#FFF1F2;color:#374151;">Budget</div>
-              <table class="w-full text-xs"><tbody>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700 w-2/5">Sem orçamento disponível agora</td><td class="px-4 py-2 text-slate-500">Sem budget no momento, mas com interesse futuro</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Valor mínimo do plano acima do orçamento</td><td class="px-4 py-2 text-slate-500">Plano mínimo da Blip acima do orçamento do prospect</td></tr>
-              </tbody></table>
-            </div>
-            <div class="rounded-xl overflow-hidden" style="border:1px solid #E9D5FF;">
-              <div class="px-4 py-2 text-xs font-bold" style="background:#FAF5FF;color:#374151;">Maturidade</div>
-              <table class="w-full text-xs"><tbody>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700 w-2/5">Adaptação do Site</td><td class="px-4 py-2 text-slate-500">Prospect resistente a adaptar o site às políticas da Meta</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Sem estrutura para contratar Blip</td><td class="px-4 py-2 text-slate-500">Sem sistemas, pessoas ou infraestrutura para operar o produto</td></tr>
-              </tbody></table>
-            </div>
-            <div class="rounded-xl overflow-hidden" style="border:1px solid #C7D2FE;">
-              <div class="px-4 py-2 text-xs font-bold" style="background:#EEF2FF;color:#374151;">SLA de</div>
-              <table class="w-full text-xs"><tbody>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700 w-2/5">Stilingue</td><td class="px-4 py-2 text-slate-500">Prospect busca Stilingue</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Small *</td><td class="px-4 py-2 text-slate-500">Empresa no SLA de Small — apenas OTB</td></tr>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700">Mid *</td><td class="px-4 py-2 text-slate-500">Empresa no SLA de Mid — apenas OTB</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Large *</td><td class="px-4 py-2 text-slate-500">Empresa no SLA de Large — apenas OTB</td></tr>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700">Enterprise *</td><td class="px-4 py-2 text-slate-500">Empresa no SLA de Enterprise — apenas OTB</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Outro BDR/SDR ou Vendedor *</td><td class="px-4 py-2 text-slate-500">Prospect no SLA de outro SDR ou já ativo no funil do vendedor</td></tr>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700">MAcc *</td><td class="px-4 py-2 text-slate-500">Prospect no SLA de MAcc</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">SMB *</td><td class="px-4 py-2 text-slate-500">Prospect no SLA de SMB</td></tr>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700">Global *</td><td class="px-4 py-2 text-slate-500">Prospect no SLA de Global</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Parcerias *</td><td class="px-4 py-2 text-slate-500">Prospect no SLA de Parcerias</td></tr>
-              </tbody></table>
-            </div>
-            <div class="rounded-xl overflow-hidden" style="border:1px solid #99F6E4;">
-              <div class="px-4 py-2 text-xs font-bold" style="background:#F0FDFA;color:#374151;">Produto</div>
-              <table class="w-full text-xs"><tbody>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700 w-2/5">Grupo WhatsApp</td><td class="px-4 py-2 text-slate-500">Funcionalidade de Grupos não existe na Blip</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">CRM</td><td class="px-4 py-2 text-slate-500">Prospect busca um CRM</td></tr>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700">Help Desk</td><td class="px-4 py-2 text-slate-500">Prospect busca um Help Desk</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">ERP</td><td class="px-4 py-2 text-slate-500">Prospect busca um ERP</td></tr>
-              </tbody></table>
-            </div>
-            <div class="rounded-xl overflow-hidden" style="border:1px solid #FED7AA;">
-              <div class="px-4 py-2 text-xs font-bold" style="background:#FFF7ED;color:#374151;">Blip Go</div>
-              <table class="w-full text-xs"><tbody>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700 w-2/5">Caso de uso</td><td class="px-4 py-2 text-slate-500">Caso de uso simples demais para o Blip — encaminhar para Blip Go</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Valor mínimo do plano</td><td class="px-4 py-2 text-slate-500">Plano mínimo alto demais — encaminhar para Blip Go</td></tr>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700">1-19 funcionários *</td><td class="px-4 py-2 text-slate-500">Menos funcionários que a esteira Small atende — encaminhar para Blip Go</td></tr>
-              </tbody></table>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">⚡ Automações</p>
-          <div class="space-y-1.5">
-            <div class="flex gap-3 rounded-lg px-3 py-2.5" style="background:#F8FAFC;border:1px solid #E2E8F0;"><span class="font-semibold text-slate-700 text-xs w-2/5 flex-shrink-0">Empresa GOV</span><span class="text-slate-500 text-xs">Contato enviado automaticamente ao time de Parcerias</span></div>
-            <div class="flex gap-3 rounded-lg px-3 py-2.5" style="background:#F8FAFC;border:1px solid #E2E8F0;"><span class="font-semibold text-slate-700 text-xs w-2/5 flex-shrink-0">Cliente</span><span class="text-slate-500 text-xs">AM responsável notificado via Slack</span></div>
-            <div class="flex gap-3 rounded-lg px-3 py-2.5" style="background:#F8FAFC;border:1px solid #E2E8F0;"><span class="font-semibold text-slate-700 text-xs w-2/5 flex-shrink-0">Interesse em ser parceiro</span><span class="text-slate-500 text-xs">Contato enviado automaticamente ao time de Parcerias</span></div>
-            <div class="flex gap-3 rounded-lg px-3 py-2.5" style="background:#F8FAFC;border:1px solid #E2E8F0;"><span class="font-semibold text-slate-700 text-xs w-2/5 flex-shrink-0">Está implantando outro produto agora</span><span class="text-slate-500 text-xs">Notificação automática em 60 dias</span></div>
-            <div class="flex gap-3 rounded-lg px-3 py-2.5" style="background:#F8FAFC;border:1px solid #E2E8F0;"><span class="font-semibold text-slate-700 text-xs w-2/5 flex-shrink-0">Pausa Temporária com Retomada Planejada</span><span class="text-slate-500 text-xs">Notificação automática na data referenciada</span></div>
-            <div class="flex gap-3 rounded-lg px-3 py-2.5" style="background:#F8FAFC;border:1px solid #E2E8F0;"><span class="font-semibold text-slate-700 text-xs w-2/5 flex-shrink-0">Sem orçamento disponível agora</span><span class="text-slate-500 text-xs">Notificação automática em 60 dias</span></div>
-            <div class="flex gap-3 rounded-lg px-3 py-2.5" style="background:#F8FAFC;border:1px solid #E2E8F0;"><span class="font-semibold text-slate-700 text-xs w-2/5 flex-shrink-0">SLA de Stilingue</span><span class="text-slate-500 text-xs">Contato enviado ao time de Stilingue</span></div>
-            <div class="flex gap-3 rounded-lg px-3 py-2.5" style="background:#F8FAFC;border:1px solid #E2E8F0;"><span class="font-semibold text-slate-700 text-xs w-2/5 flex-shrink-0">SLA de MAcc</span><span class="text-slate-500 text-xs">Contato enviado ao time MAcc</span></div>
-            <div class="flex gap-3 rounded-lg px-3 py-2.5" style="background:#F8FAFC;border:1px solid #E2E8F0;"><span class="font-semibold text-slate-700 text-xs w-2/5 flex-shrink-0">SLA de SMB</span><span class="text-slate-500 text-xs">Contato enviado ao time SMB</span></div>
-            <div class="flex gap-3 rounded-lg px-3 py-2.5" style="background:#F8FAFC;border:1px solid #E2E8F0;"><span class="font-semibold text-slate-700 text-xs w-2/5 flex-shrink-0">SLA de Small / Mid / Large / Enterprise</span><span class="text-slate-500 text-xs">Inbound → esteira correta e roletada · Outbound → lista de esteira errada para consulta do time</span></div>
-            <div class="flex gap-3 rounded-lg px-3 py-2.5" style="background:#F8FAFC;border:1px solid #E2E8F0;"><span class="font-semibold text-slate-700 text-xs w-2/5 flex-shrink-0">SLA de Global</span><span class="text-slate-500 text-xs">Contato enviado ao time Global</span></div>
-            <div class="flex gap-3 rounded-lg px-3 py-2.5" style="background:#F8FAFC;border:1px solid #E2E8F0;"><span class="font-semibold text-slate-700 text-xs w-2/5 flex-shrink-0">SLA de Parcerias</span><span class="text-slate-500 text-xs">Contato enviado ao time de Parcerias</span></div>
-            <div class="flex gap-3 rounded-lg px-3 py-2.5" style="background:#F8FAFC;border:1px solid #E2E8F0;"><span class="font-semibold text-slate-700 text-xs w-2/5 flex-shrink-0">Blip Go (todos os motivos)</span><span class="text-slate-500 text-xs">Contato enviado ao time de Blip Go</span></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- TAB: PERDIDOS -->
-      <div id="tab-perd" class="px-7 py-6 space-y-6 hidden">
-
-        <div class="rounded-xl p-4 text-xs leading-relaxed" style="background:#FFF1F2;border:1px solid #FECDD3;">
-          <p class="font-semibold text-rose-800 mb-1">O que são motivos de perda?</p>
-          <p class="text-rose-700">Utilizados pelo time de Aquisição. Atribuídos às oportunidades ao mover para <strong>Perda</strong> no pipeline. Servem para análise do processo comercial, reciclagem e feedback entre áreas de apoio.</p>
-        </div>
-
-        <!-- Alerta FUP -->
-        <div class="rounded-xl p-4" style="background:#FFFBEB;border:1px solid #FDE68A;">
-          <p class="font-semibold text-amber-800 text-xs mb-2">⚠️ [SMB] Falta de FUP — perda automática</p>
-          <p class="text-amber-700 text-xs mb-2">Deals parados nas etapas intermediárias/finais sem próxima atividade agendada entram em perda automaticamente.</p>
-          <p class="text-amber-700 text-xs font-semibold mb-1">Etapas monitoradas: Opps · Apresentação · Design de Projeto · Proposta Apresentada · Negociação · OK Formal · Revisão de Contrato</p>
-          <div class="flex gap-3 mt-2">
-            <span class="rounded-lg px-2.5 py-1 text-xs font-semibold" style="background:#FEF3C7;color:#92400E;">Small: 3 dias</span>
-            <span class="rounded-lg px-2.5 py-1 text-xs font-semibold" style="background:#FEF3C7;color:#92400E;">Mid: 5 dias</span>
-            <span class="rounded-lg px-2.5 py-1 text-xs font-semibold" style="background:#FEF3C7;color:#92400E;">Large / Enterprise: 10 dias</span>
-          </div>
-          <p class="text-amber-600 text-xs mt-2">Alerta por e-mail: 1 dia antes (Small) · 2 dias antes (Mid, Large, Enterprise). O que conta como atividade: e-mail enviado, reunião realizada, chamada registrada, tarefa concluída, chat respondido. <strong>Agendar tarefa não conta.</strong></p>
-        </div>
-
-        <div>
-          <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">🗂️ Clusters</p>
-          <div class="grid grid-cols-2 gap-2">
-            <div class="rounded-lg px-3 py-2.5" style="background:#FAFAFA;border:1px solid #F1F5F9;"><p class="font-semibold text-slate-700 text-xs">No-show</p><p class="text-slate-500 text-xs mt-0.5">Prospect não comparece à reunião agendada com o time de Aquisição</p></div>
-            <div class="rounded-lg px-3 py-2.5" style="background:#FAFAFA;border:1px solid #F1F5F9;"><p class="font-semibold text-slate-700 text-xs">No-OPP</p><p class="text-slate-500 text-xs mt-0.5">Oportunidade agendada não atende ao SLA e é desqualificada</p></div>
-            <div class="rounded-lg px-3 py-2.5" style="background:#FAFAFA;border:1px solid #F1F5F9;"><p class="font-semibold text-slate-700 text-xs">Urgência</p><p class="text-slate-500 text-xs mt-0.5">Projeto despriorizado e não será levado adiante no momento</p></div>
-            <div class="rounded-lg px-3 py-2.5" style="background:#FAFAFA;border:1px solid #F1F5F9;"><p class="font-semibold text-slate-700 text-xs">Budget</p><p class="text-slate-500 text-xs mt-0.5">Empresa não contratará por questões financeiras</p></div>
-            <div class="rounded-lg px-3 py-2.5" style="background:#FAFAFA;border:1px solid #F1F5F9;"><p class="font-semibold text-slate-700 text-xs">Produto</p><p class="text-slate-500 text-xs mt-0.5">Funcionalidades ausentes ou que não atenderam aos critérios</p></div>
-            <div class="rounded-lg px-3 py-2.5" style="background:#FAFAFA;border:1px solid #F1F5F9;"><p class="font-semibold text-slate-700 text-xs">Concorrente</p><p class="text-slate-500 text-xs mt-0.5">Empresa optou por um concorrente da Blip</p></div>
-            <div class="rounded-lg px-3 py-2.5" style="background:#FAFAFA;border:1px solid #F1F5F9;"><p class="font-semibold text-slate-700 text-xs">Conexão</p><p class="text-slate-500 text-xs mt-0.5">Vendedor perde contato com a empresa</p></div>
-            <div class="rounded-lg px-3 py-2.5" style="background:#FAFAFA;border:1px solid #F1F5F9;"><p class="font-semibold text-slate-700 text-xs">Parcerias</p><p class="text-slate-500 text-xs mt-0.5">Perda relacionada ao time de Parcerias</p></div>
-            <div class="rounded-lg px-3 py-2.5" style="background:#FAFAFA;border:1px solid #F1F5F9;"><p class="font-semibold text-slate-700 text-xs">Blip GO</p><p class="text-slate-500 text-xs mt-0.5">Blip Go seria a melhor ferramenta para aquela empresa</p></div>
-            <div class="rounded-lg px-3 py-2.5" style="background:#FAFAFA;border:1px solid #F1F5F9;"><p class="font-semibold text-slate-700 text-xs">Questões burocráticas</p><p class="text-slate-500 text-xs mt-0.5">Discordâncias de cláusulas contratuais ou processos internos</p></div>
-          </div>
-        </div>
-
-        <div class="space-y-4">
-          <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">📋 Motivos por etapa</p>
-
-          <p class="text-xs font-semibold text-slate-600 mt-3">📍 Etapa: OPP</p>
-          <div class="space-y-2">
-            <div class="rounded-xl overflow-hidden" style="border:1px solid #FECACA;">
-              <div class="px-4 py-2 text-xs font-bold" style="background:#FEF2F2;color:#374151;">No-show</div>
-              <table class="w-full text-xs"><tbody>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700 w-2/5">Desistiu da reunião</td><td class="px-4 py-2 text-slate-500">Lead informa que não deseja mais seguir com a reunião</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Não compareceu na reunião</td><td class="px-4 py-2 text-slate-500">Lead não comparece sem avisar ao vendedor ou BDR</td></tr>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700">Remarcado mais de duas vezes</td><td class="px-4 py-2 text-slate-500">Lead já deu dois no-shows</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Vendedor esqueceu da call</td><td class="px-4 py-2 text-slate-500">Vendedor teve imprevisto e não participou da call</td></tr>
-              </tbody></table>
-            </div>
-            <div class="rounded-xl overflow-hidden" style="border:1px solid #BAE6FD;">
-              <div class="px-4 py-2 text-xs font-bold" style="background:#F0F9FF;color:#374151;">No-OPP</div>
-              <table class="w-full text-xs"><tbody>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700 w-2/5">Baixa Maturidade</td><td class="px-4 py-2 text-slate-500">Cliente sem maturidade para contratar — sem ferramentas/infraestrutura ou não quer API oficial</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Baixa volumetria/TM e não sabia o preço</td><td class="px-4 py-2 text-slate-500">Volume de conversas muito baixo para justificar a contratação</td></tr>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700">Blip não atende</td><td class="px-4 py-2 text-slate-500">Dor do lead não é resolvida pelo Blip</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Deveria ir para parcerias</td><td class="px-4 py-2 text-slate-500">Lead no SLA de parcerias</td></tr>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700">Deveria ter ido para Global</td><td class="px-4 py-2 text-slate-500">Lead sem CNPJ — empresa internacional</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Já está em negociação / Já é cliente</td><td class="px-4 py-2 text-slate-500">Lead já é cliente ou está em negociação em outro deal</td></tr>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700">Não possui site e não possui expectativa de criar</td><td class="px-4 py-2 text-slate-500">Lead sem site</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Preço é dealbreaker e não foi alinhado</td><td class="px-4 py-2 text-slate-500">Lead âncora budget fixo inferior ao plano mínimo da Blip na primeira reunião</td></tr>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700">Queria só API</td><td class="px-4 py-2 text-slate-500">Lead quer apenas a API do WhatsApp</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Políticas de segmentos da Meta</td><td class="px-4 py-2 text-slate-500">Lead em segmento não permitido pela Meta</td></tr>
-              </tbody></table>
-            </div>
-          </div>
-
-          <p class="text-xs font-semibold text-slate-600 mt-3">📍 Etapas: Apresentação e Design de Projeto</p>
-          <div class="space-y-2">
-            <div class="rounded-xl overflow-hidden" style="border:1px solid #FDE68A;">
-              <div class="px-4 py-2 text-xs font-bold" style="background:#FFFBEB;color:#374151;">Urgência</div>
-              <table class="w-full text-xs"><tbody>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700 w-2/5">Não tem time de projeto</td><td class="px-4 py-2 text-slate-500">Lead sem time para tocar o projeto</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Escopo desalinhado com a estratégia do negócio</td><td class="px-4 py-2 text-slate-500">Escopo não alinhado com objetivos da empresa — projeto despriorizado</td></tr>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700">Está implantando outro produto agora</td><td class="px-4 py-2 text-slate-500">Lead não vai contratar agora por estar implantando outro sistema</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Baixa maturidade ou interesse no tema</td><td class="px-4 py-2 text-slate-500">Lead com baixa maturidade para entender o valor da Blip</td></tr>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700">Pausa Temporária com Retomada Planejada</td><td class="px-4 py-2 text-slate-500">Lead alinha data para retomar a conversa</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Resistência a compartilhar dados</td><td class="px-4 py-2 text-slate-500">Lead não retorna e não fornece informações adicionais</td></tr>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700">Decisor não se interessou</td><td class="px-4 py-2 text-slate-500">Decisor da empresa não prioriza a contratação</td></tr>
-              </tbody></table>
-            </div>
-            <div class="rounded-xl overflow-hidden" style="border:1px solid #99F6E4;">
-              <div class="px-4 py-2 text-xs font-bold" style="background:#F0FDFA;color:#374151;">Conexão</div>
-              <table class="w-full text-xs"><tbody>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700 w-2/5">Não retorna FUP</td><td class="px-4 py-2 text-slate-500">Lead não retorna contato por nenhum canal — testados todos (ligação, e-mail, WhatsApp, tentativas do SDR e gestão)</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Champion não faz parte da empresa</td><td class="px-4 py-2 text-slate-500">Ponto de contato saiu da empresa sem deixar substituto</td></tr>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700">Não despertou interesse pela solução</td><td class="px-4 py-2 text-slate-500">Ponto de contato perdeu interesse e deixa de retornar</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Saída de vendedor e retomada não eficaz</td><td class="px-4 py-2 text-slate-500">Vendedor sai da operação e a conexão se perde na transição</td></tr>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700">Champion trocou de área</td><td class="px-4 py-2 text-slate-500">Ponto focal saiu da área que negociava e não passou outro contato</td></tr>
-              </tbody></table>
-            </div>
-            <div class="rounded-xl overflow-hidden" style="border:1px solid #BBF7D0;">
-              <div class="px-4 py-2 text-xs font-bold" style="background:#F0FDF4;color:#374151;">Produto</div>
-              <table class="w-full text-xs"><tbody>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700 w-2/5">Falta de funcionalidade</td><td class="px-4 py-2 text-slate-500">Ponto focal busca funcionalidade ou integração que a Blip não entrega</td></tr>
-              </tbody></table>
-            </div>
-          </div>
-
-          <p class="text-xs font-semibold text-slate-600 mt-3">📍 Etapas: Proposta Apresentada e Negociação</p>
-          <div class="space-y-2">
-            <div class="rounded-xl overflow-hidden" style="border:1px solid #FECDD3;">
-              <div class="px-4 py-2 text-xs font-bold" style="background:#FFF1F2;color:#374151;">Budget</div>
-              <table class="w-full text-xs"><tbody>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700 w-2/5">Custo de canal</td><td class="px-4 py-2 text-slate-500">Valor do canal torna a negociação inviável (alto volume de disparos/sessões)</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Serviço de desenvolvimento do projeto</td><td class="px-4 py-2 text-slate-500">Valor da ativação inviável (bônus insuficiente, parcelamento inadequado)</td></tr>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700">Mensalidade</td><td class="px-4 py-2 text-slate-500">Custo da mensalidade é dealbreaker</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Sem orçamento disponível agora</td><td class="px-4 py-2 text-slate-500">Lead sem budget definido para aquisição</td></tr>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700">Não temos modelo de cobrança adequado</td><td class="px-4 py-2 text-slate-500">Modelos MAU e DEU não atendem o modelo de negócio do lead</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Valor mínimo do plano</td><td class="px-4 py-2 text-slate-500">Menor plano da Blip ainda acima do budget disponível</td></tr>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700">Lead não viu retorno no investimento</td><td class="px-4 py-2 text-slate-500">Projeto grande sem alocação em plano menor para facilitar entrada</td></tr>
-              </tbody></table>
-            </div>
-            <div class="rounded-xl overflow-hidden" style="border:1px solid #C7D2FE;">
-              <div class="px-4 py-2 text-xs font-bold" style="background:#EEF2FF;color:#374151;">Concorrente</div>
-              <table class="w-full text-xs"><tbody>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700 w-2/5">Valor do plano</td><td class="px-4 py-2 text-slate-500">Lead achou o valor do plano caro e fechou com concorrente</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Valor do canal</td><td class="px-4 py-2 text-slate-500">Lead achou o valor do canal caro e fechou com concorrente</td></tr>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700">Valor da ativação</td><td class="px-4 py-2 text-slate-500">Lead achou o valor da ativação caro e fechou com concorrente</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Valor mínimo do plano</td><td class="px-4 py-2 text-slate-500">Lead achou o valor mínimo caro e fechou com concorrente</td></tr>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700">Funcionalidade / Requisitos técnicos</td><td class="px-4 py-2 text-slate-500">Concorrente tem funcionalidade que a Blip não tem</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Modelo de negócio</td><td class="px-4 py-2 text-slate-500">Modelos MAU e DEU não atendem o modelo de negócio</td></tr>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700">Fidelidade do contrato</td><td class="px-4 py-2 text-slate-500">Lead fecha com concorrente por causa da fidelidade contratual da Blip</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Decidiram manter fornecedor atual</td><td class="px-4 py-2 text-slate-500">Lead opta por manter o fornecedor atual</td></tr>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700">Optaram por desenvolver internamente</td><td class="px-4 py-2 text-slate-500">Lead opta por desenvolver solução interna</td></tr>
-              </tbody></table>
-            </div>
-          </div>
-
-          <p class="text-xs font-semibold text-slate-600 mt-3">📍 Etapas: OK Formal e Revisão de Contrato</p>
-          <div class="space-y-2">
-            <div class="rounded-xl overflow-hidden" style="border:1px solid #E9D5FF;">
-              <div class="px-4 py-2 text-xs font-bold" style="background:#FAF5FF;color:#374151;">Burocracia</div>
-              <table class="w-full text-xs"><tbody>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700 w-2/5">Perdeu RFP/Licitação</td><td class="px-4 py-2 text-slate-500">Blip perdeu a RFP ou licitação</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Empresa fechou</td><td class="px-4 py-2 text-slate-500">Empresa do deal não está mais ativa</td></tr>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700">Seguiu contratação em outra Opp</td><td class="px-4 py-2 text-slate-500">Contratação será feita por outra oportunidade</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Considerações do TOS</td><td class="px-4 py-2 text-slate-500">Jurídico da empresa não aceita o modelo de contratação via TOS</td></tr>
-              </tbody></table>
-            </div>
-          </div>
-
-          <p class="text-xs font-semibold text-slate-600 mt-3">📍 Qualquer etapa</p>
-          <div class="space-y-2">
-            <div class="rounded-xl overflow-hidden" style="border:1px solid #BBF7D0;">
-              <div class="px-4 py-2 text-xs font-bold" style="background:#F0FDF4;color:#374151;">Parcerias</div>
-              <table class="w-full text-xs"><tbody>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700 w-2/5">SLA do parceiro</td><td class="px-4 py-2 text-slate-500">Deal no SLA do projeto VAR</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Negociação com parcerias não evoluiu</td><td class="px-4 py-2 text-slate-500">Parceiro envolvido, mas negociação não evoluiu</td></tr>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700">Sem um cliente para iniciar agora</td><td class="px-4 py-2 text-slate-500">Parceiro fez indicação, mas oportunidade ainda não existe na call</td></tr>
-              </tbody></table>
-            </div>
-            <div class="rounded-xl overflow-hidden" style="border:1px solid #FED7AA;">
-              <div class="px-4 py-2 text-xs font-bold" style="background:#FFF7ED;color:#374151;">Blip Go</div>
-              <table class="w-full text-xs"><tbody>
-                <tr style="background:#FAFAFA"><td class="px-4 py-2 font-medium text-slate-700 w-2/5">Projeto simples</td><td class="px-4 py-2 text-slate-500">Projeto com mais fit para o Blip Go</td></tr>
-                <tr style="background:#FFFFFF"><td class="px-4 py-2 font-medium text-slate-700">Volumetria</td><td class="px-4 py-2 text-slate-500">Lead com volumetria para o Blip Go</td></tr>
-              </tbody></table>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">⚡ Automações</p>
-          <div class="space-y-1.5">
-            <div class="flex gap-3 rounded-lg px-3 py-2.5" style="background:#F8FAFC;border:1px solid #E2E8F0;"><span class="font-semibold text-slate-700 text-xs w-2/5 flex-shrink-0">No-show / Não compareceu à reunião</span><span class="text-slate-500 text-xs">Tarefa automática para o BDR responsável reagendar</span></div>
-            <div class="flex gap-3 rounded-lg px-3 py-2.5" style="background:#F8FAFC;border:1px solid #E2E8F0;"><span class="font-semibold text-slate-700 text-xs w-2/5 flex-shrink-0">No-show / Vendedor esqueceu da call</span><span class="text-slate-500 text-xs">Notificação no Slack para a coordenação</span></div>
-            <div class="flex gap-3 rounded-lg px-3 py-2.5" style="background:#F8FAFC;border:1px solid #E2E8F0;"><span class="font-semibold text-slate-700 text-xs w-2/5 flex-shrink-0">No-OPP / Deveria ir para Global</span><span class="text-slate-500 text-xs">Enviado para o Pipe de Global</span></div>
-            <div class="flex gap-3 rounded-lg px-3 py-2.5" style="background:#F8FAFC;border:1px solid #E2E8F0;"><span class="font-semibold text-slate-700 text-xs w-2/5 flex-shrink-0">Urgência / Está implantando outro produto</span><span class="text-slate-500 text-xs">Campo de retomada + notificação no Slack na data planejada</span></div>
-            <div class="flex gap-3 rounded-lg px-3 py-2.5" style="background:#F8FAFC;border:1px solid #E2E8F0;"><span class="font-semibold text-slate-700 text-xs w-2/5 flex-shrink-0">Urgência / Pausa Temporária com Retomada Planejada</span><span class="text-slate-500 text-xs">Notificação no Slack na data da retomada</span></div>
-            <div class="flex gap-3 rounded-lg px-3 py-2.5" style="background:#F8FAFC;border:1px solid #E2E8F0;"><span class="font-semibold text-slate-700 text-xs w-2/5 flex-shrink-0">Conexão / Saída do vendedor e retomada ineficaz</span><span class="text-slate-500 text-xs">OTB → tarefa automática para o SDR voltar a prospectar · INB → transferido para Outbound (roletar para OTB)</span></div>
-            <div class="flex gap-3 rounded-lg px-3 py-2.5" style="background:#F8FAFC;border:1px solid #E2E8F0;"><span class="font-semibold text-slate-700 text-xs w-2/5 flex-shrink-0">Conexão / Champion trocou de área</span><span class="text-slate-500 text-xs">OTB → tarefa automática para o SDR voltar a prospectar · INB → transferido para Outbound (roletar para OTB)</span></div>
-            <div class="flex gap-3 rounded-lg px-3 py-2.5" style="background:#F8FAFC;border:1px solid #E2E8F0;"><span class="font-semibold text-slate-700 text-xs w-2/5 flex-shrink-0">Produto / Falta de funcionalidade</span><span class="text-slate-500 text-xs">Notificação para a equipe de Produto</span></div>
-            <div class="flex gap-3 rounded-lg px-3 py-2.5" style="background:#F8FAFC;border:1px solid #E2E8F0;"><span class="font-semibold text-slate-700 text-xs w-2/5 flex-shrink-0">Blip Go / Projeto simples</span><span class="text-slate-500 text-xs">Transferido para o pipe do Blip Go + notificação no Slack para a Gabi</span></div>
-            <div class="flex gap-3 rounded-lg px-3 py-2.5" style="background:#F8FAFC;border:1px solid #E2E8F0;"><span class="font-semibold text-slate-700 text-xs w-2/5 flex-shrink-0">Blip Go / Volumetria</span><span class="text-slate-500 text-xs">Transferido para o pipe do Blip Go + notificação no Slack para a Gabi</span></div>
-            <div class="flex gap-3 rounded-lg px-3 py-2.5" style="background:#F8FAFC;border:1px solid #E2E8F0;"><span class="font-semibold text-slate-700 text-xs w-2/5 flex-shrink-0">Alerta de FUP — Small</span><span class="text-slate-500 text-xs">Alerta por e-mail via HubSpot 1 dia antes da perda automática</span></div>
-            <div class="flex gap-3 rounded-lg px-3 py-2.5" style="background:#F8FAFC;border:1px solid #E2E8F0;"><span class="font-semibold text-slate-700 text-xs w-2/5 flex-shrink-0">Alerta de FUP — Mid, Large, Enterprise</span><span class="text-slate-500 text-xs">Alerta por e-mail via HubSpot 2 dias antes da perda automática</span></div>
-            <div class="flex gap-3 rounded-lg px-3 py-2.5" style="background:#F8FAFC;border:1px solid #E2E8F0;"><span class="font-semibold text-slate-700 text-xs w-2/5 flex-shrink-0">Perda automática por inatividade</span><span class="text-slate-500 text-xs">Notificação no Slack quando o deal for perdido automaticamente</span></div>
-          </div>
-        </div>
-
-      </div><!-- /tab-perd -->
-    </div>
-  </div>
-</div>
-
-<div id="modal-churns" class="fixed inset-0 z-[9999] hidden items-center justify-center p-4" style="background:rgba(0,0,0,0.55);" onclick="if(event.target===this){closeModalChurns()}">
-  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] flex flex-col" onclick="event.stopPropagation()">
-    <div class="flex items-center justify-between px-7 py-6 border-b border-slate-100 flex-shrink-0">
-      <div class="flex items-center gap-4">
-        <div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background:#FFE4E6;">❌</div>
-        <div>
-          <h2 class="font-bold text-slate-800 text-lg leading-tight">Churns</h2>
-          <p class="text-xs text-slate-400 mt-0.5">Adoção · Todas as BUs</p>
-        </div>
-      </div>
-      <button onclick="closeModalChurns()" class="text-slate-400 hover:text-slate-600 text-2xl font-bold leading-none ml-4 flex-shrink-0">×</button>
-    </div>
-    <div class="overflow-y-auto flex-1 px-7 py-12 flex flex-col items-center justify-center text-center gap-4">
-      <div class="text-5xl">🚧</div>
-      <p class="font-bold text-slate-700 text-lg">Em construção</p>
-      <p class="text-slate-400 text-sm max-w-xs">Este conteúdo está sendo preparado e estará disponível em breve.</p>
-    </div>
-  </div>
-</div>
-
-<div id="modal-perdidos-expand" class="fixed inset-0 z-[9999] hidden items-center justify-center p-4" style="background:rgba(0,0,0,0.55);" onclick="if(event.target===this){closeModalPerdidosExpand()}">
-  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] flex flex-col" onclick="event.stopPropagation()">
-    <div class="flex items-center justify-between px-7 py-6 border-b border-slate-100 flex-shrink-0">
-      <div class="flex items-center gap-4">
-        <div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background:#FFE4E6;">❌</div>
-        <div>
-          <h2 class="font-bold text-slate-800 text-lg leading-tight">Perdidos</h2>
-          <p class="text-xs text-slate-400 mt-0.5">Funil Expand · Todas as BUs</p>
-        </div>
-      </div>
-      <button onclick="closeModalPerdidosExpand()" class="text-slate-400 hover:text-slate-600 text-2xl font-bold leading-none ml-4 flex-shrink-0">×</button>
-    </div>
-    <div class="overflow-y-auto flex-1 px-7 py-12 flex flex-col items-center justify-center text-center gap-4">
-      <div class="text-5xl">🚧</div>
-      <p class="font-bold text-slate-700 text-lg">Em construção</p>
-      <p class="text-slate-400 text-sm max-w-xs">Este conteúdo está sendo preparado e estará disponível em breve.</p>
-    </div>
-  </div>
-</div>
-
-<div id="modal-perdidos-impl" class="fixed inset-0 z-[9999] hidden items-center justify-center p-4" style="background:rgba(0,0,0,0.55);" onclick="if(event.target===this){closeModalPerdidosImpl()}">
-  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] flex flex-col" onclick="event.stopPropagation()">
-    <div class="flex items-center justify-between px-7 py-6 border-b border-slate-100 flex-shrink-0">
-      <div class="flex items-center gap-4">
-        <div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background:#FFE4E6;">❌</div>
-        <div>
-          <h2 class="font-bold text-slate-800 text-lg leading-tight">Perdidos</h2>
-          <p class="text-xs text-slate-400 mt-0.5">Implementação · Todas as BUs</p>
-        </div>
-      </div>
-      <button onclick="closeModalPerdidosImpl()" class="text-slate-400 hover:text-slate-600 text-2xl font-bold leading-none ml-4 flex-shrink-0">×</button>
-    </div>
-    <div class="overflow-y-auto flex-1 px-7 py-12 flex flex-col items-center justify-center text-center gap-4">
-      <div class="text-5xl">🚧</div>
-      <p class="font-bold text-slate-700 text-lg">Em construção</p>
-      <p class="text-slate-400 text-sm max-w-xs">Este conteúdo está sendo preparado e estará disponível em breve.</p>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL FORECAST · MAcc -->
-<div id="modal-forecast-macc" class="fixed inset-0 z-[9999] hidden items-center justify-center p-4" style="background:rgba(0,0,0,0.55);" onclick="if(event.target===this){closeForecastMaccModal()}">
-  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] flex flex-col" onclick="event.stopPropagation()">
-    <div class="flex items-center justify-between px-7 py-6 border-b border-slate-100 flex-shrink-0">
-      <div class="flex items-center gap-4">
-        <div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background:#FFF7ED;">📊</div>
-        <div>
-          <h2 class="font-bold text-slate-800 text-lg leading-tight">Forecast</h2>
-          <p class="text-xs text-slate-400 mt-0.5">Planilhas de forecast · MAcc</p>
-        </div>
-      </div>
-      <button onclick="closeForecastMaccModal()" class="text-slate-400 hover:text-slate-600 text-2xl font-bold leading-none ml-4 flex-shrink-0">×</button>
-    </div>
-    <div class="overflow-y-auto flex-1 px-7 py-12 flex flex-col items-center justify-center text-center gap-4">
-      <div class="text-5xl">🚧</div>
-      <p class="font-bold text-slate-700 text-lg">Em construção</p>
-      <p class="text-slate-400 text-sm max-w-xs">Este conteúdo está sendo preparado e estará disponível em breve.</p>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL ACCOUNT PLANNING · StAcc -->
-<div id="modal-account-planning" class="fixed inset-0 z-[9999] hidden items-center justify-center p-4" style="background:rgba(0,0,0,0.55);" onclick="if(event.target===this){closeAccountPlanningModal()}">
-  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] flex flex-col" onclick="event.stopPropagation()">
-    <!-- Header -->
-    <div class="flex items-center justify-between px-7 py-6 border-b border-slate-100 flex-shrink-0">
-      <div class="flex items-center gap-4">
-        <div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background:#F0FDF4;">🗺️</div>
-        <div>
-          <h2 class="font-bold text-slate-800 text-lg leading-tight">Account Planning</h2>
-          <p class="text-xs text-slate-400 mt-0.5">CRM de Gestão de Contas · StAcc</p>
-        </div>
-      </div>
-      <button onclick="closeAccountPlanningModal()" class="text-slate-400 hover:text-slate-600 text-2xl font-bold leading-none ml-4 flex-shrink-0">×</button>
-    </div>
-    <!-- Body -->
-    <div class="overflow-y-auto flex-1 px-7 py-6 space-y-7 text-sm text-slate-700">
-
-      <!-- O que é -->
-      <div class="rounded-2xl p-5" style="background:#F0FDF4;border:1px solid #BBF7D0;">
-        <p class="font-bold text-green-800 text-base mb-3">🌿 O que é Account Planning?</p>
-        <p class="text-green-900 leading-relaxed">No contexto do <strong>CRM de Gestão de Contas</strong>, o Account Planning é um objeto criado para <strong>centralizar informações relevantes e mapear iniciativas</strong> durante o gerenciamento de um cliente.</p>
-        <div class="mt-3 inline-flex items-center gap-2 bg-white rounded-xl px-4 py-2 border border-green-200">
-          <span class="text-base">✦</span>
-          <p class="text-xs font-semibold text-green-800">Organize. Mapeie. Expanda.</p>
-        </div>
-        <p class="mt-3 text-green-900 leading-relaxed">Seu objetivo central é <strong>reunir e estruturar todas as frentes estratégicas, ações e riscos</strong> de uma conta em um único lugar.</p>
-      </div>
-
-      <!-- Três pilares -->
-      <div>
-        <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-4">🏛️ Os três pilares</p>
-        <div class="space-y-3">
-
-          <div class="flex gap-4 rounded-2xl p-4 border border-slate-100" style="background:#FAFAFA;">
-            <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background:#EFF6FF;">🗺️</div>
-            <div>
-              <p class="font-bold text-slate-800">Frentes <span class="text-xs font-normal text-slate-400 ml-1">(Area)</span></p>
-              <p class="text-slate-600 mt-1 leading-relaxed">Voltado para mapear a atuação na conta, seja conquistando novos territórios ou expandindo frentes que já existem no cliente.</p>
-            </div>
-          </div>
-
-          <div class="flex gap-4 rounded-2xl p-4 border border-slate-100" style="background:#FAFAFA;">
-            <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background:#FFF7ED;">⚡</div>
-            <div>
-              <p class="font-bold text-slate-800">Ações <span class="text-xs font-normal text-slate-400 ml-1">(Action)</span></p>
-              <p class="text-slate-600 mt-1 leading-relaxed">Onde você registra os passos táticos ou estratégicos que serão realizados na gestão para atingir os objetivos estabelecidos.</p>
-            </div>
-          </div>
-
-          <div class="flex gap-4 rounded-2xl p-4 border border-slate-100" style="background:#FAFAFA;">
-            <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background:#FFF1F2;">🛡️</div>
-            <div>
-              <p class="font-bold text-slate-800">Gestão de Riscos <span class="text-xs font-normal text-slate-400 ml-1">(Risk Radar)</span></p>
-              <p class="text-slate-600 mt-1 leading-relaxed">O mapeamento de possíveis ameaças mapeadas nos clientes, que podem ser vinculadas diretamente a frentes, ações ou negócios (sejam eles abertos ou fechados).</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Link do guia -->
-      <div>
-        <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">📚 Recursos</p>
-        <a href="https://docs.google.com/presentation/d/1DaU2qZOsPO9kM6EvT7BU8ZZ_mQq5ROgN___lj4GqV14/edit?slide=id.p2#slide=id.p2" target="_blank" rel="noopener"
-          class="flex items-center gap-3 rounded-xl px-5 py-4 border border-green-100 hover:border-green-300 hover:bg-green-50 transition-colors"
-          style="background:#F0FDF4;">
-          <span class="text-xl flex-shrink-0">📑</span>
-          <div class="flex-1">
-            <p class="font-semibold text-green-800 text-sm">Guia de Uso do Account Planning</p>
-            <p class="text-xs text-slate-500 mt-0.5">Passo a passo completo para usar o objeto no CRM</p>
-          </div>
-          <span class="text-green-500 flex-shrink-0 font-bold text-sm">↗</span>
-        </a>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- MODAL FORECAST · StAcc -->
-<div id="modal-forecast-stacc" class="fixed inset-0 z-[9999] hidden items-center justify-center p-4" style="background:rgba(0,0,0,0.55);" onclick="if(event.target===this){closeForecastModal()}">
-  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] flex flex-col" onclick="event.stopPropagation()">
-    <!-- Header -->
-    <div class="flex items-center justify-between px-7 py-6 border-b border-slate-100 flex-shrink-0">
-      <div class="flex items-center gap-4">
-        <div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background:#FFF7ED;">📊</div>
-        <div>
-          <h2 class="font-bold text-slate-800 text-lg leading-tight">Forecast</h2>
-          <p class="text-xs text-slate-400 mt-0.5">Planilhas por frente comercial · StAcc</p>
-        </div>
-      </div>
-      <button onclick="closeForecastModal()" class="text-slate-400 hover:text-slate-600 text-2xl font-bold leading-none ml-4 flex-shrink-0">×</button>
-    </div>
-    <!-- Body -->
-    <div class="overflow-y-auto flex-1 px-7 py-6 space-y-4 text-sm text-slate-700">
-
-      <p class="text-slate-500 text-sm">Acesse o forecast da sua frente comercial:</p>
-
-      <a href="https://docs.google.com/spreadsheets/d/1h8--DtJSDYd-__8Sey2ivpMtMvARAYCFrlUUol8HRmk/edit?gid=372122800#gid=372122800" target="_blank" rel="noopener"
-        class="flex items-center gap-4 rounded-2xl px-5 py-4 border border-slate-100 hover:border-orange-200 hover:bg-orange-50 transition-colors"
-        style="background:#FAFAFA;">
-        <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background:#FFF7ED;">💰</div>
-        <div class="flex-1">
-          <p class="font-bold text-slate-800">StAcc — Finance</p>
-          <p class="text-xs text-slate-500 mt-0.5">Forecast da frente Finance</p>
-        </div>
-        <span class="text-orange-400 flex-shrink-0 font-bold text-sm">↗</span>
-      </a>
-
-      <a href="https://docs.google.com/spreadsheets/d/1LorT4s6PyT6nA5BoLixejRXbhz0G09wcBAlM1o6MXRU/edit?gid=372122800#gid=372122800" target="_blank" rel="noopener"
-        class="flex items-center gap-4 rounded-2xl px-5 py-4 border border-slate-100 hover:border-orange-200 hover:bg-orange-50 transition-colors"
-        style="background:#FAFAFA;">
-        <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background:#FFF7ED;">🏭</div>
-        <div class="flex-1">
-          <p class="font-bold text-slate-800">StAcc — TUO</p>
-          <p class="text-xs text-slate-500 mt-0.5">Forecast da frente TUO</p>
-        </div>
-        <span class="text-orange-400 flex-shrink-0 font-bold text-sm">↗</span>
-      </a>
-
-      <a href="https://docs.google.com/spreadsheets/d/1b5ENQ3xkKDbHsNpX9N-wtCFTQMHq3XhMsB-DHMa2TUo/edit?gid=372122800#gid=372122800" target="_blank" rel="noopener"
-        class="flex items-center gap-4 rounded-2xl px-5 py-4 border border-slate-100 hover:border-orange-200 hover:bg-orange-50 transition-colors"
-        style="background:#FAFAFA;">
-        <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background:#FFF7ED;">🌐</div>
-        <div class="flex-1">
-          <p class="font-bold text-slate-800">StAcc — GAcc</p>
-          <p class="text-xs text-slate-500 mt-0.5">Forecast da frente Global Accounts</p>
-        </div>
-        <span class="text-orange-400 flex-shrink-0 font-bold text-sm">↗</span>
-      </a>
-
-    </div>
-  </div>
-</div>
-
-<!-- LOGIN SCREEN -->
-<!-- MODAL PROCESSOS QUALIFICAÇÃO · SMB -->
-<div id="modal-proc-qualif-smb" class="fixed inset-0 z-[9998] hidden items-center justify-center p-4" style="background:rgba(0,0,0,0.5);">
-  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md">
-    <div class="flex items-center justify-between px-6 py-5 border-b border-slate-100">
-      <div class="flex items-center gap-3">
-        <div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg" style="background:#EEF2FF;">🔍</div>
-        <div>
-          <h2 class="font-bold text-slate-800 text-base">Processos Qualificação</h2>
-          <p class="text-xs text-slate-400">Pipeline de Leads · BDR · SMB</p>
-        </div>
-      </div>
-      <button onclick="document.getElementById('modal-proc-qualif-smb').classList.add('hidden');document.getElementById('modal-proc-qualif-smb').classList.remove('flex')" class="text-slate-400 hover:text-slate-600 text-xl font-bold leading-none">×</button>
-    </div>
-    <div class="px-6 py-5 space-y-4 text-sm text-slate-700">
-      <div>
-        <p class="font-semibold text-slate-800 mb-3">Prospecção e Cadência</p>
-        <p class="text-sm text-slate-600 mb-4">A prospecção é executada com foco individualizado no Contato:</p>
-        <div class="space-y-3">
-          <div class="flex gap-3 bg-slate-50 rounded-xl px-4 py-3">
-            <span class="flex-shrink-0 w-5 h-5 rounded-full text-xs font-bold flex items-center justify-center text-white" style="background:#4F46E5;">1</span>
-            <div><p class="text-xs font-semibold text-slate-800">Individualização</p><p class="text-xs text-slate-500 mt-0.5">Cada contato deve possuir sua própria cadência de atividades.</p></div>
-          </div>
-          <div class="flex gap-3 bg-slate-50 rounded-xl px-4 py-3">
-            <span class="flex-shrink-0 w-5 h-5 rounded-full text-xs font-bold flex items-center justify-center text-white" style="background:#4F46E5;">2</span>
-            <div><p class="text-xs font-semibold text-slate-800">Personalização</p><p class="text-xs text-slate-500 mt-0.5">A cadência deve ser definida com base na origem e no canal disponível de cada contato.</p></div>
-          </div>
-        </div>
-      </div>
-      <div class="pt-2 border-t border-slate-100 space-y-3">
-        <a href="https://docs.google.com/document/d/1K4R4uI3IiQhF11-sOVWPRUfcIwS_TNwqmDq0ydNIKow/edit?tab=t.0" target="_blank" rel="noopener" class="flex items-center gap-2 text-xs font-medium px-3 py-2 rounded-lg transition-colors" style="background:#EEF2FF;color:#4F46E5;border:1px solid #C7D2FE;" onmouseover="this.style.background='#E0E7FF'" onmouseout="this.style.background='#EEF2FF'">📋 Registro de atividade ↗</a>
-        <div class="text-xs text-slate-700 space-y-3">
-          <div>
-            <p class="font-semibold text-green-700 mb-1.5">✅ O que são touchpoints válidos no SLA?</p>
-            <ul class="space-y-1 text-slate-500 list-none">
-              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Print de conversas no WhatsApp;</li>
-              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Print de conversas por InMail (LinkedIn);</li>
-              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Ligações gravadas;</li>
-              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>E-mails seguidos de tentativas em outros canais, como ligação e WhatsApp (no mesmo dia do envio do e-mail);</li>
-              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Tarefas futuras com o alinhamento feito com o lead ou de tentativa futura de contato dentro do prazo de 90 dias. <span class="italic">(Apenas a tarefa futura, sem atividades recentes que comprovem um próximo passo, não garantem SLA)</span></li>
-            </ul>
-          </div>
-          <div>
-            <p class="font-semibold text-red-600 mb-1.5">❌ O que não são touchpoints válidos para SLA?</p>
-            <ul class="space-y-1 text-slate-500 list-none">
-              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Chamadas registradas como NA (não atende), caixa postal, sem nenhuma outra tentativa de contato dentro do mesmo dia e sem tarefa futura;</li>
-              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Conexão de LinkedIn (apenas a conexão por si só) sem tentativa de contato por outros canais;</li>
-              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Sequência de e-mails sem chamadas e outras tentativas ao longo dos meses;</li>
-              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Tarefas com check sem a atividade em si;</li>
-              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Registro de chamadas sem gravação e sem informação do que foi falado.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL PROCESSOS QUALIFICAÇÃO · MAcc -->
-<div id="modal-proc-qualif-macc" class="fixed inset-0 z-[9998] hidden items-center justify-center p-4" style="background:rgba(0,0,0,0.5);">
-  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md">
-    <div class="flex items-center justify-between px-6 py-5 border-b border-slate-100">
-      <div class="flex items-center gap-3">
-        <div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg" style="background:#EEF2FF;">🔍</div>
-        <div>
-          <h2 class="font-bold text-slate-800 text-base">Processos Qualificação</h2>
-          <p class="text-xs text-slate-400">Pipeline de Leads · BDR · MAcc</p>
-        </div>
-      </div>
-      <button onclick="document.getElementById('modal-proc-qualif-macc').classList.add('hidden');document.getElementById('modal-proc-qualif-macc').classList.remove('flex')" class="text-slate-400 hover:text-slate-600 text-xl font-bold leading-none">×</button>
-    </div>
-    <div class="px-6 py-5 space-y-4 text-sm text-slate-700">
-      <div>
-        <p class="font-semibold text-slate-800 mb-3">Prospecção e Cadência</p>
-        <p class="text-sm text-slate-600 mb-4">A prospecção é executada com foco individualizado no Contato:</p>
-        <div class="space-y-3">
-          <div class="flex gap-3 bg-slate-50 rounded-xl px-4 py-3">
-            <span class="flex-shrink-0 w-5 h-5 rounded-full text-xs font-bold flex items-center justify-center text-white" style="background:#4F46E5;">1</span>
-            <div><p class="text-xs font-semibold text-slate-800">Individualização</p><p class="text-xs text-slate-500 mt-0.5">Cada contato deve possuir sua própria cadência de atividades.</p></div>
-          </div>
-          <div class="flex gap-3 bg-slate-50 rounded-xl px-4 py-3">
-            <span class="flex-shrink-0 w-5 h-5 rounded-full text-xs font-bold flex items-center justify-center text-white" style="background:#4F46E5;">2</span>
-            <div><p class="text-xs font-semibold text-slate-800">Personalização</p><p class="text-xs text-slate-500 mt-0.5">A cadência deve ser definida com base na origem e no canal disponível de cada contato.</p></div>
-          </div>
-        </div>
-      </div>
-      <div class="pt-2 border-t border-slate-100 space-y-3">
-        <a href="https://docs.google.com/document/d/1K4R4uI3IiQhF11-sOVWPRUfcIwS_TNwqmDq0ydNIKow/edit?tab=t.0" target="_blank" rel="noopener" class="flex items-center gap-2 text-xs font-medium px-3 py-2 rounded-lg transition-colors" style="background:#EEF2FF;color:#4F46E5;border:1px solid #C7D2FE;" onmouseover="this.style.background='#E0E7FF'" onmouseout="this.style.background='#EEF2FF'">📋 Registro de atividade ↗</a>
-        <div class="text-xs text-slate-700 space-y-3">
-          <div>
-            <p class="font-semibold text-green-700 mb-1.5">✅ O que são touchpoints válidos no SLA?</p>
-            <ul class="space-y-1 text-slate-500 list-none">
-              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Print de conversas no WhatsApp;</li>
-              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Print de conversas por InMail (LinkedIn);</li>
-              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Ligações gravadas;</li>
-              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>E-mails seguidos de tentativas em outros canais, como ligação e WhatsApp (no mesmo dia do envio do e-mail);</li>
-            </ul>
-          </div>
-          <div>
-            <p class="font-semibold text-red-600 mb-1.5">❌ O que não são touchpoints válidos para SLA?</p>
-            <ul class="space-y-1 text-slate-500 list-none">
-              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Chamadas registradas como NA (não atende), caixa postal, sem nenhuma outra tentativa de contato dentro do mesmo dia e sem tarefa futura;</li>
-              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Conexão de LinkedIn (apenas a conexão por si só) sem tentativa de contato por outros canais;</li>
-              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Sequência de e-mails sem chamadas e outras tentativas ao longo dos meses;</li>
-              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Tarefas com check sem a atividade em si;</li>
-              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Registro de chamadas sem gravação e sem informação do que foi falado.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL PROCESSOS QUALIFICAÇÃO · StAcc -->
-<div id="modal-proc-qualif-stacc" class="fixed inset-0 z-[9998] hidden items-center justify-center p-4" style="background:rgba(0,0,0,0.5);">
-  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md">
-    <div class="flex items-center justify-between px-6 py-5 border-b border-slate-100">
-      <div class="flex items-center gap-3">
-        <div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg" style="background:#EEF2FF;">🔍</div>
-        <div>
-          <h2 class="font-bold text-slate-800 text-base">Processos Qualificação</h2>
-          <p class="text-xs text-slate-400">Pipeline de Leads · BDR · StAcc</p>
-        </div>
-      </div>
-      <button onclick="document.getElementById('modal-proc-qualif-stacc').classList.add('hidden');document.getElementById('modal-proc-qualif-stacc').classList.remove('flex')" class="text-slate-400 hover:text-slate-600 text-xl font-bold leading-none">×</button>
-    </div>
-    <div class="px-6 py-5 space-y-4 text-sm text-slate-700">
-      <div>
-        <p class="font-semibold text-slate-800 mb-3">Prospecção e Cadência</p>
-        <p class="text-sm text-slate-600 mb-4">A prospecção é executada com foco individualizado no Contato:</p>
-        <div class="space-y-3">
-          <div class="flex gap-3 bg-slate-50 rounded-xl px-4 py-3">
-            <span class="flex-shrink-0 w-5 h-5 rounded-full text-xs font-bold flex items-center justify-center text-white" style="background:#4F46E5;">1</span>
-            <div><p class="text-xs font-semibold text-slate-800">Individualização</p><p class="text-xs text-slate-500 mt-0.5">Cada contato deve possuir sua própria cadência de atividades.</p></div>
-          </div>
-          <div class="flex gap-3 bg-slate-50 rounded-xl px-4 py-3">
-            <span class="flex-shrink-0 w-5 h-5 rounded-full text-xs font-bold flex items-center justify-center text-white" style="background:#4F46E5;">2</span>
-            <div><p class="text-xs font-semibold text-slate-800">Personalização</p><p class="text-xs text-slate-500 mt-0.5">A cadência deve ser definida com base na origem e no canal disponível de cada contato.</p></div>
-          </div>
-        </div>
-      </div>
-      <div class="pt-2 border-t border-slate-100 space-y-3">
-        <a href="https://docs.google.com/document/d/1K4R4uI3IiQhF11-sOVWPRUfcIwS_TNwqmDq0ydNIKow/edit?tab=t.0" target="_blank" rel="noopener" class="flex items-center gap-2 text-xs font-medium px-3 py-2 rounded-lg transition-colors" style="background:#EEF2FF;color:#4F46E5;border:1px solid #C7D2FE;" onmouseover="this.style.background='#E0E7FF'" onmouseout="this.style.background='#EEF2FF'">📋 Registro de atividade ↗</a>
-        <div class="text-xs text-slate-700 space-y-3">
-          <div>
-            <p class="font-semibold text-green-700 mb-1.5">✅ O que são touchpoints válidos no SLA?</p>
-            <ul class="space-y-1 text-slate-500 list-none">
-              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Print de conversas no WhatsApp;</li>
-              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Print de conversas por InMail (LinkedIn);</li>
-              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Ligações gravadas;</li>
-              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>E-mails seguidos de tentativas em outros canais, como ligação e WhatsApp (no mesmo dia do envio do e-mail);</li>
-            </ul>
-          </div>
-          <div>
-            <p class="font-semibold text-red-600 mb-1.5">❌ O que não são touchpoints válidos para SLA?</p>
-            <ul class="space-y-1 text-slate-500 list-none">
-              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Chamadas registradas como NA (não atende), caixa postal, sem nenhuma outra tentativa de contato dentro do mesmo dia e sem tarefa futura;</li>
-              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Conexão de LinkedIn (apenas a conexão por si só) sem tentativa de contato por outros canais;</li>
-              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Sequência de e-mails sem chamadas e outras tentativas ao longo dos meses;</li>
-              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Tarefas com check sem a atividade em si;</li>
-              <li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>Registro de chamadas sem gravação e sem informação do que foi falado.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<div id="static-modals-root"></div>
 
 <div id="login-screen" class="fixed inset-0 z-[9999] flex items-center justify-center bg-gradient-to-br from-blip-900 via-blip-700 to-blip-500">
   <div class="w-full max-w-sm mx-4">
@@ -989,6 +205,609 @@
 </div>
 
 <script>
+// ─── STATIC MODALS DATA ──────────────────────────────────────────────────────
+
+const VD_MODAL_DATA = {
+  steps: [
+    { n: 1, html: 'Acesse a tela do <strong>Negócio</strong> relacionada ao acionamento;' },
+    { n: 2, html: 'Em <strong>"Manuais"</strong> pesquise por <strong>"[BRASIL] Acionamento [VD]"</strong> para visualizar o formulário;' },
+    { n: 3, html: 'Selecione o manual <strong>"[BRASIL] Acionamento [VD]"</strong>;' },
+    { n: 4, html: 'Preencha os campos solicitados;' },
+  ],
+  links: [
+    { emoji: '📄', label: 'Documento do procedimento de acionamento do VD', sublabel: 'Detalhes completos do processo', url: 'https://docs.google.com/document/d/1hPjKQqxnx8nChkhssAAvhKouMvC_jveSLYLo6VvCduQ/edit?usp=sharing' },
+    { emoji: '🎬', label: 'Vídeo de 2min — passo a passo de como acionar o VD pelo HubSpot', sublabel: 'Tutorial em vídeo', url: 'https://drive.google.com/file/d/1FQoejg5N9QWO4zM_PslvSr-CR9HdFil8/view' },
+  ]
+};
+
+const DESQ_DATA = {
+  clusters: [
+    { name: 'No-Prospect', desc: 'Contato inválido, perfil inadequado ou situação da empresa não aderente' },
+    { name: 'Maturidade', desc: 'Empresa sem estrutura ou preparo para adotar a solução' },
+    { name: 'Urgência', desc: 'Projeto despriorizado ou pausado no momento' },
+    { name: 'Budget', desc: 'Empresa não contratará por questões financeiras' },
+    { name: 'Produto', desc: 'Funcionalidades ausentes ou que não atenderam aos critérios' },
+    { name: 'Concorrente', desc: 'Empresa optou por um concorrente da Blip' },
+    { name: 'Fornecedor atual', desc: 'Empresa seguirá com solução própria ou fornecedor atual' },
+    { name: 'Conexão', desc: 'Prospect não respondeu após tentativas de contato' },
+    { name: 'Blip GO', desc: 'Perfil simples demais para a solução principal da Blip' },
+    { name: 'SLA de', desc: 'Lead já atendido por outra área (MAcc, SMB, Global, Parcerias…)' },
+  ],
+  grupos: [
+    { cluster: 'No-Prospect', border: '#FECACA', bg: '#FEF2F2', motivos: [
+      { m: 'Sem ponto de contato *', d: 'Prospect recebido sem informação de contato válida (e-mail, telefone, LinkedIn…)' },
+      { m: 'Modelo de negócio não aderente à Blip', d: 'Empresa opera em modelo não aderente ao Blip' },
+      { m: 'Site inválido ou sem site *', d: 'Sem site válido, impossibilitando pesquisa sobre a empresa' },
+      { m: 'Cargo é estudante / autônomo / estagiário *', d: 'Cargo sem poder de decisão ou influência na contratação' },
+      { m: 'Empresa encerrou a operação *', d: 'Empresa não está mais em funcionamento' },
+      { m: 'Empresa GOV *', d: 'Empresa do setor governamental' },
+      { m: 'Licitação', d: 'Processo de contratação via licitação, não alinhado ao processo Blip' },
+      { m: 'Cliente *', d: 'Prospect já é cliente da Blip' },
+      { m: 'Duplicada', d: 'Empresa ou deal duplicado no HubSpot' },
+      { m: 'Empresa Concorrente *', d: 'Empresa do prospect é comparável à Blip' },
+      { m: 'Base Fria / somente disparos ativos', d: 'Estratégia de uso do WhatsApp API apenas para disparo para base fria' },
+      { m: 'Segmento proibido META *', d: 'Segmento não permitido pela Meta. Inbound: atender e oferecer outros canais; se insistir só no WhatsApp, desqualificar com razão "Segmento Proibido". Outbound: não prosseguir, desqualificar em "Iniciar Contato".' },
+      { m: 'Queria só API da META', d: 'Prospect não quer um sistema, apenas a API Oficial da Meta' },
+      { m: 'Cliente oculto', d: 'Cliente oculto' },
+      { m: 'Interesse em ser parceiro', d: 'Prospect quer ser parceiro, não cliente' },
+    ]},
+    { cluster: 'Conexão', border: '#FED7AA', bg: '#FFF7ED', motivos: [
+      { m: 'Não respondeu após cadência', d: 'Tentativas por todos os canais sem retorno' },
+      { m: 'Falta de conexão BDR/SDR', d: 'BDR/SDR ultrapassou o SLA sem contato com o prospect' },
+      { m: 'Conectamos e o lead não respondeu mais', d: 'Houve primeiro contato, mas sem retorno posterior' },
+    ]},
+    { cluster: 'Urgência', border: '#FDE68A', bg: '#FFFBEB', motivos: [
+      { m: 'Está implantando outro produto agora', d: 'Prospect vai implantar outro produto no momento' },
+      { m: 'Despriorização do projeto', d: 'Projeto despriorizado sem razão informada' },
+      { m: 'Pausa Temporária com Retomada Planejada', d: 'Não vai contratar agora, mas planeja retomar em X tempo' },
+    ]},
+    { cluster: 'Concorrente', border: '#BAE6FD', bg: '#F0F9FF', motivos: [
+      { m: 'Valor mínimo do plano acima do corrente', d: 'Plano mínimo da Blip acima do concorrente' },
+      { m: 'Funcionalidade', d: 'Concorrente oferece funcionalidade que a Blip não entrega' },
+      { m: 'Optaram por desenvolver internamente', d: 'Prospect opta por solução interna' },
+    ]},
+    { cluster: 'Fornecedor atual', border: '#BBF7D0', bg: '#F0FDF4', motivos: [
+      { m: 'Preço do fornecedor atual mais atrativo', d: 'Prospect permanece por questão de preço' },
+      { m: 'Funcionalidade', d: 'Blip não tem funcionalidade disponível no fornecedor atual' },
+      { m: 'Tempo de implantação e adaptação', d: 'Custo de troca de ferramenta é uma barreira' },
+    ]},
+    { cluster: 'Budget', border: '#FECDD3', bg: '#FFF1F2', motivos: [
+      { m: 'Sem orçamento disponível agora', d: 'Sem budget no momento, mas com interesse futuro' },
+      { m: 'Valor mínimo do plano acima do orçamento', d: 'Plano mínimo da Blip acima do orçamento do prospect' },
+    ]},
+    { cluster: 'Maturidade', border: '#E9D5FF', bg: '#FAF5FF', motivos: [
+      { m: 'Adaptação do Site', d: 'Prospect resistente a adaptar o site às políticas da Meta' },
+      { m: 'Sem estrutura para contratar Blip', d: 'Sem sistemas, pessoas ou infraestrutura para operar o produto' },
+    ]},
+    { cluster: 'SLA de', border: '#C7D2FE', bg: '#EEF2FF', motivos: [
+      { m: 'Stilingue', d: 'Prospect busca Stilingue' },
+      { m: 'Small *', d: 'Empresa no SLA de Small — apenas OTB' },
+      { m: 'Mid *', d: 'Empresa no SLA de Mid — apenas OTB' },
+      { m: 'Large *', d: 'Empresa no SLA de Large — apenas OTB' },
+      { m: 'Enterprise *', d: 'Empresa no SLA de Enterprise — apenas OTB' },
+      { m: 'Outro BDR/SDR ou Vendedor *', d: 'Prospect no SLA de outro SDR ou já ativo no funil do vendedor' },
+      { m: 'MAcc *', d: 'Prospect no SLA de MAcc' },
+      { m: 'SMB *', d: 'Prospect no SLA de SMB' },
+      { m: 'Global *', d: 'Prospect no SLA de Global' },
+      { m: 'Parcerias *', d: 'Prospect no SLA de Parcerias' },
+    ]},
+    { cluster: 'Produto', border: '#99F6E4', bg: '#F0FDFA', motivos: [
+      { m: 'Grupo WhatsApp', d: 'Funcionalidade de Grupos não existe na Blip' },
+      { m: 'CRM', d: 'Prospect busca um CRM' },
+      { m: 'Help Desk', d: 'Prospect busca um Help Desk' },
+      { m: 'ERP', d: 'Prospect busca um ERP' },
+    ]},
+    { cluster: 'Blip Go', border: '#FED7AA', bg: '#FFF7ED', motivos: [
+      { m: 'Caso de uso', d: 'Caso de uso simples demais para o Blip — encaminhar para Blip Go' },
+      { m: 'Valor mínimo do plano', d: 'Plano mínimo alto demais — encaminhar para Blip Go' },
+      { m: '1-19 funcionários *', d: 'Menos funcionários que a esteira Small atende — encaminhar para Blip Go' },
+    ]},
+  ],
+  automacoes: [
+    { t: 'Empresa GOV', a: 'Contato enviado automaticamente ao time de Parcerias' },
+    { t: 'Cliente', a: 'AM responsável notificado via Slack' },
+    { t: 'Interesse em ser parceiro', a: 'Contato enviado automaticamente ao time de Parcerias' },
+    { t: 'Está implantando outro produto agora', a: 'Notificação automática em 60 dias' },
+    { t: 'Pausa Temporária com Retomada Planejada', a: 'Notificação automática na data referenciada' },
+    { t: 'Sem orçamento disponível agora', a: 'Notificação automática em 60 dias' },
+    { t: 'SLA de Stilingue', a: 'Contato enviado ao time de Stilingue' },
+    { t: 'SLA de MAcc', a: 'Contato enviado ao time MAcc' },
+    { t: 'SLA de SMB', a: 'Contato enviado ao time SMB' },
+    { t: 'SLA de Small / Mid / Large / Enterprise', a: 'Inbound → esteira correta e roletada · Outbound → lista de esteira errada para consulta do time' },
+    { t: 'SLA de Global', a: 'Contato enviado ao time Global' },
+    { t: 'SLA de Parcerias', a: 'Contato enviado ao time de Parcerias' },
+    { t: 'Blip Go (todos os motivos)', a: 'Contato enviado ao time de Blip Go' },
+  ]
+};
+
+const PERDIDOS_DATA = {
+  fupAlert: {
+    estagios: 'Opps · Apresentação · Design de Projeto · Proposta Apresentada · Negociação · OK Formal · Revisão de Contrato',
+    prazos: [ { label: 'Small: 3 dias' }, { label: 'Mid: 5 dias' }, { label: 'Large / Enterprise: 10 dias' } ],
+    alertaEmail: 'Alerta por e-mail: 1 dia antes (Small) · 2 dias antes (Mid, Large, Enterprise). O que conta como atividade: e-mail enviado, reunião realizada, chamada registrada, tarefa concluída, chat respondido. <strong>Agendar tarefa não conta.</strong>'
+  },
+  clusters: [
+    { name: 'No-show', desc: 'Prospect não comparece à reunião agendada com o time de Aquisição' },
+    { name: 'No-OPP', desc: 'Oportunidade agendada não atende ao SLA e é desqualificada' },
+    { name: 'Urgência', desc: 'Projeto despriorizado e não será levado adiante no momento' },
+    { name: 'Budget', desc: 'Empresa não contratará por questões financeiras' },
+    { name: 'Produto', desc: 'Funcionalidades ausentes ou que não atenderam aos critérios' },
+    { name: 'Concorrente', desc: 'Empresa optou por um concorrente da Blip' },
+    { name: 'Conexão', desc: 'Vendedor perde contato com a empresa' },
+    { name: 'Parcerias', desc: 'Perda relacionada ao time de Parcerias' },
+    { name: 'Blip GO', desc: 'Blip Go seria a melhor ferramenta para aquela empresa' },
+    { name: 'Questões burocráticas', desc: 'Discordâncias de cláusulas contratuais ou processos internos' },
+  ],
+  etapas: [
+    { label: 'Etapa: OPP', grupos: [
+      { cluster: 'No-show', border: '#FECACA', bg: '#FEF2F2', motivos: [
+        { m: 'Desistiu da reunião', d: 'Lead informa que não deseja mais seguir com a reunião' },
+        { m: 'Não compareceu na reunião', d: 'Lead não comparece sem avisar ao vendedor ou BDR' },
+        { m: 'Remarcado mais de duas vezes', d: 'Lead já deu dois no-shows' },
+        { m: 'Vendedor esqueceu da call', d: 'Vendedor teve imprevisto e não participou da call' },
+      ]},
+      { cluster: 'No-OPP', border: '#BAE6FD', bg: '#F0F9FF', motivos: [
+        { m: 'Baixa Maturidade', d: 'Cliente sem maturidade para contratar — sem ferramentas/infraestrutura ou não quer API oficial' },
+        { m: 'Baixa volumetria/TM e não sabia o preço', d: 'Volume de conversas muito baixo para justificar a contratação' },
+        { m: 'Blip não atende', d: 'Dor do lead não é resolvida pelo Blip' },
+        { m: 'Deveria ir para parcerias', d: 'Lead no SLA de parcerias' },
+        { m: 'Deveria ter ido para Global', d: 'Lead sem CNPJ — empresa internacional' },
+        { m: 'Já está em negociação / Já é cliente', d: 'Lead já é cliente ou está em negociação em outro deal' },
+        { m: 'Não possui site e não possui expectativa de criar', d: 'Lead sem site' },
+        { m: 'Preço é dealbreaker e não foi alinhado', d: 'Lead âncora budget fixo inferior ao plano mínimo da Blip na primeira reunião' },
+        { m: 'Queria só API', d: 'Lead quer apenas a API do WhatsApp' },
+        { m: 'Políticas de segmentos da Meta', d: 'Lead em segmento não permitido pela Meta' },
+      ]},
+    ]},
+    { label: 'Etapas: Apresentação e Design de Projeto', grupos: [
+      { cluster: 'Urgência', border: '#FDE68A', bg: '#FFFBEB', motivos: [
+        { m: 'Não tem time de projeto', d: 'Lead sem time para tocar o projeto' },
+        { m: 'Escopo desalinhado com a estratégia do negócio', d: 'Escopo não alinhado com objetivos da empresa — projeto despriorizado' },
+        { m: 'Está implantando outro produto agora', d: 'Lead não vai contratar agora por estar implantando outro sistema' },
+        { m: 'Baixa maturidade ou interesse no tema', d: 'Lead com baixa maturidade para entender o valor da Blip' },
+        { m: 'Pausa Temporária com Retomada Planejada', d: 'Lead alinha data para retomar a conversa' },
+        { m: 'Resistência a compartilhar dados', d: 'Lead não retorna e não fornece informações adicionais' },
+        { m: 'Decisor não se interessou', d: 'Decisor da empresa não prioriza a contratação' },
+      ]},
+      { cluster: 'Conexão', border: '#99F6E4', bg: '#F0FDFA', motivos: [
+        { m: 'Não retorna FUP', d: 'Lead não retorna contato por nenhum canal — testados todos (ligação, e-mail, WhatsApp, tentativas do SDR e gestão)' },
+        { m: 'Champion não faz parte da empresa', d: 'Ponto de contato saiu da empresa sem deixar substituto' },
+        { m: 'Não despertou interesse pela solução', d: 'Ponto de contato perdeu interesse e deixa de retornar' },
+        { m: 'Saída de vendedor e retomada não eficaz', d: 'Vendedor sai da operação e a conexão se perde na transição' },
+        { m: 'Champion trocou de área', d: 'Ponto focal saiu da área que negociava e não passou outro contato' },
+      ]},
+      { cluster: 'Produto', border: '#BBF7D0', bg: '#F0FDF4', motivos: [
+        { m: 'Falta de funcionalidade', d: 'Ponto focal busca funcionalidade ou integração que a Blip não entrega' },
+      ]},
+    ]},
+    { label: 'Etapas: Proposta Apresentada e Negociação', grupos: [
+      { cluster: 'Budget', border: '#FECDD3', bg: '#FFF1F2', motivos: [
+        { m: 'Custo de canal', d: 'Valor do canal torna a negociação inviável (alto volume de disparos/sessões)' },
+        { m: 'Serviço de desenvolvimento do projeto', d: 'Valor da ativação inviável (bônus insuficiente, parcelamento inadequado)' },
+        { m: 'Mensalidade', d: 'Custo da mensalidade é dealbreaker' },
+        { m: 'Sem orçamento disponível agora', d: 'Lead sem budget definido para aquisição' },
+        { m: 'Não temos modelo de cobrança adequado', d: 'Modelos MAU e DEU não atendem o modelo de negócio do lead' },
+        { m: 'Valor mínimo do plano', d: 'Menor plano da Blip ainda acima do budget disponível' },
+        { m: 'Lead não viu retorno no investimento', d: 'Projeto grande sem alocação em plano menor para facilitar entrada' },
+      ]},
+      { cluster: 'Concorrente', border: '#C7D2FE', bg: '#EEF2FF', motivos: [
+        { m: 'Valor do plano', d: 'Lead achou o valor do plano caro e fechou com concorrente' },
+        { m: 'Valor do canal', d: 'Lead achou o valor do canal caro e fechou com concorrente' },
+        { m: 'Valor da ativação', d: 'Lead achou o valor da ativação caro e fechou com concorrente' },
+        { m: 'Valor mínimo do plano', d: 'Lead achou o valor mínimo caro e fechou com concorrente' },
+        { m: 'Funcionalidade / Requisitos técnicos', d: 'Concorrente tem funcionalidade que a Blip não tem' },
+        { m: 'Modelo de negócio', d: 'Modelos MAU e DEU não atendem o modelo de negócio' },
+        { m: 'Fidelidade do contrato', d: 'Lead fecha com concorrente por causa da fidelidade contratual da Blip' },
+        { m: 'Decidiram manter fornecedor atual', d: 'Lead opta por manter o fornecedor atual' },
+        { m: 'Optaram por desenvolver internamente', d: 'Lead opta por desenvolver solução interna' },
+      ]},
+    ]},
+    { label: 'Etapas: OK Formal e Revisão de Contrato', grupos: [
+      { cluster: 'Burocracia', border: '#E9D5FF', bg: '#FAF5FF', motivos: [
+        { m: 'Perdeu RFP/Licitação', d: 'Blip perdeu a RFP ou licitação' },
+        { m: 'Empresa fechou', d: 'Empresa do deal não está mais ativa' },
+        { m: 'Seguiu contratação em outra Opp', d: 'Contratação será feita por outra oportunidade' },
+        { m: 'Considerações do TOS', d: 'Jurídico da empresa não aceita o modelo de contratação via TOS' },
+      ]},
+    ]},
+    { label: 'Qualquer etapa', grupos: [
+      { cluster: 'Parcerias', border: '#BBF7D0', bg: '#F0FDF4', motivos: [
+        { m: 'SLA do parceiro', d: 'Deal no SLA do projeto VAR' },
+        { m: 'Negociação com parcerias não evoluiu', d: 'Parceiro envolvido, mas negociação não evoluiu' },
+        { m: 'Sem um cliente para iniciar agora', d: 'Parceiro fez indicação, mas oportunidade ainda não existe na call' },
+      ]},
+      { cluster: 'Blip Go', border: '#FED7AA', bg: '#FFF7ED', motivos: [
+        { m: 'Projeto simples', d: 'Projeto com mais fit para o Blip Go' },
+        { m: 'Volumetria', d: 'Lead com volumetria para o Blip Go' },
+      ]},
+    ]},
+  ],
+  automacoes: [
+    { t: 'No-show / Não compareceu à reunião', a: 'Tarefa automática para o BDR responsável reagendar' },
+    { t: 'No-show / Vendedor esqueceu da call', a: 'Notificação no Slack para a coordenação' },
+    { t: 'No-OPP / Deveria ir para Global', a: 'Enviado para o Pipe de Global' },
+    { t: 'Urgência / Está implantando outro produto', a: 'Campo de retomada + notificação no Slack na data planejada' },
+    { t: 'Urgência / Pausa Temporária com Retomada Planejada', a: 'Notificação no Slack na data da retomada' },
+    { t: 'Conexão / Saída do vendedor e retomada ineficaz', a: 'OTB → tarefa automática para o SDR voltar a prospectar · INB → transferido para Outbound (roletar para OTB)' },
+    { t: 'Conexão / Champion trocou de área', a: 'OTB → tarefa automática para o SDR voltar a prospectar · INB → transferido para Outbound (roletar para OTB)' },
+    { t: 'Produto / Falta de funcionalidade', a: 'Notificação para a equipe de Produto' },
+    { t: 'Blip Go / Projeto simples', a: 'Transferido para o pipe do Blip Go + notificação no Slack para a Gabi' },
+    { t: 'Blip Go / Volumetria', a: 'Transferido para o pipe do Blip Go + notificação no Slack para a Gabi' },
+    { t: 'Alerta de FUP — Small', a: 'Alerta por e-mail via HubSpot 1 dia antes da perda automática' },
+    { t: 'Alerta de FUP — Mid, Large, Enterprise', a: 'Alerta por e-mail via HubSpot 2 dias antes da perda automática' },
+    { t: 'Perda automática por inatividade', a: 'Notificação no Slack quando o deal for perdido automaticamente' },
+  ]
+};
+
+const FORECAST_STACC_DATA = [
+  { icon: '💰', label: 'StAcc — Finance', sublabel: 'Forecast da frente Finance', url: 'https://docs.google.com/spreadsheets/d/1h8--DtJSDYd-__8Sey2ivpMtMvARAYCFrlUUol8HRmk/edit?gid=372122800#gid=372122800' },
+  { icon: '🏭', label: 'StAcc — TUO', sublabel: 'Forecast da frente TUO', url: 'https://docs.google.com/spreadsheets/d/1LorT4s6PyT6nA5BoLixejRXbhz0G09wcBAlM1o6MXRU/edit?gid=372122800#gid=372122800' },
+  { icon: '🌐', label: 'StAcc — GAcc', sublabel: 'Forecast da frente Global Accounts', url: 'https://docs.google.com/spreadsheets/d/1b5ENQ3xkKDbHsNpX9N-wtCFTQMHq3XhMsB-DHMa2TUo/edit?gid=372122800#gid=372122800' },
+];
+
+const ACCOUNT_PLANNING_DATA = {
+  pillars: [
+    { icon: '🗺️', iconBg: '#EFF6FF', title: 'Frentes', subtitle: 'Area', desc: 'Voltado para mapear a atuação na conta, seja conquistando novos territórios ou expandindo frentes que já existem no cliente.' },
+    { icon: '⚡', iconBg: '#FFF7ED', title: 'Ações', subtitle: 'Action', desc: 'Onde você registra os passos táticos ou estratégicos que serão realizados na gestão para atingir os objetivos estabelecidos.' },
+    { icon: '🛡️', iconBg: '#FFF1F2', title: 'Gestão de Riscos', subtitle: 'Risk Radar', desc: 'O mapeamento de possíveis ameaças mapeadas nos clientes, que podem ser vinculadas diretamente a frentes, ações ou negócios (sejam eles abertos ou fechados).' },
+  ],
+  guideUrl: 'https://docs.google.com/presentation/d/1DaU2qZOsPO9kM6EvT7BU8ZZ_mQq5ROgN___lj4GqV14/edit?slide=id.p2#slide=id.p2'
+};
+
+// Cada BU tem seu próprio bloco completo — edite cada um de forma independente.
+const QUALIF_DATA = {
+  smb: {
+    subtitle: 'Pipeline de Leads · BDR · SMB',
+    cadenciaItems: [
+      { n: 1, title: 'Individualização', desc: 'Cada contato deve possuir sua própria cadência de atividades.' },
+      { n: 2, title: 'Personalização', desc: 'A cadência deve ser definida com base na origem e no canal disponível de cada contato.' },
+    ],
+    registroUrl: 'https://docs.google.com/document/d/1K4R4uI3IiQhF11-sOVWPRUfcIwS_TNwqmDq0ydNIKow/edit?tab=t.0',
+    touchpointsValidos: [
+      'Print de conversas no WhatsApp;',
+      'Print de conversas por InMail (LinkedIn);',
+      'Ligações gravadas;',
+      'E-mails seguidos de tentativas em outros canais, como ligação e WhatsApp (no mesmo dia do envio do e-mail);',
+      'Tarefas futuras com o alinhamento feito com o lead ou de tentativa futura de contato dentro do prazo de 90 dias. <em>(Apenas a tarefa futura, sem atividades recentes que comprovem um próximo passo, não garantem SLA)</em>',
+    ],
+    touchpointsInvalidos: [
+      'Chamadas registradas como NA (não atende), caixa postal, sem nenhuma outra tentativa de contato dentro do mesmo dia e sem tarefa futura;',
+      'Conexão de LinkedIn (apenas a conexão por si só) sem tentativa de contato por outros canais;',
+      'Sequência de e-mails sem chamadas e outras tentativas ao longo dos meses;',
+      'Tarefas com check sem a atividade em si;',
+      'Registro de chamadas sem gravação e sem informação do que foi falado.',
+    ],
+  },
+  macc: {
+    subtitle: 'Pipeline de Leads · BDR · MAcc',
+    cadenciaItems: [
+      { n: 1, title: 'Individualização', desc: 'Cada contato deve possuir sua própria cadência de atividades.' },
+      { n: 2, title: 'Personalização', desc: 'A cadência deve ser definida com base na origem e no canal disponível de cada contato.' },
+    ],
+    registroUrl: 'https://docs.google.com/document/d/1K4R4uI3IiQhF11-sOVWPRUfcIwS_TNwqmDq0ydNIKow/edit?tab=t.0',
+    touchpointsValidos: [
+      'Print de conversas no WhatsApp;',
+      'Print de conversas por InMail (LinkedIn);',
+      'Ligações gravadas;',
+      'E-mails seguidos de tentativas em outros canais, como ligação e WhatsApp (no mesmo dia do envio do e-mail);',
+      'Tarefas futuras com o alinhamento feito com o lead ou de tentativa futura de contato dentro do prazo de 90 dias. <em>(Apenas a tarefa futura, sem atividades recentes que comprovem um próximo passo, não garantem SLA)</em>',
+    ],
+    touchpointsInvalidos: [
+      'Chamadas registradas como NA (não atende), caixa postal, sem nenhuma outra tentativa de contato dentro do mesmo dia e sem tarefa futura;',
+      'Conexão de LinkedIn (apenas a conexão por si só) sem tentativa de contato por outros canais;',
+      'Sequência de e-mails sem chamadas e outras tentativas ao longo dos meses;',
+      'Tarefas com check sem a atividade em si;',
+      'Registro de chamadas sem gravação e sem informação do que foi falado.',
+    ],
+  },
+  stacc: {
+    subtitle: 'Pipeline de Leads · BDR · StAcc',
+    cadenciaItems: [
+      { n: 1, title: 'Individualização', desc: 'Cada contato deve possuir sua própria cadência de atividades.' },
+      { n: 2, title: 'Personalização', desc: 'A cadência deve ser definida com base na origem e no canal disponível de cada contato.' },
+    ],
+    registroUrl: 'https://docs.google.com/document/d/1K4R4uI3IiQhF11-sOVWPRUfcIwS_TNwqmDq0ydNIKow/edit?tab=t.0',
+    touchpointsValidos: [
+      'Print de conversas no WhatsApp;',
+      'Print de conversas por InMail (LinkedIn);',
+      'Ligações gravadas;',
+      'E-mails seguidos de tentativas em outros canais, como ligação e WhatsApp (no mesmo dia do envio do e-mail);',
+      'Tarefas futuras com o alinhamento feito com o lead ou de tentativa futura de contato dentro do prazo de 90 dias. <em>(Apenas a tarefa futura, sem atividades recentes que comprovem um próximo passo, não garantem SLA)</em>',
+    ],
+    touchpointsInvalidos: [
+      'Chamadas registradas como NA (não atende), caixa postal, sem nenhuma outra tentativa de contato dentro do mesmo dia e sem tarefa futura;',
+      'Conexão de LinkedIn (apenas a conexão por si só) sem tentativa de contato por outros canais;',
+      'Sequência de e-mails sem chamadas e outras tentativas ao longo dos meses;',
+      'Tarefas com check sem a atividade em si;',
+      'Registro de chamadas sem gravação e sem informação do que foi falado.',
+    ],
+  },
+};
+
+// ─── STATIC MODALS RENDER ────────────────────────────────────────────────────
+
+function renderStaticModals() {
+  const root = document.getElementById('static-modals-root');
+  if (!root) return;
+  root.innerHTML = [
+    _renderVdModal(),
+    _renderDesqPerdidosModal(),
+    _renderAccountPlanningModal(),
+    _renderForecastStaccModal(),
+    _renderProcQualifModal(),
+  ].join('');
+}
+
+function _renderVdModal() {
+  return `<div id="vd-modal" class="fixed inset-0 z-[9998] hidden items-center justify-center p-4" style="background:rgba(0,0,0,0.5);">
+  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
+    <div class="flex items-center justify-between px-6 py-5 border-b border-slate-100">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg" style="background:#F3EFFE;">💜</div>
+        <div>
+          <h2 class="font-bold text-slate-800 text-base">Como acionar o Value Designer</h2>
+          <p class="text-xs text-slate-400">Revenue Enablement · Blip</p>
+        </div>
+      </div>
+      <button onclick="closeVdModal()" class="text-slate-400 hover:text-slate-600 text-xl font-bold leading-none">×</button>
+    </div>
+    <div class="px-6 py-5 space-y-5 text-sm text-slate-700">
+      <div>
+        <p class="font-semibold text-slate-800 mb-3">📍 Abertura de tickets:</p>
+        <ol class="space-y-2 list-none">
+          ${VD_MODAL_DATA.steps.map(s => `<li class="flex gap-2"><span class="flex-shrink-0 w-5 h-5 rounded-full text-xs font-bold flex items-center justify-center text-white" style="background:#7C3AED;">${s.n}</span><span>${s.html}</span></li>`).join('')}
+        </ol>
+        <p class="mt-3 text-slate-500 text-xs bg-slate-50 rounded-lg px-3 py-2">Pronto, um ticket para o acionamento será criado automaticamente.</p>
+      </div>
+      <div class="space-y-2">
+        <p class="font-semibold text-slate-800">📃 Mais detalhes em:</p>
+        ${VD_MODAL_DATA.links.map(l => `<a href="${l.url}" target="_blank" rel="noopener" class="flex items-start gap-2 rounded-xl px-4 py-3 border border-purple-100 hover:border-purple-300 hover:bg-purple-50 transition-colors" style="background:#FAFAFF;">
+          <span class="text-base flex-shrink-0">${l.emoji}</span>
+          <span class="text-xs leading-relaxed"><strong class="text-purple-700">${l.label}</strong><br><span class="text-slate-400">${l.sublabel}</span></span>
+          <span class="ml-auto text-purple-400 flex-shrink-0 text-xs">↗</span>
+        </a>`).join('')}
+      </div>
+    </div>
+  </div>
+</div>`;
+}
+
+function _renderDesqPerdidosModal() {
+  const renderGrupo = (g) => `
+    <div class="rounded-xl overflow-hidden" style="border:1px solid ${g.border};">
+      <div class="px-4 py-2 text-xs font-bold" style="background:${g.bg};color:#374151;">${g.cluster}</div>
+      <table class="w-full text-xs"><tbody>
+        ${g.motivos.map((item, i) => `<tr style="background:${i%2===0?'#FAFAFA':'#FFFFFF'}"><td class="px-4 py-2 font-medium text-slate-700 w-2/5">${item.m}</td><td class="px-4 py-2 text-slate-500">${item.d}</td></tr>`).join('')}
+      </tbody></table>
+    </div>`;
+
+  const renderAutoList = (list) => list.map(a => `
+    <div class="flex gap-3 rounded-lg px-3 py-2.5" style="background:#F8FAFC;border:1px solid #E2E8F0;">
+      <span class="font-semibold text-slate-700 text-xs w-2/5 flex-shrink-0">${a.t}</span>
+      <span class="text-slate-500 text-xs">${a.a}</span>
+    </div>`).join('');
+
+  return `<div id="modal-desq-perdidos" class="fixed inset-0 z-[9999] hidden items-center justify-center p-4" style="background:rgba(0,0,0,0.55);" onclick="if(event.target===this){closeModalDesqPerdidos()}">
+  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[92vh] flex flex-col" onclick="event.stopPropagation()">
+    <div class="flex items-center justify-between px-7 py-5 border-b border-slate-100 flex-shrink-0">
+      <div class="flex items-center gap-4">
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background:#FFE4E6;">❌</div>
+        <div>
+          <h2 class="font-bold text-slate-800 text-lg leading-tight">Desqualificados e Perdidos</h2>
+          <p class="text-xs text-slate-400 mt-0.5">Funil Land · Pipeline de Leads e Aquisição</p>
+        </div>
+      </div>
+      <button onclick="closeModalDesqPerdidos()" class="text-slate-400 hover:text-slate-600 text-2xl font-bold leading-none ml-4 flex-shrink-0">×</button>
+    </div>
+    <div class="flex border-b border-slate-100 flex-shrink-0 px-7">
+      <button id="tab-desq-btn" onclick="switchDesqTab('desq')" class="text-sm font-semibold px-4 py-3 border-b-2 border-rose-500 text-rose-600 transition-colors">🔴 Desqualificados</button>
+      <button id="tab-perd-btn" onclick="switchDesqTab('perd')" class="text-sm font-medium px-4 py-3 border-b-2 border-transparent text-slate-500 hover:text-slate-700 transition-colors">🔴 Perdidos</button>
+    </div>
+    <div class="overflow-y-auto flex-1 text-sm text-slate-700">
+      <div id="tab-desq" class="px-7 py-6 space-y-6">
+        <div class="rounded-xl p-4 text-xs leading-relaxed" style="background:#FFF1F2;border:1px solid #FECDD3;">
+          <p class="font-semibold text-rose-800 mb-1">O que são motivos de desqualificação?</p>
+          <p class="text-rose-700">Utilizados pelo time de Qualificação na Pipeline de Leads. Atribuídos ao contato ao mover para a etapa <strong>Desqualificado</strong>. Servem para estudo do processo comercial, reciclagem de leads e feedback entre qualificação, marketing e Inteligência Comercial.</p>
+        </div>
+        <div>
+          <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">🗂️ Clusters</p>
+          <div class="grid grid-cols-2 gap-2">
+            ${DESQ_DATA.clusters.map(c => `<div class="rounded-lg px-3 py-2.5" style="background:#FAFAFA;border:1px solid #F1F5F9;"><p class="font-semibold text-slate-700 text-xs">${c.name}</p><p class="text-slate-500 text-xs mt-0.5">${c.desc}</p></div>`).join('')}
+          </div>
+        </div>
+        <div>
+          <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">📋 Motivos de desqualificação</p>
+          <p class="text-xs text-slate-500 mb-3">Formato: <span class="font-mono bg-slate-100 px-1.5 py-0.5 rounded">[Cluster] [Motivo]</span> · Motivos marcados com <strong>*</strong> podem ser usados já na primeira etapa de contato.</p>
+          <div class="space-y-3">${DESQ_DATA.grupos.map(renderGrupo).join('')}</div>
+        </div>
+        <div>
+          <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">⚡ Automações</p>
+          <div class="space-y-1.5">${renderAutoList(DESQ_DATA.automacoes)}</div>
+        </div>
+      </div>
+      <div id="tab-perd" class="px-7 py-6 space-y-6 hidden">
+        <div class="rounded-xl p-4 text-xs leading-relaxed" style="background:#FFF1F2;border:1px solid #FECDD3;">
+          <p class="font-semibold text-rose-800 mb-1">O que são motivos de perda?</p>
+          <p class="text-rose-700">Utilizados pelo time de Aquisição. Atribuídos às oportunidades ao mover para <strong>Perda</strong> no pipeline. Servem para análise do processo comercial, reciclagem e feedback entre áreas de apoio.</p>
+        </div>
+        <div class="rounded-xl p-4" style="background:#FFFBEB;border:1px solid #FDE68A;">
+          <p class="font-semibold text-amber-800 text-xs mb-2">⚠️ [SMB] Falta de FUP — perda automática</p>
+          <p class="text-amber-700 text-xs mb-2">Deals parados nas etapas intermediárias/finais sem próxima atividade agendada entram em perda automaticamente.</p>
+          <p class="text-amber-700 text-xs font-semibold mb-1">Etapas monitoradas: ${PERDIDOS_DATA.fupAlert.estagios}</p>
+          <div class="flex gap-3 mt-2">
+            ${PERDIDOS_DATA.fupAlert.prazos.map(p => `<span class="rounded-lg px-2.5 py-1 text-xs font-semibold" style="background:#FEF3C7;color:#92400E;">${p.label}</span>`).join('')}
+          </div>
+          <p class="text-amber-600 text-xs mt-2">${PERDIDOS_DATA.fupAlert.alertaEmail}</p>
+        </div>
+        <div>
+          <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">🗂️ Clusters</p>
+          <div class="grid grid-cols-2 gap-2">
+            ${PERDIDOS_DATA.clusters.map(c => `<div class="rounded-lg px-3 py-2.5" style="background:#FAFAFA;border:1px solid #F1F5F9;"><p class="font-semibold text-slate-700 text-xs">${c.name}</p><p class="text-slate-500 text-xs mt-0.5">${c.desc}</p></div>`).join('')}
+          </div>
+        </div>
+        <div class="space-y-4">
+          <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">📋 Motivos por etapa</p>
+          ${PERDIDOS_DATA.etapas.map(et => `
+            <p class="text-xs font-semibold text-slate-600 mt-3">📍 ${et.label}</p>
+            <div class="space-y-2">${et.grupos.map(renderGrupo).join('')}</div>
+          `).join('')}
+        </div>
+        <div>
+          <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">⚡ Automações</p>
+          <div class="space-y-1.5">${renderAutoList(PERDIDOS_DATA.automacoes)}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`;
+}
+
+
+function _renderAccountPlanningModal() {
+  return `<div id="modal-account-planning" class="fixed inset-0 z-[9999] hidden items-center justify-center p-4" style="background:rgba(0,0,0,0.55);" onclick="if(event.target===this){closeAccountPlanningModal()}">
+  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] flex flex-col" onclick="event.stopPropagation()">
+    <div class="flex items-center justify-between px-7 py-6 border-b border-slate-100 flex-shrink-0">
+      <div class="flex items-center gap-4">
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background:#F0FDF4;">🗺️</div>
+        <div>
+          <h2 class="font-bold text-slate-800 text-lg leading-tight">Account Planning</h2>
+          <p class="text-xs text-slate-400 mt-0.5">CRM de Gestão de Contas · StAcc</p>
+        </div>
+      </div>
+      <button onclick="closeAccountPlanningModal()" class="text-slate-400 hover:text-slate-600 text-2xl font-bold leading-none ml-4 flex-shrink-0">×</button>
+    </div>
+    <div class="overflow-y-auto flex-1 px-7 py-6 space-y-7 text-sm text-slate-700">
+      <div class="rounded-2xl p-5" style="background:#F0FDF4;border:1px solid #BBF7D0;">
+        <p class="font-bold text-green-800 text-base mb-3">🌿 O que é Account Planning?</p>
+        <p class="text-green-900 leading-relaxed">No contexto do <strong>CRM de Gestão de Contas</strong>, o Account Planning é um objeto criado para <strong>centralizar informações relevantes e mapear iniciativas</strong> durante o gerenciamento de um cliente.</p>
+        <div class="mt-3 inline-flex items-center gap-2 bg-white rounded-xl px-4 py-2 border border-green-200">
+          <span class="text-base">✦</span>
+          <p class="text-xs font-semibold text-green-800">Organize. Mapeie. Expanda.</p>
+        </div>
+        <p class="mt-3 text-green-900 leading-relaxed">Seu objetivo central é <strong>reunir e estruturar todas as frentes estratégicas, ações e riscos</strong> de uma conta em um único lugar.</p>
+      </div>
+      <div>
+        <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-4">🏛️ Os três pilares</p>
+        <div class="space-y-3">
+          ${ACCOUNT_PLANNING_DATA.pillars.map(p => `
+          <div class="flex gap-4 rounded-2xl p-4 border border-slate-100" style="background:#FAFAFA;">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background:${p.iconBg};">${p.icon}</div>
+            <div>
+              <p class="font-bold text-slate-800">${p.title} <span class="text-xs font-normal text-slate-400 ml-1">(${p.subtitle})</span></p>
+              <p class="text-slate-600 mt-1 leading-relaxed">${p.desc}</p>
+            </div>
+          </div>`).join('')}
+        </div>
+      </div>
+      <div>
+        <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">📚 Recursos</p>
+        <a href="${ACCOUNT_PLANNING_DATA.guideUrl}" target="_blank" rel="noopener" class="flex items-center gap-3 rounded-xl px-5 py-4 border border-green-100 hover:border-green-300 hover:bg-green-50 transition-colors" style="background:#F0FDF4;">
+          <span class="text-xl flex-shrink-0">📑</span>
+          <div class="flex-1">
+            <p class="font-semibold text-green-800 text-sm">Guia de Uso do Account Planning</p>
+            <p class="text-xs text-slate-500 mt-0.5">Passo a passo completo para usar o objeto no CRM</p>
+          </div>
+          <span class="text-green-500 flex-shrink-0 font-bold text-sm">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>`;
+}
+
+function _renderForecastStaccModal() {
+  return `<div id="modal-forecast-stacc" class="fixed inset-0 z-[9999] hidden items-center justify-center p-4" style="background:rgba(0,0,0,0.55);" onclick="if(event.target===this){closeForecastModal()}">
+  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] flex flex-col" onclick="event.stopPropagation()">
+    <div class="flex items-center justify-between px-7 py-6 border-b border-slate-100 flex-shrink-0">
+      <div class="flex items-center gap-4">
+        <div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background:#FFF7ED;">📊</div>
+        <div>
+          <h2 class="font-bold text-slate-800 text-lg leading-tight">Forecast</h2>
+          <p class="text-xs text-slate-400 mt-0.5">Planilhas por frente comercial · StAcc</p>
+        </div>
+      </div>
+      <button onclick="closeForecastModal()" class="text-slate-400 hover:text-slate-600 text-2xl font-bold leading-none ml-4 flex-shrink-0">×</button>
+    </div>
+    <div class="overflow-y-auto flex-1 px-7 py-6 space-y-4 text-sm text-slate-700">
+      <p class="text-slate-500 text-sm">Acesse o forecast da sua frente comercial:</p>
+      ${FORECAST_STACC_DATA.map(f => `
+      <a href="${f.url}" target="_blank" rel="noopener" class="flex items-center gap-4 rounded-2xl px-5 py-4 border border-slate-100 hover:border-orange-200 hover:bg-orange-50 transition-colors" style="background:#FAFAFA;">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style="background:#FFF7ED;">${f.icon}</div>
+        <div class="flex-1">
+          <p class="font-bold text-slate-800">${f.label}</p>
+          <p class="text-xs text-slate-500 mt-0.5">${f.sublabel}</p>
+        </div>
+        <span class="text-orange-400 flex-shrink-0 font-bold text-sm">↗</span>
+      </a>`).join('')}
+    </div>
+  </div>
+</div>`;
+}
+
+function _renderProcQualifModal() {
+  return `<div id="modal-proc-qualif" class="fixed inset-0 z-[9998] hidden items-center justify-center p-4" style="background:rgba(0,0,0,0.5);" onclick="if(event.target===this){closeProcQualif()}">
+  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md" onclick="event.stopPropagation()">
+    <div class="flex items-center justify-between px-6 py-5 border-b border-slate-100">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg" style="background:#EEF2FF;">🔍</div>
+        <div>
+          <h2 class="font-bold text-slate-800 text-base">Processos Qualificação</h2>
+          <p id="proc-qualif-subtitle" class="text-xs text-slate-400">Pipeline de Leads · BDR</p>
+        </div>
+      </div>
+      <button onclick="closeProcQualif()" class="text-slate-400 hover:text-slate-600 text-xl font-bold leading-none">×</button>
+    </div>
+    <div id="proc-qualif-body" class="px-6 py-5 space-y-4 text-sm text-slate-700"></div>
+  </div>
+</div>`;
+}
+
+function _renderProcQualifBody(d) {
+  return `
+    <div>
+      <p class="font-semibold text-slate-800 mb-3">Prospecção e Cadência</p>
+      <p class="text-sm text-slate-600 mb-4">A prospecção é executada com foco individualizado no Contato:</p>
+      <div class="space-y-3">
+        ${d.cadenciaItems.map(item => `
+        <div class="flex gap-3 bg-slate-50 rounded-xl px-4 py-3">
+          <span class="flex-shrink-0 w-5 h-5 rounded-full text-xs font-bold flex items-center justify-center text-white" style="background:#4F46E5;">${item.n}</span>
+          <div><p class="text-xs font-semibold text-slate-800">${item.title}</p><p class="text-xs text-slate-500 mt-0.5">${item.desc}</p></div>
+        </div>`).join('')}
+      </div>
+    </div>
+    <div class="pt-2 border-t border-slate-100 space-y-3">
+      <a href="${d.registroUrl}" target="_blank" rel="noopener" class="flex items-center gap-2 text-xs font-medium px-3 py-2 rounded-lg transition-colors" style="background:#EEF2FF;color:#4F46E5;border:1px solid #C7D2FE;" onmouseover="this.style.background='#E0E7FF'" onmouseout="this.style.background='#EEF2FF'">📋 Registro de atividade ↗</a>
+      <div class="text-xs text-slate-700 space-y-3">
+        <div>
+          <p class="font-semibold text-green-700 mb-1.5">✅ O que são touchpoints válidos no SLA?</p>
+          <ul class="space-y-1 text-slate-500 list-none">
+            ${d.touchpointsValidos.map(t => `<li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span><span>${t}</span></li>`).join('')}
+          </ul>
+        </div>
+        <div>
+          <p class="font-semibold text-red-600 mb-1.5">❌ O que não são touchpoints válidos para SLA?</p>
+          <ul class="space-y-1 text-slate-500 list-none">
+            ${d.touchpointsInvalidos.map(t => `<li class="flex gap-1.5"><span class="text-slate-300 flex-shrink-0">·</span>${t}</li>`).join('')}
+          </ul>
+        </div>
+      </div>
+    </div>`;
+}
+
+function openProcQualif(bu) {
+  const data = QUALIF_DATA[bu] || QUALIF_DATA.smb;
+  document.getElementById('proc-qualif-subtitle').textContent = data.subtitle;
+  document.getElementById('proc-qualif-body').innerHTML = _renderProcQualifBody(data);
+  const m = document.getElementById('modal-proc-qualif');
+  m.classList.remove('hidden');
+  m.classList.add('flex');
+}
+function closeProcQualif() {
+  const m = document.getElementById('modal-proc-qualif');
+  m.classList.add('hidden');
+  m.classList.remove('flex');
+}
+
 // ─── AUTH ────────────────────────────────────────────────────────────────────
 
 const AUTH_KEY   = 'blip_jornada_auth';
@@ -2058,12 +1877,6 @@ function setState(updates) {
 
 // ─── COMPONENTS ──────────────────────────────────────────────────────────────
 
-function completenessChip(c) {
-  if (c === 'complete')    return '<span class="text-xs px-2 py-0.5 rounded-full font-medium bg-green-100 text-green-700">✓ Completo</span>';
-  if (c === 'partial')     return '<span class="text-xs px-2 py-0.5 rounded-full font-medium bg-amber-100 text-amber-700">~ Parcial</span>';
-  if (c === 'in_progress') return '<span class="text-xs px-2 py-0.5 rounded-full font-medium bg-yellow-100 text-yellow-700">⏳ Em andamento</span>';
-  return '<span class="text-xs px-2 py-0.5 rounded-full font-medium bg-slate-100 text-slate-500">· Em breve</span>';
-}
 
 function renderHome() {
   const results = state.searchQuery.length >= 2 ? searchAll(state.searchQuery) : [];
@@ -2254,8 +2067,6 @@ function renderSearchDropdown(results) {
 }
 
 function renderSegmentCard(seg) {
-  const completeFases = seg.phases.filter(p => p.completeness === 'complete').length;
-  const partialFases = seg.phases.filter(p => p.completeness === 'partial').length;
   return `
   <button onclick="navigateTo('${seg.id}')" class="group text-left w-full transition-all duration-200"
     style="border-radius:10px;border:1.5px solid #e2e8f0;box-shadow:0 1px 3px rgba(0,0,0,0.06);overflow:hidden;background:transparent;"
@@ -2278,14 +2089,12 @@ function renderSegmentCard(seg) {
         <div class="flex items-center gap-2.5">
           <span class="text-sm">${p.icon}</span>
           <span class="text-xs text-slate-700 flex-1 text-left">${p.name}</span>
-          ${completenessChip(p.completeness)}
         </div>`).join('')}
       </div>
       <div class="rounded-lg px-3 py-2 ${seg.color.light}">
         <p class="text-xs text-slate-600 text-left"><span class="font-medium">Times:</span> ${seg.audience}</p>
       </div>
       <div class="mt-4 flex items-center justify-between">
-        <span class="text-xs text-slate-400">${completeFases+partialFases}/${seg.phases.length} fases com conteúdo</span>
         <span class="text-xs font-semibold group-hover:translate-x-1 transition-transform" style="color:#1968F0;">Ver jornada →</span>
       </div>
     </div>
@@ -2342,23 +2151,6 @@ function renderSegmentPage(seg) {
     </div>
 
 
-    <!-- MAcc: Forecast destaque -->
-    ${seg.id === 'macc' ? `
-    <div class="max-w-6xl mx-auto w-full px-6 pt-8 pb-2">
-      <button onclick="openForecastMaccModal()"
-        class="group w-full flex items-center gap-4 rounded-2xl px-6 py-5 text-left transition-all shadow-sm hover:shadow-md"
-        style="background:#FFF7ED;border:1.5px solid #FCD34D;"
-        onmouseover="this.style.background='#FEF3C7';this.style.borderColor='#FBBF24'"
-        onmouseout="this.style.background='#FFF7ED';this.style.borderColor='#FCD34D'">
-        <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl flex-shrink-0" style="background:#FEF3C7;">📊</div>
-        <div>
-          <p class="font-bold text-amber-900 text-base">Forecast</p>
-          <p class="text-xs text-amber-700 mt-0.5">Planilhas de forecast · MAcc</p>
-        </div>
-        <span class="ml-auto text-amber-400 group-hover:translate-x-0.5 transition-transform text-lg font-bold">→</span>
-      </button>
-    </div>
-    ` : ''}
 
     <!-- StAcc: Account Planning + Forecast destaque -->
     ${seg.id === 'stacc' ? `
@@ -2424,7 +2216,6 @@ function renderPhase(phase, segId) {
             </div>
           </div>
           <div class="flex flex-col items-end gap-1 flex-shrink-0">
-            ${completenessChip(phase.completeness)}
             <span class="text-xs text-slate-400">${phase.lead}</span>
           </div>
         </div>
@@ -2456,17 +2247,17 @@ function renderPhase(phase, segId) {
         </div>
       </div>
       ${phase.id === 'implementacao' && segId === 'smb' && IMP_STAGES_SMB.length > 0 ? renderImplPhase(phase) : phase.stages.length > 0 ? (segId === 'stacc' && phase.id === 'land' ? renderPreCrmStacc() : '') + renderStagesTimeline(phase, segId) : renderEmptyPhase(phase)}
-      ${['land','full-adoption','expand','implementacao'].includes(phase.id) ? `
+      ${phase.id === 'land' ? `
       <div class="px-4 pb-4 pt-2">
-        <button onclick="${phase.id === 'land' ? 'openModalDesqPerdidos' : phase.id === 'full-adoption' ? 'openModalChurns' : phase.id === 'expand' ? 'openModalPerdidosExpand' : 'openModalPerdidosImpl'}()"
+        <button onclick="openModalDesqPerdidos()"
           class="group flex items-center gap-3 font-medium rounded-xl px-4 py-3 transition-all w-full"
           style="background:#FFF1F2;color:#9F1239;border:1.5px solid #FECDD3;"
           onmouseover="this.style.background='#FFE4E6';this.style.borderColor='#FDA4AF'"
           onmouseout="this.style.background='#FFF1F2';this.style.borderColor='#FECDD3'">
           <div class="w-9 h-9 rounded-lg flex items-center justify-center text-base flex-shrink-0" style="background:#FFE4E6;">❌</div>
           <div class="text-left">
-            <p class="font-bold text-sm" style="color:#9F1239;">${phase.id === 'land' ? 'Desqualificados e Perdidos' : phase.id === 'full-adoption' ? 'Churns' : 'Perdidos'}</p>
-            <p class="text-xs font-normal mt-0.5" style="color:#BE123C;">${phase.id === 'land' ? 'O que acontece com deals fora do funil' : phase.id === 'full-adoption' ? 'O que acontece com clientes que saem' : phase.id === 'expand' ? 'O que acontece com deals perdidos no Expand' : 'O que acontece com clientes perdidos na Implementação'}</p>
+            <p class="font-bold text-sm" style="color:#9F1239;">Desqualificados e Perdidos</p>
+            <p class="text-xs font-normal mt-0.5" style="color:#BE123C;">O que acontece com deals fora do funil</p>
           </div>
           <span class="ml-auto text-base font-bold group-hover:translate-x-0.5 transition-transform" style="color:#FDA4AF;">→</span>
         </button>
@@ -2601,7 +2392,7 @@ function renderStagesTimeline(phase, segId) {
       <div class="flex items-center gap-2 mb-3">
         <span class="w-1.5 h-1.5 rounded-full bg-slate-400 inline-block"></span>
         <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Pipeline de Leads · Contato</span>
-        <button onclick="document.getElementById('modal-proc-qualif-${segId}').classList.remove('hidden');document.getElementById('modal-proc-qualif-${segId}').classList.add('flex')" class="text-[10px] font-semibold px-2 py-0.5 rounded-md transition-colors" style="background:#EEF2FF;color:#4F46E5;border:1px solid #C7D2FE;" onmouseover="this.style.background='#E0E7FF'" onmouseout="this.style.background='#EEF2FF'">Processos Qualificação</button>
+        <button onclick="openProcQualif('${segId}')" class="text-[10px] font-semibold px-2 py-0.5 rounded-md transition-colors" style="background:#EEF2FF;color:#4F46E5;border:1px solid #C7D2FE;" onmouseover="this.style.background='#E0E7FF'" onmouseout="this.style.background='#EEF2FF'">Processos Qualificação</button>
       </div>
       <div class="flex gap-6 pb-1">
         ${contatoStages.map((stage, idx) => stageBlock(stage, idx+1, idx === contatoStages.length-1)).join('')}
@@ -3894,21 +3685,7 @@ function switchDesqTab(tab) {
   document.getElementById('tab-desq-btn').style.cssText = isDesq ? 'border-bottom:2px solid #F43F5E;color:#E11D48;font-weight:700;' : 'border-bottom:2px solid transparent;color:#64748B;font-weight:500;';
   document.getElementById('tab-perd-btn').style.cssText = !isDesq ? 'border-bottom:2px solid #F43F5E;color:#E11D48;font-weight:700;' : 'border-bottom:2px solid transparent;color:#64748B;font-weight:500;';
 }
-function openModalChurns() { const m=document.getElementById('modal-churns'); m.classList.remove('hidden'); m.classList.add('flex'); }
-function closeModalChurns() { const m=document.getElementById('modal-churns'); m.classList.add('hidden'); m.classList.remove('flex'); }
-function openModalPerdidosExpand() { const m=document.getElementById('modal-perdidos-expand'); m.classList.remove('hidden'); m.classList.add('flex'); }
-function closeModalPerdidosExpand() { const m=document.getElementById('modal-perdidos-expand'); m.classList.add('hidden'); m.classList.remove('flex'); }
-function openModalPerdidosImpl() { const m=document.getElementById('modal-perdidos-impl'); m.classList.remove('hidden'); m.classList.add('flex'); }
-function closeModalPerdidosImpl() { const m=document.getElementById('modal-perdidos-impl'); m.classList.add('hidden'); m.classList.remove('flex'); }
 
-function openForecastMaccModal() {
-  const m = document.getElementById('modal-forecast-macc');
-  m.classList.remove('hidden'); m.classList.add('flex');
-}
-function closeForecastMaccModal() {
-  const m = document.getElementById('modal-forecast-macc');
-  m.classList.add('hidden'); m.classList.remove('flex');
-}
 
 function openAccountPlanningModal() {
   const m = document.getElementById('modal-account-planning');
@@ -3934,6 +3711,7 @@ function closeForecastModal() {
 
 // ─── INIT ────────────────────────────────────────────────────────────────────
 
+renderStaticModals();
 if (checkAuth()) render();
 </script>
 </body>
