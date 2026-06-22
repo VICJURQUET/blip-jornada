@@ -1239,47 +1239,89 @@ const SEGMENTS = [
     </div>
   </div>
 </div>`, hubspotObject:'Contato', hubspotFields:'Outros sistemas que a empresa usa · Ferramenta atual · Concorrente mapeado · Potencial total do cliente · Dor', methodologies:['Challenger Sale','Solution Selling','SPIN'], tools:[{name:'Central de Revenue Enablement',url:'https://app.notion.com/p/blip-ai/Central-Revenue-Enablement-248dcfddcf4a80019774ca8b6faecd5c'},{name:'Growth Insights',url:''},{name:'Sales Navigator',url:'https://linkedin.com/premium/products?upsellOrderOrigin=guest_login_sales_nav&utype=sales_ss'}] },
-          { id:'s5', name:'Qualificado', hubspotStage:'Qualificado', sentiment:'Curiosidade', need:'Aprofundar o entendimento em Blip', clientAction:'Confirmar reuniao', passTrigger:'Reuniao confirmada', responsible:'BDR', sellerRole:'Passagem de bastão com qualidade para o time de vendas. Registrar Briefing com alto nível de detalhamento. Confirmar reunião e garantir que o lead estará no dispositivo ideal (computador).', sellerRoleHtml:`<div class="space-y-4 text-sm">
-  <div class="rounded-xl border border-blue-100 overflow-hidden">
-    <div class="px-4 py-2.5 font-semibold text-blue-800 text-xs tracking-wide uppercase" style="background:#EFF6FF;">🎯 Objetivo da etapa</div>
-    <div class="px-4 py-3 text-xs text-slate-600 leading-relaxed space-y-2">
+          { id:'s5', name:'Qualificado', hubspotStage:'Qualificado', sentiment:'Curiosidade', need:'Aprofundar o entendimento em Blip', clientAction:'Confirmar reuniao', passTrigger:'Reuniao confirmada', responsible:'BDR', sellerRole:'Passagem de bastão com qualidade para o time de vendas. Registrar Briefing com alto nível de detalhamento. Confirmar reunião e garantir que o lead estará no dispositivo ideal (computador).', sellerRoleHtml:`<div style="display:flex;flex-direction:column;gap:10px;font-size:12px;">
+  <!-- Fluxo visual: quadradinhos -->
+  <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:12px;padding:12px;">
+    <p style="font-size:10px;font-weight:700;color:#94A3B8;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px;">Fluxo da etapa</p>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;">
+      <div style="background:#EFF6FF;border:2px solid #BFDBFE;border-radius:10px;padding:10px 6px;text-align:center;">
+        <div style="font-size:20px;margin-bottom:4px;">📝</div>
+        <div style="font-size:10px;font-weight:700;color:#1E40AF;line-height:1.3;">Briefing</div>
+      </div>
+      <div style="background:#FFFBEB;border:2px solid #FDE68A;border-radius:10px;padding:10px 6px;text-align:center;">
+        <div style="font-size:20px;margin-bottom:4px;">📅</div>
+        <div style="font-size:10px;font-weight:700;color:#92400E;line-height:1.3;">Confirmar reunião</div>
+      </div>
+      <div style="background:#F0FDF4;border:2px solid #BBF7D0;border-radius:10px;padding:10px 6px;text-align:center;">
+        <div style="font-size:20px;margin-bottom:4px;">✉️</div>
+        <div style="font-size:10px;font-weight:700;color:#065F46;line-height:1.3;">E-mail de bastão</div>
+      </div>
+      <div style="background:#F5F3FF;border:2px solid #DDD6FE;border-radius:10px;padding:10px 6px;text-align:center;">
+        <div style="font-size:20px;margin-bottom:4px;">🚀</div>
+        <div style="font-size:10px;font-weight:700;color:#4C1D95;line-height:1.3;">Migração</div>
+      </div>
+    </div>
+  </div>
+  <!-- Acordeão: Objetivo -->
+  <div style="border-radius:10px;border:1px solid #BFDBFE;overflow:hidden;">
+    <button onclick="(function(b){var d=b.nextElementSibling;d.classList.toggle('hidden');b.querySelector('.qch1').textContent=d.classList.contains('hidden')?'▼':'▲'})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#EFF6FF;border:none;cursor:pointer;text-align:left;">
+      <span style="font-size:11px;font-weight:700;color:#1E40AF;letter-spacing:0.05em;text-transform:uppercase;">🎯 Objetivo da etapa</span>
+      <span class="qch1" style="font-size:10px;color:#93C5FD;flex-shrink:0;">▼</span>
+    </button>
+    <div class="hidden" style="padding:12px 14px;background:#fff;color:#475569;line-height:1.65;display:flex;flex-direction:column;gap:6px;">
       <p>Fazer uma <strong>passagem de bastão com qualidade</strong> para o time de vendas.</p>
       <p>Para isso, devemos registrar o <strong>Briefing da oportunidade</strong> com o maior nível de detalhamento possível.</p>
     </div>
   </div>
-  <div class="rounded-xl border border-amber-100 overflow-hidden">
-    <div class="px-4 py-2.5 font-semibold text-amber-800 text-xs tracking-wide uppercase" style="background:#FFFBEB;">✅ Confirmar reunião</div>
-    <div class="px-4 py-3 text-xs text-slate-600 leading-relaxed space-y-2">
+  <!-- Acordeão: Confirmar reunião -->
+  <div style="border-radius:10px;border:1px solid #FDE68A;overflow:hidden;">
+    <button onclick="(function(b){var d=b.nextElementSibling;d.classList.toggle('hidden');b.querySelector('.qch2').textContent=d.classList.contains('hidden')?'▼':'▲'})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#FFFBEB;border:none;cursor:pointer;text-align:left;">
+      <span style="font-size:11px;font-weight:700;color:#92400E;letter-spacing:0.05em;text-transform:uppercase;">✅ Confirmar reunião</span>
+      <span class="qch2" style="font-size:10px;color:#FCD34D;flex-shrink:0;">▼</span>
+    </button>
+    <div class="hidden" style="padding:12px 14px;background:#fff;color:#475569;line-height:1.65;display:flex;flex-direction:column;gap:6px;">
       <p>A oportunidade só vale após a reunião — por isso é papel do pré-vendedor <strong>confirmar o agendamento</strong> e garantir que o lead estará:</p>
-      <ul class="space-y-1 mt-1">
-        <li class="flex gap-2"><span class="text-amber-400">·</span><span>No <strong>computador</strong> (dispositivo ideal)</span></li>
-        <li class="flex gap-2"><span class="text-amber-400">·</span><span><strong>Disponível</strong> para conhecer a Blip com mais profundidade</span></li>
+      <ul style="display:flex;flex-direction:column;gap:4px;margin-top:4px;">
+        <li style="display:flex;gap:8px;"><span style="color:#FBBF24;flex-shrink:0;">·</span><span>No <strong>computador</strong> (dispositivo ideal)</span></li>
+        <li style="display:flex;gap:8px;"><span style="color:#FBBF24;flex-shrink:0;">·</span><span><strong>Disponível</strong> para conhecer a Blip com mais profundidade</span></li>
       </ul>
     </div>
   </div>
-  <div class="rounded-xl border border-purple-100 overflow-hidden">
-    <div class="px-4 py-2.5 font-semibold text-purple-800 text-xs tracking-wide uppercase" style="background:#FAF5FF;">🔄 Automação da roleta</div>
-    <div class="px-4 py-3 text-xs text-slate-600 leading-relaxed space-y-2">
+  <!-- Acordeão: Roleta -->
+  <div style="border-radius:10px;border:1px solid #E9D5FF;overflow:hidden;">
+    <button onclick="(function(b){var d=b.nextElementSibling;d.classList.toggle('hidden');b.querySelector('.qch3').textContent=d.classList.contains('hidden')?'▼':'▲'})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#FAF5FF;border:none;cursor:pointer;text-align:left;">
+      <span style="font-size:11px;font-weight:700;color:#6B21A8;letter-spacing:0.05em;text-transform:uppercase;">🔄 Automação da roleta</span>
+      <span class="qch3" style="font-size:10px;color:#C084FC;flex-shrink:0;">▼</span>
+    </button>
+    <div class="hidden" style="padding:12px 14px;background:#fff;color:#475569;line-height:1.65;">
       <p>A roleta é <strong>automática</strong> — o sistema atribui a reunião para o IS com <strong>menor estoque de OPPs</strong>, garantindo equilíbrio na distribuição e evitando sobrecarga.</p>
     </div>
   </div>
-  <div class="rounded-xl border border-green-100 overflow-hidden">
-    <div class="px-4 py-2.5 font-semibold text-green-800 text-xs tracking-wide uppercase" style="background:#F0FDF4;">✉️ E-mail de passagem de bastão</div>
-    <div class="px-4 py-3 text-xs text-slate-600 leading-relaxed space-y-3">
+  <!-- Acordeão: E-mail -->
+  <div style="border-radius:10px;border:1px solid #BBF7D0;overflow:hidden;">
+    <button onclick="(function(b){var d=b.nextElementSibling;d.classList.toggle('hidden');b.querySelector('.qch4').textContent=d.classList.contains('hidden')?'▼':'▲'})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#F0FDF4;border:none;cursor:pointer;text-align:left;">
+      <span style="font-size:11px;font-weight:700;color:#065F46;letter-spacing:0.05em;text-transform:uppercase;">✉️ E-mail de passagem de bastão</span>
+      <span class="qch4" style="font-size:10px;color:#6EE7B7;flex-shrink:0;">▼</span>
+    </button>
+    <div class="hidden" style="padding:12px 14px;background:#fff;color:#475569;line-height:1.65;display:flex;flex-direction:column;gap:8px;">
       <p>Após mover o lead para <strong>Qualificado</strong>, enviamos o e-mail de passagem de bastão <strong>personalizado</strong>, com IS ou Closer em cópia, link da reunião, data e horário.</p>
-      <div class="rounded-lg px-3 py-2.5 border border-green-200 text-green-800 font-medium" style="background:#F0FDF4;">💡 Enviar no mesmo dia do agendamento — preferencialmente <strong>em até 1h</strong> após o agendamento.</div>
-      <p>Além do e-mail, <strong>duas notificações ativas</strong> são disparadas para o contato associado ao deal. Por isso dois pontos são fundamentais:</p>
-      <ol class="space-y-2">
-        <li class="flex gap-2"><span class="flex-shrink-0 w-5 h-5 rounded-full bg-green-100 text-green-700 font-bold flex items-center justify-center text-xs">1</span><span>O campo <strong>"Link da reunião"</strong> deve ser preenchido apenas com o link da agenda do Inside;</span></li>
-        <li class="flex gap-2"><span class="flex-shrink-0 w-5 h-5 rounded-full bg-green-100 text-green-700 font-bold flex items-center justify-center text-xs">2</span><span>Apenas o <strong>contato que converteu</strong> para a reunião deve estar associado ao deal — desassociar os demais.</span></li>
-      </ol>
+      <div style="background:#F0FDF4;border:1px solid #BBF7D0;border-radius:8px;padding:10px 12px;color:#065F46;font-weight:600;">💡 Enviar no mesmo dia do agendamento — preferencialmente <strong>em até 1h</strong> após o agendamento.</div>
+      <p>Além do e-mail, <strong>duas notificações ativas</strong> são disparadas. Dois pontos fundamentais:</p>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <div style="display:flex;gap:8px;align-items:flex-start;"><span style="flex-shrink:0;width:20px;height:20px;background:#DCFCE7;color:#15803D;font-weight:700;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;">1</span><span>O campo <strong>"Link da reunião"</strong> deve ser preenchido apenas com o link da agenda do Inside;</span></div>
+        <div style="display:flex;gap:8px;align-items:flex-start;"><span style="flex-shrink:0;width:20px;height:20px;background:#DCFCE7;color:#15803D;font-weight:700;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;">2</span><span>Apenas o <strong>contato que converteu</strong> para a reunião deve estar associado ao deal — desassociar os demais.</span></div>
+      </div>
     </div>
   </div>
-  <div class="rounded-xl border border-slate-200 overflow-hidden">
-    <div class="px-4 py-2.5 font-semibold text-slate-700 text-xs tracking-wide uppercase" style="background:#F8FAFC;">🔀 Migração de pipeline</div>
-    <div class="px-4 py-3 text-xs text-slate-600 leading-relaxed space-y-2">
+  <!-- Acordeão: Migração -->
+  <div style="border-radius:10px;border:1px solid #E2E8F0;overflow:hidden;">
+    <button onclick="(function(b){var d=b.nextElementSibling;d.classList.toggle('hidden');b.querySelector('.qch5').textContent=d.classList.contains('hidden')?'▼':'▲'})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#F8FAFC;border:none;cursor:pointer;text-align:left;">
+      <span style="font-size:11px;font-weight:700;color:#334155;letter-spacing:0.05em;text-transform:uppercase;">🔀 Migração de pipeline</span>
+      <span class="qch5" style="font-size:10px;color:#94A3B8;flex-shrink:0;">▼</span>
+    </button>
+    <div class="hidden" style="padding:12px 14px;background:#fff;color:#475569;line-height:1.65;display:flex;flex-direction:column;gap:8px;">
       <p>Com todos os campos obrigatórios preenchidos, o lead migra <strong>automaticamente</strong> para o pipeline de Aquisição.</p>
-      <div class="rounded-lg px-3 py-2.5 border border-slate-200 text-slate-700" style="background:#F8FAFC;">💡 Se não migrar automaticamente, verifique se todos os campos estão corretos — principalmente: <strong>alterar a propriedade do negócio para IS/Closer</strong>.</div>
+      <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;padding:10px 12px;color:#475569;">💡 Se não migrar automaticamente, verifique se todos os campos estão corretos — principalmente: <strong>alterar a propriedade do negócio para IS/Closer</strong>.</div>
     </div>
   </div>
 </div>`, hubspotObject:'Contato', hubspotFields:'Caso de uso (obrigatório) · Ferramenta atual (obrigatório) · Etapa de Jornada (obrigatório) · Data de fechamento (obrigatório)', manualActions:'Preenchimento manual de atividades — Briefing / Passagem de bastão BDR→IS', manualActionsHtml:`<div class="space-y-3 text-xs">
