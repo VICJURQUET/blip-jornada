@@ -1572,7 +1572,73 @@ const SEGMENTS = [
           { id:'m2', name:'Tentativa', hubspotStage:'Tentativa', sentiment:'Inquietude', need:'Entender que a Blip é relevante e que o tempo dele vai ser bem investido', clientAction:'Responder tentativa de contato', passTrigger:'—', responsible:'BDR', sellerRole:'Estudar informações públicas do contato. Personalizar o contato. Conquistar a primeira resposta do lead.', hubspotObject:'Contato', hubspotFields:'Segmento (obrigatório) · Frente atendida · Site (obrigatório) · LinkedIn (obrigatório) · Modelo de negócio do cliente', methodologies:['Social Selling'] },
           { id:'m3', name:'Conectado', hubspotStage:'Conectado', sentiment:'Interesse · Dor', need:'Reconhecer que precisa da Blip', clientAction:'Compartilhar a dor · Responder contato', passTrigger:'Prospect respondeu', responsible:'BDR', sellerRole:'Aplicar metodologias de vendas para extrair informações importantes. Utilizar Use Cases.', hubspotObject:'Contato', hubspotFields:'Frente prospectada (obrigatório) · Instagram · Facebook', methodologies:['Sandler','SPIN','GPCTBA/C&I'], supportTeams:[{name:'Value Design (Pré-venda técnico)',actionUrl:''}] },
           { id:'m4', name:'Evaluation', hubspotStage:'Evaluation', sentiment:'Alívio · Curiosidade', need:'Ver a Blip como relevante', clientAction:'Reconhecer Blip como parceiro estratégico', passTrigger:'Dor compartilhada · SLA Opp validado', responsible:'BDR', sellerRole:'Diagnóstico completo do lead. Coletar as principais dores e necessidades.', hubspotObject:'Contato', hubspotFields:'Outros sistemas que a empresa usa · Ferramenta atual · Concorrente mapeado · Potencial total do cliente · Dor', methodologies:['Challenger Sale','Solution Selling','SPIN'] },
-          { id:'m5', name:'Qualificado / Opps', hubspotStage:'Qualificado / Opps', sentiment:'Clareza', need:'Ver o gap atual vs ideal', clientAction:'Identificar pontos essenciais · Validar', passTrigger:'Campos HubSpot OK · SLA Opp validado', responsible:'Closer', sellerRole:'Estudar briefing do BDR. Pesquisar sobre prospect no LinkedIn. Preparar casos de sucesso. Preparar apresentação.', hubspotObject:'Contato → Negócio', hubspotFields:'Caso de uso (obrigatório) · Ferramenta atual (obrigatório) · Etapa de Jornada (obrigatório) · Data de fechamento (obrigatório) · Score de Qualificação (obrigatório)', manualActions:'Preenchimento Manual de atividades — Briefing (resumo das informações coletadas pelo BDR sobre o lead) / Passagem de bastão Qualificação→Aquisição', autoActions:'Criação do negócio automática · Roleta automática', methodologies:['Demo 2 Win','Value-Based Selling','SPIN'] },
+          { id:'m5', name:'Qualificado / Opps', hubspotStage:'Qualificado / Opps', sentiment:'Clareza', need:'Ver o gap atual vs ideal', clientAction:'Identificar pontos essenciais · Validar', passTrigger:'Campos HubSpot OK · SLA Opp validado', responsible:'Closer', sellerRole:'Estudar briefing do BDR. Pesquisar sobre prospect no LinkedIn. Preparar casos de sucesso. Preparar apresentação.', sellerRoleHtml:`<div style="display:flex;flex-direction:column;gap:10px;font-size:12px;">
+  <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:12px;padding:12px;">
+    <p style="font-size:10px;font-weight:700;color:#94A3B8;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px;">Fluxo da etapa</p>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;">
+      <div style="background:#EFF6FF;border:2px solid #BFDBFE;border-radius:10px;padding:10px 6px;text-align:center;">
+        <div style="font-size:20px;margin-bottom:4px;">📚</div>
+        <div style="font-size:10px;font-weight:700;color:#1E40AF;line-height:1.3;">Estudar briefing</div>
+      </div>
+      <div style="background:#F5F3FF;border:2px solid #DDD6FE;border-radius:10px;padding:10px 6px;text-align:center;">
+        <div style="font-size:20px;margin-bottom:4px;">🔍</div>
+        <div style="font-size:10px;font-weight:700;color:#4C1D95;line-height:1.3;">Pesquisar LinkedIn</div>
+      </div>
+      <div style="background:#F0FDF4;border:2px solid #BBF7D0;border-radius:10px;padding:10px 6px;text-align:center;">
+        <div style="font-size:20px;margin-bottom:4px;">📊</div>
+        <div style="font-size:10px;font-weight:700;color:#065F46;line-height:1.3;">Casos de sucesso</div>
+      </div>
+      <div style="background:#FFFBEB;border:2px solid #FDE68A;border-radius:10px;padding:10px 6px;text-align:center;">
+        <div style="font-size:20px;margin-bottom:4px;">🎯</div>
+        <div style="font-size:10px;font-weight:700;color:#92400E;line-height:1.3;">Preparar apresentação</div>
+      </div>
+    </div>
+  </div>
+  <div style="border-radius:10px;border:1px solid #BFDBFE;overflow:hidden;">
+    <button onclick="(function(b){var d=b.nextElementSibling;d.classList.toggle('hidden');b.querySelector('.mch1').textContent=d.classList.contains('hidden')?'▼':'▲'})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#EFF6FF;border:none;cursor:pointer;text-align:left;">
+      <span style="font-size:11px;font-weight:700;color:#1E40AF;letter-spacing:0.05em;text-transform:uppercase;">📚 Estudar briefing do BDR</span>
+      <span class="mch1" style="font-size:10px;color:#93C5FD;flex-shrink:0;">▼</span>
+    </button>
+    <div class="hidden" style="padding:12px 14px;background:#fff;color:#475569;line-height:1.65;display:flex;flex-direction:column;gap:6px;">
+      <p>Leia com atenção o <strong>briefing registrado pelo BDR</strong> — ele contém o histórico do lead, dores identificadas e informações coletadas ao longo da qualificação.</p>
+      <p>Use essas informações para <strong>personalizar toda a abordagem</strong> na reunião.</p>
+    </div>
+  </div>
+  <div style="border-radius:10px;border:1px solid #DDD6FE;overflow:hidden;">
+    <button onclick="(function(b){var d=b.nextElementSibling;d.classList.toggle('hidden');b.querySelector('.mch2').textContent=d.classList.contains('hidden')?'▼':'▲'})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#F5F3FF;border:none;cursor:pointer;text-align:left;">
+      <span style="font-size:11px;font-weight:700;color:#6B21A8;letter-spacing:0.05em;text-transform:uppercase;">🔍 Pesquisar no LinkedIn</span>
+      <span class="mch2" style="font-size:10px;color:#C084FC;flex-shrink:0;">▼</span>
+    </button>
+    <div class="hidden" style="padding:12px 14px;background:#fff;color:#475569;line-height:1.65;display:flex;flex-direction:column;gap:6px;">
+      <p>Pesquise o prospect para entender:</p>
+      <ul style="display:flex;flex-direction:column;gap:4px;margin-top:4px;">
+        <li style="display:flex;gap:8px;"><span style="color:#A78BFA;flex-shrink:0;">·</span><span>Trajetória profissional e cargo atual</span></li>
+        <li style="display:flex;gap:8px;"><span style="color:#A78BFA;flex-shrink:0;">·</span><span>Projetos e iniciativas recentes da empresa</span></li>
+        <li style="display:flex;gap:8px;"><span style="color:#A78BFA;flex-shrink:0;">·</span><span>Conexões em comum para criar rapport</span></li>
+      </ul>
+    </div>
+  </div>
+  <div style="border-radius:10px;border:1px solid #BBF7D0;overflow:hidden;">
+    <button onclick="(function(b){var d=b.nextElementSibling;d.classList.toggle('hidden');b.querySelector('.mch3').textContent=d.classList.contains('hidden')?'▼':'▲'})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#F0FDF4;border:none;cursor:pointer;text-align:left;">
+      <span style="font-size:11px;font-weight:700;color:#065F46;letter-spacing:0.05em;text-transform:uppercase;">📊 Preparar casos de sucesso</span>
+      <span class="mch3" style="font-size:10px;color:#6EE7B7;flex-shrink:0;">▼</span>
+    </button>
+    <div class="hidden" style="padding:12px 14px;background:#fff;color:#475569;line-height:1.65;display:flex;flex-direction:column;gap:6px;">
+      <p>Selecione <strong>cases relevantes</strong> para o segmento e contexto do lead — preferencialmente do mesmo setor ou com dores parecidas.</p>
+      <p>Use a <strong>Central de Revenue Enablement</strong> para os materiais mais atualizados.</p>
+    </div>
+  </div>
+  <div style="border-radius:10px;border:1px solid #FDE68A;overflow:hidden;">
+    <button onclick="(function(b){var d=b.nextElementSibling;d.classList.toggle('hidden');b.querySelector('.mch4').textContent=d.classList.contains('hidden')?'▼':'▲'})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#FFFBEB;border:none;cursor:pointer;text-align:left;">
+      <span style="font-size:11px;font-weight:700;color:#92400E;letter-spacing:0.05em;text-transform:uppercase;">🎯 Preparar apresentação</span>
+      <span class="mch4" style="font-size:10px;color:#FCD34D;flex-shrink:0;">▼</span>
+    </button>
+    <div class="hidden" style="padding:12px 14px;background:#fff;color:#475569;line-height:1.65;display:flex;flex-direction:column;gap:6px;">
+      <p>Monte uma apresentação <strong>personalizada e objetiva</strong>, conectando as funcionalidades da Blip às dores identificadas no briefing.</p>
+      <p>Garanta que o lead estará no <strong>computador</strong> para a melhor experiência na reunião.</p>
+    </div>
+  </div>
+</div>`, hubspotObject:'Contato → Negócio', hubspotFields:'Caso de uso (obrigatório) · Ferramenta atual (obrigatório) · Etapa de Jornada (obrigatório) · Data de fechamento (obrigatório) · Score de Qualificação (obrigatório)', manualActions:'Preenchimento Manual de atividades — Briefing (resumo das informações coletadas pelo BDR sobre o lead) / Passagem de bastão Qualificação→Aquisição', autoActions:'Criação do negócio automática · Roleta automática', methodologies:['Demo 2 Win','Value-Based Selling','SPIN'] },
           { id:'m6', name:'Apresentação', hubspotStage:'Apresentação', sentiment:'Segurança', need:'Entender como funciona na prática', clientAction:'Validar funcionalidades e critérios de decisão', passTrigger:'Reunião de diagnóstico realizada · Fit com a Blip', responsible:'Closer', sellerRole:'Educação sobre modelos de WhatsApp (material oficial!). Discovery. Apresentação dos Use Cases. Entender como o Blip pode ser usado em toda a jornada do cliente.', hubspotObject:'Negócio', hubspotFields:'Tipo de negócio (obrigatório) · Qual concorrente (obrigatório) · Existe processo de Compras? (obrigatório)', methodologies:['MEDDPICC','Value-Based Selling'] },
           { id:'m7', name:'Design de Projeto', hubspotStage:'Design de Projeto', sentiment:'Ambição', need:'ROI para vender internamente', clientAction:'Validar ROI · Confirmar investimento', passTrigger:'Apresentação do projeto construído feita', responsible:'Closer', sellerRole:'Demonstrar a solução aplicada ao problema. Preparar esboço (Mockup/Miro). Validar aderência, stakeholders e critérios de decisão.', hubspotObject:'Negócio', hubspotFields:'Produtos Add-Ons · Objetivos da contratação (obrigatório) · Novas frentes para prospecção do BDR? · Novos produtos negociados (obrigatório) · Houve envolvimento de CDA na construção do Design de Solução? (obrigatório) · Houve envolvimento de parceiro na construção do Design de Solução? (obrigatório)', manualActions:'Acionar Parceiro (se necessário) · Acionar VD (se necessário) · Cadastro Item de Linha', methodologies:['MEDDPICC','Value-Based Selling'], sapLink:true },
           { id:'m8', name:'Proposta Apresentada', hubspotStage:'Proposta Apresentada', sentiment:'Conforto', need:'Eliminar atritos financeiros', clientAction:'Validar investimento · Escolher Blip', passTrigger:'Proposta comercial apresentada', responsible:'Closer', sellerRole:'Validação com cliente do desenho proposto. Apresentação da proposta comercial. Validar critérios de decisão e processo de compra. Alinhar condições comerciais.', hubspotObject:'Negócio', hubspotFields:'Data de fechamento (obrigatório) · Participação em RFP (obrigatório) · Concorrência (obrigatório) · Tipo de plano apresentado (obrigatório) · [Conversational Agency] Qual parceiro (obrigatório)', methodologies:['MAP','MEDDPICC'], sapLink:true, hubspotFieldsSAP:[{text:'Verificar item de linha — acessar os Processos SAP',url:'sap.html'},{text:'Adicionar CNPJ na empresa vinculada à oportunidade',url:'sap.html'}] },
@@ -1915,58 +1981,66 @@ const SEGMENTS = [
   </div>
 
 </div>`, hubspotObject:'Contato', hubspotFields:'Outros sistemas que a empresa usa · Ferramenta atual · Concorrente mapeado · Potencial total do cliente', methodologies:['Challenger Sale','Solution Selling','SPIN'], tools:[{name:'Central de Revenue Enablement',url:'https://app.notion.com/p/blip-ai/Central-Revenue-Enablement-248dcfddcf4a80019774ca8b6faecd5c'}], supportTeams:[{name:'Value Design (VD)',actionUrl:'https://app.hubspot.com/playbooks/1796841/compose/80142663'},{name:'Marketing (MKT)',actionUrl:''}] },
-          { id:'t5', name:'Qualificado', hubspotStage:'Qualificado / Opps', sentiment:'Clareza', need:'Ver o gap atual vs ideal', clientAction:'Identificar pontos essenciais e confirmar a reunião agendada.', passTrigger:'Data confirmada para o primeiro encontro entre KAE + lead (podendo envolver times de apoio, como diretoria e/ou time técnico de pré-vendas)', responsible:'KAE', sellerRole:'', sellerRoleHtml:`<div class="space-y-4 text-sm">
-
-  <!-- Criação automática -->
-  <div class="rounded-lg px-4 py-3 flex items-start gap-2" style="background:#EEF2FF;border:1px solid #C7D2FE;">
-    <span class="text-base shrink-0">⚡</span>
-    <p class="text-xs text-indigo-800 leading-relaxed">A criação do opp é <strong>automática</strong> ao chegar nesta etapa. O opp vai para a pipeline de vendas na etapa Opp.</p>
+          { id:'t5', name:'Qualificado', hubspotStage:'Qualificado / Opps', sentiment:'Clareza', need:'Ver o gap atual vs ideal', clientAction:'Identificar pontos essenciais e confirmar a reunião agendada.', passTrigger:'Data confirmada para o primeiro encontro entre KAE + lead (podendo envolver times de apoio, como diretoria e/ou time técnico de pré-vendas)', responsible:'KAE', sellerRole:'', sellerRoleHtml:`<div style="display:flex;flex-direction:column;gap:10px;font-size:12px;">
+  <!-- Info: criação automática -->
+  <div style="background:#EEF2FF;border:1px solid #C7D2FE;border-radius:10px;padding:10px 14px;display:flex;align-items:flex-start;gap:8px;">
+    <span style="font-size:16px;flex-shrink:0;">⚡</span>
+    <p style="color:#3730A3;line-height:1.6;">A criação do opp é <strong>automática</strong> ao chegar nesta etapa. O opp vai para a pipeline de vendas na etapa Opp.</p>
   </div>
-
-  <!-- Auditoria de registros -->
-  <div class="rounded-xl overflow-hidden border border-indigo-100">
-    <div class="flex items-center gap-2 px-4 py-2.5" style="background:#EEF2FF;">
-      <span class="flex items-center justify-center w-5 h-5 rounded-full text-white text-[10px] font-bold shrink-0" style="background:#4F46E5;">1</span>
-      <span class="font-semibold text-xs uppercase tracking-wide" style="color:#4F46E5;">Auditoria de registros no HubSpot</span>
-    </div>
-    <div class="px-4 py-3 bg-white space-y-2.5">
-      <p class="text-xs text-slate-600 leading-relaxed">O BDR precisa garantir que <strong>todas as informações coletadas ao longo da jornada</strong> estão corretamente registradas no HubSpot antes de avançar.</p>
-      <div class="space-y-1.5">
-        <div class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0" style="background:#4F46E5;"></span><p class="text-xs text-slate-700">O contato está <strong>atrelado à empresa correta</strong> no HubSpot</p></div>
-        <div class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0" style="background:#4F46E5;"></span><p class="text-xs text-slate-700">As <strong>informações da empresa estão corretas e atualizadas</strong></p></div>
-        <div class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0" style="background:#4F46E5;"></span><p class="text-xs text-slate-700">Todos os campos obrigatórios preenchidos ao longo das etapas anteriores</p></div>
+  <!-- Grid de quadradinhos -->
+  <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:12px;padding:12px;">
+    <p style="font-size:10px;font-weight:700;color:#94A3B8;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px;">Fluxo da etapa</p>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;">
+      <div style="background:#EEF2FF;border:2px solid #C7D2FE;border-radius:10px;padding:10px 8px;text-align:center;">
+        <div style="font-size:20px;margin-bottom:4px;">📋</div>
+        <div style="font-size:10px;font-weight:700;color:#3730A3;line-height:1.3;">Auditoria HubSpot</div>
       </div>
-      <div class="flex items-start gap-2 rounded-lg px-3 py-2.5" style="background:#FEF2F2;border:1px solid #FECACA;">
-        <span class="text-base shrink-0">⚠️</span>
-        <p class="text-xs text-red-800 leading-relaxed">O BDR é o <strong>owner de todos os registros iniciais</strong> e cadastros da empresa. A auditoria da qualidade desses dados é <strong>100% de obrigatoriedade do BDR</strong>.</p>
-      </div>
-      <div class="flex items-start gap-2 rounded-lg px-3 py-2.5" style="background:#FFFBEB;border:1px solid #FDE68A;">
-        <span class="text-sm shrink-0 font-bold text-amber-600">*</span>
-        <p class="text-xs text-amber-800 leading-relaxed">A conformidade das informações da empresa — incluindo a verificação de <strong>empresa principal vs. empresa secundária</strong> e o alinhamento correto dos dados cadastrais — garante maior eficiência no final do funil. Isso <strong>diminui diretamente a possibilidade de erros nos cadastros do SAP</strong>, evitando retrabalho e bloqueios na contratação.</p>
+      <div style="background:#F0FDF4;border:2px solid #BBF7D0;border-radius:10px;padding:10px 8px;text-align:center;">
+        <div style="font-size:20px;margin-bottom:4px;">🤝</div>
+        <div style="font-size:10px;font-weight:700;color:#065F46;line-height:1.3;">Participação no encontro</div>
       </div>
     </div>
   </div>
-
-  <!-- Participação no encontro -->
-  <div class="rounded-xl overflow-hidden border border-indigo-100">
-    <div class="flex items-center gap-2 px-4 py-2.5" style="background:#EEF2FF;">
-      <span class="flex items-center justify-center w-5 h-5 rounded-full text-white text-[10px] font-bold shrink-0" style="background:#4F46E5;">2</span>
-      <span class="font-semibold text-xs uppercase tracking-wide" style="color:#4F46E5;">Participação no encontro</span>
-    </div>
-    <div class="px-4 py-3 bg-white space-y-2">
-      <div class="grid grid-cols-2 gap-2">
-        <div class="rounded-lg p-2.5" style="background:#F0FDF4;border:1px solid #BBF7D0;">
-          <p class="text-[10px] font-bold uppercase tracking-wider text-green-700 mb-1">🖥️ Online</p>
-          <p class="text-xs text-slate-700">BDR <strong>participa</strong> do encontro</p>
-        </div>
-        <div class="rounded-lg p-2.5" style="background:#FEF2F2;border:1px solid #FECACA;">
-          <p class="text-[10px] font-bold uppercase tracking-wider text-red-600 mb-1">🤝 Presencial</p>
-          <p class="text-xs text-slate-700">BDR <strong>não participa</strong> do encontro</p>
-        </div>
+  <!-- Acordeão 1: Auditoria -->
+  <div style="border-radius:10px;border:1px solid #C7D2FE;overflow:hidden;">
+    <button onclick="(function(b){var d=b.nextElementSibling;d.classList.toggle('hidden');b.querySelector('.tch1').textContent=d.classList.contains('hidden')?'▼':'▲'})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#EEF2FF;border:none;cursor:pointer;text-align:left;">
+      <span style="font-size:11px;font-weight:700;color:#3730A3;letter-spacing:0.05em;text-transform:uppercase;">📋 Auditoria de registros no HubSpot</span>
+      <span class="tch1" style="font-size:10px;color:#818CF8;flex-shrink:0;">▼</span>
+    </button>
+    <div class="hidden" style="padding:12px 14px;background:#fff;color:#475569;line-height:1.65;display:flex;flex-direction:column;gap:8px;">
+      <p>O BDR precisa garantir que <strong>todas as informações coletadas ao longo da jornada</strong> estão corretamente registradas no HubSpot antes de avançar.</p>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <div style="display:flex;align-items:flex-start;gap:8px;"><span style="width:8px;height:8px;border-radius:50%;background:#4F46E5;flex-shrink:0;margin-top:4px;"></span><span>O contato está <strong>atrelado à empresa correta</strong> no HubSpot</span></div>
+        <div style="display:flex;align-items:flex-start;gap:8px;"><span style="width:8px;height:8px;border-radius:50%;background:#4F46E5;flex-shrink:0;margin-top:4px;"></span><span>As <strong>informações da empresa estão corretas e atualizadas</strong></span></div>
+        <div style="display:flex;align-items:flex-start;gap:8px;"><span style="width:8px;height:8px;border-radius:50%;background:#4F46E5;flex-shrink:0;margin-top:4px;"></span><span>Todos os <strong>campos obrigatórios</strong> preenchidos ao longo das etapas anteriores</span></div>
+      </div>
+      <div style="background:#FEF2F2;border:1px solid #FECACA;border-radius:8px;padding:10px 12px;display:flex;gap:8px;align-items:flex-start;">
+        <span style="flex-shrink:0;">⚠️</span>
+        <p style="color:#991B1B;">O BDR é o <strong>owner de todos os registros iniciais</strong>. A auditoria desses dados é <strong>100% de obrigatoriedade do BDR</strong>.</p>
+      </div>
+      <div style="background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;padding:10px 12px;display:flex;gap:8px;align-items:flex-start;">
+        <span style="flex-shrink:0;font-weight:700;color:#B45309;">*</span>
+        <p style="color:#92400E;">A conformidade das informações — incluindo <strong>empresa principal vs. empresa secundária</strong> — <strong>diminui diretamente a possibilidade de erros nos cadastros do SAP</strong>, evitando retrabalho e bloqueios na contratação.</p>
       </div>
     </div>
   </div>
-
+  <!-- Acordeão 2: Participação no encontro -->
+  <div style="border-radius:10px;border:1px solid #BBF7D0;overflow:hidden;">
+    <button onclick="(function(b){var d=b.nextElementSibling;d.classList.toggle('hidden');b.querySelector('.tch2').textContent=d.classList.contains('hidden')?'▼':'▲'})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#F0FDF4;border:none;cursor:pointer;text-align:left;">
+      <span style="font-size:11px;font-weight:700;color:#065F46;letter-spacing:0.05em;text-transform:uppercase;">🤝 Participação no encontro</span>
+      <span class="tch2" style="font-size:10px;color:#6EE7B7;flex-shrink:0;">▼</span>
+    </button>
+    <div class="hidden" style="padding:12px 14px;background:#fff;display:flex;gap:8px;">
+      <div style="flex:1;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:8px;padding:10px;">
+        <p style="font-size:10px;font-weight:700;color:#15803D;text-transform:uppercase;margin-bottom:4px;">🖥️ Online</p>
+        <p style="font-size:12px;color:#374151;">BDR <strong>participa</strong> do encontro</p>
+      </div>
+      <div style="flex:1;background:#FEF2F2;border:1px solid #FECACA;border-radius:8px;padding:10px;">
+        <p style="font-size:10px;font-weight:700;color:#DC2626;text-transform:uppercase;margin-bottom:4px;">🤝 Presencial</p>
+        <p style="font-size:12px;color:#374151;">BDR <strong>não participa</strong> do encontro</p>
+      </div>
+    </div>
+  </div>
 </div>`, hubspotObject:'Contato → Negócio', manualActions:'Preenchimento Manual de atividades — Briefing (resumo das informações coletadas pelo BDR sobre o lead) / Passagem de bastão Qualificação→Aquisição\n\n* Ao preencher o manual, é criada automaticamente uma observação no deal gerado pela automação no pipeline de vendas.', manualActionsLinks:[{name:'Abrir Manual de Passagem de Bastão BDR ↔ KAE',url:'https://app.hubspot.com/playbooks/1796841/compose/98805842'}], autoActions:'Criação do opp automática na pipeline de vendas', methodologies:['Value-Based Selling','SPIN'], tools:[],oppView:{ name:'Opp', hubspotStage:'Opps', hubspotObject:'Negócio', clientAction:'Comparecer na reunião agendada e compartilhar informações essenciais.', passTrigger:'Primeira reunião realizada com próximo passo já combinado (ex: segunda reunião agendada).', responsible:'KAE', sellerRole:'Realizar o encantamento da conta. Nesta primeira abordagem o vendedor precisa apresentar o potencial da Blip para engajar a conta e conseguir um segundo momento.', sellerRoleHtml:null, manualActions:'Registro das reuniões no HubSpot', manualActionsLinks:[], autoActions:'Sem ação automática' } },
           { id:'t6', name:'Apresentação', hubspotStage:'Apresentação', sentiment:'Encantamento', need:'Entender como funciona a ferramenta da Blip e os ganhos de negócio que o produto pode trazer', clientAction:'Solicitar um de-para das funcionalidades da Blip e dos objetivos de negócio', passTrigger:'Apresentação do projeto personalizado agendada', responsible:'KAE', sellerRole:'Educação sobre modelos de WhatsApp.\nDiscovery completo.\nApresentação de Use Cases.\nEntender como o Blip pode ser usado em toda a jornada do cliente para potencializar o negócio do lead.', hubspotObject:'Negócio', hubspotFields:'Tipo de negócio (obrigatório) · Qual concorrente (obrigatório) · Existe processo de Compras? (obrigatório)', methodologies:['MEDDPICC','Value-Based Selling'], supportTeams:[{name:'Value Designer',actionUrl:'vd-popup'}] },
           { id:'t7', name:'Design de Projeto', hubspotStage:'Design de Projeto', sentiment:'Encantamento', need:'Entender como funciona a ferramenta da Blip e os ganhos de negócio que o produto pode trazer', clientAction:'Solicitar um de-para das funcionalidades da Blip e dos objetivos de negócio', passTrigger:'Proposta comercial apresentada', responsible:'KAE', sellerRole:'Demonstrar a solução aplicada ao problema.\nPreparar esboço (Mockup/Miro).\nValidar aderência, stakeholders e critérios de decisão.', hubspotObject:'Negócio', hubspotFields:'Produtos Add-Ons · Objetivos da contratação (obrigatório) · Novos produtos negociados (obrigatório) · Houve envolvimento de CDA na construção do Design de Solução? (obrigatório) · Houve envolvimento de parceiro na construção do Design de Solução? (obrigatório)', methodologies:['MEDDPICC','Value-Based Selling'], supportTeams:[{name:'Value Designer',actionUrl:'vd-popup'},{name:'Professional Services',actionUrl:''}] },
