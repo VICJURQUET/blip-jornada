@@ -1571,7 +1571,84 @@ const SEGMENTS = [
         lead:'BDR + KAEs', stageCount:12, hubspotObject:'Contato → Negócio', completeness:'in_progress',
         color:{ bg:'bg-blue-500', text:'text-blue-600', border:'border-blue-200', badge:'bg-blue-100 text-blue-700', line:'bg-blue-200' },
         stages:[
-          { id:'t1', name:'Start Contact', hubspotStage:'Start Contact', sentiment:'Ainda não mapeado', need:'Identificar o contato e entender a persona', clientAction:'Inbound: levantada de mão · Outbound: sem ação do cliente', passTrigger:'BDR cadastra os contatos da empresa que vai organizar a prospecção', responsible:'BDR', sellerRole:'BDR cadastra no HubSpot os contatos da sua frente (gerência para baixo por padrão). BDR e KAE podem alinhar previamente que o BDR também atacará níveis mais altos (diretoria, C-level).\n\nNeste momento BDR e KAE podem avaliar envolvimento de marketing como apoio à abordagem.', hubspotObject:'Contato', hubspotFields:'—', methodologies:['Social Selling','Account-Based Marketing'], tools:[{name:'Lusha',url:'https://www.lusha.com/hp/'},{name:'Sales Navigator',url:'https://linkedin.com/premium/products?upsellOrderOrigin=guest_login_sales_nav&utype=sales_ss'},{name:'Gem Copy',url:'https://gemini.google.com/gem/1MHDWKHqJdbU2OAJgykh3N3l83KgUeQkz?usp=sharing'}] },
+          { id:'t1', name:'Start Contact', hubspotStage:'Start Contact', sentiment:'Ainda não mapeado', need:'Identificar o contato e entender a persona', clientAction:'Inbound: levantada de mão · Outbound: sem ação do cliente', passTrigger:'BDR cadastra os contatos da empresa que vai organizar a prospecção', responsible:'BDR', sellerRole:'', sellerRoleHtml:`<div class="space-y-4 text-sm">
+
+  <!-- Cadastro dos contatos -->
+  <div class="rounded-xl overflow-hidden border border-indigo-100">
+    <div class="flex items-center gap-2 px-4 py-2.5" style="background:#EEF2FF;">
+      <span class="flex items-center justify-center w-5 h-5 rounded-full text-white text-[10px] font-bold shrink-0" style="background:#4F46E5;">1</span>
+      <span class="font-semibold text-xs uppercase tracking-wide" style="color:#4F46E5;">Cadastro dos contatos no HubSpot</span>
+    </div>
+    <div class="px-4 py-3 bg-white space-y-2.5">
+      <p class="text-xs text-slate-600 leading-relaxed">O BDR cadastra os contatos da <strong>sua frente</strong> — por padrão, gerência para baixo. A divisão pode ser ajustada em alinhamento com o KAE.</p>
+      <div class="grid grid-cols-2 gap-2">
+        <div class="rounded-lg p-2.5" style="background:#F5F3FF;border:1px solid #DDD6FE;">
+          <p class="text-[10px] font-bold uppercase tracking-wider mb-1" style="color:#4F46E5;">BDR (padrão)</p>
+          <p class="text-xs text-slate-600">Gerência para baixo — Coordenação, Gerência, Especialistas</p>
+        </div>
+        <div class="rounded-lg p-2.5" style="background:#F0FDF4;border:1px solid #BBF7D0;">
+          <p class="text-[10px] font-bold uppercase tracking-wider mb-1 text-green-700">Por acordo com KAE</p>
+          <p class="text-xs text-slate-600">BDR pode também atacar Diretoria e C-Level quando fizer sentido para a conta</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Alinhamento BDR + KAE -->
+  <div class="rounded-xl overflow-hidden border border-indigo-100">
+    <div class="flex items-center gap-2 px-4 py-2.5" style="background:#EEF2FF;">
+      <span class="flex items-center justify-center w-5 h-5 rounded-full text-white text-[10px] font-bold shrink-0" style="background:#4F46E5;">2</span>
+      <span class="font-semibold text-xs uppercase tracking-wide" style="color:#4F46E5;">Alinhamento BDR + KAE</span>
+    </div>
+    <div class="px-4 py-3 bg-white space-y-2.5">
+      <div class="flex items-start gap-2 rounded-lg px-3 py-2.5" style="background:#FFF7ED;border:1px solid #FED7AA;">
+        <span class="text-base shrink-0">🎯</span>
+        <p class="text-xs text-orange-800 leading-relaxed"><strong>Quanto mais alinhados BDR e KAE estiverem, melhor!</strong> Definir juntos o melhor canal, o melhor copy e traçar a estratégia de abordagem da conta em conjunto.</p>
+      </div>
+      <div class="space-y-1.5">
+        <div class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0" style="background:#4F46E5;"></span><p class="text-xs text-slate-700">Avaliar qual o <strong>melhor canal de abordagem</strong> para cada contato da conta</p></div>
+        <div class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0" style="background:#4F46E5;"></span><p class="text-xs text-slate-700">Definir o <strong>copy mais adequado</strong> — tom, ganchos, referências internas</p></div>
+        <div class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0" style="background:#4F46E5;"></span><p class="text-xs text-slate-700">Olhar as <strong>iniciativas da conta</strong> e traçar a abordagem em conjunto</p></div>
+        <div class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0" style="background:#4F46E5;"></span><p class="text-xs text-slate-700">Avaliar <strong>envolvimento de Marketing</strong> como apoio à abordagem</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Prioridade de canal -->
+  <div class="rounded-xl overflow-hidden border border-indigo-100">
+    <div class="flex items-center gap-2 px-4 py-2.5" style="background:#EEF2FF;">
+      <span class="flex items-center justify-center w-5 h-5 rounded-full text-white text-[10px] font-bold shrink-0" style="background:#4F46E5;">3</span>
+      <span class="font-semibold text-xs uppercase tracking-wide" style="color:#4F46E5;">Prioridade de canal</span>
+    </div>
+    <div class="px-4 py-3 bg-white space-y-3">
+      <p class="text-xs text-slate-600">Metodologicamente, a ordem de prioridade é:</p>
+      <div class="flex items-center gap-2">
+        <div class="flex-1 rounded-lg p-2.5 text-center" style="background:#EEF2FF;border:1px solid #C7D2FE;">
+          <p class="text-lg">📞</p>
+          <p class="text-[10px] font-bold mt-0.5" style="color:#4F46E5;">Telefone</p>
+          <p class="text-[10px] text-slate-500">1ª opção</p>
+        </div>
+        <span class="text-slate-300 font-bold">→</span>
+        <div class="flex-1 rounded-lg p-2.5 text-center" style="background:#EEF2FF;border:1px solid #C7D2FE;">
+          <p class="text-lg">💼</p>
+          <p class="text-[10px] font-bold mt-0.5" style="color:#4F46E5;">LinkedIn</p>
+          <p class="text-[10px] text-slate-500">2ª opção</p>
+        </div>
+        <span class="text-slate-300 font-bold">→</span>
+        <div class="flex-1 rounded-lg p-2.5 text-center" style="background:#EEF2FF;border:1px solid #C7D2FE;">
+          <p class="text-lg">✉️</p>
+          <p class="text-[10px] font-bold mt-0.5" style="color:#4F46E5;">E-mail</p>
+          <p class="text-[10px] text-slate-500">3ª opção</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-2 rounded-lg px-3 py-2.5" style="background:#F5F3FF;border:1px solid #DDD6FE;">
+        <span class="text-base shrink-0">⚠️</span>
+        <p class="text-xs text-indigo-800 leading-relaxed"><strong>Isso deve ser alinhado para cada conta.</strong> Precisamos respeitar cada jornada — o canal ideal pode variar. Em StAcc, <span class="font-bold">personalização é nossa maior arma!</span></p>
+      </div>
+    </div>
+  </div>
+
+</div>`, hubspotObject:'Contato', hubspotFields:'—', methodologies:['Social Selling','Account-Based Marketing'], tools:[{name:'Lusha',url:'https://www.lusha.com/hp/'},{name:'Sales Navigator',url:'https://linkedin.com/premium/products?upsellOrderOrigin=guest_login_sales_nav&utype=sales_ss'},{name:'Gem Copy',url:'https://gemini.google.com/gem/1MHDWKHqJdbU2OAJgykh3N3l83KgUeQkz?usp=sharing'}] },
           { id:'t2', name:'Tentativa', hubspotStage:'Tentativa', sentiment:'Ainda não mapeado', need:'Entender que a Blip é relevante e que o tempo dele vai ser bem investido', clientAction:'Ainda sem ação ativa — aguarda retorno', passTrigger:'Prospect respondeu em qualquer canal', responsible:'BDR', sellerRole:'Abordar o contato em todos os canais disponíveis: email, WhatsApp, LinkedIn, telefone. Personalizar cada touchpoint com base no dossiê da conta. Conquistar a primeira resposta.', hubspotObject:'Contato', hubspotFields:'Segmento (obrigatório) · Frente atendida · Site (obrigatório) · LinkedIn (obrigatório) · Modelo de negócio do cliente', methodologies:['Social Selling','Sequência multicanal'] },
           { id:'t3', name:'Conectado', hubspotStage:'Conectado', sentiment:'Receptividade', need:'Reconhecer a Blip como relevante e aceitar um primeiro encontro', clientAction:'Respondeu ao contato — conta iniciando abertura', passTrigger:'Agenda criada pelo BDR para o primeiro encontro', responsible:'BDR', sellerRole:'O contato permanece em Conectado até que uma agenda seja criada.\n\nSe o encontro for online: BDR participa. Se o encontro for presencial (offline): BDR não participa.\n\nNa maioria das vezes é criado um grupo no Slack com a diretoria da área, KAE, BDR e, quando necessário, time cross de apoio (pré-vendas técnico e/ou marketing).', hubspotObject:'Contato', hubspotFields:'Frente prospectada (obrigatório) · Instagram · Facebook', methodologies:['Sandler','SPIN','GPCTBA/C&I'], supportTeams:[{name:'Value Design (Pré-venda técnico)',actionUrl:'https://app.hubspot.com/playbooks/1796841/compose/80142663'}] },
           { id:'t4', name:'Evaluation', hubspotStage:'Evaluation', sentiment:'Curiosidade', need:'Ver a Blip como relevante', clientAction:'Reconhecer Blip como parceiro estratégico', passTrigger:'Dor compartilhada', responsible:'BDR', sellerRole:'O lead respondeu na etapa de Conectado sinalizando interesse em receber um material ou proposta. O BDR move para Evaluation e tenta coletar o mínimo de informações necessárias para personalizar o material antes de avançar para oportunidade.\n\nPara criar o material personalizado, além de contar com a participação e colaboração do time de KAE, VD e MKT, também utilizam de referência os materiais da Central de Enablement.', hubspotObject:'Contato', hubspotFields:'Outros sistemas que a empresa usa · Ferramenta atual · Concorrente mapeado · Potencial total do cliente', methodologies:['Challenger Sale','Solution Selling','SPIN'], tools:[{name:'Central de Revenue Enablement',url:'https://app.notion.com/p/blip-ai/Central-Revenue-Enablement-248dcfddcf4a80019774ca8b6faecd5c'}], supportTeams:[{name:'Value Design (VD)',actionUrl:'https://app.hubspot.com/playbooks/1796841/compose/80142663'},{name:'Marketing (MKT)',actionUrl:''}] },
