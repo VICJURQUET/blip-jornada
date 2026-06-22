@@ -1648,7 +1648,7 @@ const SEGMENTS = [
     </div>
   </div>
 
-</div>`, hubspotObject:'Contato', hubspotFields:'—', methodologies:['Social Selling','Account-Based Marketing'], tools:[{name:'Lusha',url:'https://www.lusha.com/hp/'},{name:'Sales Navigator',url:'https://linkedin.com/premium/products?upsellOrderOrigin=guest_login_sales_nav&utype=sales_ss'},{name:'Gem Copy',url:'https://gemini.google.com/gem/1MHDWKHqJdbU2OAJgykh3N3l83KgUeQkz?usp=sharing'}] },
+</div>`, hubspotObject:'Contato', hubspotFields:'—', hubspotLinks:[{name:'Como adicionar um lead manualmente ↗',url:'https://docs.google.com/document/d/1l0Zrvd0QCZGkVJVipSPQ9M31n2NA2q-E4e_72YRMRwI/edit?tab=t.0'}], methodologies:['Social Selling','Account-Based Marketing'], tools:[{name:'Lusha',url:'https://www.lusha.com/hp/'},{name:'Sales Navigator',url:'https://linkedin.com/premium/products?upsellOrderOrigin=guest_login_sales_nav&utype=sales_ss'},{name:'Gem Copy',url:'https://gemini.google.com/gem/1MHDWKHqJdbU2OAJgykh3N3l83KgUeQkz?usp=sharing'}] },
           { id:'t2', name:'Tentativa', hubspotStage:'Tentativa', sentiment:'Ainda não mapeado', need:'Entender que a Blip é relevante e que o tempo dele vai ser bem investido', clientAction:'Ainda sem ação ativa — aguarda retorno', passTrigger:'Prospect respondeu em qualquer canal', responsible:'BDR', sellerRole:'Abordar o contato em todos os canais disponíveis: email, WhatsApp, LinkedIn, telefone. Personalizar cada touchpoint com base no dossiê da conta. Conquistar a primeira resposta.', hubspotObject:'Contato', hubspotFields:'Segmento (obrigatório) · Frente atendida · Site (obrigatório) · LinkedIn (obrigatório) · Modelo de negócio do cliente', methodologies:['Social Selling','Sequência multicanal'] },
           { id:'t3', name:'Conectado', hubspotStage:'Conectado', sentiment:'Receptividade', need:'Reconhecer a Blip como relevante e aceitar um primeiro encontro', clientAction:'Respondeu ao contato — conta iniciando abertura', passTrigger:'Agenda criada pelo BDR para o primeiro encontro', responsible:'BDR', sellerRole:'O contato permanece em Conectado até que uma agenda seja criada.\n\nSe o encontro for online: BDR participa. Se o encontro for presencial (offline): BDR não participa.\n\nNa maioria das vezes é criado um grupo no Slack com a diretoria da área, KAE, BDR e, quando necessário, time cross de apoio (pré-vendas técnico e/ou marketing).', hubspotObject:'Contato', hubspotFields:'Frente prospectada (obrigatório) · Instagram · Facebook', methodologies:['Sandler','SPIN','GPCTBA/C&I'], supportTeams:[{name:'Value Design (Pré-venda técnico)',actionUrl:'https://app.hubspot.com/playbooks/1796841/compose/80142663'}] },
           { id:'t4', name:'Evaluation', hubspotStage:'Evaluation', sentiment:'Curiosidade', need:'Ver a Blip como relevante', clientAction:'Reconhecer Blip como parceiro estratégico', passTrigger:'Dor compartilhada', responsible:'BDR', sellerRole:'O lead respondeu na etapa de Conectado sinalizando interesse em receber um material ou proposta. O BDR move para Evaluation e tenta coletar o mínimo de informações necessárias para personalizar o material antes de avançar para oportunidade.\n\nPara criar o material personalizado, além de contar com a participação e colaboração do time de KAE, VD e MKT, também utilizam de referência os materiais da Central de Enablement.', hubspotObject:'Contato', hubspotFields:'Outros sistemas que a empresa usa · Ferramenta atual · Concorrente mapeado · Potencial total do cliente', methodologies:['Challenger Sale','Solution Selling','SPIN'], tools:[{name:'Central de Revenue Enablement',url:'https://app.notion.com/p/blip-ai/Central-Revenue-Enablement-248dcfddcf4a80019774ca8b6faecd5c'}], supportTeams:[{name:'Value Design (VD)',actionUrl:'https://app.hubspot.com/playbooks/1796841/compose/80142663'},{name:'Marketing (MKT)',actionUrl:''}] },
@@ -2844,7 +2844,7 @@ function renderDrawer(stage) {
     { l: actionLabel, v: stage.clientAction },
   ].filter(f => f.v && f.v !== '—');
 
-  const hasHubspot = stage.passTrigger || (stage.hubspotFields && stage.hubspotFields !== '—') || stage.manualActions || stage.autoActions || stage.hubspotFieldsSAP;
+  const hasHubspot = stage.passTrigger || (stage.hubspotFields && stage.hubspotFields !== '—') || stage.manualActions || stage.autoActions || stage.hubspotFieldsSAP || (stage.hubspotLinks && stage.hubspotLinks.length > 0);
 
   return `
   <div class="fixed inset-0 bg-black/40 z-40 flex justify-end" onclick="setState({activeStage:null})">
@@ -2988,6 +2988,10 @@ function renderDrawer(stage) {
                 ? `<a href="${escHtml(l.url)}" target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-xs font-medium mt-1" style="color:#EA580C;">${escHtml(l.name)} <span>↗</span></a>`
                 : `<span class="inline-flex items-center gap-1 text-xs font-medium mt-1 text-slate-400 italic">${escHtml(l.name)} (link em breve)</span>`
               ).join('<br>')}
+            </div>` : ''}
+            ${(stage.hubspotLinks && stage.hubspotLinks.length > 0) ? `
+            <div class="flex flex-wrap gap-2 pt-1">
+              ${stage.hubspotLinks.map(l => `<a href="${escHtml(l.url)}" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors" style="background:#EA580C;color:#fff;" onmouseover="this.style.background='#C2410C'" onmouseout="this.style.background='#EA580C'">${escHtml(l.name)}</a>`).join('')}
             </div>` : ''}
             ${stage.autoActions ? `
             <div>
