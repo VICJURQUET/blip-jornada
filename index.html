@@ -1649,7 +1649,71 @@ const SEGMENTS = [
   </div>
 
 </div>`, hubspotObject:'Contato', hubspotFields:'—', hubspotLinks:[{name:'Como adicionar um lead manualmente ↗',url:'https://docs.google.com/document/d/1l0Zrvd0QCZGkVJVipSPQ9M31n2NA2q-E4e_72YRMRwI/edit?tab=t.0'}], methodologies:['Social Selling','Account-Based Marketing'], tools:[{name:'Lusha',url:'https://www.lusha.com/hp/'},{name:'Sales Navigator',url:'https://linkedin.com/premium/products?upsellOrderOrigin=guest_login_sales_nav&utype=sales_ss'},{name:'Gem Copy',url:'https://gemini.google.com/gem/1MHDWKHqJdbU2OAJgykh3N3l83KgUeQkz?usp=sharing'}] },
-          { id:'t2', name:'Tentativa', hubspotStage:'Tentativa', sentiment:'Ainda não mapeado', need:'Entender que a Blip é relevante e que o tempo dele vai ser bem investido', clientAction:'Ainda sem ação ativa — aguarda retorno', passTrigger:'Prospect respondeu em qualquer canal', responsible:'BDR', sellerRole:'Abordar o contato em todos os canais disponíveis: email, WhatsApp, LinkedIn, telefone. Personalizar cada touchpoint com base no dossiê da conta. Conquistar a primeira resposta.', hubspotObject:'Contato', hubspotFields:'Segmento (obrigatório) · Frente atendida · Site (obrigatório) · LinkedIn (obrigatório) · Modelo de negócio do cliente', methodologies:['Social Selling','Sequência multicanal'] },
+          { id:'t2', name:'Tentativa', hubspotStage:'Tentativa', sentiment:'Ainda não mapeado', need:'Entender que a Blip é relevante e que o tempo dele vai ser bem investido', clientAction:'Ainda sem ação ativa — aguarda retorno', passTrigger:'Prospect respondeu em qualquer canal', responsible:'BDR', sellerRole:'', sellerRoleHtml:`<div class="space-y-4 text-sm">
+
+  <!-- Gestão de touchpoints -->
+  <div class="rounded-xl overflow-hidden border border-indigo-100">
+    <div class="flex items-center gap-2 px-4 py-2.5" style="background:#EEF2FF;">
+      <span class="flex items-center justify-center w-5 h-5 rounded-full text-white text-[10px] font-bold shrink-0" style="background:#4F46E5;">1</span>
+      <span class="font-semibold text-xs uppercase tracking-wide" style="color:#4F46E5;">Gestão Resiliente de Touchpoints</span>
+    </div>
+    <div class="px-4 py-3 bg-white space-y-2.5">
+      <p class="text-xs text-slate-600 leading-relaxed">Manter a consistência dos touchpoints <strong>sem saturar o contato</strong> — alternar canais e frentes de dor testadas para descobrir qual argumento de negócios gera maior tração.</p>
+      <div class="grid grid-cols-2 gap-2">
+        <div class="rounded-lg p-2.5 flex items-center gap-2" style="background:#F5F3FF;border:1px solid #DDD6FE;">
+          <span class="text-base">📞</span>
+          <p class="text-xs text-slate-700 font-medium">Telefone</p>
+        </div>
+        <div class="rounded-lg p-2.5 flex items-center gap-2" style="background:#F5F3FF;border:1px solid #DDD6FE;">
+          <span class="text-base">💬</span>
+          <p class="text-xs text-slate-700 font-medium">WhatsApp</p>
+        </div>
+        <div class="rounded-lg p-2.5 flex items-center gap-2" style="background:#F5F3FF;border:1px solid #DDD6FE;">
+          <span class="text-base">💼</span>
+          <p class="text-xs text-slate-700 font-medium">LinkedIn</p>
+        </div>
+        <div class="rounded-lg p-2.5 flex items-center gap-2" style="background:#F5F3FF;border:1px solid #DDD6FE;">
+          <span class="text-base">✉️</span>
+          <p class="text-xs text-slate-700 font-medium">E-mail</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Personalização -->
+  <div class="rounded-xl overflow-hidden border border-indigo-100">
+    <div class="flex items-center gap-2 px-4 py-2.5" style="background:#EEF2FF;">
+      <span class="flex items-center justify-center w-5 h-5 rounded-full text-white text-[10px] font-bold shrink-0" style="background:#4F46E5;">2</span>
+      <span class="font-semibold text-xs uppercase tracking-wide" style="color:#4F46E5;">Personalização baseada no dossiê</span>
+    </div>
+    <div class="px-4 py-3 bg-white space-y-1.5">
+      <p class="text-xs text-slate-600 leading-relaxed">Cada touchpoint deve ser construído com base no que foi mapeado no dossiê da conta — personas, dores presumidas, conexões internas e contexto de mercado.</p>
+      <div class="flex items-start gap-2 rounded-lg px-3 py-2.5 mt-1" style="background:#FFF7ED;border:1px solid #FED7AA;">
+        <span class="text-base shrink-0">🎯</span>
+        <p class="text-xs text-orange-800 leading-relaxed">Em StAcc, mensagem genérica não abre porta. <strong>Personalização é nossa maior arma.</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Objetivo + rede de apoio -->
+  <div class="rounded-xl overflow-hidden border border-indigo-100">
+    <div class="flex items-center gap-2 px-4 py-2.5" style="background:#EEF2FF;">
+      <span class="flex items-center justify-center w-5 h-5 rounded-full text-white text-[10px] font-bold shrink-0" style="background:#4F46E5;">3</span>
+      <span class="font-semibold text-xs uppercase tracking-wide" style="color:#4F46E5;">Objetivo e rede de apoio</span>
+    </div>
+    <div class="px-4 py-3 bg-white space-y-2.5">
+      <div class="rounded-lg px-3 py-2.5 flex items-center gap-2" style="background:#F0FDF4;border:1px solid #BBF7D0;">
+        <span class="text-base">🏆</span>
+        <p class="text-xs text-green-800 leading-relaxed"><strong>Meta desta etapa:</strong> conquistar a primeira resposta — só isso.</p>
+      </div>
+      <div class="space-y-1.5">
+        <div class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0" style="background:#4F46E5;"></span><p class="text-xs text-slate-700">Use <strong>todas as ferramentas disponíveis</strong> para apoiar a abordagem</p></div>
+        <div class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0" style="background:#4F46E5;"></span><p class="text-xs text-slate-700">Entenda se algum <strong>Blipper pode te apoiar</strong> — rede interna é um ativo poderoso</p></div>
+      </div>
+    </div>
+  </div>
+
+</div>`, hubspotObject:'Contato', hubspotFields:'Segmento (obrigatório) · Frente atendida · Site (obrigatório) · LinkedIn (obrigatório) · Modelo de negócio do cliente', methodologies:['Social Selling','Sequência multicanal'] },
           { id:'t3', name:'Conectado', hubspotStage:'Conectado', sentiment:'Receptividade', need:'Reconhecer a Blip como relevante e aceitar um primeiro encontro', clientAction:'Respondeu ao contato — conta iniciando abertura', passTrigger:'Agenda criada pelo BDR para o primeiro encontro', responsible:'BDR', sellerRole:'O contato permanece em Conectado até que uma agenda seja criada.\n\nSe o encontro for online: BDR participa. Se o encontro for presencial (offline): BDR não participa.\n\nNa maioria das vezes é criado um grupo no Slack com a diretoria da área, KAE, BDR e, quando necessário, time cross de apoio (pré-vendas técnico e/ou marketing).', hubspotObject:'Contato', hubspotFields:'Frente prospectada (obrigatório) · Instagram · Facebook', methodologies:['Sandler','SPIN','GPCTBA/C&I'], supportTeams:[{name:'Value Design (Pré-venda técnico)',actionUrl:'https://app.hubspot.com/playbooks/1796841/compose/80142663'}] },
           { id:'t4', name:'Evaluation', hubspotStage:'Evaluation', sentiment:'Curiosidade', need:'Ver a Blip como relevante', clientAction:'Reconhecer Blip como parceiro estratégico', passTrigger:'Dor compartilhada', responsible:'BDR', sellerRole:'O lead respondeu na etapa de Conectado sinalizando interesse em receber um material ou proposta. O BDR move para Evaluation e tenta coletar o mínimo de informações necessárias para personalizar o material antes de avançar para oportunidade.\n\nPara criar o material personalizado, além de contar com a participação e colaboração do time de KAE, VD e MKT, também utilizam de referência os materiais da Central de Enablement.', hubspotObject:'Contato', hubspotFields:'Outros sistemas que a empresa usa · Ferramenta atual · Concorrente mapeado · Potencial total do cliente', methodologies:['Challenger Sale','Solution Selling','SPIN'], tools:[{name:'Central de Revenue Enablement',url:'https://app.notion.com/p/blip-ai/Central-Revenue-Enablement-248dcfddcf4a80019774ca8b6faecd5c'}], supportTeams:[{name:'Value Design (VD)',actionUrl:'https://app.hubspot.com/playbooks/1796841/compose/80142663'},{name:'Marketing (MKT)',actionUrl:''}] },
           { id:'t5', name:'Qualificado', hubspotStage:'Qualificado / Opps', sentiment:'Clareza', need:'Ver o gap atual vs ideal', clientAction:'Identificar pontos essenciais e confirmar a reunião agendada.', passTrigger:'Data confirmada para o primeiro encontro entre KAE + lead (podendo envolver times de apoio, como diretoria e/ou time técnico de pré-vendas)', responsible:'KAE', sellerRole:'Criação do opp é automática ao chegar nesta etapa. O opp vai para a pipeline de vendas na etapa Opp.', hubspotObject:'Contato → Negócio', manualActions:'Preenchimento Manual de atividades — Briefing (resumo das informações coletadas pelo BDR sobre o lead) / Passagem de bastão Qualificação→Aquisição\n\n* Ao preencher o manual, é criada automaticamente uma observação no deal gerado pela automação no pipeline de vendas.', manualActionsLinks:[{name:'Abrir Manual de Passagem de Bastão BDR ↔ KAE',url:'https://app.hubspot.com/playbooks/1796841/compose/98805842'}], autoActions:'Criação do opp automática na pipeline de vendas', methodologies:['Demo 2 Win','Value-Based Selling','SPIN'], tools:[],oppView:{ name:'Opp', hubspotStage:'Opps', hubspotObject:'Negócio', clientAction:'Comparecer na reunião agendada e compartilhar informações essenciais.', passTrigger:'Primeira reunião realizada com próximo passo já combinado (ex: segunda reunião agendada).', responsible:'KAE', sellerRole:'Realizar o encantamento da conta. Nesta primeira abordagem o vendedor precisa apresentar o potencial da Blip para engajar a conta e conseguir um segundo momento.', manualActions:'Registro das reuniões no HubSpot', manualActionsLinks:[], autoActions:'Sem ação automática' } },
