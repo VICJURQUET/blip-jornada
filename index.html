@@ -43,6 +43,218 @@
 </head>
 <body class="bg-slate-50 min-h-screen">
 
+<!-- MODAL COMO O KAE AUXILIA NO DOSSIE CONJUNTO -->
+<div id="kae-howto-modal" class="fixed inset-0 z-[9998] hidden items-center justify-center p-4" style="background:rgba(0,0,0,0.55);" onclick="if(event.target===this)closeKaeHowto()">
+  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col" onclick="event.stopPropagation()">
+    <!-- Header -->
+    <div class="flex items-center justify-between px-6 py-5 border-b border-slate-100 flex-shrink-0" style="background:linear-gradient(135deg,#EEF2FF 0%,#F5F3FF 100%);">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg" style="background:#4F46E5;">🤝</div>
+        <div>
+          <h2 class="font-bold text-slate-800 text-base">Como o KAE auxilia o BDR</h2>
+          <p class="text-xs text-slate-400">KAE · Dossiê Conjunto · Land StAcc</p>
+        </div>
+      </div>
+      <button onclick="closeKaeHowto()" class="text-slate-400 hover:text-slate-600 text-xl font-bold leading-none ml-4 flex-shrink-0">×</button>
+    </div>
+    <!-- Intro -->
+    <div class="px-6 pt-4 pb-2 flex-shrink-0">
+      <p class="text-xs text-slate-500 leading-relaxed">O KAE traz senioridade e trânsito na conta-mãe para turbinar o dossiê montado pelo BDR. Clique em cada frente para ver como ele contribui.</p>
+    </div>
+    <!-- Body: accordion cards -->
+    <div class="overflow-y-auto flex-1 px-6 pb-6 pt-2 space-y-3">
+
+      <!-- Card 1 -->
+      <div class="rounded-xl overflow-hidden" style="border:1px solid #C7D2FE;">
+        <button onclick="toggleResearchCard('kc1')" class="w-full flex items-center gap-3 px-4 py-3.5 text-left hover:opacity-90 transition-opacity" style="background:#EEF2FF;">
+          <div class="w-7 h-7 rounded-lg flex items-center justify-center text-white text-xs font-bold flex-shrink-0" style="background:#4F46E5;">1</div>
+          <div class="flex-1">
+            <p class="text-sm font-bold text-slate-800">Mentoramento Estratégico da Conta</p>
+            <p class="text-xs text-slate-500 mt-0.5">Validação do mapa · Tom institucional · Sensibilidades políticas</p>
+          </div>
+          <span id="kc1-chevron" class="text-slate-400 text-xs flex-shrink-0">▼</span>
+        </button>
+        <div id="kc1-body" class="hidden border-t" style="border-color:#C7D2FE;background:white;">
+          <div class="px-4 py-4 space-y-3">
+            <p class="text-xs text-slate-600 leading-relaxed">Usando sua senioridade e tráfego na conta-mãe, o KAE <strong>valida e calibra</strong> o trabalho de inteligência feito pelo BDR antes de qualquer abordagem.</p>
+            <div class="rounded-lg p-3 space-y-2" style="background:#F5F3FF;border:1px solid #DDD6FE;">
+              <p class="text-[10px] font-bold uppercase tracking-wider mb-1" style="color:#4F46E5;">O que o KAE revisa e orienta</p>
+              <div class="space-y-1.5">
+                <div class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style="background:#4F46E5;"></span><p class="text-xs text-slate-700">Validar o <strong>mapa de personas</strong> e o desenho do organograma feito pelo BDR</p></div>
+                <div class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style="background:#4F46E5;"></span><p class="text-xs text-slate-700">Orientar sobre o <strong>tom institucional correto</strong> para aquela organização</p></div>
+                <div class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style="background:#4F46E5;"></span><p class="text-xs text-slate-700">Alertar sobre <strong>sensibilidades políticas</strong> e vieses que devem ser evitados na abordagem</p></div>
+              </div>
+            </div>
+            <div class="rounded-lg p-2.5 flex items-start gap-2" style="background:#FFF7ED;border:1px solid #FED7AA;">
+              <span class="text-base flex-shrink-0">💡</span>
+              <p class="text-xs text-orange-800 leading-relaxed">O KAE já conhece a cultura interna da conta — esse filtro evita que o BDR cometa erros de abordagem que poderiam queimar a oportunidade antes de ela começar.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="rounded-xl overflow-hidden" style="border:1px solid #C7D2FE;">
+        <button onclick="toggleResearchCard('kc2')" class="w-full flex items-center gap-3 px-4 py-3.5 text-left hover:opacity-90 transition-opacity" style="background:#EEF2FF;">
+          <div class="w-7 h-7 rounded-lg flex items-center justify-center text-white text-xs font-bold flex-shrink-0" style="background:#4F46E5;">2</div>
+          <div class="flex-1">
+            <p class="text-sm font-bold text-slate-800">Planejamento do Comprador Econômico</p>
+            <p class="text-xs text-slate-500 mt-0.5">Economic Buyer · Quem tem a caneta · Ganchos para C-Level</p>
+          </div>
+          <span id="kc2-chevron" class="text-slate-400 text-xs flex-shrink-0">▼</span>
+        </button>
+        <div id="kc2-body" class="hidden border-t" style="border-color:#C7D2FE;background:white;">
+          <div class="px-4 py-4 space-y-3">
+            <p class="text-xs text-slate-600 leading-relaxed">O KAE orienta o BDR na identificação de quem de fato <strong>detém a caneta do orçamento final</strong> naquela divisão — o chamado <span class="font-semibold text-indigo-600">Economic Buyer</span>.</p>
+            <div class="grid grid-cols-2 gap-2">
+              <div class="rounded-lg p-3" style="background:#F5F3FF;border:1px solid #DDD6FE;">
+                <p class="text-[10px] font-bold uppercase tracking-wider mb-1.5" style="color:#4F46E5;">🎯 Identificar</p>
+                <p class="text-xs text-slate-600">Quem aprova o budget e tem poder de decisão real na nova divisão</p>
+              </div>
+              <div class="rounded-lg p-3" style="background:#F5F3FF;border:1px solid #DDD6FE;">
+                <p class="text-[10px] font-bold uppercase tracking-wider mb-1.5" style="color:#4F46E5;">🪝 Moldar ganchos</p>
+                <p class="text-xs text-slate-600">Construir argumentos que despertem o interesse de C-Level e Diretoria desde o primeiro contato</p>
+              </div>
+            </div>
+            <div class="rounded-lg p-2.5 flex items-start gap-2" style="background:#F0FDF4;border:1px solid #BBF7D0;">
+              <span class="text-base flex-shrink-0">🎯</span>
+              <p class="text-xs text-green-800 leading-relaxed"><strong>Meta:</strong> o BDR não prospecta apenas operadores — ele entra já com narrativa para quem decide, mesmo que o contato inicial seja em nível gerencial.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- MODAL COMO FAZER: PESQUISA DA CONTA STACC -->
+<div id="research-howto-modal" class="fixed inset-0 z-[9998] hidden items-center justify-center p-4" style="background:rgba(0,0,0,0.55);" onclick="if(event.target===this)closeResearchHowto()">
+  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col" onclick="event.stopPropagation()">
+    <!-- Header -->
+    <div class="flex items-center justify-between px-6 py-5 border-b border-slate-100 flex-shrink-0" style="background:linear-gradient(135deg,#EEF2FF 0%,#F5F3FF 100%);">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg" style="background:#4F46E5;">🔍</div>
+        <div>
+          <h2 class="font-bold text-slate-800 text-base">Como fazer a Pesquisa da Conta</h2>
+          <p class="text-xs text-slate-400">BDR · Land StAcc · Pré-Prospecção</p>
+        </div>
+      </div>
+      <button onclick="closeResearchHowto()" class="text-slate-400 hover:text-slate-600 text-xl font-bold leading-none ml-4 flex-shrink-0">×</button>
+    </div>
+    <!-- Intro -->
+    <div class="px-6 pt-4 pb-2 flex-shrink-0">
+      <p class="text-xs text-slate-500 leading-relaxed">A pesquisa da conta em StAcc é o alicerce de toda a prospecção. Antes de qualquer contato, o BDR precisa construir um mapa completo da conta. Clique em cada frente para ver o que fazer.</p>
+    </div>
+    <!-- Body: accordion cards -->
+    <div class="overflow-y-auto flex-1 px-6 pb-6 pt-2 space-y-3">
+
+      <!-- Card 1 -->
+      <div class="rounded-xl overflow-hidden" style="border:1px solid #C7D2FE;">
+        <button onclick="toggleResearchCard('rc1')" class="w-full flex items-center gap-3 px-4 py-3.5 text-left hover:opacity-90 transition-opacity" style="background:#EEF2FF;">
+          <div class="w-7 h-7 rounded-lg flex items-center justify-center text-white text-xs font-bold flex-shrink-0" style="background:#4F46E5;">1</div>
+          <div class="flex-1">
+            <p class="text-sm font-bold text-slate-800">Mapeamento do Comprador e Influenciadores</p>
+            <p class="text-xs text-slate-500 mt-0.5">Organograma · Personas-foco · Hierarquia da nova frente</p>
+          </div>
+          <span id="rc1-chevron" class="text-slate-400 text-xs flex-shrink-0">▼</span>
+        </button>
+        <div id="rc1-body" class="hidden border-t" style="border-color:#C7D2FE;background:white;">
+          <div class="px-4 py-4 space-y-3">
+            <p class="text-xs text-slate-600 leading-relaxed">Realizar o levantamento minucioso do <strong>organograma estrutural</strong> da nova frente de negócio do grande grupo econômico (ex: uma nova diretoria de CX ou canais digitais).</p>
+            <div class="rounded-lg p-3 space-y-2" style="background:#F5F3FF;border:1px solid #DDD6FE;">
+              <p class="text-[10px] font-bold uppercase tracking-wider" style="color:#4F46E5;">O que identificar</p>
+              <div class="space-y-1.5">
+                <div class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style="background:#4F46E5;"></span><p class="text-xs text-slate-700">De <strong>3 a 5 personas-foco</strong> correlacionadas ao desafio de negócio do setor</p></div>
+                <div class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style="background:#4F46E5;"></span><p class="text-xs text-slate-700">Perfis como <strong>Superintendentes, Gerentes de Canais, Product Owners</strong></p></div>
+                <div class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style="background:#4F46E5;"></span><p class="text-xs text-slate-700">A estrutura hierárquica da nova frente que está sendo prospectada</p></div>
+              </div>
+            </div>
+            <div class="rounded-lg p-3" style="background:#FFF7ED;border:1px solid #FED7AA;">
+              <p class="text-[10px] font-bold uppercase tracking-wider text-orange-600 mb-1.5">Onde buscar</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="text-xs bg-white border border-orange-200 text-orange-700 px-2 py-1 rounded-md font-medium">LinkedIn</span>
+                <span class="text-xs bg-white border border-orange-200 text-orange-700 px-2 py-1 rounded-md font-medium">Site da empresa</span>
+                <span class="text-xs bg-white border border-orange-200 text-orange-700 px-2 py-1 rounded-md font-medium">HubSpot (histórico)</span>
+                <span class="text-xs bg-white border border-orange-200 text-orange-700 px-2 py-1 rounded-md font-medium">Press releases</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="rounded-xl overflow-hidden" style="border:1px solid #C7D2FE;">
+        <button onclick="toggleResearchCard('rc2')" class="w-full flex items-center gap-3 px-4 py-3.5 text-left hover:opacity-90 transition-opacity" style="background:#EEF2FF;">
+          <div class="w-7 h-7 rounded-lg flex items-center justify-center text-white text-xs font-bold flex-shrink-0" style="background:#4F46E5;">2</div>
+          <div class="flex-1">
+            <p class="text-sm font-bold text-slate-800">Análise de Contexto e Dores Presumidas</p>
+            <p class="text-xs text-slate-500 mt-0.5">Momento de mercado · RI · Vagas · Publicações de liderança</p>
+          </div>
+          <span id="rc2-chevron" class="text-slate-400 text-xs flex-shrink-0">▼</span>
+        </button>
+        <div id="rc2-body" class="hidden border-t" style="border-color:#C7D2FE;background:white;">
+          <div class="px-4 py-4 space-y-3">
+            <p class="text-xs text-slate-600 leading-relaxed">Investigar o <strong>momento de mercado do target</strong> para estabelecer hipóteses reais de dores operacionais e financeiras daquela vertical. Isso é chamado de <span class="font-semibold text-indigo-600">Identified Pain</span>.</p>
+            <div class="grid grid-cols-2 gap-2">
+              <div class="rounded-lg p-3" style="background:#F5F3FF;border:1px solid #DDD6FE;">
+                <p class="text-[10px] font-bold uppercase tracking-wider mb-1.5" style="color:#4F46E5;">📊 Relatórios de RI</p>
+                <p class="text-xs text-slate-600">Resultados financeiros, metas declaradas e pressões do mercado sobre a empresa</p>
+              </div>
+              <div class="rounded-lg p-3" style="background:#F5F3FF;border:1px solid #DDD6FE;">
+                <p class="text-[10px] font-bold uppercase tracking-wider mb-1.5" style="color:#4F46E5;">💼 Vagas no LinkedIn</p>
+                <p class="text-xs text-slate-600">Revelam tecnologias desejadas, projetos em andamento e lacunas da operação</p>
+              </div>
+              <div class="rounded-lg p-3" style="background:#F5F3FF;border:1px solid #DDD6FE;">
+                <p class="text-[10px] font-bold uppercase tracking-wider mb-1.5" style="color:#4F46E5;">📰 Fatos públicos</p>
+                <p class="text-xs text-slate-600">Notícias recentes, expansões, fusões, aquisições ou mudanças de liderança</p>
+              </div>
+              <div class="rounded-lg p-3" style="background:#F5F3FF;border:1px solid #DDD6FE;">
+                <p class="text-[10px] font-bold uppercase tracking-wider mb-1.5" style="color:#4F46E5;">📣 Posts das lideranças</p>
+                <p class="text-xs text-slate-600">Publicações dos executivos mapeados revelam prioridades e dores assumidas</p>
+              </div>
+            </div>
+            <div class="rounded-lg p-3 flex items-start gap-2" style="background:#FFF7ED;border:1px solid #FED7AA;">
+              <span class="text-base flex-shrink-0">💡</span>
+              <p class="text-xs text-orange-800 leading-relaxed"><strong>Objetivo:</strong> não chegar com um pitch genérico — chegar com <em>hipóteses</em> reais de dor que o cliente reconhece na primeira conversa.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="rounded-xl overflow-hidden" style="border:1px solid #C7D2FE;">
+        <button onclick="toggleResearchCard('rc3')" class="w-full flex items-center gap-3 px-4 py-3.5 text-left hover:opacity-90 transition-opacity" style="background:#EEF2FF;">
+          <div class="w-7 h-7 rounded-lg flex items-center justify-center text-white text-xs font-bold flex-shrink-0" style="background:#4F46E5;">3</div>
+          <div class="flex-1">
+            <p class="text-sm font-bold text-slate-800">Rastreamento de Conexões Internas</p>
+            <p class="text-xs text-slate-500 mt-0.5">Pontes quentes · Warm introductions · Rede do KAE</p>
+          </div>
+          <span id="rc3-chevron" class="text-slate-400 text-xs flex-shrink-0">▼</span>
+        </button>
+        <div id="rc3-body" class="hidden border-t" style="border-color:#C7D2FE;background:white;">
+          <div class="px-4 py-4 space-y-3">
+            <p class="text-xs text-slate-600 leading-relaxed">Cruzar a lista de novos contatos com a <strong>base de executivos ativos</strong> que o KAE já atende em outras divisões da conta-mãe.</p>
+            <div class="rounded-lg p-3 space-y-2" style="background:#F0FDF4;border:1px solid #BBF7D0;">
+              <p class="text-[10px] font-bold uppercase tracking-wider text-green-700 mb-1">O que mapear</p>
+              <div class="space-y-1.5">
+                <div class="flex items-start gap-2"><span class="text-green-500 flex-shrink-0 font-bold text-xs mt-0.5">→</span><p class="text-xs text-slate-700">Quais contatos novos têm <strong>relação com alguém que o KAE já conhece</strong> na conta</p></div>
+                <div class="flex items-start gap-2"><span class="text-green-500 flex-shrink-0 font-bold text-xs mt-0.5">→</span><p class="text-xs text-slate-700"><strong>Pontes políticas internas</strong> que podem facilitar uma introdução formal</p></div>
+                <div class="flex items-start gap-2"><span class="text-green-500 flex-shrink-0 font-bold text-xs mt-0.5">→</span><p class="text-xs text-slate-700">Executivos de outras divisões que podem <strong>recomendar a Blip</strong> internamente</p></div>
+              </div>
+            </div>
+            <div class="rounded-lg p-2.5 flex items-center gap-2" style="background:#F5F3FF;border:1px solid #DDD6FE;">
+              <span class="text-base">🔗</span>
+              <p class="text-xs text-indigo-700"><strong>Warm introduction</strong> — uma apresentação feita por alguém de dentro vale mais do que qualquer cold call.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <!-- MODAL ETAPA HUBSPOT -->
 <div id="hs-stage-modal" class="fixed inset-0 z-[9997] hidden items-center justify-center p-4" style="background:rgba(0,0,0,0.5);" onclick="closeHsStageModal(event)">
   <div class="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] flex flex-col" onclick="event.stopPropagation()">
@@ -1237,7 +1449,84 @@ const SEGMENTS = [
         lead:'BDR + Closer', stageCount:12, hubspotObject:'Contato → Negócio', completeness:'in_progress',
         color:{ bg:'bg-blue-500', text:'text-blue-600', border:'border-blue-200', badge:'bg-blue-100 text-blue-700', line:'bg-blue-200' },
         stages:[
-          { id:'m1', name:'Start Contact', hubspotStage:'Start Contact', sentiment:'Inquietude', need:'Identificar que tem um problema', clientAction:'Inbound: levantada de mão · Outbound: sem ação do cliente', passTrigger:'—', responsible:'BDR', sellerRole:'Validar contato: email, wpp e linkedin. Estudar informações públicas do contato. Pesquisar sobre prospect no LinkedIn.', hubspotObject:'Contato', hubspotFields:'—', methodologies:['Social Selling'] },
+          { id:'m1', name:'Start Contact', hubspotStage:'Start Contact', sentiment:'Inquietude', need:'Identificar que tem um problema', clientAction:'Inbound: levantada de mão · Outbound: sem ação do cliente', passTrigger:'—', responsible:'BDR', sellerRole:'', sellerRoleHtml:`<div class="space-y-4 text-sm">
+
+  <!-- Cadastro dos contatos -->
+  <div class="rounded-xl overflow-hidden border border-indigo-100">
+    <div class="flex items-center gap-2 px-4 py-2.5" style="background:#EEF2FF;">
+      <span class="flex items-center justify-center w-5 h-5 rounded-full text-white text-[10px] font-bold shrink-0" style="background:#4F46E5;">1</span>
+      <span class="font-semibold text-xs uppercase tracking-wide" style="color:#4F46E5;">Cadastro dos contatos no HubSpot</span>
+    </div>
+    <div class="px-4 py-3 bg-white space-y-2.5">
+      <p class="text-xs text-slate-600 leading-relaxed">O BDR cadastra os contatos da <strong>sua frente</strong> — por padrão, gerência para baixo. A divisão pode ser ajustada em alinhamento com o KAE.</p>
+      <div class="grid grid-cols-2 gap-2">
+        <div class="rounded-lg p-2.5" style="background:#F5F3FF;border:1px solid #DDD6FE;">
+          <p class="text-[10px] font-bold uppercase tracking-wider mb-1" style="color:#4F46E5;">BDR (padrão)</p>
+          <p class="text-xs text-slate-600">Gerência para baixo — Coordenação, Gerência, Especialistas</p>
+        </div>
+        <div class="rounded-lg p-2.5" style="background:#F0FDF4;border:1px solid #BBF7D0;">
+          <p class="text-[10px] font-bold uppercase tracking-wider mb-1 text-green-700">Por acordo com KAE</p>
+          <p class="text-xs text-slate-600">BDR pode também atacar Diretoria e C-Level quando fizer sentido para a conta</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Alinhamento BDR + KAE -->
+  <div class="rounded-xl overflow-hidden border border-indigo-100">
+    <div class="flex items-center gap-2 px-4 py-2.5" style="background:#EEF2FF;">
+      <span class="flex items-center justify-center w-5 h-5 rounded-full text-white text-[10px] font-bold shrink-0" style="background:#4F46E5;">2</span>
+      <span class="font-semibold text-xs uppercase tracking-wide" style="color:#4F46E5;">Alinhamento BDR + KAE</span>
+    </div>
+    <div class="px-4 py-3 bg-white space-y-2.5">
+      <div class="flex items-start gap-2 rounded-lg px-3 py-2.5" style="background:#FFF7ED;border:1px solid #FED7AA;">
+        <span class="text-base shrink-0">🎯</span>
+        <p class="text-xs text-orange-800 leading-relaxed"><strong>Quanto mais alinhados BDR e KAE estiverem, melhor!</strong> Definir juntos o melhor canal, o melhor copy e traçar a estratégia de abordagem da conta em conjunto.</p>
+      </div>
+      <div class="space-y-1.5">
+        <div class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0" style="background:#4F46E5;"></span><p class="text-xs text-slate-700">Avaliar qual o <strong>melhor canal de abordagem</strong> para cada contato da conta</p></div>
+        <div class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0" style="background:#4F46E5;"></span><p class="text-xs text-slate-700">Definir o <strong>copy mais adequado</strong> — tom, ganchos, referências internas</p></div>
+        <div class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0" style="background:#4F46E5;"></span><p class="text-xs text-slate-700">Olhar as <strong>iniciativas da conta</strong> e traçar a abordagem em conjunto</p></div>
+        <div class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0" style="background:#4F46E5;"></span><p class="text-xs text-slate-700">Avaliar <strong>envolvimento de Marketing</strong> como apoio à abordagem</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Prioridade de canal -->
+  <div class="rounded-xl overflow-hidden border border-indigo-100">
+    <div class="flex items-center gap-2 px-4 py-2.5" style="background:#EEF2FF;">
+      <span class="flex items-center justify-center w-5 h-5 rounded-full text-white text-[10px] font-bold shrink-0" style="background:#4F46E5;">3</span>
+      <span class="font-semibold text-xs uppercase tracking-wide" style="color:#4F46E5;">Prioridade de canal</span>
+    </div>
+    <div class="px-4 py-3 bg-white space-y-3">
+      <p class="text-xs text-slate-600">Metodologicamente, a ordem de prioridade é:</p>
+      <div class="flex items-center gap-2">
+        <div class="flex-1 rounded-lg p-2.5 text-center" style="background:#EEF2FF;border:1px solid #C7D2FE;">
+          <p class="text-lg">📞</p>
+          <p class="text-[10px] font-bold mt-0.5" style="color:#4F46E5;">Telefone</p>
+          <p class="text-[10px] text-slate-500">1ª opção</p>
+        </div>
+        <span class="text-slate-300 font-bold">→</span>
+        <div class="flex-1 rounded-lg p-2.5 text-center" style="background:#EEF2FF;border:1px solid #C7D2FE;">
+          <p class="text-lg">💼</p>
+          <p class="text-[10px] font-bold mt-0.5" style="color:#4F46E5;">LinkedIn</p>
+          <p class="text-[10px] text-slate-500">2ª opção</p>
+        </div>
+        <span class="text-slate-300 font-bold">→</span>
+        <div class="flex-1 rounded-lg p-2.5 text-center" style="background:#EEF2FF;border:1px solid #C7D2FE;">
+          <p class="text-lg">✉️</p>
+          <p class="text-[10px] font-bold mt-0.5" style="color:#4F46E5;">E-mail</p>
+          <p class="text-[10px] text-slate-500">3ª opção</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-2 rounded-lg px-3 py-2.5" style="background:#F5F3FF;border:1px solid #DDD6FE;">
+        <span class="text-base shrink-0">⚠️</span>
+        <p class="text-xs text-indigo-800 leading-relaxed"><strong>Isso deve ser alinhado para cada conta.</strong> Precisamos respeitar cada jornada — o canal ideal pode variar. Em StAcc, <span class="font-bold">personalização é nossa maior arma!</span></p>
+      </div>
+    </div>
+  </div>
+
+</div>`, hubspotObject:'Contato', hubspotFields:'—', methodologies:['Social Selling'] },
           { id:'m2', name:'Tentativa', hubspotStage:'Tentativa', sentiment:'Inquietude', need:'Entender que a Blip é relevante e que o tempo dele vai ser bem investido', clientAction:'Responder tentativa de contato', passTrigger:'—', responsible:'BDR', sellerRole:'Estudar informações públicas do contato. Personalizar o contato. Conquistar a primeira resposta do lead.', hubspotObject:'Contato', hubspotFields:'Segmento (obrigatório) · Frente atendida · Site (obrigatório) · LinkedIn (obrigatório) · Modelo de negócio do cliente', methodologies:['Social Selling'] },
           { id:'m3', name:'Conectado', hubspotStage:'Conectado', sentiment:'Interesse · Dor', need:'Reconhecer que precisa da Blip', clientAction:'Compartilhar a dor · Responder contato', passTrigger:'Prospect respondeu', responsible:'BDR', sellerRole:'Aplicar metodologias de vendas para extrair informações importantes. Utilizar Use Cases.', hubspotObject:'Contato', hubspotFields:'Frente prospectada (obrigatório) · Instagram · Facebook', methodologies:['Sandler','SPIN','GPCTBA/C&I'], supportTeams:[{name:'Value Design (Pré-venda técnico)',actionUrl:''}] },
           { id:'m4', name:'Evaluation', hubspotStage:'Evaluation', sentiment:'Alívio · Curiosidade', need:'Ver a Blip como relevante', clientAction:'Reconhecer Blip como parceiro estratégico', passTrigger:'Dor compartilhada · SLA Opp validado', responsible:'BDR', sellerRole:'Diagnóstico completo do lead. Coletar as principais dores e necessidades.', hubspotObject:'Contato', hubspotFields:'Outros sistemas que a empresa usa · Ferramenta atual · Concorrente mapeado · Potencial total do cliente · Dor', methodologies:['Challenger Sale','Solution Selling','SPIN'] },
@@ -2282,7 +2571,10 @@ function renderPreCrmStacc() {
         <div class="flex gap-3">
           <div class="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5" style="background:#4F46E5;">1</div>
           <div>
-            <p class="text-xs font-semibold text-slate-700">Pesquisa da conta (BDR)</p>
+            <div class="flex items-center gap-2 flex-wrap">
+              <p class="text-xs font-semibold text-slate-700">Pesquisa da conta (BDR)</p>
+              <button onclick="openResearchHowto()" class="inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-full transition-colors" style="background:#EDE9FE;color:#4F46E5;border:1px solid #C4B5FD;" onmouseover="this.style.background='#DDD6FE'" onmouseout="this.style.background='#EDE9FE'">✦ Como fazer</button>
+            </div>
             <p class="text-xs text-slate-500 mt-0.5">Em StAcc, todas as contas a trabalhar já foram nomeadas — o território é conhecido. O BDR faz uma pesquisa aprofundada da conta e monta o dossiê inicial. <span class="font-medium text-slate-600">Resultado registrado na empresa no HubSpot</span>, sem etapa CRM.</p>
           </div>
         </div>
@@ -2298,7 +2590,10 @@ function renderPreCrmStacc() {
         <div class="flex gap-3">
           <div class="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5" style="background:#4F46E5;">3</div>
           <div class="flex-1">
-            <p class="text-xs font-semibold text-slate-700">Dossiê conjunto (KAE + BDR)</p>
+            <div class="flex items-center gap-2 flex-wrap">
+              <p class="text-xs font-semibold text-slate-700">Dossiê conjunto (KAE + BDR)</p>
+              <button onclick="openKaeHowto()" class="inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-full transition-colors" style="background:#EDE9FE;color:#4F46E5;border:1px solid #C4B5FD;" onmouseover="this.style.background='#DDD6FE'" onmouseout="this.style.background='#EDE9FE'">✦ Como o KAE auxilia</button>
+            </div>
             <p class="text-xs text-slate-500 mt-0.5">KAE e BDR se reúnem para incrementar a pesquisa e montar o dossiê completo da conta. Neste momento definem juntos quais contatos serão abertos para prospecção.</p>
             <a href="https://docs.google.com/document/d/11hvPHWId55M4AP_Bov7UcIa_0TtQgvvYqo8qAVGBGEQ/copy?tab=t.0" target="_blank" class="inline-flex items-center gap-1.5 mt-2 bg-white border border-indigo-200 text-indigo-600 text-xs font-medium px-3 py-1.5 rounded-lg shadow-sm hover:bg-indigo-50 transition-colors">📄 Conheça o modelo de dossiê utilizado pelo time ↗</a>
           </div>
@@ -2330,6 +2625,32 @@ function renderPreCrmStacc() {
       </div>
     </div>
   </div>`;
+}
+
+function openKaeHowto() {
+  var modal = document.getElementById('kae-howto-modal');
+  if (modal) { modal.classList.remove('hidden'); modal.classList.add('flex'); }
+}
+function closeKaeHowto() {
+  var modal = document.getElementById('kae-howto-modal');
+  if (modal) { modal.classList.add('hidden'); modal.classList.remove('flex'); }
+}
+
+function openResearchHowto() {
+  var modal = document.getElementById('research-howto-modal');
+  if (modal) { modal.classList.remove('hidden'); modal.classList.add('flex'); }
+}
+function closeResearchHowto() {
+  var modal = document.getElementById('research-howto-modal');
+  if (modal) { modal.classList.add('hidden'); modal.classList.remove('flex'); }
+}
+function toggleResearchCard(id) {
+  var body = document.getElementById(id + '-body');
+  var chevron = document.getElementById(id + '-chevron');
+  if (!body) return;
+  var isHidden = body.classList.contains('hidden');
+  body.classList.toggle('hidden');
+  if (chevron) chevron.textContent = isHidden ? '▲' : '▼';
 }
 
 function togglePreCrm() {
