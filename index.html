@@ -363,7 +363,7 @@
 <div id="app" class="locked"></div>
 
 <!-- LEGENDA FIXA -->
-<div id="legend-panel" class="fixed left-4 top-1/2 -translate-y-1/2 z-50 hidden">
+<div id="legend-panel" class="fixed left-4 top-1/2 -translate-y-1/2 z-20 hidden">
   <div class="bg-white border border-slate-200 rounded-2xl shadow-lg overflow-hidden w-52">
     <!-- Header -->
     <button onclick="toggleLegend()" class="w-full flex items-center justify-between px-4 py-3 bg-slate-50 border-b border-slate-100 hover:bg-slate-100 transition-colors">
@@ -1819,13 +1819,13 @@ const SEGMENTS = [
         <p class="text-xs text-green-800 leading-relaxed"><strong>Meta desta etapa:</strong> conquistar a primeira resposta — só isso.</p>
       </div>
       <div class="space-y-1.5">
-        <div class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0" style="background:#4F46E5;"></span><p class="text-xs text-slate-700">Use <strong>todas as ferramentas disponíveis</strong> para apoiar a abordagem</p></div>
+        <div class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0" style="background:#4F46E5;"></span><p class="text-xs text-slate-700">Use todas as ferramentas listadas em <strong>"Ferramentas de Apoio"</strong> para apoiar a abordagem</p></div>
         <div class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0" style="background:#4F46E5;"></span><p class="text-xs text-slate-700">Entenda se algum <strong>Blipper pode te apoiar</strong> — rede interna é um ativo poderoso</p></div>
       </div>
     </div>
   </div>
 
-</div>`, hubspotObject:'Contato', hubspotFieldsRequired:'Segmento · Site · LinkedIn', hubspotFields:'Frente atendida · Modelo de negócio do cliente', methodologies:['Social Selling','Sequência multicanal'] },
+</div>`, hubspotObject:'Contato', hubspotFieldsRequired:'Segmento · Site · LinkedIn', hubspotFields:'Frente atendida · Modelo de negócio do cliente', methodologies:['Social Selling','Sequência multicanal'], tools:[{name:'Lusha',url:'https://www.lusha.com/hp/'},{name:'Sales Navigator',url:'https://linkedin.com/premium/products?upsellOrderOrigin=guest_login_sales_nav&utype=sales_ss'},{name:'Gem Copy',url:'https://gemini.google.com/gem/1MHDWKHqJdbU2OAJgykh3N3l83KgUeQkz?usp=sharing'}] },
           { id:'t3', name:'Conectado', hubspotStage:'Conectado', sentiment:'Receptividade', need:'Reconhecer a Blip como relevante e aceitar um primeiro encontro', clientAction:'Respondeu ao contato — conta iniciando abertura', passTrigger:'Lead interessado em uma primeira reunião', responsible:'BDR', sellerRole:'', sellerRoleHtml:`<div class="space-y-4 text-sm">
 
   <!-- Permanência na etapa -->
